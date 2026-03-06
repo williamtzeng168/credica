@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -21,65 +23,70 @@
             <span>Credica</span>
         </div>
         <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#cards">Cards</a>
-            <a href="#rewards">Rewards</a>
-            <a href="#about">About</a>
+            <a href="#features">Capabilities</a>
+            <a href="#security">Security</a>
+            <a href="#about">Architecture</a>
         </div>
-        <button class="btn btn-primary">Get Started</button>
+        <button class="btn btn-primary">Download App</button>
     </nav>
 
     <main>
         <section class="hero">
             <div class="hero-content animate-slide-up">
-                <div class="badge">✨ Redefining Credit</div>
-                <h1>Empower Your Financial 
-                    <span class="text-gradient">Future</span>
+                <div class="badge">✨ Local-First Identity</div>
+                <h1>True Digital Identity,
+                    <span class="text-gradient">Owned by You.</span>
                 </h1>
-                <p>Unlock limitless potential with a credit card that understands your lifestyle. Zero hidden fees, infinite possibilities.</p>
+                <p>Credica is a next-generation smart contact manager and digital identity wallet built on W3C
+                    Verifiable Credentials and Zero-Knowledge architecture.</p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary btn-large">Apply Now</button>
-                    <button class="btn btn-secondary btn-large">View Benefits</button>
+                    <button class="btn btn-primary btn-large">App Store</button>
+                    <button class="btn btn-secondary btn-large">Google Play</button>
                 </div>
                 <div class="stats">
                     <div class="stat-item">
-                        <h3>2.5%</h3>
-                        <p>Cashback</p>
+                        <h3>W3C</h3>
+                        <p>Verifiable</p>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <h3>0$</h3>
-                        <p>Annual Fee</p>
+                        <h3>E2EE</h3>
+                        <p>Encrypted</p>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <h3>24/7</h3>
-                        <p>Support</p>
+                        <h3>AI</h3>
+                        <p>Powered📱</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="hero-visual animate-fade-in">
                 <div class="card-container">
                     <div class="credit-card front glass">
                         <div class="card-chip"></div>
                         <div class="card-nfc">
                             <svg viewBox="0 0 24 24" fill="none" class="nfc-icon">
-                                <path d="M4 8.25V15.75M8.5 6V18M13 3.75V20.25M17.5 1.5V22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path
+                                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                    stroke="currentColor" stroke-width="2" />
+                                <path d="M7.5 12L10.5 15L16.5 9" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <div class="card-number">•••• •••• •••• 9284</div>
+                        <div class="card-number" style="font-size: 1.2rem; letter-spacing: 2px;">did:key:z6MkhaX...
+                        </div>
                         <div class="card-details">
                             <div class="card-holder">
-                                <span>Card Holder</span>
-                                <div class="name">ALEXANDER D.</div>
+                                <span>Verifiable Credential</span>
+                                <div class="name">CRYPTOGRAPHIC IDENTITY</div>
                             </div>
                             <div class="card-expiry">
-                                <span>Expires</span>
-                                <div class="date">12/28</div>
+                                <span>Status</span>
+                                <div class="date">VALID</div>
                             </div>
                         </div>
-                        <div class="card-logo">Credica</div>
+                        <div class="card-logo">Credica ID</div>
                     </div>
                     <div class="credit-card back glass"></div>
                 </div>
@@ -88,24 +95,27 @@
 
         <section id="features" class="features scroll-animate">
             <div class="section-header">
-                <h2>Why Choose <span class="text-gradient">Credica</span>?</h2>
-                <p>Designed for the modern world, built for your lifestyle.</p>
+                <h2>Redefining <span class="text-gradient">Networking</span></h2>
+                <p>Exchange verifiable identities with privacy and smart AI insights.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Bank-grade Security</h3>
-                    <p>Advanced encryption and instant freeze capabilities keep your money safe at all times.</p>
+                    <div class="feature-icon">�️</div>
+                    <h3>Zero-Knowledge Server</h3>
+                    <p>Your Personal Identifiable Information (PII) never touches the cloud. Data is locally stored or
+                        E2E encrypted via XSalsa20-Poly1305.</p>
                 </div>
                 <div class="feature-card glass scroll-animate" style="transition-delay: 0.1s;">
-                    <div class="feature-icon">📱</div>
-                    <h3>Smart App Control</h3>
-                    <p>Manage limits, track spending, and earn rewards directly from our beautifully designed app.</p>
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI Auto-Categorization</h3>
+                    <p>Automatically classify contacts based on industry and context using a dual local-rule and
+                        privacy-preserving cloud LLM engine.</p>
                 </div>
                 <div class="feature-card glass scroll-animate" style="transition-delay: 0.2s;">
-                    <div class="feature-icon">✈️</div>
-                    <h3>Global Acceptance</h3>
-                    <p>Use your Credica card anywhere in the world with zero foreign transaction fees.</p>
+                    <div class="feature-icon">📲</div>
+                    <h3>Smart Card Exchange</h3>
+                    <p>Exchange digital business cards via QR, NFC or group radar. Full control over card revocation and
+                        distribution tracking.</p>
                 </div>
             </div>
         </section>
@@ -113,4 +123,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
