@@ -1,16 +1,23 @@
-// Intersection Observer for scroll animations
+// ==========================================
+// Credica Landing Page — Interactions
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --------------------
+    // Scroll Animations
+    // --------------------
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Only animate once
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -18,40 +25,134 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.scroll-animate');
     animatedElements.forEach(el => observer.observe(el));
 
-    // Mouse movement interaction for the 3D card
-    const heroVisual = document.querySelector('.hero-visual');
-    const frontCard = document.querySelector('.front');
-    const backCard = document.querySelector('.back');
+    // --------------------
+    // iPhone Screen Carousel
+    // --------------------
+    const screens = document.querySelectorAll('.app-screen');
+    const dots = document.querySelectorAll('.screen-dot');
+    const screenLabel = document.querySelector('.screen-label');
+    const screenLabels = ['首頁總覽', '聯絡人管理', 'QR 名片交換', '人脈圖譜', '交換結果'];
+    let currentScreen = 0;
+    let carouselInterval = null;
 
-    if (heroVisual && frontCard && backCard) {
-        heroVisual.addEventListener('mousemove', (e) => {
-            const rect = heroVisual.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
+    function showScreen(index) {
+        screens.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        screens[index].classList.add('active');
+        dots[index].classList.add('active');
+        if (screenLabel) screenLabel.textContent = screenLabels[index];
+        currentScreen = index;
+    }
 
-            // Apply slight rotation based on cursor
-            frontCard.style.transform = `translateZ(20px) rotateX(${rotateX + 10}deg) rotateY(${rotateY - 15}deg)`;
-            backCard.style.transform = `translateZ(-20px) rotateX(${rotateX + 10}deg) rotateY(${rotateY - 15}deg) translateX(40px) translateY(40px)`;
+    function nextScreen() {
+        showScreen((currentScreen + 1) % screens.length);
+    }
+
+    if (screens.length > 0) {
+        carouselInterval = setInterval(nextScreen, 4000);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(carouselInterval);
+                showScreen(parseInt(dot.dataset.dot));
+                carouselInterval = setInterval(nextScreen, 4000);
+            });
+        });
+    }
+
+    // --------------------
+    // Mobile Hamburger Menu
+    // --------------------
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        heroVisual.addEventListener('mouseleave', () => {
-            // Reset to default
-            frontCard.style.transform = `translateZ(20px) rotateY(-15deg) rotateX(10deg)`;
-            backCard.style.transform = `translateZ(-20px) rotateY(-15deg) rotateX(10deg) translateX(40px) translateY(40px)`;
-            
-            // Re-enable smooth transition when leaving
-            frontCard.style.transition = 'transform 0.5s ease';
-            backCard.style.transition = 'transform 0.5s ease';
-            
+        // Close menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
+    // --------------------
+    // Navbar Background on Scroll
+    // --------------------
+    const navbar = document.querySelector('.navbar');
+
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(3, 0, 20, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(3, 0, 20, 0.85)';
+            }
+        }, { passive: true });
+    }
+
+    // --------------------
+    // Smooth scroll for anchor links
+    // --------------------
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // --------------------
+    // Contact Form → Email
+    // --------------------
+    const contactForm = document.getElementById('contactForm');
+    const contactSuccess = document.getElementById('contactSuccess');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const company = document.getElementById('contactCompany').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+
+            const subject = encodeURIComponent(`[Credica 網站留言] 來自 ${name}`);
+            const body = encodeURIComponent(
+                `姓名：${name}\n` +
+                `Email：${email}\n` +
+                (company ? `公司 / 組織：${company}\n` : '') +
+                `\n留言內容：\n${message}`
+            );
+
+            // Open mailto link
+            window.location.href = `mailto:william.tzeng@gmail.com?subject=${subject}&body=${body}`;
+
+            // Show success state after a short delay
             setTimeout(() => {
-                frontCard.style.transition = 'none';
-                backCard.style.transition = 'none';
+                contactForm.style.display = 'none';
+                document.querySelector('.contact-desc').style.display = 'none';
+                contactSuccess.style.display = 'block';
             }, 500);
         });
     }
