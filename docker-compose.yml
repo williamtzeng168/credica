@@ -1,0 +1,7 @@
+services:
+  credica-landing:
+    build: .
+    container_name: credica-landing
+    ports:
+      - "8990:80"
+    restart: unless-stopped
