@@ -17,6 +17,7 @@ COPY terms.html /usr/share/nginx/html/
 COPY support.html /usr/share/nginx/html/
 COPY credica_logo.png /usr/share/nginx/html/
 COPY credica_full.png /usr/share/nginx/html/
+COPY auth/ /usr/share/nginx/html/auth/
 
 EXPOSE 80
 
