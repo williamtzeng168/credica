@@ -1095,8 +1095,8 @@ body {
 
 .shield-container {
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: 400px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1130,6 +1130,20 @@ body {
     animation-delay: 2s;
 }
 
+.ring-4 {
+    width: 340px;
+    height: 340px;
+    border-color: rgba(6, 182, 212, 0.08);
+    animation-delay: 3s;
+}
+
+.ring-5 {
+    width: 400px;
+    height: 400px;
+    border-color: rgba(79, 70, 229, 0.05);
+    animation-delay: 4s;
+}
+
 .shield-core {
     position: relative;
     z-index: 2;
@@ -1144,6 +1158,21 @@ body {
     animation: pulse-core 3s ease-in-out infinite;
 }
 
+.shield-label {
+    position: absolute;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+}
+
+.shield-label-1 { top: 50%; right: -80px; transform: translateY(-50%); }
+.shield-label-2 { top: 15%; left: 50%; transform: translateX(-50%); }
+.shield-label-3 { bottom: 15%; left: 50%; transform: translateX(-50%); }
+.shield-label-4 { top: 50%; left: -80px; transform: translateY(-50%); }
+.shield-label-5 { bottom: -10px; left: 50%; transform: translateX(-50%); }
+
 @keyframes pulse-ring {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.05); opacity: 0.6; }
@@ -1152,6 +1181,162 @@ body {
 @keyframes pulse-core {
     0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.2); }
     50% { box-shadow: 0 0 40px rgba(79, 70, 229, 0.4); }
+}
+
+/* Defense Layers */
+.defense-layers {
+    max-width: 1100px;
+    margin: 80px auto 0;
+}
+
+.defense-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.defense-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+}
+
+.defense-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.defense-layer {
+    padding: 28px 20px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+}
+
+.defense-layer:hover {
+    transform: translateY(-6px);
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+.defense-layer-number {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #06B6D4;
+    background: rgba(6, 182, 212, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+}
+
+.defense-layer h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.defense-layer p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* Security Highlights */
+.security-highlights {
+    max-width: 1100px;
+    margin: 80px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.highlight-card {
+    padding: 32px 24px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(79, 70, 229, 0.3);
+}
+
+.highlight-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 70, 229, 0.08);
+    border-radius: 16px;
+    margin: 0 auto 18px;
+}
+
+.highlight-card h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.highlight-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* Compliance Section */
+.compliance-section {
+    max-width: 1100px;
+    margin: 80px auto 0;
+}
+
+.compliance-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.compliance-badge {
+    padding: 24px 20px;
+    border-radius: 16px;
+    text-align: center;
+    min-width: 140px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.compliance-badge:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79, 70, 229, 0.3);
+}
+
+.compliance-badge-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 70, 229, 0.08);
+    border-radius: 50%;
+    margin: 0 auto 12px;
+}
+
+.compliance-badge-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.compliance-badge-desc {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
 }
 
 /* ==================== */
@@ -1918,6 +2103,31 @@ body {
     .ring-1 { width: 120px; height: 120px; }
     .ring-2 { width: 160px; height: 160px; }
     .ring-3 { width: 200px; height: 200px; }
+    .ring-4, .ring-5 { display: none; }
+    .shield-label { display: none; }
+
+    .defense-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .defense-title {
+        font-size: 1.3rem;
+    }
+
+    .security-highlights {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .compliance-badges {
+        gap: 12px;
+    }
+
+    .compliance-badge {
+        min-width: 120px;
+        padding: 18px 14px;
+    }
 
     .use-cases-grid {
         grid-template-columns: 1fr;
