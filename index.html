@@ -1,1144 +1,881 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credica | 你的數位身分，由你完全掌握</title>
-    <meta name="description" content="Credica 是隱私優先的智慧數位名片管理工具。裝置本地儲存、AI 智慧分類、一鍵交換，讓人脈管理更聰明。">
-    <meta name="keywords" content="數位名片, 名片管理, 人脈管理, 隱私, AI 分類, QR Code 名片交換">
-    <meta property="og:title" content="Credica | 你的數位身分，由你完全掌握">
-    <meta property="og:description" content="隱私優先的智慧數位名片管理工具。">
-    <meta property="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credica — 你的數位名片與人脈錢包</title>
+<meta name="description" content="Credica 是你的數位名片與人脈錢包。掃碼交換、群組一次全收、換工作名片自動更新。">
+<meta name="keywords" content="數位名片, 名片管理, 人脈管理, QR Code 名片交換, 群組交換">
+<meta property="og:title" content="Credica — 你的數位名片與人脈錢包">
+<meta property="og:description" content="一個 App 搞定名片、人脈、社交。掃碼交換，群組一次全收，換了工作名片自動更新。">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="i18n-data.js"></script>
+<script src="i18n.js"></script>
+<style>
+/* ===================== NEW DESIGN CSS ===================== */
+:root {
+  --deep: #F8FAFC;
+  --surface: #FFFFFF;
+  --card: #FFFFFF;
+  --card-h: #F1F5F9;
+  --border: rgba(0,0,0,0.07);
+  --border-h: rgba(79,70,229,0.2);
+  --teal: #4F46E5;
+  --teal-g: #6366F1;
+  --teal-b: #4F46E5;
+  --text: #1E293B;
+  --text-2: #475569;
+  --text-3: #64748B;
+  --violet: #8B5CF6;
+  --amber: #D97706;
+  --rose: #E11D48;
+  --blue: #2563EB;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body { font-family: 'Outfit', 'Noto Sans TC', sans-serif; background: var(--deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(79,70,229,0.08), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6,182,212,0.05), transparent); pointer-events: none; z-index: 0; }
+
+body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.5; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; }
+.logo-img { width: 34px; height: 34px; object-fit: contain; }
+.nav-mid { display: flex; gap: 2rem; }
+.nav-mid { flex: 1; justify-content: center; }
+.nav-mid a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.2s; }
+.nav-mid a:hover { color: #fff; }
+.nav-dl { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; text-decoration: none; }
+.nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(13,148,136,0.3); }
+.nav-dl svg { width: 16px; height: 16px; }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+.hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s ease; border-radius: 2px; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile Menu */
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.mobile-menu.active { opacity: 1; pointer-events: all; }
+.mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.3s ease; }
+.mobile-menu a:hover { color: var(--teal-b); }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 7rem 2.5rem 4rem; max-width: 1320px; margin: 0 auto; gap: 4rem; }
+.hero-left { flex: 1.15; }
+
+.hero-chip { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(13,148,136,0.08); border: 1px solid rgba(13,148,136,0.2); border-radius: 100px; font-size: 0.85rem; color: var(--teal-b); margin-bottom: 1.75rem; animation: fadeUp 0.7s var(--ease) both; }
+.chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-b); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.045em; animation: fadeUp 0.7s var(--ease) 0.1s both; }
+.hl { background: linear-gradient(135deg, #4F46E5, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.hero-sub { font-size: 1.2rem; color: var(--text-2); line-height: 1.8; margin-top: 1.5rem; font-weight: 300; max-width: 520px; animation: fadeUp 0.7s var(--ease) 0.2s both; }
+
+.hero-downloads { display: flex; gap: 0.85rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.7s var(--ease) 0.3s both; }
+.store-btn { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 1.6rem; background: #1E293B; border: 1px solid #334155; border-radius: 14px; color: #fff; text-decoration: none; transition: all 0.3s var(--ease); cursor: pointer; }
+.store-btn:hover { background: #0F172A; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+.store-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
+.store-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); line-height: 1; }
+.store-name { font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
+
+/* Hero Right */
+.hero-right { flex: 0.85; display: flex; justify-content: center; align-items: center; animation: fadeUp 0.9s var(--ease) 0.4s both; position: relative; perspective: 1200px; }
+.phone-glow { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, var(--teal), transparent 70%); opacity: 0.1; filter: blur(60px); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+/* ===================== SECTIONS ===================== */
+.section { padding: 6rem 2.5rem; }
+.section-center { text-align: center; max-width: 1200px; margin: 0 auto; }
+.section-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--teal); font-weight: 500; margin-bottom: 0.75rem; }
+.section-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+.section-desc { font-size: 1.1rem; color: var(--text-2); line-height: 1.7; margin-top: 0.75rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* ===================== HIGHLIGHT: GROUP EXCHANGE ===================== */
+.highlight-section {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  padding: 6rem 2.5rem;
+}
+.highlight-visual {
+  background: #F8FAFC; border: 1px solid var(--border); border-radius: 22px;
+  padding: 2rem; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.highlight-visual::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--teal-b)); }
+
+.group-scene { display: flex; flex-direction: column; gap: 1rem; }
+.group-header { display: flex; align-items: center; gap: 0.6rem; }
+.group-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(79,70,229,0.08); color: var(--teal-b); display: flex; align-items: center; justify-content: center; }
+.group-icon svg { width: 22px; height: 22px; }
+.group-label { font-size: 0.75rem; color: var(--text-3); }
+.group-name { font-size: 1.05rem; font-weight: 700; }
+
+.avatar-cluster { display: flex; align-items: center; }
+.av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: #fff; border: 2px solid var(--card); margin-left: -10px; }
+.av:first-child { margin-left: 0; }
+.av-count { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; color: var(--text-2); border: 2px solid var(--card); margin-left: -10px; background: var(--surface); }
+
+.group-result {
+  background: rgba(79,70,229,0.06); border: 1px solid rgba(79,70,229,0.15);
+  border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.6rem;
+}
+.group-result-icon { color: var(--teal-b); flex-shrink: 0; }
+.group-result-icon svg { width: 20px; height: 20px; }
+.group-result-text { font-size: 0.85rem; color: var(--teal-b); font-weight: 500; }
+.group-result-sub { font-size: 0.7rem; color: var(--text-3); }
+
+.highlight-text { }
+.highlight-text .section-label { text-align: left; }
+.highlight-text h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.highlight-text p { font-size: 1.1rem; color: var(--text-2); line-height: 1.75; margin-top: 1rem; }
+.highlight-text .bullet-list { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.65rem; }
+.bullet-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 1rem; color: var(--text-2); line-height: 1.6; }
+.bullet-check { width: 22px; height: 22px; border-radius: 6px; background: rgba(79,70,229,0.08); color: var(--teal-b); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.bullet-check svg { width: 13px; height: 13px; }
+
+/* ===================== HIGHLIGHT: AUTO UPDATE ===================== */
+.highlight-section.reverse { direction: rtl; }
+.highlight-section.reverse > * { direction: ltr; }
+
+.update-timeline { display: flex; flex-direction: column; gap: 0.75rem; }
+.timeline-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 10px; background: #fff; border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+.timeline-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.timeline-dot.green { background: var(--teal-b); }
+.timeline-dot.blue { background: var(--blue); }
+.timeline-dot.violet { background: var(--violet); }
+.tl-content { flex: 1; }
+.tl-action { font-size: 0.8rem; font-weight: 500; }
+.tl-detail { font-size: 0.7rem; color: var(--text-3); margin-top: 0.1rem; }
+.tl-time { font-size: 0.65rem; color: var(--text-3); white-space: nowrap; }
+
+/* ===================== VALUE PROPS ===================== */
+.value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.value-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2.25rem 1.75rem; text-align: left; transition: all 0.4s var(--ease); position: relative; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.value-card:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(79,70,229,0.08); }
+.value-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--teal-b)); opacity: 0; transition: opacity 0.3s; }
+.value-card:hover::after { opacity: 1; }
+.v-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+.value-card:nth-child(1) .v-icon { background: rgba(13,148,136,0.1); color: var(--teal-b); }
+.value-card:nth-child(2) .v-icon { background: rgba(139,92,246,0.1); color: var(--violet); }
+.value-card:nth-child(3) .v-icon { background: rgba(59,130,246,0.1); color: var(--blue); }
+.v-icon svg { width: 26px; height: 26px; }
+.value-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.6rem; }
+.value-card p { font-size: 1rem; color: var(--text-3); line-height: 1.7; }
+
+/* ===================== SCENES ===================== */
+.scenes-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1100px; margin: 3rem auto 0; }
+.scene-tile { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.scene-tile:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.scene-icon { width: 48px; height: 48px; border-radius: 12px; margin: 0 auto 0.85rem; display: flex; align-items: center; justify-content: center; }
+.scene-tile:nth-child(1) .scene-icon { background: rgba(13,148,136,0.1); color: var(--teal-b); }
+.scene-tile:nth-child(2) .scene-icon { background: rgba(139,92,246,0.1); color: var(--violet); }
+.scene-tile:nth-child(3) .scene-icon { background: rgba(245,158,11,0.1); color: var(--amber); }
+.scene-tile:nth-child(4) .scene-icon { background: rgba(59,130,246,0.1); color: var(--blue); }
+.scene-icon svg { width: 22px; height: 22px; }
+.scene-tile h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.35rem; }
+.scene-tile p { font-size: 0.9rem; color: var(--text-3); line-height: 1.55; }
+
+/* ===================== PRIVACY ===================== */
+.trust-row { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-top: 2.5rem; }
+.tbadge { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.tbadge-box { width: 68px; height: 68px; border-radius: 16px; background: #F1F5F9; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: var(--text-2); text-align: center; line-height: 1.3; transition: all 0.3s; }
+.tbadge-box:hover { border-color: var(--teal); background: rgba(79,70,229,0.06); color: var(--teal); }
+.tbadge-label { font-size: 0.75rem; color: var(--text-3); }
+
+/* ===================== V2 TEASER ===================== */
+.v2-teaser { max-width: 800px; margin: 0 auto; text-align: center; padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.v2-teaser h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+.v2-teaser p { font-size: 1.05rem; color: var(--text-2); line-height: 1.7; margin-bottom: 2rem; }
+.btn-v2 { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text-2); font-size: 1rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.3s; text-decoration: none; }
+.btn-v2:hover { border-color: var(--teal); color: var(--teal); background: rgba(79,70,229,0.04); }
+.btn-v2 svg { width: 18px; height: 18px; }
+
+/* ===================== CTA ===================== */
+.cta-final { text-align: center; padding: 6rem 2rem; position: relative; }
+.cta-glow { position: absolute; width: 500px; height: 300px; border-radius: 50%; filter: blur(100px); opacity: 0.06; top: 30%; left: 50%; transform: translateX(-50%); background: var(--teal); pointer-events: none; }
+.cta-final h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; position: relative; }
+.cta-final p { color: var(--text-2); margin-top: 1.1rem; font-size: 1.15rem; font-weight: 300; position: relative; }
+.cta-stores { display: flex; gap: 0.85rem; justify-content: center; margin-top: 2rem; position: relative; flex-wrap: wrap; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.foot-l { font-size: 0.85rem; color: var(--text-3); }
+.foot-r { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.foot-r a { font-size: 0.85rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
+.foot-r a:hover { color: var(--text); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 900px) {
+  html { font-size: 16px; }
+  .hero { flex-direction: column; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
+  .hero-right { order: -1; }
+  .value-grid { grid-template-columns: 1fr; }
+  .scenes-strip { grid-template-columns: 1fr 1fr; }
+  .highlight-section, .highlight-section.reverse { grid-template-columns: 1fr; direction: ltr; }
+  .nav-mid { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+  .cta-stores { flex-direction: column; align-items: center; }
+}
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+</style>
+
+<!-- ===================== CAROUSEL CSS (from original) ===================== -->
+<style>
+/* iPhone Mockup Carousel */
+.iphone-mockup {
+    position: relative;
+    width: 280px;
+    height: 570px;
+    background: #1a1a1a;
+    border-radius: 44px;
+    padding: 10px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #333, 0 0 60px rgba(13,148,136,0.15);
+    animation: phoneFloat 6s ease-in-out infinite;
+    transform: rotateY(-12deg) rotateX(5deg);
+    transform-style: preserve-3d;
+}
+@keyframes phoneFloat {
+    0%, 100% { transform: rotateY(-12deg) rotateX(5deg) translateY(0); }
+    50% { transform: rotateY(-12deg) rotateX(5deg) translateY(-20px); }
+}
+.iphone-notch {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 28px; background: #1a1a1a; border-radius: 14px; z-index: 20;
+}
+.iphone-screen-area {
+    width: 100%; height: 100%; border-radius: 35px; overflow: hidden; position: relative; background: #fff;
+}
+.app-screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; opacity: 0; transition: opacity 0.6s ease;
+    pointer-events: none; font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    color: #1a1a1a; font-size: 11px;
+}
+.app-screen.active { opacity: 1; pointer-events: auto; }
+.screen-status-bar {
+    height: 40px; display: flex; justify-content: space-between; align-items: flex-end;
+    padding: 0 24px 6px; font-size: 11px; font-weight: 600; flex-shrink: 0; z-index: 10;
+}
+.screen-sb-light { color: #fff; }
+.screen-sb-dark { color: #000; }
+.screen-status-icons { display: flex; gap: 4px; align-items: center; }
+.screen-tab-bar {
+    height: 54px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+    border-top: 0.5px solid #e0e0e0; display: flex; justify-content: space-around;
+    align-items: flex-start; padding-top: 5px; flex-shrink: 0;
+}
+.screen-tab { display: flex; flex-direction: column; align-items: center; gap: 1px; color: #999; }
+.screen-tab span { font-size: 8px; }
+.screen-tab svg { width: 18px; height: 18px; }
+.screen-tab.active { color: #1565C0; }
+.screen-body { flex: 1; overflow: hidden; padding: 0 10px; }
+.screen-nav-title { font-size: 20px; font-weight: 700; padding: 6px 12px 8px; color: #1a1a1a; }
+.screen-home-header { background: linear-gradient(135deg, #1565C0, #42A5F5); padding: 10px 12px 14px; color: #fff; }
+.screen-greeting { font-size: 16px; font-weight: 600; }
+.screen-subtitle { font-size: 10px; opacity: 0.85; margin-top: 2px; }
+.screen-search-bar {
+    margin-top: 8px; background: rgba(255,255,255,0.2); border-radius: 8px;
+    padding: 6px 10px; display: flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.7); font-size: 10px;
+}
+.screen-id-card { margin: 8px 0; background: linear-gradient(135deg, #1565C0, #42A5F5); border-radius: 10px; padding: 10px 12px; color: #fff; }
+.screen-id-badges { margin-bottom: 6px; }
+.screen-type-badge { background: rgba(255,255,255,0.25); padding: 2px 8px; border-radius: 8px; font-size: 9px; }
+.screen-primary-badge { background: #fff; color: #1565C0; padding: 2px 6px; border-radius: 8px; font-size: 9px; font-weight: 600; margin-left: 4px; }
+.screen-id-name { font-size: 16px; font-weight: 700; }
+.screen-id-title { font-size: 10px; opacity: 0.9; margin-top: 2px; }
+.screen-id-info { font-size: 9px; opacity: 0.85; margin-top: 3px; }
+.screen-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0; }
+.screen-stat { background: #F8FAFF; border-radius: 8px; padding: 8px 4px; text-align: center; }
+.screen-stat-val { font-size: 16px; font-weight: 700; color: #1565C0; }
+.screen-stat-lbl { font-size: 8px; color: #666; margin-top: 2px; }
+.screen-section-title { font-size: 12px; font-weight: 600; padding: 8px 2px 4px; color: #1a1a1a; }
+.screen-suggestion { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; margin-bottom: 5px; font-size: 10px; }
+.screen-suggestion.blue { background: #E3F2FD; color: #1565C0; }
+.screen-suggestion.orange { background: #FFF3E0; color: #E65100; }
+.screen-suggestion strong { font-size: 11px; display: block; }
+.screen-suggestion small { font-size: 9px; opacity: 0.7; }
+.screen-filter-row { display: flex; gap: 5px; padding: 4px 12px; overflow: hidden; }
+.screen-chip { padding: 4px 10px; border-radius: 14px; font-size: 10px; white-space: nowrap; border: 1px solid #e0e0e0; background: #fff; color: #555; }
+.screen-chip.active { background: #1565C0; color: #fff; border-color: #1565C0; }
+.screen-contact-item { display: flex; align-items: center; gap: 8px; padding: 7px 2px; border-bottom: 0.5px solid #f0f0f0; }
+.screen-avatar { width: 30px; height: 30px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; font-size: 10px; flex-shrink: 0; }
+.screen-contact-info { flex: 1; min-width: 0; }
+.screen-contact-name { font-size: 12px; font-weight: 500; }
+.screen-contact-title { font-size: 9px; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.screen-star { font-size: 10px; }
+.screen-exchange-header { font-size: 14px; font-weight: 600; text-align: center; padding: 6px 0; color: #1a1a1a; }
+.screen-exchange-body { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 12px; overflow: hidden; }
+.screen-exchange-avatar { width: 48px; height: 48px; border-radius: 24px; background: #1565C0; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.screen-exchange-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+.screen-exchange-title { font-size: 10px; color: #666; margin-bottom: 4px; }
+.screen-verified-badge { display: inline-flex; align-items: center; gap: 3px; background: #E8F5E9; color: #2E7D32; padding: 2px 10px; border-radius: 10px; font-size: 9px; font-weight: 500; margin-bottom: 8px; }
+.screen-qr-box { width: 120px; height: 120px; background: #fff; border: 1.5px solid #e0e0e0; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; padding: 8px; }
+.screen-qr-pattern { width: 100%; height: 100%; background: linear-gradient(90deg, #1565C0 25%, transparent 25%, transparent 75%, #1565C0 75%), linear-gradient(#1565C0 25%, transparent 25%, transparent 75%, #1565C0 75%); background-size: 10px 10px; border-radius: 4px; opacity: 0.6; }
+.screen-waiting { display: flex; align-items: center; gap: 6px; background: #F8FAFF; padding: 6px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 9px; color: #666; }
+.screen-spinner { width: 12px; height: 12px; border: 2px solid #1565C0; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.screen-exchange-actions { display: flex; gap: 6px; width: 100%; }
+.screen-exchange-btn { flex: 1; padding: 6px; border: 1px solid #e0e0e0; border-radius: 8px; text-align: center; font-size: 9px; color: #555; }
+.screen-temp-bar { display: flex; height: 16px; border-radius: 8px; overflow: hidden; margin: 4px 0 8px; }
+.screen-temp-bar div { display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; font-weight: 600; }
+.screen-alert { padding: 8px 10px; border-radius: 8px; border-left: 3px solid; margin-bottom: 5px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.screen-alert.red { border-color: #E53935; }
+.screen-alert.red strong { color: #E53935; }
+.screen-alert.amber { border-color: #FFA726; }
+.screen-alert.amber strong { color: #E65100; }
+.screen-alert strong { font-size: 10px; display: block; }
+.screen-alert small { font-size: 9px; color: #666; }
+.screen-matrix { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: 2px; font-size: 9px; margin-top: 4px; }
+.screen-matrix-header { padding: 4px 2px; text-align: center; font-weight: 600; font-size: 10px; }
+.screen-matrix-label { padding: 6px 4px; font-weight: 500; display: flex; align-items: center; }
+.screen-matrix-cell { padding: 6px 2px; text-align: center; border-radius: 4px; font-weight: 600; font-size: 12px; }
+.screen-success-icon { width: 44px; height: 44px; border-radius: 22px; background: linear-gradient(135deg, #1565C0, #42A5F5); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.screen-success-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+.screen-result-card { background: #F8FAFF; border-radius: 10px; padding: 10px 12px; margin: 0 10px 8px; text-align: left; }
+.screen-context-card { display: flex; align-items: center; gap: 6px; background: #FFF8E1; border-radius: 8px; padding: 8px 10px; margin: 0 10px 8px; text-align: left; }
+.screen-save-btn { margin: 0 10px 8px; padding: 8px; background: #1565C0; color: #fff; border-radius: 8px; text-align: center; font-size: 12px; font-weight: 500; }
+.screen-bidirectional { display: flex; align-items: center; gap: 6px; background: #E8F5E9; border-radius: 8px; padding: 8px 10px; margin: 0 10px; text-align: left; }
+.screen-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+.screen-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.3s ease; }
+.screen-dot.active { background: var(--teal-b); box-shadow: 0 0 8px rgba(45,212,191,0.5); }
+.screen-label { text-align: center; margin-top: 12px; font-size: 0.85rem; color: var(--text-2); transition: opacity 0.3s ease; }
+
+@media (max-width: 900px) {
+    .iphone-mockup { width: 240px; height: 490px; border-radius: 38px; padding: 8px; transform: rotateY(-8deg) rotateX(3deg); }
+    .iphone-notch { width: 76px; height: 24px; border-radius: 12px; top: 8px; }
+    .iphone-screen-area { border-radius: 30px; }
+}
+</style>
 </head>
-
 <body>
-    <!-- Background Blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-    <div class="blob blob-5"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar animate-fade-in-down">
-        <div class="logo">
-            <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
-            <span>Credica</span>
-        </div>
-        <div class="nav-links">
-            <a href="#features">特色功能</a>
-            <a href="#how-it-works">如何開始</a>
-            <a href="#security">隱私安全</a>
-            <a href="#use-cases">使用情境</a>
-            <a href="#partners">合作夥伴</a>
-        </div>
-        <button class="hamburger" aria-label="選單">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <a href="https://zymai.com.tw" class="btn btn-primary nav-cta" style="text-decoration: none;">下載 App</a>
-    </nav>
+<nav>
+  <div class="logo">
+    <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
+    Credica
+  </div>
+  <div class="nav-mid">
+    <a href="#features" data-i18n="nav.features">功能</a>
+    <a href="#group" data-i18n="nav.group">群組交換</a>
+    <a href="#scenes" data-i18n="nav.scenes">場景</a>
+    <a href="#privacy" data-i18n="nav.privacy">隱私</a>
+  </div>
+  <button class="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <a href="https://zymai.com.tw" class="nav-dl" data-i18n="nav.download">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    下載 App
+  </a>
+</nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <a href="#features">特色功能</a>
-        <a href="#how-it-works">如何開始</a>
-        <a href="#security">隱私安全</a>
-        <a href="#use-cases">使用情境</a>
-        <a href="#partners">合作夥伴</a>
-        <a href="https://zymai.com.tw" class="btn btn-primary" style="text-decoration: none; text-align: center;">下載 App</a>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <a href="#features" data-i18n="nav.features">功能</a>
+  <a href="#group" data-i18n="nav.group">群組交換</a>
+  <a href="#scenes" data-i18n="nav.scenes">場景</a>
+  <a href="#privacy" data-i18n="nav.privacy">隱私</a>
+  <a href="https://zymai.com.tw" class="nav-dl" style="text-align:center;" data-i18n="nav.download">下載 App</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-chip"><span class="chip-dot"></span><span data-i18n="hero.chip">告別紙名片的時代</span></div>
+    <h1><span data-i18n="hero.title">你的</span><span class="hl" data-i18n="hero.title_hl">數位名片</span><br><span data-i18n="hero.sub_title">與人脈錢包</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">
+      一個 App 搞定名片、人脈、社交。<br>
+      掃碼交換，群組一次全收，<br>
+      換了工作名片自動更新——永遠是最新版的你。
+    </p>
+    <div class="hero-downloads">
+      <a class="store-btn" href="https://zymai.com.tw">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        <div><div class="store-label" data-i18n="hero.store_apple">Download on the</div><div class="store-name">App Store</div></div>
+      </a>
+      <a class="store-btn" href="https://zymai.com.tw">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.593-2.302 2.593-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+        <div><div class="store-label" data-i18n="hero.store_google">GET IT ON</div><div class="store-name">Google Play</div></div>
+      </a>
     </div>
+  </div>
 
-    <main>
-        <!-- ====== HERO ====== -->
-        <section class="hero">
-            <div class="hero-content animate-slide-up">
-                <div class="badge">🔒 隱私優先的下一代人脈管理</div>
-                <h1>你的人脈資產，<br>
-                    <span class="text-gradient">由你完全掌控。</span>
-                </h1>
-                <p>Credica 是最頂級的智慧聯絡人管理工具。瞬間交換數位名片，讓 AI 幫你整理人脈，並確保你的個人資料絕對隱私。</p>
-                <div class="hero-actions">
-                    <a href="https://zymai.com.tw" class="btn btn-primary btn-large" style="text-decoration: none;">立即開始</a>
-                    <a href="#features" class="btn btn-secondary btn-large" style="text-decoration: none;">探索功能</a>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <h3>零伺服器</h3>
-                        <p>資料不上雲</p>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <h3>&lt; 1 秒</h3>
-                        <p>名片交換</p>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <h3>國際標準</h3>
-                        <p>身分驗證</p>
-                    </div>
-                </div>
+  <div class="hero-right">
+    <div class="phone-glow"></div>
+    <div class="iphone-mockup">
+      <div class="iphone-notch"></div>
+      <div class="iphone-screen-area">
+        <!-- Screen 1: Home -->
+        <div class="app-screen active" data-screen="0">
+          <div class="screen-status-bar screen-sb-light">
+            <span>9:41</span>
+            <div class="screen-status-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+              <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
             </div>
-
-            <div class="hero-visual animate-fade-in">
-                <div class="iphone-mockup">
-                    <div class="iphone-notch"></div>
-                    <div class="iphone-screen-area">
-                        <!-- Screen 1: Home -->
-                        <div class="app-screen active" data-screen="0">
-                            <div class="screen-status-bar screen-sb-light">
-                                <span>9:41</span>
-                                <div class="screen-status-icons">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                                    <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                                </div>
-                            </div>
-                            <div class="screen-home-header">
-                                <div class="screen-greeting">你好，William 👋</div>
-                                <div class="screen-subtitle">今天有 3 則跟進建議</div>
-                                <div class="screen-search-bar">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                                    <span>搜尋聯絡人...</span>
-                                </div>
-                            </div>
-                            <div class="screen-body">
-                                <div class="screen-id-card">
-                                    <div class="screen-id-badges">
-                                        <span class="screen-type-badge">工作</span>
-                                        <span class="screen-primary-badge">主要</span>
-                                    </div>
-                                    <div class="screen-id-name">曾威廉</div>
-                                    <div class="screen-id-title">資深產品經理 · Credica Inc.</div>
-                                    <div class="screen-id-info">📱 +886 912-345-678</div>
-                                    <div class="screen-id-info">✉️ william@credica.app</div>
-                                </div>
-                                <div class="screen-stats-row">
-                                    <div class="screen-stat"><div class="screen-stat-val">3</div><div class="screen-stat-lbl">身份名片</div></div>
-                                    <div class="screen-stat"><div class="screen-stat-val">24</div><div class="screen-stat-lbl">聯絡人</div></div>
-                                    <div class="screen-stat"><div class="screen-stat-val">47</div><div class="screen-stat-lbl">互動記錄</div></div>
-                                    <div class="screen-stat"><div class="screen-stat-val">5</div><div class="screen-stat-lbl">憑證</div></div>
-                                </div>
-                                <div class="screen-section-title">💡 智慧建議</div>
-                                <div class="screen-suggestion blue">
-                                    <span>⏰</span>
-                                    <div><strong>與林美玲安排會議</strong><small>上次互動已超過 14 天</small></div>
-                                </div>
-                                <div class="screen-suggestion orange">
-                                    <span>🎂</span>
-                                    <div><strong>張家豪生日即將到來</strong><small>3月15日 — 可發送祝福</small></div>
-                                </div>
-                            </div>
-                            <div class="screen-tab-bar">
-                                <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首頁</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span>聯絡人</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span>交換</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span>圖譜</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span>設定</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Screen 2: Contacts -->
-                        <div class="app-screen" data-screen="1">
-                            <div class="screen-status-bar screen-sb-dark">
-                                <span>9:41</span>
-                                <div class="screen-status-icons">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                                    <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                                </div>
-                            </div>
-                            <div class="screen-nav-title">聯絡人</div>
-                            <div class="screen-filter-row">
-                                <span class="screen-chip active">全部</span>
-                                <span class="screen-chip">⭐ 收藏</span>
-                                <span class="screen-chip">商業</span>
-                                <span class="screen-chip">社交</span>
-                            </div>
-                            <div class="screen-body">
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#E53935;">大明</div><div class="screen-contact-info"><div class="screen-contact-name">王大明</div><div class="screen-contact-title">副總裁 · 台積電</div></div><span class="screen-star">⭐</span></div>
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#7B1FA2;">美玲</div><div class="screen-contact-info"><div class="screen-contact-name">林美玲</div><div class="screen-contact-title">行銷總監 · Google</div></div><span class="screen-star">⭐</span></div>
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#00897B;">建宏</div><div class="screen-contact-info"><div class="screen-contact-name">李建宏</div><div class="screen-contact-title">技術長 · Appier</div></div></div>
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#1565C0;">雅婷</div><div class="screen-contact-info"><div class="screen-contact-name">陳雅婷</div><div class="screen-contact-title">設計主管 · LINE</div></div></div>
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#FF6F00;">家豪</div><div class="screen-contact-info"><div class="screen-contact-name">張家豪</div><div class="screen-contact-title">創辦人 · BlockTech</div></div></div>
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#2E7D32;">小芳</div><div class="screen-contact-info"><div class="screen-contact-name">黃小芳</div><div class="screen-contact-title">產品經理 · KKBOX</div></div></div>
-                                <div class="screen-contact-item"><div class="screen-avatar" style="background:#C62828;">志明</div><div class="screen-contact-info"><div class="screen-contact-name">陳志明</div><div class="screen-contact-title">業務總監 · 鴻海</div></div></div>
-                            </div>
-                            <div class="screen-tab-bar">
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首頁</span></div>
-                                <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span>聯絡人</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span>交換</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span>圖譜</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span>設定</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Screen 3: Exchange QR -->
-                        <div class="app-screen" data-screen="2">
-                            <div class="screen-status-bar screen-sb-light" style="background:#000;">
-                                <span>9:41</span>
-                                <div class="screen-status-icons">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                                    <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                                </div>
-                            </div>
-                            <div class="screen-exchange-header">我的 QR Code</div>
-                            <div class="screen-exchange-body">
-                                <div class="screen-exchange-avatar">威</div>
-                                <div class="screen-exchange-name">曾威廉</div>
-                                <div class="screen-exchange-title">資深產品經理 · Credica Inc.</div>
-                                <div class="screen-verified-badge">✓ 已簽章</div>
-                                <div class="screen-qr-box">
-                                    <div class="screen-qr-pattern"></div>
-                                </div>
-                                <div class="screen-waiting">
-                                    <div class="screen-spinner"></div>
-                                    <span>等待對方掃描...</span>
-                                </div>
-                                <div class="screen-exchange-actions">
-                                    <div class="screen-exchange-btn">選擇揭露欄位</div>
-                                    <div class="screen-exchange-btn">分享名片</div>
-                                </div>
-                            </div>
-                            <div class="screen-tab-bar">
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首頁</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span>聯絡人</span></div>
-                                <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span>交換</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span>圖譜</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span>設定</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Screen 4: Graph -->
-                        <div class="app-screen" data-screen="3">
-                            <div class="screen-status-bar screen-sb-dark">
-                                <span>9:41</span>
-                                <div class="screen-status-icons">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                                    <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                                </div>
-                            </div>
-                            <div class="screen-nav-title">人脈圖譜</div>
-                            <div class="screen-body">
-                                <div class="screen-stats-row">
-                                    <div class="screen-stat"><div class="screen-stat-val">24</div><div class="screen-stat-lbl">總聯絡人</div></div>
-                                    <div class="screen-stat"><div class="screen-stat-val" style="color:#E53935;">6</div><div class="screen-stat-lbl">熱絡</div></div>
-                                    <div class="screen-stat"><div class="screen-stat-val" style="color:#FFA726;">8</div><div class="screen-stat-lbl">溫和</div></div>
-                                    <div class="screen-stat"><div class="screen-stat-val" style="color:#9E9E9E;">4</div><div class="screen-stat-lbl">沉寂</div></div>
-                                </div>
-                                <div class="screen-section-title">🌡️ 溫度分佈</div>
-                                <div class="screen-temp-bar">
-                                    <div style="width:25%;background:#E53935;">6</div>
-                                    <div style="width:33%;background:#FFA726;">8</div>
-                                    <div style="width:25%;background:#42A5F5;">6</div>
-                                    <div style="width:17%;background:#9E9E9E;">4</div>
-                                </div>
-                                <div class="screen-section-title">⚠️ 需要關注</div>
-                                <div class="screen-alert red">
-                                    <strong>陳志明 — 溫度急降</strong>
-                                    <small>過去 30 天無互動</small>
-                                </div>
-                                <div class="screen-alert amber">
-                                    <strong>吳淑芬 — 超過 60 天未聯繫</strong>
-                                    <small>建議安排下次互動</small>
-                                </div>
-                                <div class="screen-section-title">📊 分類 × 溫度</div>
-                                <div class="screen-matrix">
-                                    <div class="screen-matrix-header"></div>
-                                    <div class="screen-matrix-header">🔥</div>
-                                    <div class="screen-matrix-header">☀️</div>
-                                    <div class="screen-matrix-header">❄️</div>
-                                    <div class="screen-matrix-header">💤</div>
-                                    <div class="screen-matrix-label">商業</div>
-                                    <div class="screen-matrix-cell" style="background:#FFEBEE;color:#E53935;">3</div>
-                                    <div class="screen-matrix-cell" style="background:#FFF3E0;color:#F57C00;">4</div>
-                                    <div class="screen-matrix-cell" style="background:#E3F2FD;color:#42A5F5;">2</div>
-                                    <div class="screen-matrix-cell" style="background:#F5F5F5;color:#9E9E9E;">1</div>
-                                    <div class="screen-matrix-label">社交</div>
-                                    <div class="screen-matrix-cell" style="background:#FFEBEE;color:#E53935;">2</div>
-                                    <div class="screen-matrix-cell" style="background:#FFF3E0;color:#F57C00;">3</div>
-                                    <div class="screen-matrix-cell" style="background:#E3F2FD;color:#42A5F5;">2</div>
-                                    <div class="screen-matrix-cell" style="background:#F5F5F5;color:#9E9E9E;">2</div>
-                                </div>
-                            </div>
-                            <div class="screen-tab-bar">
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首頁</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span>聯絡人</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span>交換</span></div>
-                                <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span>圖譜</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span>設定</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Screen 5: Exchange Result -->
-                        <div class="app-screen" data-screen="4">
-                            <div class="screen-status-bar screen-sb-dark">
-                                <span>9:41</span>
-                                <div class="screen-status-icons">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                                    <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                                </div>
-                            </div>
-                            <div class="screen-exchange-header">交換結果</div>
-                            <div class="screen-body" style="text-align:center;padding-top:12px;">
-                                <div class="screen-success-icon">✓</div>
-                                <div class="screen-success-title">名片交換成功</div>
-                                <div class="screen-verified-badge" style="margin:6px auto 12px;">✓ 已驗證身份</div>
-                                <div class="screen-result-card">
-                                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-                                        <div class="screen-avatar" style="background:#E53935;width:36px;height:36px;font-size:11px;">大明</div>
-                                        <div style="text-align:left;">
-                                            <div style="font-size:13px;font-weight:600;">王大明</div>
-                                            <div style="font-size:10px;color:#666;">副總裁 · 台積電</div>
-                                        </div>
-                                    </div>
-                                    <div style="border-top:1px solid #eee;padding-top:6px;font-size:10px;color:#555;text-align:left;">
-                                        <div>📱 +886 922-111-001</div>
-                                        <div>✉️ daming.wang@tsmc.com</div>
-                                    </div>
-                                </div>
-                                <div class="screen-context-card">
-                                    <span>📍</span>
-                                    <div>
-                                        <div style="font-size:10px;color:#F57C00;font-weight:500;">自動偵測場景</div>
-                                        <div style="font-size:11px;">TechSummit 2026 · 台北國際會議中心</div>
-                                    </div>
-                                </div>
-                                <div class="screen-save-btn">儲存聯絡人</div>
-                                <div class="screen-bidirectional">
-                                    <span>↔️</span>
-                                    <div>
-                                        <div style="font-size:11px;font-weight:500;color:#2E7D32;">已自動完成雙向交換</div>
-                                        <div style="font-size:9px;color:#666;">你的名片已自動傳送給對方</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="screen-tab-bar">
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首頁</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span>聯絡人</span></div>
-                                <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span>交換</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span>圖譜</span></div>
-                                <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span>設定</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Screen indicators -->
-                    <div class="screen-indicators">
-                        <span class="screen-dot active" data-dot="0"></span>
-                        <span class="screen-dot" data-dot="1"></span>
-                        <span class="screen-dot" data-dot="2"></span>
-                        <span class="screen-dot" data-dot="3"></span>
-                        <span class="screen-dot" data-dot="4"></span>
-                    </div>
-                    <!-- Screen labels -->
-                    <div class="screen-label">首頁總覽</div>
-                </div>
+          </div>
+          <div class="screen-home-header">
+            <div class="screen-greeting" data-i18n="screen.greeting">你好，William 👋</div>
+            <div class="screen-subtitle" data-i18n="screen.subtitle">今天有 3 則跟進建議</div>
+            <div class="screen-search-bar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <span data-i18n="screen.search_placeholder">搜尋聯絡人...</span>
             </div>
-        </section>
-
-        <!-- ====== FEATURES ====== -->
-        <section id="features" class="features scroll-animate">
-            <div class="section-header">
-                <h2>更聰明的<span class="text-gradient">連結方式</span></h2>
-                <p>向紙本名片與手動輸入資料說再見。</p>
+          </div>
+          <div class="screen-body">
+            <div class="screen-id-card">
+              <div class="screen-id-badges">
+                <span class="screen-type-badge" data-i18n="screen.type_work">工作</span>
+                <span class="screen-primary-badge" data-i18n="screen.type_primary">主要</span>
+              </div>
+              <div class="screen-id-name" data-i18n="screen.id_name">曾威廉</div>
+              <div class="screen-id-title" data-i18n="screen.id_title">資深產品經理 · Credica Inc.</div>
+              <div class="screen-id-info">📱 +886 912-345-678</div>
+              <div class="screen-id-info">✉️ william@credica.app</div>
             </div>
-            <div class="features-grid">
-                <!-- 1. 裝置本地儲存 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4F46E5"/><stop offset="100%" style="stop-color:#06B6D4"/></linearGradient></defs>
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            <circle cx="12" cy="16" r="1"/>
-                        </svg>
-                    </div>
-                    <h3>裝置本地儲存</h3>
-                    <p>所有聯絡人資料僅存於你的裝置，伺服器無法存取你的任何個人內容。你的資料，只屬於你。</p>
-                </div>
-                <!-- 2. AI 智慧分類 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <h3>AI 智慧分類</h3>
-                    <p>掃描名片或建立連結後，系統自動辨識產業、職稱與見面場合，省去手動整理的繁瑣工作。</p>
-                </div>
-                <!-- 3. 多元交換方式 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 0 1 0 4H8"/>
-                            <line x1="12" y1="6" x2="12" y2="8"/>
-                            <line x1="12" y1="16" x2="12" y2="18"/>
-                        </svg>
-                    </div>
-                    <h3>多元交換方式</h3>
-                    <p>透過 QR Code 掃描或群組雷達，瞬間與一位或多位對象交換名片，面對面社交更順暢。</p>
-                </div>
-                <!-- 4. 人脈關係圖譜 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="6" cy="6" r="3"/>
-                            <circle cx="18" cy="6" r="3"/>
-                            <circle cx="6" cy="18" r="3"/>
-                            <circle cx="18" cy="18" r="3"/>
-                            <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/>
-                            <line x1="15.5" y1="7.5" x2="8.5" y2="16.5"/>
-                            <line x1="6" y1="9" x2="6" y2="15"/>
-                            <line x1="18" y1="9" x2="18" y2="15"/>
-                        </svg>
-                    </div>
-                    <h3>人脈關係圖譜</h3>
-                    <p>視覺化呈現你的社交網路，追蹤互動溫度與關係強度，發掘隱藏的連結與合作機會。</p>
-                </div>
-                <!-- 5. 可驗證身分 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <polyline points="9 12 11 14 15 10"/>
-                        </svg>
-                    </div>
-                    <h3>可驗證身分</h3>
-                    <p>透過國際標準的數位憑證，讓對方確認你的身分真實可信，建立值得信賴的專業形象。</p>
-                </div>
-                <!-- 6. 名片回收機制 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="1 4 1 10 7 10"/>
-                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
-                        </svg>
-                    </div>
-                    <h3>名片回收機制</h3>
-                    <p>離職或轉換身分時，一鍵撤回已發出的名片。你的資訊流向，完全由你決定。</p>
-                </div>
-                <!-- 7. 智慧名片掃描 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                            <circle cx="12" cy="13" r="4"/>
-                        </svg>
-                    </div>
-                    <h3>智慧名片掃描</h3>
-                    <p>拍照即可辨識紙本名片內容，自動擷取姓名、職稱、聯絡方式，即刻建檔並歸類。</p>
-                </div>
-                <!-- 8. 加密備份 -->
-                <div class="feature-card glass scroll-animate">
-                    <div class="feature-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
-                            <rect x="8" y="11" width="8" height="7" rx="1"/>
-                            <path d="M10 11V9a2 2 0 1 1 4 0v2"/>
-                        </svg>
-                    </div>
-                    <h3>加密備份</h3>
-                    <p>資料以端對端加密方式備份，只有你能解鎖還原。換機不怕丟資料，隱私依然滴水不漏。</p>
-                </div>
+            <div class="screen-stats-row">
+              <div class="screen-stat"><div class="screen-stat-val">3</div><div class="screen-stat-lbl" data-i18n="screen.stat_identities">身份名片</div></div>
+              <div class="screen-stat"><div class="screen-stat-val">24</div><div class="screen-stat-lbl" data-i18n="screen.stat_contacts">聯絡人</div></div>
+              <div class="screen-stat"><div class="screen-stat-val">47</div><div class="screen-stat-lbl" data-i18n="screen.stat_interactions">互動記錄</div></div>
+              <div class="screen-stat"><div class="screen-stat-val">5</div><div class="screen-stat-lbl" data-i18n="screen.stat_credentials">憑證</div></div>
             </div>
-        </section>
-
-        <!-- ====== HOW IT WORKS ====== -->
-        <section id="how-it-works" class="how-it-works scroll-animate">
-            <div class="section-header">
-                <h2>四步驟<span class="text-gradient">輕鬆上手</span></h2>
-                <p>從下載到成為人脈管理高手，只需要幾分鐘。</p>
+            <div class="screen-section-title" data-i18n="screen.smart_suggestions">💡 智慧建議</div>
+            <div class="screen-suggestion blue">
+              <span>⏰</span>
+              <div><strong data-i18n="screen.suggestion_1_title">與林美玲安排會議</strong><small data-i18n="screen.suggestion_1_desc">上次互動已超過 14 天</small></div>
             </div>
-            <div class="steps-container">
-                <div class="step-card glass scroll-animate">
-                    <div class="step-number text-gradient">01</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                    </div>
-                    <h3>下載 Credica</h3>
-                    <p>免費下載，幾秒內完成設定。你的裝置就是你的數位身分保險箱。</p>
-                </div>
-                <div class="step-connector">
-                    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="4 4"/></svg>
-                </div>
-                <div class="step-card glass scroll-animate">
-                    <div class="step-number text-gradient">02</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3>建立你的名片</h3>
-                    <p>填入職稱、公司與聯絡方式。可建立多組名片，對應不同身分與場合。</p>
-                </div>
-                <div class="step-connector">
-                    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="4 4"/></svg>
-                </div>
-                <div class="step-card glass scroll-animate">
-                    <div class="step-number text-gradient">03</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 3 21 3 21 8"/>
-                            <line x1="4" y1="20" x2="21" y2="3"/>
-                            <polyline points="21 16 21 21 16 21"/>
-                            <line x1="15" y1="15" x2="21" y2="21"/>
-                            <line x1="4" y1="4" x2="9" y2="9"/>
-                        </svg>
-                    </div>
-                    <h3>一鍵交換</h3>
-                    <p>面對面掃碼，或在活動中開啟群組雷達，批次交換名片。</p>
-                </div>
-                <div class="step-connector">
-                    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="4 4"/></svg>
-                </div>
-                <div class="step-card glass scroll-animate">
-                    <div class="step-number text-gradient">04</div>
-                    <div class="step-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                        </svg>
-                    </div>
-                    <h3>AI 自動整理</h3>
-                    <p>系統智慧分類你的人脈，建立關係圖譜，讓每一次連結都不再被遺忘。</p>
-                </div>
+            <div class="screen-suggestion orange">
+              <span>🎂</span>
+              <div><strong data-i18n="screen.suggestion_2_title">張家豪生日即將到來</strong><small data-i18n="screen.suggestion_2_desc">3月15日 — 可發送祝福</small></div>
             </div>
-        </section>
-
-        <!-- ====== SECURITY ====== -->
-        <section id="security" class="security-section scroll-animate">
-            <div class="section-header">
-                <h2>隱私不是功能，<br><span class="text-gradient">是我們的設計原則。</span></h2>
-                <p>從第一行程式碼開始，Credica 就為保護你的隱私而打造。五層縱深防禦架構，達到金融等級的資安標準。</p>
-            </div>
-
-            <!-- 核心安全特色 -->
-            <div class="security-grid">
-                <div class="security-points">
-                    <div class="security-point glass scroll-animate">
-                        <div class="security-point-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 20V10"/>
-                                <path d="M12 20V4"/>
-                                <path d="M6 20v-6"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>零知識架構</h4>
-                            <p>伺服器僅儲存加密後的資料，沒有解密金鑰。即使伺服器被入侵，攻擊者也無法讀取任何個人資料。你的隱私，從架構層面就被徹底保護。</p>
-                        </div>
-                    </div>
-                    <div class="security-point glass scroll-animate">
-                        <div class="security-point-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>端對端加密</h4>
-                            <p>從傳輸、儲存到備份，全程採用軍事等級 256 位元加密。金鑰僅存於你的裝置中，任何第三方 — 包括我們 — 都無法窺探你的資料。</p>
-                        </div>
-                    </div>
-                    <div class="security-point glass scroll-animate">
-                        <div class="security-point-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <polyline points="9 12 11 14 15 10"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>身分可驗證</h4>
-                            <p>採用國際標準數位憑證機制，支援選擇性揭露 — 你可以只出示必要的身分資訊，無需暴露所有個資。驗證過程離線即可完成，不依賴任何中心化伺服器。</p>
-                        </div>
-                    </div>
-                    <div class="security-point glass scroll-animate">
-                        <div class="security-point-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="1 4 1 10 7 10"/>
-                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>三重撤回機制</h4>
-                            <p>名片與憑證支援三重撤回：你可以主動歸還、簽發者可撤銷、憑證自動過期。離職或轉職時，一鍵收回所有已分享的資訊，完整掌控資料生命週期。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="security-visual scroll-animate">
-                    <div class="shield-container">
-                        <div class="shield-ring ring-1"></div>
-                        <div class="shield-ring ring-2"></div>
-                        <div class="shield-ring ring-3"></div>
-                        <div class="shield-ring ring-4"></div>
-                        <div class="shield-ring ring-5"></div>
-                        <div class="shield-core">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <polyline points="9 12 11 14 15 10"/>
-                            </svg>
-                        </div>
-                        <div class="shield-label shield-label-1">傳輸層加密</div>
-                        <div class="shield-label shield-label-2">應用層加密</div>
-                        <div class="shield-label shield-label-3">儲存層加密</div>
-                        <div class="shield-label shield-label-4">身份層防護</div>
-                        <div class="shield-label shield-label-5">應用安全層</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 五層縱深防禦 -->
-            <div class="defense-layers scroll-animate">
-                <h3 class="defense-title">五層縱深防禦，<span class="text-gradient">每一層都是獨立防線</span></h3>
-                <p class="defense-subtitle">任何單一防線被突破，都不會導致資料外洩。多層防護相互補強，為你的個資提供全方位保護。</p>
-                <div class="defense-grid">
-                    <div class="defense-layer glass scroll-animate">
-                        <div class="defense-layer-number">L1</div>
-                        <h4>傳輸層加密</h4>
-                        <p>所有網路通訊採用最新傳輸加密標準，支援雙向認證，從源頭防止中間人攻擊與資料竊聽。</p>
-                    </div>
-                    <div class="defense-layer glass scroll-animate">
-                        <div class="defense-layer-number">L2</div>
-                        <h4>應用層加密</h4>
-                        <p>資料在你的裝置上加密後才離開，伺服器僅處理密文。即使傳輸被攔截，攻擊者看到的也只是無意義的亂碼。</p>
-                    </div>
-                    <div class="defense-layer glass scroll-animate">
-                        <div class="defense-layer-number">L3</div>
-                        <h4>儲存層加密</h4>
-                        <p>金鑰由你的密碼派生，僅存於你的裝置。雲端備份也採用雙層金鑰加密，即使資料庫外洩也完全不可讀。</p>
-                    </div>
-                    <div class="defense-layer glass scroll-animate">
-                        <div class="defense-layer-number">L4</div>
-                        <h4>身份層防護</h4>
-                        <p>去中心化數位身份，私鑰由手機安全晶片硬體保護且不可匯出。搭配生物辨識多因子認證，防止釣魚與身份冒用。</p>
-                    </div>
-                    <div class="defense-layer glass scroll-animate">
-                        <div class="defense-layer-number">L5</div>
-                        <h4>應用安全層</h4>
-                        <p>嚴格的存取控制、輸入驗證、速率限制與跨站攻擊防護，全面封堵應用層面的安全漏洞。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 硬體安全 + 多因子認證 -->
-            <div class="security-highlights scroll-animate">
-                <div class="highlight-card glass scroll-animate">
-                    <div class="highlight-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/>
-                            <rect x="9" y="9" width="6" height="6"/>
-                            <line x1="9" y1="1" x2="9" y2="4"/>
-                            <line x1="15" y1="1" x2="15" y2="4"/>
-                            <line x1="9" y1="20" x2="9" y2="23"/>
-                            <line x1="15" y1="20" x2="15" y2="23"/>
-                            <line x1="20" y1="9" x2="23" y2="9"/>
-                            <line x1="20" y1="14" x2="23" y2="14"/>
-                            <line x1="1" y1="9" x2="4" y2="9"/>
-                            <line x1="1" y1="14" x2="4" y2="14"/>
-                        </svg>
-                    </div>
-                    <h4>硬體級安全晶片保護</h4>
-                    <p>私鑰由手機內建的安全晶片生成與保管，永不離開硬體。達到國際 FIPS 140 硬體安全認證等級，與銀行金庫同等防護標準。</p>
-                </div>
-                <div class="highlight-card glass scroll-animate">
-                    <div class="highlight-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5.5 12H2l4-4 4 4H6.5a5.5 5.5 0 0 1 10.06-3.07"/>
-                            <path d="M18.5 12H22l-4 4-4-4h3.5a5.5 5.5 0 0 1-10.06 3.07"/>
-                        </svg>
-                    </div>
-                    <h4>多因子身份認證</h4>
-                    <p>結合生物辨識（Face ID / 指紋）、硬體安全金鑰與 PIN 碼三重驗證。達到最高認證等級 AAL3，有效抵禦釣魚攻擊與帳號盜用。</p>
-                </div>
-                <div class="highlight-card glass scroll-animate">
-                    <div class="highlight-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 16v-4"/>
-                            <path d="M12 8h.01"/>
-                        </svg>
-                    </div>
-                    <h4>選擇性揭露</h4>
-                    <p>出示名片時，你可以選擇只揭露姓名與職稱，隱藏手機號碼或 Email。每個欄位獨立加密，最小化個資曝光範圍。</p>
-                </div>
-                <div class="highlight-card glass scroll-animate">
-                    <div class="highlight-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h4>完整資料主權</h4>
-                    <p>你可以隨時匯出所有個人資料，或要求完全刪除。你的資料絕不會被用於 AI 模型訓練或行銷分析，資料主權完全屬於你。</p>
-                </div>
-            </div>
-
-            <!-- 合規認證標章 -->
-            <div class="compliance-section scroll-animate">
-                <h3 class="defense-title">符合<span class="text-gradient">國際資安標準</span></h3>
-                <p class="defense-subtitle">對標全球最嚴格的資安與隱私法規，保護等級達到甚至超越金融業標準。</p>
-                <div class="compliance-badges">
-                    <div class="compliance-badge glass scroll-animate">
-                        <div class="compliance-badge-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <polyline points="9 12 11 14 15 10"/>
-                            </svg>
-                        </div>
-                        <div class="compliance-badge-label">NIST AAL3</div>
-                        <div class="compliance-badge-desc">最高認證等級</div>
-                    </div>
-                    <div class="compliance-badge glass scroll-animate">
-                        <div class="compliance-badge-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                                <rect x="9" y="9" width="6" height="6"/>
-                            </svg>
-                        </div>
-                        <div class="compliance-badge-label">FIPS 140</div>
-                        <div class="compliance-badge-desc">硬體加密認證</div>
-                    </div>
-                    <div class="compliance-badge glass scroll-animate">
-                        <div class="compliance-badge-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                        </div>
-                        <div class="compliance-badge-label">W3C 標準</div>
-                        <div class="compliance-badge-desc">數位憑證規範</div>
-                    </div>
-                    <div class="compliance-badge glass scroll-animate">
-                        <div class="compliance-badge-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            </svg>
-                        </div>
-                        <div class="compliance-badge-label">個資法合規</div>
-                        <div class="compliance-badge-desc">台灣 / GDPR</div>
-                    </div>
-                    <div class="compliance-badge glass scroll-animate">
-                        <div class="compliance-badge-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                            </svg>
-                        </div>
-                        <div class="compliance-badge-label">eIDAS 2.0</div>
-                        <div class="compliance-badge-desc">歐盟數位身分</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== USE CASES ====== -->
-        <section id="use-cases" class="use-cases-section scroll-animate">
-            <div class="section-header">
-                <h2>為每個<span class="text-gradient">專業場景</span>打造</h2>
-                <p>無論你的角色是什麼，Credica 都能提升你的人脈管理效率。</p>
-            </div>
-            <div class="use-cases-grid">
-                <div class="use-case-card glass scroll-animate">
-                    <div class="use-case-icon">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                        </svg>
-                    </div>
-                    <h3>商務專業人士</h3>
-                    <p>管理數百位客戶與合作夥伴的聯絡資訊，AI 自動依產業與互動頻率分類，讓你在關鍵時刻立刻找到對的人。</p>
-                    <div class="use-case-tag">人脈關係圖譜</div>
-                </div>
-                <div class="use-case-card glass scroll-animate">
-                    <div class="use-case-icon">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3>業務與銷售</h3>
-                    <p>拜訪客戶後即時交換名片，系統自動記錄見面日期與場合，搭配智慧提醒，再也不漏追蹤任何潛在客戶。</p>
-                    <div class="use-case-tag">智慧追蹤提醒</div>
-                </div>
-                <div class="use-case-card glass scroll-animate">
-                    <div class="use-case-icon">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                            <circle cx="8" cy="15" r="1" fill="url(#grad1)"/>
-                            <circle cx="12" cy="15" r="1" fill="url(#grad1)"/>
-                            <circle cx="16" cy="15" r="1" fill="url(#grad1)"/>
-                        </svg>
-                    </div>
-                    <h3>活動與展會</h3>
-                    <p>在大型活動中開啟群組雷達，一次與數十位參與者交換名片。活動結束後，AI 自動整理分類，省下大量時間。</p>
-                    <div class="use-case-tag">群組批次交換</div>
-                </div>
-                <div class="use-case-card glass scroll-animate">
-                    <div class="use-case-icon">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
-                    </div>
-                    <h3>人資與企業管理</h3>
-                    <p>員工離職時一鍵撤回所有已發出的公司名片，保護企業聯絡資訊不外流。統一管理團隊的數位名片規格。</p>
-                    <div class="use-case-tag">名片回收與治理</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== PARTNERS / B2B ====== -->
-        <section id="partners" class="partners-section scroll-animate">
-            <div class="section-header">
-                <div class="badge">🏢 可程式化的商務信任基礎設施</div>
-                <h2>不只是名片，<br><span class="text-gradient">是數位授權的未來。</span></h2>
-                <p>Credica 的「發放、追蹤、回收」能力，可套用在任何需要臨時性授權的場景。名片只是起點。</p>
-            </div>
-
-            <!-- 核心價值 -->
-            <div class="partner-value-banner scroll-animate">
-                <div class="value-pillar glass">
-                    <div class="value-pillar-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
-                    </div>
-                    <h4>企業即時控制權</h4>
-                    <p>對員工身份的發放、追蹤、隨時回收，一鍵完成。</p>
-                </div>
-                <div class="value-pillar glass">
-                    <div class="value-pillar-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <h4>個人資料主權</h4>
-                    <p>選擇性揭露、隱私控制、主動歸還——資料由持有者決定。</p>
-                </div>
-                <div class="value-pillar glass">
-                    <div class="value-pillar-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <polyline points="9 12 11 14 15 10"/>
-                        </svg>
-                    </div>
-                    <h4>密碼學信任保障</h4>
-                    <p>不可偽造、不可竄改、可獨立驗證的數位信任。</p>
-                </div>
-            </div>
-
-            <!-- 六大商業應用 -->
-            <div class="section-subheader scroll-animate">
-                <h3>六大<span class="text-gradient">商業應用場景</span></h3>
-                <p>可回收的數位通行證，取代紙本、不可追蹤的傳統授權方式。</p>
-            </div>
-            <div class="biz-apps-grid">
-                <div class="biz-app-card glass scroll-animate">
-                    <div class="biz-app-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                        </svg>
-                    </div>
-                    <h4>活動人員管理</h4>
-                    <p>為講者、VIP、媒體、工作人員發放數位通行證，各區域離線驗證，活動結束自動過期。一場活動，數百位新用戶。</p>
-                    <div class="biz-app-tag">獲客引擎</div>
-                </div>
-                <div class="biz-app-card glass scroll-animate">
-                    <div class="biz-app-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <path d="M2 7h20"/>
-                            <path d="M12 17v4"/>
-                            <path d="M8 21h8"/>
-                        </svg>
-                    </div>
-                    <h4>臨時工作證</h4>
-                    <p>外包工程師、清潔人員、裝修工人的臨時通行授權。合約結束一鍵撤銷，支援多層外包追蹤。</p>
-                    <div class="biz-app-tag">門禁管理</div>
-                </div>
-                <div class="biz-app-card glass scroll-animate">
-                    <div class="biz-app-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h4>會員資格管理</h4>
-                    <p>商會、協會、校友會的會員證數位化。會費到期自動失效，退會一鍵撤銷，杜絕身份冒用。</p>
-                    <div class="biz-app-tag">會員治理</div>
-                </div>
-                <div class="biz-app-card glass scroll-animate">
-                    <div class="biz-app-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"/>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                        </svg>
-                    </div>
-                    <h4>培訓完成證明</h4>
-                    <p>合規培訓結業證書數位化，有效期自動追蹤，到期前推播提醒。學員累積可驗證的「個人合規履歷」。</p>
-                    <div class="biz-app-tag">教育培訓</div>
-                </div>
-                <div class="biz-app-card glass scroll-animate">
-                    <div class="biz-app-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
-                        </svg>
-                    </div>
-                    <h4>展覽攤位通行</h4>
-                    <p>參展商自行管理工作人員通行證，每天不同人員即時更換。展後提供完整人流數據報告。</p>
-                    <div class="biz-app-tag">展會管理</div>
-                </div>
-                <div class="biz-app-card glass scroll-animate">
-                    <div class="biz-app-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <rect x="7" y="7" width="3" height="9"/>
-                            <rect x="14" y="7" width="3" height="5"/>
-                        </svg>
-                    </div>
-                    <h4>場地空間授權</h4>
-                    <p>共享辦公、會議室、自助倉儲的臨時通行。時間到自動過期，訪客透過 QR Code 掃描即可通行。</p>
-                    <div class="biz-app-tag">空間管理</div>
-                </div>
-            </div>
-
-            <!-- 市場機會 -->
-            <div class="section-subheader scroll-animate">
-                <h3>為什麼是<span class="text-gradient">現在</span></h3>
-                <p>三大趨勢交匯，創造不可逆的市場窗口。</p>
-            </div>
-            <div class="market-opportunity-grid scroll-animate">
-                <div class="market-card glass scroll-animate">
-                    <div class="market-number text-gradient">$36B</div>
-                    <h4>數位身分市場規模</h4>
-                    <p>2030 年全球數位身分驗證市場預估達 360 億美元，年複合成長率 16.2%。企業對可驗證憑證的需求正在爆發。</p>
-                </div>
-                <div class="market-card glass scroll-animate">
-                    <div class="market-number text-gradient">89%</div>
-                    <h4>企業數位轉型需求</h4>
-                    <p>近九成企業計劃在 2027 年前導入數位員工證與訪客管理系統，取代紙本流程與不可追蹤的傳統方式。</p>
-                </div>
-                <div class="market-card glass scroll-animate">
-                    <div class="market-number text-gradient">W3C</div>
-                    <h4>國際標準已就緒</h4>
-                    <p>W3C Verifiable Credentials 與 DID 標準成熟，歐盟 eIDAS 2.0 強制推動數位錢包。台灣數位皮夾政策同步啟動。</p>
-                </div>
-            </div>
-
-            <!-- 飛輪效應 -->
-            <div class="flywheel-section scroll-animate">
-                <div class="section-subheader">
-                    <h3>名片驅動的<span class="text-gradient">成長飛輪</span></h3>
-                    <p>每一次名片交換都是雙邊獲客——自然擴散、零廣告成本。</p>
-                </div>
-                <div class="flywheel-steps">
-                    <div class="flywheel-step glass scroll-animate">
-                        <div class="flywheel-icon text-gradient">1</div>
-                        <div>
-                            <h4>企業導入</h4>
-                            <p>一家企業採用 Credica 為員工發放數位名片</p>
-                        </div>
-                    </div>
-                    <div class="flywheel-arrow">→</div>
-                    <div class="flywheel-step glass scroll-animate">
-                        <div class="flywheel-icon text-gradient">2</div>
-                        <div>
-                            <h4>員工交換</h4>
-                            <p>員工在商務場合交換名片，對方下載 App 查看</p>
-                        </div>
-                    </div>
-                    <div class="flywheel-arrow">→</div>
-                    <div class="flywheel-step glass scroll-animate">
-                        <div class="flywheel-icon text-gradient">3</div>
-                        <div>
-                            <h4>自然擴散</h4>
-                            <p>收到名片的人成為新用戶，開始建立自己的名片</p>
-                        </div>
-                    </div>
-                    <div class="flywheel-arrow">→</div>
-                    <div class="flywheel-step glass scroll-animate">
-                        <div class="flywheel-icon text-gradient">4</div>
-                        <div>
-                            <h4>企業跟進</h4>
-                            <p>新用戶的公司看到效果，決定整體導入 Credica</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 服務層級 -->
-            <div class="service-tiers scroll-animate">
-                <div class="section-subheader">
-                    <h3>靈活的<span class="text-gradient">合作模式</span></h3>
-                </div>
-                <div class="tiers-grid">
-                    <div class="tier-card glass scroll-animate">
-                        <div class="tier-label">入門方案</div>
-                        <h4>全託管 SaaS</h4>
-                        <p>零部署、零維護。用瀏覽器開啟管理後台，直接操作。適合中小企業與學校。</p>
-                        <div class="tier-metric">部署時間：<strong>1 天內</strong></div>
-                    </div>
-                    <div class="tier-card glass tier-highlight scroll-animate">
-                        <div class="tier-label">進階方案</div>
-                        <h4>混合整合</h4>
-                        <p>對接既有 HR 或學務系統，搭配企業自有通知閘道與 Webhook，保留最大靈活度。</p>
-                        <div class="tier-metric">整合週期：<strong>2-4 週</strong></div>
-                    </div>
-                    <div class="tier-card glass scroll-animate">
-                        <div class="tier-label">企業方案</div>
-                        <h4>API 深度整合</h4>
-                        <p>提供簽發、撤銷、配對 API，企業自建管理介面。適合政府機關與金融機構。</p>
-                        <div class="tier-metric">客製彈性：<strong>完全自主</strong></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-section scroll-animate" id="contact">
-                <div class="contact-card glass">
-                    <div class="contact-header">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        </svg>
-                        <h3>與我們聊聊</h3>
-                    </div>
-                    <p class="contact-desc">無論你是企業客戶、活動主辦方、系統整合商或投資人，歡迎留言，我們會盡快回覆。</p>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="contactName">姓名</label>
-                                <input type="text" id="contactName" name="name" placeholder="你的姓名" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactEmail">Email</label>
-                                <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactCompany">公司 / 組織（選填）</label>
-                            <input type="text" id="contactCompany" name="company" placeholder="公司或組織名稱">
-                        </div>
-                        <div class="form-group">
-                            <label for="contactMessage">留言內容</label>
-                            <textarea id="contactMessage" name="message" rows="5" placeholder="請描述你的需求或想了解的內容..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-large contact-submit">
-                            <span class="submit-text">送出留言</span>
-                            <span class="submit-loading" style="display: none;">送出中...</span>
-                        </button>
-                    </form>
-                    <div class="contact-success" id="contactSuccess" style="display: none;">
-                        <div class="success-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                        </div>
-                        <h4>感謝你的留言！</h4>
-                        <p>我們已收到你的訊息，William 會盡快回覆你。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== FINAL CTA ====== -->
-        <section class="cta-section scroll-animate">
-            <div class="cta-content">
-                <h2>準備好掌握你的<span class="text-gradient">人脈</span>了嗎？</h2>
-                <p>免費下載 Credica，開始建立真正屬於你的數位人脈網路。</p>
-                <div class="cta-actions">
-                    <a href="https://zymai.com.tw" class="btn btn-primary btn-large" style="text-decoration: none;">立即下載</a>
-                    <a href="#features" class="btn btn-secondary btn-large" style="text-decoration: none;">了解更多</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ====== FOOTER ====== -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="logo">
-                    <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
-                    <span>Credica</span>
-                </div>
-                <p class="footer-tagline">隱私優先的智慧名片管理</p>
-                <p class="footer-tagline" style="margin-top: 8px;">由 <a href="https://zymai.com.tw" target="_blank" style="color: var(--accent-secondary); text-decoration: none;">ZyMai 智脈</a> 開發與營運</p>
-            </div>
-            <div class="footer-column">
-                <h4>產品導覽</h4>
-                <a href="#features">特色功能</a>
-                <a href="#how-it-works">如何開始</a>
-                <a href="#security">安全與隱私</a>
-                <a href="#use-cases">使用情境</a>
-                <a href="#partners">商業應用與合作</a>
-                <a href="#contact">聯繫我們</a>
-            </div>
-            <div class="footer-column">
-                <h4>支援與法律</h4>
-                <a href="support.html">支援服務</a>
-                <a href="privacy.html">隱私權政策</a>
-                <a href="terms.html">服務條款</a>
-            </div>
-            <div class="footer-column">
-                <h4>聯繫我們</h4>
-                <a href="mailto:william.tzeng@gmail.com">william.tzeng@gmail.com</a>
-                <a href="#contact">線上留言</a>
-            </div>
+          </div>
+          <div class="screen-tab-bar">
+            <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span data-i18n="screen.tab_home">首頁</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span data-i18n="screen.tab_contacts">聯絡人</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span data-i18n="screen.tab_exchange">交換</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span data-i18n="screen.tab_graph">圖譜</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span data-i18n="screen.tab_settings">設定</span></div>
+          </div>
         </div>
 
-        <!-- 產品宣告 -->
-        <div class="footer-declarations">
-            <div class="declaration-item">
-                <strong>隱私承諾</strong>
-                <span>Credica 採用裝置本地儲存架構，所有個人資料僅存於使用者裝置中。伺服器不儲存、不處理、不傳輸任何個人可識別資訊 (PII)。所有資料傳輸皆經端對端加密保護。</span>
+        <!-- Screen 2: Contacts -->
+        <div class="app-screen" data-screen="1">
+          <div class="screen-status-bar screen-sb-dark">
+            <span>9:41</span>
+            <div class="screen-status-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+              <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
             </div>
-            <div class="declaration-item">
-                <strong>國際標準合規</strong>
-                <span>Credica 的數位身分驗證機制遵循 W3C Verifiable Credentials 及 Decentralized Identifiers (DID) 國際標準，確保跨平台互通性與長期可靠性。</span>
-            </div>
-            <div class="declaration-item">
-                <strong>智慧財產聲明</strong>
-                <span>Credica 名稱、標誌及相關視覺設計為 ZyMai 智脈之智慧財產。本產品所採用之加密架構、共識驗證協議及零知識伺服器設計均受智慧財產權保護。</span>
-            </div>
+          </div>
+          <div class="screen-nav-title" data-i18n="screen.contacts_title">聯絡人</div>
+          <div class="screen-filter-row">
+            <span class="screen-chip active" data-i18n="screen.filter_all">全部</span>
+            <span class="screen-chip" data-i18n="screen.filter_favorites">⭐ 收藏</span>
+            <span class="screen-chip" data-i18n="screen.filter_business">商業</span>
+            <span class="screen-chip" data-i18n="screen.filter_social">社交</span>
+          </div>
+          <div class="screen-body">
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#E53935;">大明</div><div class="screen-contact-info"><div class="screen-contact-name">王大明</div><div class="screen-contact-title">副總裁 · 台積電</div></div><span class="screen-star">⭐</span></div>
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#7B1FA2;">美玲</div><div class="screen-contact-info"><div class="screen-contact-name">林美玲</div><div class="screen-contact-title">行銷總監 · Google</div></div><span class="screen-star">⭐</span></div>
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#00897B;">建宏</div><div class="screen-contact-info"><div class="screen-contact-name">李建宏</div><div class="screen-contact-title">技術長 · Appier</div></div></div>
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#1565C0;">雅婷</div><div class="screen-contact-info"><div class="screen-contact-name">陳雅婷</div><div class="screen-contact-title">設計主管 · LINE</div></div></div>
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#FF6F00;">家豪</div><div class="screen-contact-info"><div class="screen-contact-name">張家豪</div><div class="screen-contact-title">創辦人 · BlockTech</div></div></div>
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#2E7D32;">小芳</div><div class="screen-contact-info"><div class="screen-contact-name">黃小芳</div><div class="screen-contact-title">產品經理 · KKBOX</div></div></div>
+            <div class="screen-contact-item"><div class="screen-avatar" style="background:#C62828;">志明</div><div class="screen-contact-info"><div class="screen-contact-name">陳志明</div><div class="screen-contact-title">業務總監 · 鴻海</div></div></div>
+          </div>
+          <div class="screen-tab-bar">
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span data-i18n="screen.tab_home">首頁</span></div>
+            <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span data-i18n="screen.tab_contacts">聯絡人</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span data-i18n="screen.tab_exchange">交換</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span data-i18n="screen.tab_graph">圖譜</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span data-i18n="screen.tab_settings">設定</span></div>
+          </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 ZyMai 智脈. 保留所有權利。Credica 為 ZyMai 智脈之註冊商標。</p>
+        <!-- Screen 3: Exchange QR -->
+        <div class="app-screen" data-screen="2">
+          <div class="screen-status-bar screen-sb-light" style="background:#000;">
+            <span>9:41</span>
+            <div class="screen-status-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+              <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+            </div>
+          </div>
+          <div class="screen-exchange-header" data-i18n="screen.my_qr_code">我的 QR Code</div>
+          <div class="screen-exchange-body">
+            <div class="screen-exchange-avatar">威</div>
+            <div class="screen-exchange-name" data-i18n="screen.id_name">曾威廉</div>
+            <div class="screen-exchange-title" data-i18n="screen.id_title">資深產品經理 · Credica Inc.</div>
+            <div class="screen-verified-badge" data-i18n="screen.verified_signed">✓ 已簽章</div>
+            <div class="screen-qr-box">
+              <div class="screen-qr-pattern"></div>
+            </div>
+            <div class="screen-waiting">
+              <div class="screen-spinner"></div>
+              <span data-i18n="screen.waiting_scan">等待對方掃描...</span>
+            </div>
+            <div class="screen-exchange-actions">
+              <div class="screen-exchange-btn" data-i18n="screen.select_fields">選擇揭露欄位</div>
+              <div class="screen-exchange-btn" data-i18n="screen.share_card">分享名片</div>
+            </div>
+          </div>
+          <div class="screen-tab-bar">
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span data-i18n="screen.tab_home">首頁</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span data-i18n="screen.tab_contacts">聯絡人</span></div>
+            <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span data-i18n="screen.tab_exchange">交換</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span data-i18n="screen.tab_graph">圖譜</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span data-i18n="screen.tab_settings">設定</span></div>
+          </div>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <!-- Screen 4: Graph -->
+        <div class="app-screen" data-screen="3">
+          <div class="screen-status-bar screen-sb-dark">
+            <span>9:41</span>
+            <div class="screen-status-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+              <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+            </div>
+          </div>
+          <div class="screen-nav-title" data-i18n="screen.graph_title">人脈圖譜</div>
+          <div class="screen-body">
+            <div class="screen-stats-row">
+              <div class="screen-stat"><div class="screen-stat-val">24</div><div class="screen-stat-lbl" data-i18n="screen.graph_total">總聯絡人</div></div>
+              <div class="screen-stat"><div class="screen-stat-val" style="color:#E53935;">6</div><div class="screen-stat-lbl" data-i18n="screen.graph_hot">熱絡</div></div>
+              <div class="screen-stat"><div class="screen-stat-val" style="color:#FFA726;">8</div><div class="screen-stat-lbl" data-i18n="screen.graph_warm">溫和</div></div>
+              <div class="screen-stat"><div class="screen-stat-val" style="color:#9E9E9E;">4</div><div class="screen-stat-lbl" data-i18n="screen.graph_cold">沉寂</div></div>
+            </div>
+            <div class="screen-section-title" data-i18n="screen.graph_temp_dist">🌡️ 溫度分佈</div>
+            <div class="screen-temp-bar">
+              <div style="width:25%;background:#E53935;">6</div>
+              <div style="width:33%;background:#FFA726;">8</div>
+              <div style="width:25%;background:#42A5F5;">6</div>
+              <div style="width:17%;background:#9E9E9E;">4</div>
+            </div>
+            <div class="screen-section-title" data-i18n="screen.graph_attention">⚠️ 需要關注</div>
+            <div class="screen-alert red">
+              <strong data-i18n="screen.graph_alert_1_title">陳志明 — 溫度急降</strong>
+              <small data-i18n="screen.graph_alert_1_desc">過去 30 天無互動</small>
+            </div>
+            <div class="screen-alert amber">
+              <strong data-i18n="screen.graph_alert_2_title">吳淑芬 — 超過 60 天未聯繫</strong>
+              <small data-i18n="screen.graph_alert_2_desc">建議安排下次互動</small>
+            </div>
+            <div class="screen-section-title" data-i18n="screen.graph_category_temp">📊 分類 × 溫度</div>
+            <div class="screen-matrix">
+              <div class="screen-matrix-header"></div>
+              <div class="screen-matrix-header">🔥</div>
+              <div class="screen-matrix-header">☀️</div>
+              <div class="screen-matrix-header">❄️</div>
+              <div class="screen-matrix-header">💤</div>
+              <div class="screen-matrix-label" data-i18n="screen.matrix_business">商業</div>
+              <div class="screen-matrix-cell" style="background:#FFEBEE;color:#E53935;">3</div>
+              <div class="screen-matrix-cell" style="background:#FFF3E0;color:#F57C00;">4</div>
+              <div class="screen-matrix-cell" style="background:#E3F2FD;color:#42A5F5;">2</div>
+              <div class="screen-matrix-cell" style="background:#F5F5F5;color:#9E9E9E;">1</div>
+              <div class="screen-matrix-label" data-i18n="screen.matrix_social">社交</div>
+              <div class="screen-matrix-cell" style="background:#FFEBEE;color:#E53935;">2</div>
+              <div class="screen-matrix-cell" style="background:#FFF3E0;color:#F57C00;">3</div>
+              <div class="screen-matrix-cell" style="background:#E3F2FD;color:#42A5F5;">2</div>
+              <div class="screen-matrix-cell" style="background:#F5F5F5;color:#9E9E9E;">2</div>
+            </div>
+          </div>
+          <div class="screen-tab-bar">
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span data-i18n="screen.tab_home">首頁</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span data-i18n="screen.tab_contacts">聯絡人</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span data-i18n="screen.tab_exchange">交換</span></div>
+            <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span data-i18n="screen.tab_graph">圖譜</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span data-i18n="screen.tab_settings">設定</span></div>
+          </div>
+        </div>
+
+        <!-- Screen 5: Exchange Result -->
+        <div class="app-screen" data-screen="4">
+          <div class="screen-status-bar screen-sb-dark">
+            <span>9:41</span>
+            <div class="screen-status-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.24 4.24 0 00-6 0zm-4-4l2 2a7.07 7.07 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+              <svg width="16" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+            </div>
+          </div>
+          <div class="screen-exchange-header" data-i18n="screen.exchange_result">交換結果</div>
+          <div class="screen-body" style="text-align:center;padding-top:12px;">
+            <div class="screen-success-icon">✓</div>
+            <div class="screen-success-title" data-i18n="screen.exchange_success">名片交換成功</div>
+            <div class="screen-verified-badge" style="margin:6px auto 12px;" data-i18n="screen.verified_identity">✓ 已驗證身份</div>
+            <div class="screen-result-card">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <div class="screen-avatar" style="background:#E53935;width:36px;height:36px;font-size:11px;">大明</div>
+                <div style="text-align:left;">
+                  <div style="font-size:13px;font-weight:600;">王大明</div>
+                  <div style="font-size:10px;color:#666;">副總裁 · 台積電</div>
+                </div>
+              </div>
+              <div style="border-top:1px solid #eee;padding-top:6px;font-size:10px;color:#555;text-align:left;">
+                <div>📱 +886 922-111-001</div>
+                <div>✉️ daming.wang@tsmc.com</div>
+              </div>
+            </div>
+            <div class="screen-context-card">
+              <span>📍</span>
+              <div>
+                <div style="font-size:10px;color:#F57C00;font-weight:500;" data-i18n="screen.auto_detect_scene">自動偵測場景</div>
+                <div style="font-size:11px;">TechSummit 2026 · 台北國際會議中心</div>
+              </div>
+            </div>
+            <div class="screen-save-btn" data-i18n="screen.save_contact">儲存聯絡人</div>
+            <div class="screen-bidirectional">
+              <span>↔️</span>
+              <div>
+                <div style="font-size:11px;font-weight:500;color:#2E7D32;" data-i18n="screen.auto_bidirectional">已自動完成雙向交換</div>
+                <div style="font-size:9px;color:#666;" data-i18n="screen.auto_bidirectional_desc">你的名片已自動傳送給對方</div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-tab-bar">
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span data-i18n="screen.tab_home">首頁</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><span data-i18n="screen.tab_contacts">聯絡人</span></div>
+            <div class="screen-tab active"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h2v2h-2v-2zm-2 4h2v2h-2v-2zm2 2h2v2h-2v-2z"/></svg><span data-i18n="screen.tab_exchange">交換</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg><span data-i18n="screen.tab_graph">圖譜</span></div>
+            <div class="screen-tab"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg><span data-i18n="screen.tab_settings">設定</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Screen indicators -->
+      <div class="screen-indicators">
+        <span class="screen-dot active" data-dot="0"></span>
+        <span class="screen-dot" data-dot="1"></span>
+        <span class="screen-dot" data-dot="2"></span>
+        <span class="screen-dot" data-dot="3"></span>
+        <span class="screen-dot" data-dot="4"></span>
+      </div>
+      <!-- Screen labels -->
+      <div class="screen-label" data-i18n="screen.label_home">首頁總覽</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHT 1: GROUP EXCHANGE ============ -->
+<section id="group" class="highlight-section">
+  <div class="highlight-visual">
+    <div class="group-scene">
+      <div class="group-header">
+        <div class="group-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div><div class="group-label" data-i18n="group.label">群組交換模式</div><div class="group-name" data-i18n="group.name">EMBA 114 級同學會</div></div>
+      </div>
+      <div class="avatar-cluster">
+        <div class="av" style="background:var(--teal)">曾</div>
+        <div class="av" style="background:var(--violet)">林</div>
+        <div class="av" style="background:var(--blue)">陳</div>
+        <div class="av" style="background:var(--amber)">張</div>
+        <div class="av" style="background:var(--rose)">黃</div>
+        <div class="av" style="background:#6366F1">王</div>
+        <div class="av-count">+18</div>
+      </div>
+      <div class="group-result">
+        <div class="group-result-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <div class="group-result-text" data-i18n="group.result">一次交換完成 24 張名片</div>
+          <div class="group-result-sub" data-i18n="group.result_sub">所有人互相收到彼此的數位名片</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight-text">
+    <div class="section-label" data-i18n="group.title">亮點功能</div>
+    <h2 data-i18n="group.desc">群組名片交換<br>一掃全收</h2>
+    <p data-i18n="group.detail">研討會、聚餐、班級活動——不用一個個掃碼。建立群組，所有人同時交換名片，一次搞定。</p>
+    <div class="bullet-list">
+      <div class="bullet-item">
+        <div class="bullet-check"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span data-i18n="group.bullet1">建立群組，成員掃碼加入</span>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-check"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span data-i18n="group.bullet2">所有人的名片互相同步</span>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-check"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span data-i18n="group.bullet3">遲到的人加入後也能補收</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHT 2: AUTO UPDATE ============ -->
+<section class="highlight-section reverse">
+  <div class="highlight-text">
+    <div class="section-label" data-i18n="update.label">永遠最新</div>
+    <h2><span data-i18n="update.title">換工作？<br>名片</span><span class="hl" data-i18n="update.title_hl">自動更新</span></h2>
+    <p data-i18n="update.desc">紙名片一印出來就過時了。Credica 的數位名片在你更新資訊後，所有曾交換過的人都會自動收到最新版。</p>
+    <div class="bullet-list">
+      <div class="bullet-item">
+        <div class="bullet-check"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span data-i18n="update.bullet1">職稱、公司、聯絡方式即時同步</span>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-check"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span data-i18n="update.bullet2">對方不需要任何操作就能看到更新</span>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-check"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span data-i18n="update.bullet3">再也不用重新交換名片</span>
+      </div>
+    </div>
+  </div>
+  <div class="highlight-visual">
+    <div class="update-visual">
+      <div class="update-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot green"></div>
+          <div class="tl-content">
+            <div class="tl-action" data-i18n="update.item1_action">林雅婷 更新了職稱</div>
+            <div class="tl-detail" data-i18n="update.item1_detail">UX Lead → Design Director · Gogolook</div>
+          </div>
+          <div class="tl-time" data-i18n="update.item1_time">3 小時前</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot blue"></div>
+          <div class="tl-content">
+            <div class="tl-action" data-i18n="update.item2_action">陳建宏 換了公司</div>
+            <div class="tl-detail" data-i18n="update.item2_detail">CTO · KKBOX → CTO · 新創 A 公司</div>
+          </div>
+          <div class="tl-time" data-i18n="update.item2_time">昨天</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot violet"></div>
+          <div class="tl-content">
+            <div class="tl-action" data-i18n="update.item3_action">張家豪 新增了聯絡方式</div>
+            <div class="tl-detail" data-i18n="update.item3_detail">新增 LinkedIn 連結</div>
+          </div>
+          <div class="tl-time" data-i18n="update.item3_time">3 天前</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUE PROPS ============ -->
+<section id="features" class="section">
+  <div class="section-center">
+    <div class="section-label" data-i18n="features.label">核心功能</div>
+    <div class="section-title" data-i18n="features.title">比紙名片強一百倍</div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="v-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <h3 data-i18n="features.card1_title">數位名片</h3>
+        <p data-i18n="features.card1_desc">一張永遠最新的名片。頭銜換了即時更新，內含 QR Code，線上線下都能交換。</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3 data-i18n="features.card2_title">人脈管理</h3>
+        <p data-i18n="features.card2_desc">每次交換自動記錄時間和場合。分類、搜尋、追蹤——人脈不再進抽屜。</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3 data-i18n="features.card3_title">可驗證身份</h3>
+        <p data-i18n="features.card3_desc">不只是卡片——背後有 W3C 國際標準數位簽章。對方知道你就是你，不是假帳號。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCENES ============ -->
+<section id="scenes" class="section">
+  <div class="section-center">
+    <div class="section-label" data-i18n="scenes.label">使用場景</div>
+    <div class="section-title" data-i18n="scenes.title">每一次社交，都更有效率</div>
+    <div class="scenes-strip">
+      <div class="scene-tile">
+        <div class="scene-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h4 data-i18n="scenes.tile1_title">研討會 / 論壇</h4>
+        <p data-i18n="scenes.tile1_desc">群組交換一掃全收<br>幾百人場合也不漏</p>
+      </div>
+      <div class="scene-tile">
+        <div class="scene-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
+        <h4 data-i18n="scenes.tile2_title">商務餐敘</h4>
+        <p data-i18n="scenes.tile2_desc">不用翻包包找名片<br>手機一掃自然連結</p>
+      </div>
+      <div class="scene-tile">
+        <div class="scene-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h4 data-i18n="scenes.tile3_title">EMBA / 校友</h4>
+        <p data-i18n="scenes.tile3_desc">畢業後人脈持續更新<br>動態永遠不斷線</p>
+      </div>
+      <div class="scene-tile">
+        <div class="scene-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <h4 data-i18n="scenes.tile4_title">跨國交流</h4>
+        <p data-i18n="scenes.tile4_desc">語言不通也沒問題<br>數位名片跨越國界</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section id="privacy" class="section">
+  <div class="section-center">
+    <div class="section-label" data-i18n="privacy.label">隱私與安全</div>
+    <div class="section-title" data-i18n="privacy.title">你的人脈資料，只有你掌控</div>
+    <div class="section-desc" data-i18n="privacy.desc">我們不賣你的資料、不追蹤你的行為。你可以隨時刪除帳號並帶走所有數據。</div>
+    <div class="trust-row">
+      <div class="tbadge"><div class="tbadge-box" data-i18n="privacy.badge1">W3C<br>DID</div><div class="tbadge-label" data-i18n="privacy.badge1_label">去中心身份</div></div>
+      <div class="tbadge"><div class="tbadge-box" data-i18n="privacy.badge2">E2E<br>加密</div><div class="tbadge-label" data-i18n="privacy.badge2_label">端對端加密</div></div>
+      <div class="tbadge"><div class="tbadge-box" data-i18n="privacy.badge3">數位<br>簽章</div><div class="tbadge-label" data-i18n="privacy.badge3_label">防偽驗證</div></div>
+      <div class="tbadge"><div class="tbadge-box" data-i18n="privacy.badge4">零<br>追蹤</div><div class="tbadge-label" data-i18n="privacy.badge4_label">不賣資料</div></div>
+      <div class="tbadge"><div class="tbadge-box" data-i18n="privacy.badge5">自主<br>刪除</div><div class="tbadge-label" data-i18n="privacy.badge5_label">帶走或刪除</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V2 TEASER ============ -->
+<div class="v2-teaser">
+  <h3 data-i18n="v2.title">企業與機構？即將推出</h3>
+  <p data-i18n="v2.desc">下一階段 Credica 將支援企業憑證核發、培訓證書管理、工地門禁整合與合規分析面板——讓組織也進入可驗證信任的時代。</p>
+  <a href="business.html" class="btn-v2" data-i18n="v2.cta">
+    了解企業方案
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+</div>
+
+<!-- ============ CTA ============ -->
+<section class="cta-final">
+  <div class="cta-glow"></div>
+  <h2><span data-i18n="cta.title">你的名片<br>該</span><span class="hl" data-i18n="cta.title_hl">進化</span><span data-i18n="cta.title_end">了</span></h2>
+  <p data-i18n="cta.desc">免費下載 Credica，30 秒擁有你的數位名片。</p>
+  <div class="cta-stores">
+    <a class="store-btn" href="https://zymai.com.tw">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+      <div><div class="store-label" data-i18n="hero.store_apple">Download on the</div><div class="store-name">App Store</div></div>
+    </a>
+    <a class="store-btn" href="https://zymai.com.tw">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.593-2.302 2.593-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+      <div><div class="store-label" data-i18n="hero.store_google">GET IT ON</div><div class="store-name">Google Play</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-l" data-i18n="footer.copyright">&copy; 2026 智脈股份有限公司 Credica Inc.</div>
+  <div class="foot-r">
+    <a href="privacy.html" data-i18n="footer.privacy">隱私權政策</a>
+    <a href="terms.html" data-i18n="footer.terms">使用條款</a>
+    <a href="business.html" data-i18n="footer.enterprise">企業方案</a>
+    <a href="mailto:support@credica.app" data-i18n="footer.contact">聯繫我們</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
-
 </html>
