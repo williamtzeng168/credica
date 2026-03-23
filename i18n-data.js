@@ -18,7 +18,8 @@ const I18N_DATA = {
       "sub_title": "與人脈錢包",
       "sub": "一個 App 搞定名片、人脈、社交。<br>掃碼交換，群組一次全收，<br>換了工作名片自動更新——永遠是最新版的你。",
       "store_apple": "Download on the",
-      "store_google": "GET IT ON"
+      "store_google": "GET IT ON",
+      "store_google_soon": "Coming Soon"
     },
     "screen": {
       "greeting": "你好，William 👋",
@@ -184,7 +185,8 @@ const I18N_DATA = {
       "sub_title": "与人脉钱包",
       "sub": "一个 App 搞定名片、人脉、社交。<br>扫码交换，群组一次全收，<br>换了工作名片自动更新——永远是最新版的你。",
       "store_apple": "Download on the",
-      "store_google": "GET IT ON"
+      "store_google": "GET IT ON",
+      "store_google_soon": "Coming Soon"
     },
     "screen": {
       "greeting": "你好，William 👋",
@@ -350,7 +352,8 @@ const I18N_DATA = {
       "sub_title": "& Network Wallet",
       "sub": "One app for business cards, networking & social.<br>Scan to exchange, group swap in one tap,<br>auto-update when you change jobs — always the latest you.",
       "store_apple": "Download on the",
-      "store_google": "GET IT ON"
+      "store_google": "GET IT ON",
+      "store_google_soon": "Coming Soon"
     },
     "screen": {
       "greeting": "Hi, William 👋",
@@ -516,7 +519,8 @@ const I18N_DATA = {
       "sub_title": "と人脈ウォレット",
       "sub": "1つのアプリで名刺・人脈・ソーシャルを管理。<br>スキャンで交換、グループで一括受信、<br>転職しても自動更新——常に最新のあなた。",
       "store_apple": "Download on the",
-      "store_google": "GET IT ON"
+      "store_google": "GET IT ON",
+      "store_google_soon": "Coming Soon"
     },
     "screen": {
       "greeting": "こんにちは、William 👋",
@@ -682,7 +686,8 @@ const I18N_DATA = {
       "sub_title": "& Ví mạng lưới",
       "sub": "Một ứng dụng cho danh thiếp, mạng lưới & xã hội.<br>Quét để trao đổi, nhóm nhận một lần,<br>tự động cập nhật khi đổi việc — luôn là phiên bản mới nhất.",
       "store_apple": "Download on the",
-      "store_google": "GET IT ON"
+      "store_google": "GET IT ON",
+      "store_google_soon": "Coming Soon"
     },
     "screen": {
       "greeting": "Xin chào, William 👋",
@@ -848,7 +853,8 @@ const I18N_DATA = {
       "sub_title": "และกระเป๋าเครือข่าย",
       "sub": "แอปเดียวจัดการนามบัตร เครือข่าย และสังคม<br>สแกนแลกเปลี่ยน กลุ่มรับครั้งเดียว<br>เปลี่ยนงานนามบัตรอัปเดตอัตโนมัติ — เวอร์ชันล่าสุดเสมอ",
       "store_apple": "Download on the",
-      "store_google": "GET IT ON"
+      "store_google": "GET IT ON",
+      "store_google_soon": "Coming Soon"
     },
     "screen": {
       "greeting": "สวัสดี William 👋",

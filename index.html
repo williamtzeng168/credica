@@ -83,6 +83,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .hero-downloads { display: flex; gap: 0.85rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.7s var(--ease) 0.3s both; }
 .store-btn { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 1.6rem; background: #1E293B; border: 1px solid #334155; border-radius: 14px; color: #fff; text-decoration: none; transition: all 0.3s var(--ease); cursor: pointer; }
 .store-btn:hover { background: #0F172A; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+.store-btn-disabled { opacity: 0.45; cursor: default; pointer-events: none; }
 .store-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
 .store-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); line-height: 1; }
 .store-name { font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
@@ -376,7 +377,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     <span></span>
     <span></span>
   </button>
-  <a href="https://zymai.com.tw" class="nav-dl" data-i18n="nav.download">
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener" data-i18n="nav.download">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     下載 App
   </a>
@@ -388,7 +389,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <a href="#group" data-i18n="nav.group">群組交換</a>
   <a href="#scenes" data-i18n="nav.scenes">場景</a>
   <a href="#privacy" data-i18n="nav.privacy">隱私</a>
-  <a href="https://zymai.com.tw" class="nav-dl" style="text-align:center;" data-i18n="nav.download">下載 App</a>
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener" data-i18n="nav.download">下載 App</a>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -402,14 +403,14 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       換了工作名片自動更新——永遠是最新版的你。
     </p>
     <div class="hero-downloads">
-      <a class="store-btn" href="https://zymai.com.tw">
+      <a class="store-btn" href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
         <div><div class="store-label" data-i18n="hero.store_apple">Download on the</div><div class="store-name">App Store</div></div>
       </a>
-      <a class="store-btn" href="https://zymai.com.tw">
+      <span class="store-btn store-btn-disabled">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.593-2.302 2.593-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-        <div><div class="store-label" data-i18n="hero.store_google">GET IT ON</div><div class="store-name">Google Play</div></div>
-      </a>
+        <div><div class="store-label" data-i18n="hero.store_google_soon">Coming Soon</div><div class="store-name">Google Play</div></div>
+      </span>
     </div>
   </div>
 
@@ -855,14 +856,14 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <h2><span data-i18n="cta.title">你的名片<br>該</span><span class="hl" data-i18n="cta.title_hl">進化</span><span data-i18n="cta.title_end">了</span></h2>
   <p data-i18n="cta.desc">免費下載 Credica，30 秒擁有你的數位名片。</p>
   <div class="cta-stores">
-    <a class="store-btn" href="https://zymai.com.tw">
+    <a class="store-btn" href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
       <div><div class="store-label" data-i18n="hero.store_apple">Download on the</div><div class="store-name">App Store</div></div>
     </a>
-    <a class="store-btn" href="https://zymai.com.tw">
+    <span class="store-btn store-btn-disabled">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.593-2.302 2.593-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-      <div><div class="store-label" data-i18n="hero.store_google">GET IT ON</div><div class="store-name">Google Play</div></div>
-    </a>
+      <div><div class="store-label" data-i18n="hero.store_google_soon">Coming Soon</div><div class="store-name">Google Play</div></div>
+    </span>
   </div>
 </section>
 
