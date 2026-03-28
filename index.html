@@ -9,6 +9,48 @@
 <meta property="og:title" content="Credica — 你的數位名片與人脈錢包">
 <meta property="og:description" content="一個 App 搞定名片、人脈、社交。掃碼交換，群組一次全收，換了工作名片自動更新。">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://credica.app">
+<meta property="og:image" content="https://credica.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Credica — 你的數位名片與人脈錢包">
+<meta name="twitter:description" content="一個 App 搞定名片、人脈、社交。掃碼交換，群組一次全收，換了工作名片自動更新。">
+<meta name="twitter:image" content="https://credica.app/og-image.png">
+<link rel="canonical" href="https://credica.app/">
+<link rel="alternate" hreflang="zh-TW" href="https://credica.app/">
+<link rel="alternate" hreflang="x-default" href="https://credica.app/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Credica",
+  "operatingSystem": "iOS",
+  "applicationCategory": "BusinessApplication",
+  "description": "可驗證的數位名片與人脈錢包。掃碼交換、群組一次全收、換工作名片自動更新。",
+  "url": "https://credica.app",
+  "downloadUrl": "https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580",
+  "author": {
+    "@type": "Organization",
+    "name": "智脈智慧股份有限公司 Credica Inc."
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TWD"
+  }
+}
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VEPFXCYNHN');
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="i18n-data.js"></script>
 <script src="i18n.js"></script>
@@ -49,7 +91,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .nav-mid { display: flex; gap: 2rem; }
 .nav-mid { flex: 1; justify-content: center; }
 .nav-mid a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.2s; }
-.nav-mid a:hover { color: #fff; }
+.nav-mid a:hover { color: var(--teal-b); }
 .nav-dl { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; text-decoration: none; }
 .nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(13,148,136,0.3); }
 .nav-dl svg { width: 16px; height: 16px; }
@@ -212,6 +254,51 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 .foot-r a { font-size: 0.85rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
 .foot-r a:hover { color: var(--text); }
 
+/* SOCIAL PROOF */
+.stats-row { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin: 2.5rem auto 3rem; max-width: 800px; }
+.stat-item { text-align: center; }
+.stat-number { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #4F46E5, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-label { font-size: 0.9rem; color: var(--text-3); margin-top: 0.25rem; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+.testimonial-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.75rem; text-align: left; transition: all 0.3s var(--ease); }
+.testimonial-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.testimonial-text { font-size: 1rem; color: var(--text-2); line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+.testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+.testimonial-name { font-size: 0.95rem; font-weight: 600; }
+.testimonial-role { font-size: 0.8rem; color: var(--text-3); }
+
+/* PAIN POINTS */
+.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 1000px; margin: 2.5rem auto 0; padding: 0 2.5rem; }
+.pain-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.5rem; overflow: hidden; }
+.pain-before { display: flex; gap: 0.75rem; align-items: flex-start; padding-bottom: 1rem; border-bottom: 1px dashed var(--border); margin-bottom: 1rem; }
+.pain-after { display: flex; gap: 0.75rem; align-items: flex-start; }
+.pain-icon-before { width: 24px; height: 24px; border-radius: 50%; background: rgba(225,29,72,0.1); color: var(--rose); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.pain-icon-after { width: 24px; height: 24px; border-radius: 50%; background: rgba(79,70,229,0.1); color: var(--teal-b); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.pain-before p { font-size: 0.95rem; color: var(--text-3); line-height: 1.6; margin: 0; }
+.pain-after p { font-size: 0.95rem; color: var(--text); line-height: 1.6; margin: 0; font-weight: 500; }
+
+/* FAQ */
+.faq-list { max-width: 800px; margin: 2.5rem auto 0; padding: 0 2.5rem; }
+.faq-item { border: 1px solid var(--border); border-radius: 14px; margin-bottom: 0.75rem; overflow: hidden; transition: all 0.3s var(--ease); }
+.faq-item:hover { border-color: var(--border-h); }
+.faq-item[open] { border-color: var(--border-h); box-shadow: 0 4px 16px rgba(79,70,229,0.06); }
+.faq-item summary { padding: 1.25rem 1.5rem; font-size: 1.05rem; font-weight: 600; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; color: var(--text); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 1.3rem; font-weight: 300; color: var(--text-3); transition: transform 0.3s; }
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { padding: 0 1.5rem 1.25rem; font-size: 1rem; color: var(--text-2); line-height: 1.75; margin: 0; }
+
+/* V2 FEATURES */
+.v2-features { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
+.v2-feat { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 500; color: var(--text); }
+.v2-feat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* CTA SECONDARY */
+.cta-secondary { margin-top: 1.5rem; position: relative; }
+.cta-or { font-size: 0.9rem; color: var(--text-3); margin-bottom: 1rem; }
+.cta-alt-row { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 900px) {
@@ -225,6 +312,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
   .cta-stores { flex-direction: column; align-items: center; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .stats-row { gap: 1.5rem; }
+  .pain-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
@@ -371,6 +461,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     <a href="#group" data-i18n="nav.group">群組交換</a>
     <a href="#scenes" data-i18n="nav.scenes">場景</a>
     <a href="#privacy" data-i18n="nav.privacy">隱私</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
   </div>
   <button class="hamburger" aria-label="Menu">
     <span></span>
@@ -389,6 +480,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <a href="#group" data-i18n="nav.group">群組交換</a>
   <a href="#scenes" data-i18n="nav.scenes">場景</a>
   <a href="#privacy" data-i18n="nav.privacy">隱私</a>
+  <a href="#faq" data-i18n="nav.faq">FAQ</a>
   <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener" data-i18n="nav.download">下載 App</a>
 </div>
 
@@ -840,13 +932,177 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   </div>
 </section>
 
+<!-- ============ SOCIAL PROOF ============ -->
+<section class="section" id="proof">
+  <div class="section-center">
+    <div class="section-label" data-i18n="proof.label">使用者回饋</div>
+    <h2 class="section-title" data-i18n="proof.title">他們都在用 Credica</h2>
+    <div class="section-desc" data-i18n="proof.desc">來自不同場景的真實使用者心聲</div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-number" data-i18n="proof.stat1_num">3 秒</div>
+      <div class="stat-label" data-i18n="proof.stat1_label">名片交換完成</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-i18n="proof.stat2_num">100%</div>
+      <div class="stat-label" data-i18n="proof.stat2_label">名片永遠最新版</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-i18n="proof.stat3_num">30+</div>
+      <div class="stat-label" data-i18n="proof.stat3_label">人一次群組交換</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-i18n="proof.stat4_num">0</div>
+      <div class="stat-label" data-i18n="proof.stat4_label">紙名片浪費</div>
+    </div>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-text" data-i18n="proof.quote1">研討會結束後，一個 QR Code 全場 30 個人的名片就收齊了。以前要一張張拿、一張張拍，現在根本回不去。</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background: rgba(79,70,229,0.1); color: var(--teal-b);">PM</div>
+        <div>
+          <div class="testimonial-name" data-i18n="proof.author1">EMBA 同學</div>
+          <div class="testimonial-role" data-i18n="proof.role1">科技業產品總監</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text" data-i18n="proof.quote2">換了工作之後最怕的就是通知每個人新聯絡方式。Credica 自動更新，對方看到的永遠是最新版的我。</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background: rgba(139,92,246,0.1); color: var(--violet);">MK</div>
+        <div>
+          <div class="testimonial-name" data-i18n="proof.author2">行銷主管</div>
+          <div class="testimonial-role" data-i18n="proof.role2">品牌代理公司</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text" data-i18n="proof.quote3">出差時在哪裡認識誰、聊了什麼，全部自動記錄。三個月後要跟進時一看就知道上下文。</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background: rgba(37,99,235,0.1); color: var(--blue);">BD</div>
+        <div>
+          <div class="testimonial-name" data-i18n="proof.author3">業務開發</div>
+          <div class="testimonial-role" data-i18n="proof.role3">企業軟體公司</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIN POINTS ============ -->
+<section class="section" id="painpoints">
+  <div class="section-center">
+    <div class="section-label" data-i18n="pain.label">為什麼選擇 Credica</div>
+    <h2 class="section-title" data-i18n="pain.title">你現在的名片管理方式，夠好嗎？</h2>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-before">
+        <div class="pain-icon-before">&#x2717;</div>
+        <p data-i18n="pain.before1">參加活動收了一堆名片，回家後散落在包包、口袋、桌上，想找某人時翻半天</p>
+      </div>
+      <div class="pain-after">
+        <div class="pain-icon-after">&#x2713;</div>
+        <p data-i18n="pain.after1">QR Code 掃碼交換，即時存入 App，搜尋姓名或公司秒找到</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-before">
+        <div class="pain-icon-before">&#x2717;</div>
+        <p data-i18n="pain.before2">研討會結束要跟 30 個人交換名片，場面混亂、容易漏掉重要的人</p>
+      </div>
+      <div class="pain-after">
+        <div class="pain-icon-after">&#x2713;</div>
+        <p data-i18n="pain.after2">群組交換一鍵收齊全場名片，一個都不漏</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-before">
+        <div class="pain-icon-before">&#x2717;</div>
+        <p data-i18n="pain.before3">換了工作或手機號碼，過去交換過的人都還留著舊資訊</p>
+      </div>
+      <div class="pain-after">
+        <div class="pain-icon-after">&#x2713;</div>
+        <p data-i18n="pain.after3">你更新一次，所有交換過的人自動同步——永遠是最新版的你</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-before">
+        <div class="pain-icon-before">&#x2717;</div>
+        <p data-i18n="pain.before4">三個月前認識的人，完全忘了在哪裡認識、聊了什麼</p>
+      </div>
+      <div class="pain-after">
+        <div class="pain-icon-after">&#x2713;</div>
+        <p data-i18n="pain.after4">自動記錄交換地點、時間和備註，跟進時完整回想上下文</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="section-center">
+    <div class="section-label" data-i18n="faq.label">常見問題</div>
+    <h2 class="section-title" data-i18n="faq.title">關於 Credica 你可能想知道的事</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary data-i18n="faq.q1">Credica 是什麼？</summary>
+      <p data-i18n="faq.a1">Credica 是一款可驗證的數位名片與人脈管理 App。你可以建立多張數位名片（工作、社交、副業），透過 QR Code 掃碼交換，支援群組一次收齊全場名片。換了工作後名片自動更新，對方看到的永遠是最新版的你。</p>
+    </details>
+    <details class="faq-item">
+      <summary data-i18n="faq.q2">免費版可以使用哪些功能？</summary>
+      <p data-i18n="faq.a2">Credica 目前完全免費使用，包含：建立多張身份名片、QR Code 交換、群組交換、聯絡人管理、人脈圖譜、位置記憶等所有核心功能。未來推出企業版時，個人版仍將維持免費。</p>
+    </details>
+    <details class="faq-item">
+      <summary data-i18n="faq.q3">我的資料安全嗎？</summary>
+      <p data-i18n="faq.a3">非常安全。所有個人資料使用端到端加密儲存，你可以精細控制每張名片分享哪些欄位。我們遵循最小權限原則，絕不會出售或分享你的個人資料。你隨時可以匯出或刪除所有資料。</p>
+    </details>
+    <details class="faq-item">
+      <summary data-i18n="faq.q4">什麼是「可驗證」的數位名片？</summary>
+      <p data-i18n="faq.a4">Credica 採用 W3C 國際標準的可驗證憑證（Verifiable Credentials）技術。這意味著你的數位名片資訊可以被第三方驗證為真實，而非自行填寫。未來企業版將支援公司為員工發行可驗證的數位工作證、培訓證書等。</p>
+    </details>
+    <details class="faq-item">
+      <summary data-i18n="faq.q5">支援 Android 嗎？</summary>
+      <p data-i18n="faq.a5">目前 Credica 已在 iOS App Store 上架。Android 版本正在開發中，預計近期推出。你可以在首頁訂閱通知，Android 版上線時第一時間收到消息。</p>
+    </details>
+    <details class="faq-item">
+      <summary data-i18n="faq.q6">V2 企業版有什麼功能？</summary>
+      <p data-i18n="faq.a6">Credica V2 企業版將支援：可回收數位通行證（活動、臨時工、培訓）、合規憑證管理、AI 智慧管家（LINE 入口）、跨組織合規轉移等功能。適合營建工地、人力仲介、ESG 供應鏈等需要合規管理的企業。歡迎透過企業方案頁面聯繫我們預約展示。</p>
+    </details>
+  </div>
+</section>
+
 <!-- ============ V2 TEASER ============ -->
 <div class="v2-teaser">
-  <h3 data-i18n="v2.title">企業與機構？即將推出</h3>
-  <p data-i18n="v2.desc">下一階段 Credica 將支援企業憑證核發、培訓證書管理、工地門禁整合與合規分析面板——讓組織也進入可驗證信任的時代。</p>
+  <div class="section-label" data-i18n="v2.label">COMING NEXT</div>
+  <h3 data-i18n="v2.title">從數位名片，到可驗證的專業身份</h3>
+  <p data-i18n="v2.desc">Credica V2 企業版即將推出——基於 W3C 國際標準的可驗證憑證平台。<br>讓企業為員工發行可驗證的數位工作證、培訓證書、合規通行證。<br>營建工地、人力仲介、ESG 供應鏈、醫療機構——合規管理從此自動化。</p>
+  <div class="v2-features">
+    <div class="v2-feat">
+      <div class="v2-feat-icon" style="background: rgba(79,70,229,0.08); color: var(--teal-b);">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <span data-i18n="v2.feat1">可驗證數位通行證</span>
+    </div>
+    <div class="v2-feat">
+      <div class="v2-feat-icon" style="background: rgba(139,92,246,0.08); color: var(--violet);">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+      </div>
+      <span data-i18n="v2.feat2">AI 智慧管家（LINE）</span>
+    </div>
+    <div class="v2-feat">
+      <div class="v2-feat-icon" style="background: rgba(37,99,235,0.08); color: var(--blue);">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      </div>
+      <span data-i18n="v2.feat3">合規分析儀表板</span>
+    </div>
+  </div>
   <a href="business.html" class="btn-v2" data-i18n="v2.cta">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
     了解企業方案
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
   </a>
 </div>
 
@@ -865,10 +1121,23 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       <div><div class="store-label" data-i18n="hero.store_google_soon">Coming Soon</div><div class="store-name">Google Play</div></div>
     </span>
   </div>
+  <div class="cta-secondary">
+    <p class="cta-or" data-i18n="cta.or">或者</p>
+    <div class="cta-alt-row">
+      <a href="business.html" class="btn-v2" data-i18n="cta.enterprise">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        企業版搶先體驗
+      </a>
+      <a href="mailto:support@credica.app?subject=我想了解 Credica" class="btn-v2" data-i18n="cta.contact_us">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        聯繫我們
+      </a>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <div class="foot-l" data-i18n="footer.copyright">&copy; 2026 智脈股份有限公司 Credica Inc.</div>
+  <div class="foot-l" data-i18n="footer.copyright">&copy; 2026 智脈智慧股份有限公司 Credica Inc.</div>
   <div class="foot-r">
     <a href="privacy.html" data-i18n="footer.privacy">隱私權政策</a>
     <a href="terms.html" data-i18n="footer.terms">使用條款</a>

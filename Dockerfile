@@ -15,8 +15,13 @@ COPY script.js /usr/share/nginx/html/
 COPY privacy.html /usr/share/nginx/html/
 COPY terms.html /usr/share/nginx/html/
 COPY support.html /usr/share/nginx/html/
+COPY business.html /usr/share/nginx/html/
+COPY i18n.js /usr/share/nginx/html/
+COPY i18n-data.js /usr/share/nginx/html/
 COPY credica_logo.png /usr/share/nginx/html/
 COPY credica_full.png /usr/share/nginx/html/
+COPY robots.txt /usr/share/nginx/html/
+COPY sitemap.xml /usr/share/nginx/html/
 COPY auth/ /usr/share/nginx/html/auth/
 
 EXPOSE 80

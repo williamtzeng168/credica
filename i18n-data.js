@@ -9,6 +9,7 @@ const I18N_DATA = {
       "group": "群組交換",
       "scenes": "場景",
       "privacy": "隱私",
+      "faq": "FAQ",
       "download": "下載 App"
     },
     "hero": {
@@ -147,19 +148,76 @@ const I18N_DATA = {
       "badge5": "自主<br>刪除",
       "badge5_label": "帶走或刪除"
     },
+    "proof": {
+      "label": "使用者回饋",
+      "title": "他們都在用 Credica",
+      "desc": "來自不同場景的真實使用者心聲",
+      "stat1_num": "3 秒",
+      "stat1_label": "名片交換完成",
+      "stat2_num": "100%",
+      "stat2_label": "名片永遠最新版",
+      "stat3_num": "30+",
+      "stat3_label": "人一次群組交換",
+      "stat4_num": "0",
+      "stat4_label": "紙名片浪費",
+      "quote1": "研討會結束後，一個 QR Code 全場 30 個人的名片就收齊了。以前要一張張拿、一張張拍，現在根本回不去。",
+      "author1": "EMBA 同學",
+      "role1": "科技業產品總監",
+      "quote2": "換了工作之後最怕的就是通知每個人新聯絡方式。Credica 自動更新，對方看到的永遠是最新版的我。",
+      "author2": "行銷主管",
+      "role2": "品牌代理公司",
+      "quote3": "出差時在哪裡認識誰、聊了什麼，全部自動記錄。三個月後要跟進時一看就知道上下文。",
+      "author3": "業務開發",
+      "role3": "企業軟體公司"
+    },
+    "pain": {
+      "label": "為什麼選擇 Credica",
+      "title": "你現在的名片管理方式，夠好嗎？",
+      "before1": "參加活動收了一堆名片，回家後散落在包包、口袋、桌上，想找某人時翻半天",
+      "after1": "QR Code 掃碼交換，即時存入 App，搜尋姓名或公司秒找到",
+      "before2": "研討會結束要跟 30 個人交換名片，場面混亂、容易漏掉重要的人",
+      "after2": "群組交換一鍵收齊全場名片，一個都不漏",
+      "before3": "換了工作或手機號碼，過去交換過的人都還留著舊資訊",
+      "after3": "你更新一次，所有交換過的人自動同步——永遠是最新版的你",
+      "before4": "三個月前認識的人，完全忘了在哪裡認識、聊了什麼",
+      "after4": "自動記錄交換地點、時間和備註，跟進時完整回想上下文"
+    },
+    "faq": {
+      "label": "常見問題",
+      "title": "關於 Credica 你可能想知道的事",
+      "q1": "Credica 是什麼？",
+      "a1": "Credica 是一款可驗證的數位名片與人脈管理 App。你可以建立多張數位名片（工作、社交、副業），透過 QR Code 掃碼交換，支援群組一次收齊全場名片。換了工作後名片自動更新，對方看到的永遠是最新版的你。",
+      "q2": "免費版可以使用哪些功能？",
+      "a2": "Credica 目前完全免費使用，包含：建立多張身份名片、QR Code 交換、群組交換、聯絡人管理、人脈圖譜、位置記憶等所有核心功能。未來推出企業版時，個人版仍將維持免費。",
+      "q3": "我的資料安全嗎？",
+      "a3": "非常安全。所有個人資料使用端到端加密儲存，你可以精細控制每張名片分享哪些欄位。我們遵循最小權限原則，絕不會出售或分享你的個人資料。你隨時可以匯出或刪除所有資料。",
+      "q4": "什麼是「可驗證」的數位名片？",
+      "a4": "Credica 採用 W3C 國際標準的可驗證憑證（Verifiable Credentials）技術。這意味著你的數位名片資訊可以被第三方驗證為真實，而非自行填寫。未來企業版將支援公司為員工發行可驗證的數位工作證、培訓證書等。",
+      "q5": "支援 Android 嗎？",
+      "a5": "目前 Credica 已在 iOS App Store 上架。Android 版本正在開發中，預計近期推出。你可以在首頁訂閱通知，Android 版上線時第一時間收到消息。",
+      "q6": "V2 企業版有什麼功能？",
+      "a6": "Credica V2 企業版將支援：可回收數位通行證（活動、臨時工、培訓）、合規憑證管理、AI 智慧管家（LINE 入口）、跨組織合規轉移等功能。適合營建工地、人力仲介、ESG 供應鏈等需要合規管理的企業。歡迎透過企業方案頁面聯繫我們預約展示。"
+    },
     "v2": {
-      "title": "企業與機構？即將推出",
-      "desc": "下一階段 Credica 將支援企業憑證核發、培訓證書管理、工地門禁整合與合規分析面板——讓組織也進入可驗證信任的時代。",
-      "cta": "搶先登記企業方案"
+      "label": "COMING NEXT",
+      "title": "從數位名片，到可驗證的專業身份",
+      "desc": "Credica V2 企業版即將推出——基於 W3C 國際標準的可驗證憑證平台。讓企業為員工發行可驗證的數位工作證、培訓證書、合規通行證。營建工地、人力仲介、ESG 供應鏈、醫療機構——合規管理從此自動化。",
+      "feat1": "可驗證數位通行證",
+      "feat2": "AI 智慧管家（LINE）",
+      "feat3": "合規分析儀表板",
+      "cta": "了解企業方案"
     },
     "cta": {
       "title": "你的名片<br>該",
       "title_hl": "進化",
       "title_end": "了",
-      "desc": "免費下載 Credica，30 秒擁有你的數位名片。"
+      "desc": "免費下載 Credica，30 秒擁有你的數位名片。",
+      "or": "或者",
+      "enterprise": "企業版搶先體驗",
+      "contact_us": "聯繫我們"
     },
     "footer": {
-      "copyright": "© 2026 智脈股份有限公司 Credica Inc.",
+      "copyright": "© 2026 智脈智慧股份有限公司 Credica Inc.",
       "privacy": "隱私權政策",
       "terms": "使用條款",
       "enterprise": "企業方案",
@@ -176,6 +234,7 @@ const I18N_DATA = {
       "group": "群组交换",
       "scenes": "场景",
       "privacy": "隐私",
+      "faq": "FAQ",
       "download": "下载 App"
     },
     "hero": {
@@ -314,19 +373,76 @@ const I18N_DATA = {
       "badge5": "自主<br>删除",
       "badge5_label": "带走或删除"
     },
+    "proof": {
+      "label": "用户反馈",
+      "title": "他们都在用 Credica",
+      "desc": "来自不同场景的真实用户心声",
+      "stat1_num": "3 秒",
+      "stat1_label": "名片交换完成",
+      "stat2_num": "100%",
+      "stat2_label": "名片永远最新版",
+      "stat3_num": "30+",
+      "stat3_label": "人一次群组交换",
+      "stat4_num": "0",
+      "stat4_label": "纸名片浪费",
+      "quote1": "研讨会结束后，一个 QR Code 全场 30 个人的名片就收齐了。以前要一张张拿、一张张拍，现在根本回不去。",
+      "author1": "EMBA 同学",
+      "role1": "科技业产品总监",
+      "quote2": "换了工作之后最怕的就是通知每个人新联络方式。Credica 自动更新，对方看到的永远是最新版的我。",
+      "author2": "行销主管",
+      "role2": "品牌代理公司",
+      "quote3": "出差时在哪里认识谁、聊了什么，全部自动记录。三个月后要跟进时一看就知道上下文。",
+      "author3": "业务开发",
+      "role3": "企业软件公司"
+    },
+    "pain": {
+      "label": "为什么选择 Credica",
+      "title": "你现在的名片管理方式，够好吗？",
+      "before1": "参加活动收了一堆名片，回家后散落在包包、口袋、桌上，想找某人时翻半天",
+      "after1": "QR Code 扫码交换，即时存入 App，搜索姓名或公司秒找到",
+      "before2": "研讨会结束要跟 30 个人交换名片，场面混乱、容易漏掉重要的人",
+      "after2": "群组交换一键收齐全场名片，一个都不漏",
+      "before3": "换了工作或手机号码，过去交换过的人都还留着旧信息",
+      "after3": "你更新一次，所有交换过的人自动同步——永远是最新版的你",
+      "before4": "三个月前认识的人，完全忘了在哪里认识、聊了什么",
+      "after4": "自动记录交换地点、时间和备注，跟进时完整回想上下文"
+    },
+    "faq": {
+      "label": "常见问题",
+      "title": "关于 Credica 你可能想知道的事",
+      "q1": "Credica 是什么？",
+      "a1": "Credica 是一款可验证的数字名片与人脉管理 App。你可以建立多张数字名片（工作、社交、副业），通过 QR Code 扫码交换，支持群组一次收齐全场名片。换了工作后名片自动更新，对方看到的永远是最新版的你。",
+      "q2": "免费版可以使用哪些功能？",
+      "a2": "Credica 目前完全免费使用，包含：建立多张身份名片、QR Code 交换、群组交换、联络人管理、人脉图谱、位置记忆等所有核心功能。未来推出企业版时，个人版仍将维持免费。",
+      "q3": "我的资料安全吗？",
+      "a3": "非常安全。所有个人资料使用端到端加密存储，你可以精细控制每张名片分享哪些字段。我们遵循最小权限原则，绝不会出售或分享你的个人资料。你随时可以导出或删除所有资料。",
+      "q4": "什么是「可验证」的数字名片？",
+      "a4": "Credica 采用 W3C 国际标准的可验证凭证（Verifiable Credentials）技术。这意味着你的数字名片信息可以被第三方验证为真实，而非自行填写。未来企业版将支持公司为员工发行可验证的数字工作证、培训证书等。",
+      "q5": "支持 Android 吗？",
+      "a5": "目前 Credica 已在 iOS App Store 上架。Android 版本正在开发中，预计近期推出。你可以在首页订阅通知，Android 版上线时第一时间收到消息。",
+      "q6": "V2 企业版有什么功能？",
+      "a6": "Credica V2 企业版将支持：可回收数字通行证（活动、临时工、培训）、合规凭证管理、AI 智慧管家（LINE 入口）、跨组织合规转移等功能。适合营建工地、人力仲介、ESG 供应链等需要合规管理的企业。欢迎通过企业方案页面联系我们预约展示。"
+    },
     "v2": {
-      "title": "企业与机构？即将推出",
-      "desc": "下一阶段 Credica 将支持企业凭证签发、培训证书管理、工地门禁整合与合规分析面板——让组织也进入可验证信任的时代。",
-      "cta": "抢先登记企业方案"
+      "label": "COMING NEXT",
+      "title": "从数字名片，到可验证的专业身份",
+      "desc": "Credica V2 企业版即将推出——基于 W3C 国际标准的可验证凭证平台。让企业为员工发行可验证的数字工作证、培训证书、合规通行证。营建工地、人力仲介、ESG 供应链、医疗机构——合规管理从此自动化。",
+      "feat1": "可验证数字通行证",
+      "feat2": "AI 智慧管家（LINE）",
+      "feat3": "合规分析仪表板",
+      "cta": "了解企业方案"
     },
     "cta": {
       "title": "你的名片<br>该",
       "title_hl": "进化",
       "title_end": "了",
-      "desc": "免费下载 Credica，30 秒拥有你的数字名片。"
+      "desc": "免费下载 Credica，30 秒拥有你的数字名片。",
+      "or": "或者",
+      "enterprise": "企业版抢先体验",
+      "contact_us": "联系我们"
     },
     "footer": {
-      "copyright": "© 2026 智脉股份有限公司 Credica Inc.",
+      "copyright": "© 2026 智脉智慧股份有限公司 Credica Inc.",
       "privacy": "隐私政策",
       "terms": "使用条款",
       "enterprise": "企业方案",
@@ -343,6 +459,7 @@ const I18N_DATA = {
       "group": "Group Swap",
       "scenes": "Scenarios",
       "privacy": "Privacy",
+      "faq": "FAQ",
       "download": "Download App"
     },
     "hero": {
@@ -481,16 +598,73 @@ const I18N_DATA = {
       "badge5": "Self<br>Delete",
       "badge5_label": "Export or Delete"
     },
+    "proof": {
+      "label": "User Feedback",
+      "title": "They All Use Credica",
+      "desc": "Real voices from users across different scenarios",
+      "stat1_num": "3 sec",
+      "stat1_label": "Card exchange done",
+      "stat2_num": "100%",
+      "stat2_label": "Cards always up-to-date",
+      "stat3_num": "30+",
+      "stat3_label": "People in one group swap",
+      "stat4_num": "0",
+      "stat4_label": "Paper cards wasted",
+      "quote1": "After the seminar, one QR Code collected all 30 people's cards. I used to grab them one by one — now I can't go back.",
+      "author1": "EMBA Classmate",
+      "role1": "Tech Product Director",
+      "quote2": "The worst part of changing jobs was notifying everyone. Credica auto-updates — they always see the latest me.",
+      "author2": "Marketing Lead",
+      "role2": "Brand Agency",
+      "quote3": "Where I met someone, what we talked about — all auto-recorded. Three months later, I know the full context for follow-up.",
+      "author3": "Business Development",
+      "role3": "Enterprise Software"
+    },
+    "pain": {
+      "label": "Why Credica",
+      "title": "Is your current card management good enough?",
+      "before1": "Collected a pile of cards at an event — they end up scattered in bags, pockets, and desks. Finding someone takes forever.",
+      "after1": "QR Code scan to exchange, instantly saved in the app. Search by name or company in seconds.",
+      "before2": "Exchanging cards with 30 people after a seminar is chaotic — easy to miss important contacts.",
+      "after2": "Group swap collects everyone's cards in one tap. No one missed.",
+      "before3": "Changed jobs or phone number? Everyone you've exchanged with still has your old info.",
+      "after3": "Update once, everyone syncs automatically — always the latest version of you.",
+      "before4": "Someone you met three months ago — you've completely forgotten where you met and what you discussed.",
+      "after4": "Auto-records exchange location, time, and notes. Full context when following up."
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Things You Might Want to Know About Credica",
+      "q1": "What is Credica?",
+      "a1": "Credica is a verifiable digital business card and networking app. Create multiple digital cards (work, social, side projects), exchange via QR Code scan, and support group swap to collect everyone's cards at once. When you change jobs, your card auto-updates — contacts always see the latest you.",
+      "q2": "What features are free?",
+      "a2": "Credica is currently completely free, including: multiple identity cards, QR Code exchange, group swap, contact management, network graph, location memory, and all core features. When the enterprise version launches, the personal version will remain free.",
+      "q3": "Is my data secure?",
+      "a3": "Absolutely. All personal data is stored with end-to-end encryption. You have granular control over which fields each card shares. We follow the principle of least privilege and will never sell or share your data. You can export or delete all data at any time.",
+      "q4": "What are \"verifiable\" digital cards?",
+      "a4": "Credica uses W3C standard Verifiable Credentials technology. This means your digital card information can be verified as authentic by third parties, rather than self-declared. The upcoming enterprise version will support companies issuing verifiable digital work IDs, training certificates, and more.",
+      "q5": "Is Android supported?",
+      "a5": "Credica is currently available on the iOS App Store. The Android version is under development and coming soon. Subscribe on our homepage to be notified when the Android version launches.",
+      "q6": "What features will V2 Enterprise have?",
+      "a6": "Credica V2 Enterprise will support: revocable digital passes (events, temp workers, training), compliance credential management, AI assistant (LINE integration), cross-organization compliance transfers, and more. Ideal for construction sites, staffing agencies, ESG supply chains, and organizations needing compliance management. Contact us through the enterprise page to schedule a demo."
+    },
     "v2": {
-      "title": "For Enterprises? Coming Soon",
-      "desc": "Next phase: enterprise credential issuance, training certificate management, access control integration, and compliance analytics dashboard — bringing verifiable trust to organizations.",
-      "cta": "Register for Enterprise Early Access"
+      "label": "COMING NEXT",
+      "title": "From Digital Cards to Verifiable Professional Identity",
+      "desc": "Credica V2 Enterprise is coming — a verifiable credentials platform based on W3C standards. Issue verifiable digital work IDs, training certificates, and compliance passes. Construction, staffing, ESG supply chains, healthcare — compliance management, automated.",
+      "feat1": "Verifiable Digital Passes",
+      "feat2": "AI Assistant (LINE)",
+      "feat3": "Compliance Dashboard",
+      "cta": "Learn About Enterprise"
     },
     "cta": {
       "title": "Your card<br>needs to ",
       "title_hl": "evolve",
       "title_end": "",
-      "desc": "Download Credica for free. Get your digital card in 30 seconds."
+      "desc": "Download Credica for free. Get your digital card in 30 seconds.",
+      "or": "Or",
+      "enterprise": "Enterprise Early Access",
+      "contact_us": "Contact Us"
     },
     "footer": {
       "copyright": "© 2026 ZyMai Inc. (Credica)",
@@ -510,6 +684,7 @@ const I18N_DATA = {
       "group": "グループ交換",
       "scenes": "シーン",
       "privacy": "プライバシー",
+      "faq": "FAQ",
       "download": "アプリをダウンロード"
     },
     "hero": {
@@ -648,16 +823,73 @@ const I18N_DATA = {
       "badge5": "自主<br>削除",
       "badge5_label": "持ち出しまたは削除"
     },
+    "proof": {
+      "label": "ユーザーの声",
+      "title": "みんな Credica を使っています",
+      "desc": "さまざまなシーンからのリアルな声",
+      "stat1_num": "3 秒",
+      "stat1_label": "名刺交換完了",
+      "stat2_num": "100%",
+      "stat2_label": "常に最新の名刺",
+      "stat3_num": "30+",
+      "stat3_label": "人が一度にグループ交換",
+      "stat4_num": "0",
+      "stat4_label": "紙名刺の無駄",
+      "quote1": "セミナー終了後、QRコード1つで30人全員の名刺を集められました。一枚ずつもらっていた頃にはもう戻れません。",
+      "author1": "EMBA クラスメート",
+      "role1": "テック企業プロダクトディレクター",
+      "quote2": "転職で一番大変だったのは連絡先の更新通知。Credica なら自動更新で、相手はいつも最新の私を見られます。",
+      "author2": "マーケティングリーダー",
+      "role2": "ブランドエージェンシー",
+      "quote3": "出張先で誰にどこで会って何を話したか、全部自動記録。3ヶ月後のフォローアップも完璧です。",
+      "author3": "ビジネス開発",
+      "role3": "エンタープライズソフトウェア"
+    },
+    "pain": {
+      "label": "なぜ Credica？",
+      "title": "今の名刺管理、本当に十分ですか？",
+      "before1": "イベントで名刺をたくさんもらっても、帰宅後はカバンやポケット、デスクに散乱。探すのに一苦労。",
+      "after1": "QRコードスキャンで交換、アプリに即保存。名前や会社で検索すればすぐ見つかる。",
+      "before2": "セミナー後に30人と名刺交換は混乱の極み。重要な人を見落としがち。",
+      "after2": "グループ交換でワンタップ全員の名刺を回収。見落としゼロ。",
+      "before3": "転職や電話番号変更後、過去に交換した人はまだ古い情報のまま。",
+      "after3": "一度更新すれば全員に自動同期。いつも最新のあなた。",
+      "before4": "3ヶ月前に会った人のこと、どこで会ったか何を話したか完全に忘れてしまう。",
+      "after4": "交換場所・時間・メモを自動記録。フォローアップ時に完全な文脈がわかる。"
+    },
+    "faq": {
+      "label": "よくある質問",
+      "title": "Credica について知りたいこと",
+      "q1": "Credica とは？",
+      "a1": "Credica は検証可能なデジタル名刺と人脈管理アプリです。複数のデジタル名刺（仕事、プライベート、副業）を作成し、QRコードで交換、グループで一括交換が可能。転職時も名刺が自動更新され、相手はいつも最新のあなたを見られます。",
+      "q2": "無料で使える機能は？",
+      "a2": "Credica は現在すべて無料で利用可能です：複数ID名刺、QRコード交換、グループ交換、連絡先管理、人脈グラフ、位置記録など全コア機能。企業版リリース後も個人版は無料を維持します。",
+      "q3": "データは安全ですか？",
+      "a3": "非常に安全です。すべての個人データはエンドツーエンド暗号化で保存。各名刺で共有するフィールドを細かく制御できます。最小権限の原則に従い、データの販売や共有は一切しません。いつでもエクスポートまたは削除可能。",
+      "q4": "「検証可能」なデジタル名刺とは？",
+      "a4": "Credica は W3C 標準の Verifiable Credentials 技術を採用。名刺情報が第三者によって本物と検証できることを意味し、自己申告ではありません。将来の企業版では、会社が従業員に検証可能なデジタル社員証や研修証明書を発行可能に。",
+      "q5": "Android は対応していますか？",
+      "a5": "現在 Credica は iOS App Store で配信中。Android 版は開発中で近日リリース予定です。ホームページで通知登録すると、Android 版リリース時にお知らせします。",
+      "q6": "V2 企業版にはどんな機能がありますか？",
+      "a6": "Credica V2 企業版は、回収可能なデジタルパス（イベント、派遣、研修）、コンプライアンス資格管理、AIアシスタント（LINE連携）、組織間コンプライアンス移管などをサポート。建設現場、人材派遣、ESGサプライチェーンなどに最適。企業ページからデモをご予約ください。"
+    },
     "v2": {
-      "title": "企業・団体向け？近日公開",
-      "desc": "次のフェーズでは、企業資格証明発行、研修証明書管理、入退室管理統合、コンプライアンス分析ダッシュボードに対応予定。",
-      "cta": "企業プラン先行登録"
+      "label": "COMING NEXT",
+      "title": "デジタル名刺から、検証可能なプロフェッショナルIDへ",
+      "desc": "Credica V2 企業版が間もなく登場。W3C標準に基づく検証可能な資格証明プラットフォーム。デジタル社員証、研修証明書、コンプライアンスパスを発行。建設、人材、ESGサプライチェーン、医療——コンプライアンス管理を自動化。",
+      "feat1": "検証可能デジタルパス",
+      "feat2": "AIアシスタント（LINE）",
+      "feat3": "コンプライアンスダッシュボード",
+      "cta": "企業プランを見る"
     },
     "cta": {
       "title": "あなたの名刺を<br>",
       "title_hl": "進化",
       "title_end": "させよう",
-      "desc": "Credicaを無料ダウンロード。30秒であなたのデジタル名刺を。"
+      "desc": "Credicaを無料ダウンロード。30秒であなたのデジタル名刺を。",
+      "or": "または",
+      "enterprise": "企業版先行体験",
+      "contact_us": "お問い合わせ"
     },
     "footer": {
       "copyright": "© 2026 ZyMai Inc. (Credica)",
@@ -677,6 +909,7 @@ const I18N_DATA = {
       "group": "Nhóm",
       "scenes": "Tình huống",
       "privacy": "Bảo mật",
+      "faq": "FAQ",
       "download": "Tải App"
     },
     "hero": {
@@ -815,16 +1048,73 @@ const I18N_DATA = {
       "badge5": "Tự chủ<br>xóa",
       "badge5_label": "Mang đi hoặc xóa"
     },
+    "proof": {
+      "label": "Phản hồi người dùng",
+      "title": "Họ đều đang dùng Credica",
+      "desc": "Tiếng nói thực từ người dùng trong nhiều tình huống",
+      "stat1_num": "3 giây",
+      "stat1_label": "Trao đổi danh thiếp xong",
+      "stat2_num": "100%",
+      "stat2_label": "Danh thiếp luôn cập nhật",
+      "stat3_num": "30+",
+      "stat3_label": "Người trao đổi nhóm cùng lúc",
+      "stat4_num": "0",
+      "stat4_label": "Lãng phí danh thiếp giấy",
+      "quote1": "Sau hội thảo, một mã QR thu thập danh thiếp của cả 30 người. Trước đây phải nhận từng tấm — giờ không thể quay lại.",
+      "author1": "Bạn học EMBA",
+      "role1": "Giám đốc sản phẩm công nghệ",
+      "quote2": "Điều tệ nhất khi đổi việc là thông báo cho mọi người. Credica tự động cập nhật — họ luôn thấy phiên bản mới nhất của tôi.",
+      "author2": "Trưởng phòng Marketing",
+      "role2": "Công ty đại lý thương hiệu",
+      "quote3": "Gặp ai ở đâu, nói gì — tất cả tự động ghi lại. Ba tháng sau theo dõi, tôi biết đầy đủ bối cảnh.",
+      "author3": "Phát triển kinh doanh",
+      "role3": "Phần mềm doanh nghiệp"
+    },
+    "pain": {
+      "label": "Tại sao chọn Credica",
+      "title": "Cách quản lý danh thiếp hiện tại của bạn đã đủ tốt?",
+      "before1": "Thu thập một đống danh thiếp tại sự kiện — về nhà rải rác trong túi, ví, bàn. Tìm ai đó mất cả ngày.",
+      "after1": "Quét QR Code trao đổi, lưu ngay vào ứng dụng. Tìm kiếm theo tên hoặc công ty trong giây lát.",
+      "before2": "Trao đổi danh thiếp với 30 người sau hội thảo thật hỗn loạn — dễ bỏ sót người quan trọng.",
+      "after2": "Trao đổi nhóm thu thập danh thiếp mọi người chỉ với một chạm. Không bỏ sót ai.",
+      "before3": "Đổi việc hoặc số điện thoại? Mọi người bạn đã trao đổi vẫn giữ thông tin cũ.",
+      "after3": "Cập nhật một lần, tất cả tự động đồng bộ — luôn là phiên bản mới nhất của bạn.",
+      "before4": "Người gặp ba tháng trước — hoàn toàn quên gặp ở đâu và nói gì.",
+      "after4": "Tự động ghi lại địa điểm, thời gian và ghi chú trao đổi. Đầy đủ bối cảnh khi theo dõi."
+    },
+    "faq": {
+      "label": "Câu hỏi thường gặp",
+      "title": "Những điều bạn có thể muốn biết về Credica",
+      "q1": "Credica là gì?",
+      "a1": "Credica là ứng dụng danh thiếp số có thể xác minh và quản lý mạng lưới. Tạo nhiều danh thiếp số (công việc, xã hội, nghề phụ), trao đổi qua quét QR Code, hỗ trợ trao đổi nhóm. Khi đổi việc, danh thiếp tự động cập nhật — liên hệ luôn thấy bạn mới nhất.",
+      "q2": "Bản miễn phí có những tính năng gì?",
+      "a2": "Credica hiện hoàn toàn miễn phí, bao gồm: nhiều danh thiếp danh tính, trao đổi QR Code, trao đổi nhóm, quản lý liên hệ, đồ thị mạng lưới, ghi nhớ vị trí và tất cả tính năng cốt lõi. Khi bản doanh nghiệp ra mắt, bản cá nhân vẫn miễn phí.",
+      "q3": "Dữ liệu của tôi có an toàn không?",
+      "a3": "Hoàn toàn an toàn. Tất cả dữ liệu cá nhân được lưu trữ với mã hóa đầu-cuối. Bạn kiểm soát chi tiết từng trường mỗi danh thiếp chia sẻ. Chúng tôi tuân thủ nguyên tắc quyền tối thiểu và không bao giờ bán hoặc chia sẻ dữ liệu. Bạn có thể xuất hoặc xóa mọi lúc.",
+      "q4": "Danh thiếp số \"có thể xác minh\" là gì?",
+      "a4": "Credica sử dụng công nghệ Verifiable Credentials chuẩn W3C. Thông tin danh thiếp có thể được bên thứ ba xác minh là xác thực, không phải tự khai. Bản doanh nghiệp tương lai sẽ hỗ trợ công ty phát hành thẻ nhân viên số, chứng chỉ đào tạo có thể xác minh.",
+      "q5": "Có hỗ trợ Android không?",
+      "a5": "Credica hiện có trên iOS App Store. Phiên bản Android đang phát triển và sắp ra mắt. Đăng ký nhận thông báo trên trang chủ để biết ngay khi Android ra mắt.",
+      "q6": "V2 Doanh nghiệp có tính năng gì?",
+      "a6": "Credica V2 Doanh nghiệp sẽ hỗ trợ: thẻ thông hành số thu hồi được (sự kiện, lao động tạm, đào tạo), quản lý chứng chỉ tuân thủ, trợ lý AI (tích hợp LINE), chuyển giao tuân thủ liên tổ chức. Phù hợp cho công trường, nhân sự, chuỗi cung ứng ESG. Liên hệ qua trang doanh nghiệp để đặt lịch demo."
+    },
     "v2": {
-      "title": "Doanh nghiệp? Sắp ra mắt",
-      "desc": "Giai đoạn tiếp theo: phát hành chứng chỉ doanh nghiệp, quản lý chứng nhận đào tạo, tích hợp kiểm soát ra vào, bảng phân tích tuân thủ.",
-      "cta": "Đăng ký sớm gói doanh nghiệp"
+      "label": "COMING NEXT",
+      "title": "Từ danh thiếp số đến danh tính chuyên nghiệp có thể xác minh",
+      "desc": "Credica V2 Doanh nghiệp sắp ra mắt — nền tảng chứng chỉ xác minh theo chuẩn W3C. Phát hành thẻ nhân viên số, chứng chỉ đào tạo, thẻ tuân thủ. Xây dựng, nhân sự, ESG, y tế — quản lý tuân thủ tự động hóa.",
+      "feat1": "Thẻ thông hành số xác minh",
+      "feat2": "Trợ lý AI (LINE)",
+      "feat3": "Bảng phân tích tuân thủ",
+      "cta": "Tìm hiểu gói doanh nghiệp"
     },
     "cta": {
       "title": "Danh thiếp của bạn<br>cần ",
       "title_hl": "tiến hóa",
       "title_end": "",
-      "desc": "Tải Credica miễn phí. 30 giây để có danh thiếp số."
+      "desc": "Tải Credica miễn phí. 30 giây để có danh thiếp số.",
+      "or": "Hoặc",
+      "enterprise": "Trải nghiệm sớm bản doanh nghiệp",
+      "contact_us": "Liên hệ chúng tôi"
     },
     "footer": {
       "copyright": "© 2026 ZyMai Inc. (Credica)",
@@ -841,6 +1131,7 @@ const I18N_DATA = {
     },
     "nav": {
       "features": "ฟีเจอร์",
+      "faq": "FAQ",
       "group": "แลกกลุ่ม",
       "scenes": "สถานการณ์",
       "privacy": "ความเป็นส่วนตัว",
@@ -982,16 +1273,73 @@ const I18N_DATA = {
       "badge5": "ลบ<br>เอง",
       "badge5_label": "นำออกหรือลบ"
     },
+    "proof": {
+      "label": "เสียงจากผู้ใช้",
+      "title": "พวกเขาใช้ Credica กันหมดแล้ว",
+      "desc": "เสียงจริงจากผู้ใช้ในหลากหลายสถานการณ์",
+      "stat1_num": "3 วิ",
+      "stat1_label": "แลกนามบัตรเสร็จ",
+      "stat2_num": "100%",
+      "stat2_label": "นามบัตรอัปเดตเสมอ",
+      "stat3_num": "30+",
+      "stat3_label": "คนแลกกลุ่มพร้อมกัน",
+      "stat4_num": "0",
+      "stat4_label": "สิ้นเปลืองนามบัตรกระดาษ",
+      "quote1": "หลังสัมมนา QR Code เดียวเก็บนามบัตร 30 คนครบ เมื่อก่อนต้องรับทีละใบ ตอนนี้กลับไปไม่ได้แล้ว",
+      "author1": "เพื่อน EMBA",
+      "role1": "ผู้อำนวยการผลิตภัณฑ์เทค",
+      "quote2": "สิ่งที่แย่ที่สุดเมื่อเปลี่ยนงานคือแจ้งทุกคน Credica อัปเดตอัตโนมัติ — เขาเห็นเวอร์ชันล่าสุดของเราเสมอ",
+      "author2": "หัวหน้าการตลาด",
+      "role2": "บริษัทเอเจนซี่แบรนด์",
+      "quote3": "เจอใครที่ไหน คุยอะไร บันทึกอัตโนมัติหมด สามเดือนหลังติดตามผล รู้บริบทครบ",
+      "author3": "พัฒนาธุรกิจ",
+      "role3": "ซอฟต์แวร์องค์กร"
+    },
+    "pain": {
+      "label": "ทำไมต้อง Credica",
+      "title": "วิธีจัดการนามบัตรปัจจุบันของคุณดีพอหรือยัง?",
+      "before1": "เก็บนามบัตรกองโตจากงานอีเวนต์ — กลับบ้านก็กระจายในกระเป๋า กระเป๋าเสื้อ โต๊ะ หาใครสักคนต้องค้นนาน",
+      "after1": "สแกน QR Code แลก บันทึกทันทีในแอป ค้นหาชื่อหรือบริษัทเจอในวินาที",
+      "before2": "แลกนามบัตรกับ 30 คนหลังสัมมนาวุ่นวายมาก — พลาดคนสำคัญได้ง่าย",
+      "after2": "แลกกลุ่มเก็บนามบัตรทุกคนแค่แตะเดียว ไม่พลาดใคร",
+      "before3": "เปลี่ยนงานหรือเบอร์โทร? ทุกคนที่เคยแลกยังเก็บข้อมูลเก่าอยู่",
+      "after3": "อัปเดตครั้งเดียว ทุกคนซิงค์อัตโนมัติ — เป็นเวอร์ชันล่าสุดของคุณเสมอ",
+      "before4": "คนที่เจอสามเดือนก่อน — ลืมหมดว่าเจอที่ไหน คุยอะไร",
+      "after4": "บันทึกสถานที่ เวลา และโน้ตอัตโนมัติ ติดตามผลด้วยบริบทครบ"
+    },
+    "faq": {
+      "label": "คำถามที่พบบ่อย",
+      "title": "สิ่งที่คุณอาจอยากรู้เกี่ยวกับ Credica",
+      "q1": "Credica คืออะไร?",
+      "a1": "Credica คือแอปนามบัตรดิจิทัลที่ยืนยันได้และจัดการเครือข่าย สร้างนามบัตรหลายใบ (งาน สังคม อาชีพเสริม) แลกผ่านสแกน QR Code รองรับแลกกลุ่ม เปลี่ยนงานนามบัตรอัปเดตอัตโนมัติ — ผู้ติดต่อเห็นคุณเวอร์ชันล่าสุดเสมอ",
+      "q2": "ฟีเจอร์ฟรีมีอะไรบ้าง?",
+      "a2": "Credica ปัจจุบันใช้ฟรีทั้งหมด รวมถึง: นามบัตรหลายใบ แลก QR Code แลกกลุ่ม จัดการผู้ติดต่อ กราฟเครือข่าย บันทึกตำแหน่ง และฟีเจอร์หลักทั้งหมด เมื่อเปิดตัวเวอร์ชันองค์กร เวอร์ชันส่วนตัวยังคงฟรี",
+      "q3": "ข้อมูลของฉันปลอดภัยไหม?",
+      "a3": "ปลอดภัยมาก ข้อมูลส่วนตัวทั้งหมดเข้ารหัสต้นทาง-ปลายทาง คุณควบคุมรายละเอียดว่าแต่ละนามบัตรแชร์ฟิลด์ไหน เราปฏิบัติตามหลักสิทธิ์น้อยที่สุดและไม่เคยขายหรือแชร์ข้อมูล คุณส่งออกหรือลบได้ตลอดเวลา",
+      "q4": "นามบัตรดิจิทัล \"ยืนยันได้\" คืออะไร?",
+      "a4": "Credica ใช้เทคโนโลยี Verifiable Credentials มาตรฐาน W3C ข้อมูลนามบัตรสามารถถูกบุคคลที่สามยืนยันว่าเป็นจริง ไม่ใช่กรอกเอง เวอร์ชันองค์กรในอนาคตจะรองรับบริษัทออกบัตรพนักงาน ใบรับรองฝึกอบรมที่ยืนยันได้",
+      "q5": "รองรับ Android ไหม?",
+      "a5": "ปัจจุบัน Credica มีบน iOS App Store เวอร์ชัน Android กำลังพัฒนาและจะเปิดตัวเร็วๆ นี้ สมัครรับการแจ้งเตือนบนหน้าแรกเพื่อรับข่าวเมื่อ Android เปิดตัว",
+      "q6": "V2 องค์กรมีฟีเจอร์อะไร?",
+      "a6": "Credica V2 องค์กรจะรองรับ: บัตรดิจิทัลเรียกคืนได้ (อีเวนต์ แรงงานชั่วคราว ฝึกอบรม) การจัดการใบรับรองการปฏิบัติตาม ผู้ช่วย AI (LINE) การโอนย้ายข้ามองค์กร เหมาะสำหรับไซต์ก่อสร้าง จัดหาบุคลากร ESG ติดต่อผ่านหน้าองค์กรเพื่อจองสาธิต"
+    },
     "v2": {
-      "title": "สำหรับองค์กร? เร็วๆ นี้",
-      "desc": "ระยะถัดไป: ออกใบรับรององค์กร จัดการใบรับรองการฝึกอบรม ระบบควบคุมการเข้าออก และแดชบอร์ดวิเคราะห์การปฏิบัติตาม",
-      "cta": "ลงทะเบียนแพ็กเกจองค์กรล่วงหน้า"
+      "label": "COMING NEXT",
+      "title": "จากนามบัตรดิจิทัลสู่ตัวตนวิชาชีพที่ยืนยันได้",
+      "desc": "Credica V2 องค์กรกำลังจะมา — แพลตฟอร์มใบรับรองยืนยันตามมาตรฐาน W3C ออกบัตรพนักงาน ใบรับรองฝึกอบรม บัตรปฏิบัติตาม ก่อสร้าง จัดหาบุคลากร ESG สุขภาพ — การจัดการปฏิบัติตามอัตโนมัติ",
+      "feat1": "บัตรดิจิทัลยืนยันได้",
+      "feat2": "ผู้ช่วย AI (LINE)",
+      "feat3": "แดชบอร์ดวิเคราะห์การปฏิบัติตาม",
+      "cta": "ดูแพ็กเกจองค์กร"
     },
     "cta": {
       "title": "นามบัตรของคุณ<br>ถึงเวลา",
       "title_hl": "วิวัฒนาการ",
       "title_end": "แล้ว",
-      "desc": "ดาวน์โหลด Credica ฟรี 30 วินาทีก็มีนามบัตรดิจิทัล"
+      "desc": "ดาวน์โหลด Credica ฟรี 30 วินาทีก็มีนามบัตรดิจิทัล",
+      "or": "หรือ",
+      "enterprise": "ทดลองใช้องค์กรก่อนใคร",
+      "contact_us": "ติดต่อเรา"
     },
     "footer": {
       "copyright": "© 2026 ZyMai Inc. (Credica)",
