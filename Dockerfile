@@ -22,6 +22,7 @@ COPY credica_logo.png /usr/share/nginx/html/
 COPY credica_full.png /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
+COPY lang/ /usr/share/nginx/html/lang/
 COPY auth/ /usr/share/nginx/html/auth/
 
 EXPOSE 80
