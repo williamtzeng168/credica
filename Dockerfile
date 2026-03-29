@@ -20,6 +20,9 @@ COPY i18n.js /usr/share/nginx/html/
 COPY i18n-data.js /usr/share/nginx/html/
 COPY credica_logo.png /usr/share/nginx/html/
 COPY credica_full.png /usr/share/nginx/html/
+COPY favicon-16.png /usr/share/nginx/html/
+COPY favicon-32.png /usr/share/nginx/html/
+COPY apple-touch-icon.png /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
 COPY lang/ /usr/share/nginx/html/lang/
