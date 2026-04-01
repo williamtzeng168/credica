@@ -217,7 +217,7 @@ const I18N_DATA = {
       "contact_us": "聯繫我們"
     },
     "footer": {
-      "copyright": "© 2026 智脈智慧股份有限公司 Credica Inc.",
+      "copyright": "© 2026 Credica Inc.",
       "privacy": "隱私權政策",
       "terms": "使用條款",
       "enterprise": "企業方案",
@@ -667,7 +667,7 @@ const I18N_DATA = {
       "contact_us": "Contact Us"
     },
     "footer": {
-      "copyright": "© 2026 ZyMai Inc. (Credica)",
+      "copyright": "© 2026 Credica Inc.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "enterprise": "Enterprise",
@@ -892,7 +892,7 @@ const I18N_DATA = {
       "contact_us": "お問い合わせ"
     },
     "footer": {
-      "copyright": "© 2026 ZyMai Inc. (Credica)",
+      "copyright": "© 2026 Credica Inc.",
       "privacy": "プライバシーポリシー",
       "terms": "利用規約",
       "enterprise": "企業向け",
@@ -1117,7 +1117,7 @@ const I18N_DATA = {
       "contact_us": "Liên hệ chúng tôi"
     },
     "footer": {
-      "copyright": "© 2026 ZyMai Inc. (Credica)",
+      "copyright": "© 2026 Credica Inc.",
       "privacy": "Chính sách bảo mật",
       "terms": "Điều khoản dịch vụ",
       "enterprise": "Doanh nghiệp",
@@ -1342,7 +1342,7 @@ const I18N_DATA = {
       "contact_us": "ติดต่อเรา"
     },
     "footer": {
-      "copyright": "© 2026 ZyMai Inc. (Credica)",
+      "copyright": "© 2026 Credica Inc.",
       "privacy": "นโยบายความเป็นส่วนตัว",
       "terms": "ข้อกำหนดการใช้งาน",
       "enterprise": "องค์กร",
