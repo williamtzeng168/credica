@@ -6,8 +6,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>Credica — 社團、社區、活動管理平台</title>
-<link rel="canonical" href="https://credica.app/business">
+<title>Credica Enterprise — 企業合規驗證方案</title>
+<link rel="canonical" href="https://credica.app/enterprise">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -54,8 +54,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .nav-right { display: flex; gap: 0.75rem; align-items: center; }
 .nav-personal { font-size: 0.9rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
 .nav-personal:hover { color: var(--text); }
-.nav-enterprise { font-size: 0.9rem; color: var(--teal); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-.nav-enterprise:hover { color: var(--teal-g); }
 .nav-cta { padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; }
 .nav-cta:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(13,148,136,0.3); }
 
@@ -129,12 +127,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 @keyframes arrowPulse { 0%,100% { opacity: 0.3; transform: translateX(0); } 50% { opacity: 0.7; transform: translateX(5px); } }
 
 /* ==================== VERTICALS ==================== */
-.vert-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 1100px; margin: 3rem auto 0; }
+.vert-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1100px; margin: 3rem auto 0; }
 
 .vert-tile { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 1rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
 .vert-tile:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
 
-.vert-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.vert-stat { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.15rem; }
+.vert-tile:nth-child(1) .vert-stat { color: var(--teal-b); }
+.vert-tile:nth-child(2) .vert-stat { color: var(--cyan); }
+.vert-tile:nth-child(3) .vert-stat { color: var(--amber); }
+.vert-tile:nth-child(4) .vert-stat { color: var(--violet); }
+.vert-tile:nth-child(5) .vert-stat { color: var(--rose); }
 
 .vert-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
 .vert-desc { font-size: 0.8rem; color: var(--text-3); line-height: 1.45; }
@@ -170,17 +173,20 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .blur-text { font-size: 1rem; color: var(--text-2); font-weight: 500; }
 .blur-sub { font-size: 0.85rem; color: var(--text-3); }
 
-/* ==================== PRICING STRIP ==================== */
-.pricing-strip { max-width: 1100px; margin: 0 auto; padding: 4rem 2.5rem; }
-.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
-.price-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.price-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
-.price-card.highlighted { border-color: var(--teal); background: linear-gradient(180deg, rgba(79,70,229,0.03) 0%, #FFFFFF 100%); box-shadow: 0 4px 20px rgba(79,70,229,0.1); }
-.price-card.highlighted::before { content: '最受歡迎'; display: block; font-size: 0.7rem; font-weight: 600; color: #fff; background: var(--teal); padding: 0.2rem 0.6rem; border-radius: 4px; margin: -0.5rem auto 1rem; width: fit-content; }
-.price-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.price-amount { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
-.price-amount span { font-size: 0.85rem; font-weight: 400; color: var(--text-3); }
-.price-features { margin-top: 1rem; font-size: 0.85rem; color: var(--text-3); line-height: 1.8; }
+/* ==================== TECHNOLOGY ==================== */
+.tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 900px; margin: 3rem auto 0; }
+
+.tech-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.75rem; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.tech-card:hover { border-color: var(--border-h); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+
+.tech-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.tech-card h4 .tech-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.tech-card:nth-child(1) h4 .tech-dot { background: var(--teal-b); }
+.tech-card:nth-child(2) h4 .tech-dot { background: var(--amber); }
+.tech-card:nth-child(3) h4 .tech-dot { background: var(--violet); }
+.tech-card:nth-child(4) h4 .tech-dot { background: var(--cyan); }
+
+.tech-card p { font-size: 0.95rem; color: var(--text-3); line-height: 1.7; }
 
 /* ==================== WHY CREDICA ==================== */
 .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 900px; margin: 3rem auto 0; }
@@ -274,15 +280,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   .flow-arrow { transform: rotate(90deg); }
   .vert-grid { grid-template-columns: 1fr 1fr; }
   .dash-metrics { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .nav-mid { display: none; }
-  .pricing-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 480px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-  .vert-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
@@ -302,18 +303,18 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <a href="index.html" class="logo">
     <img src="credica_logo.png" alt="Credica" style="width:34px;height:34px;border-radius:9px;">
     Credica
+    <span class="logo-tag">ENTERPRISE</span>
   </a>
   <div class="nav-mid">
-    <a href="#pain">管理痛點</a>
-    <a href="#features">功能介紹</a>
-    <a href="#scenes">適用場景</a>
-    <a href="#pricing">定價</a>
+    <a href="#pain">企業痛點</a>
+    <a href="#solution">解決方案</a>
+    <a href="#verticals">適用產業</a>
     <a href="#contact">聯繫我們</a>
   </div>
   <div class="nav-right">
-    <a href="index.html" class="nav-personal">&larr; 回個人版</a>
-    <a href="enterprise.html" class="nav-enterprise">企業合規方案</a>
-    <a href="https://dashboard.credica.app/signup?plan=free" class="nav-cta" style="text-decoration:none">免費開始</a>
+    <a href="index.html" class="nav-personal">← 回個人版</a>
+    <a href="business.html" class="nav-personal">組織管理方案</a>
+    <a href="#contact" class="nav-cta" style="text-decoration:none">預約諮詢</a>
   </div>
 </nav>
 
@@ -321,16 +322,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <section class="hero">
   <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
   <div class="hero-inner">
-    <div class="hero-badge">組織管理平台</div>
-    <h1>社團、社區、活動管理<br><span class="hl">不再手忙腳亂</span></h1>
+    <div class="hero-badge">企業合規方案</div>
+    <h1>從「相信你說的」<br>到<span class="hl">可驗證的合規事實</span></h1>
     <p class="hero-sub">
-      LINE 群組訊息找不到、收費對帳很痛苦、<br>
-      活動報到混亂、誰來誰沒來搞不清——<br>
-      Credica 一次解決組織管理的所有瑣事。
+      紙本證照查不完、過期沒人追、合規只靠人工抽查？<br>
+      Credica 企業方案讓每一張憑證可核發、可追蹤、可驗證。
     </p>
     <div class="hero-cta-row">
-      <a href="https://dashboard.credica.app/signup?plan=free" class="btn-primary">免費開始</a>
-      <a href="https://dashboard.credica.app/pricing" class="btn-secondary">比較方案</a>
+      <a href="#contact" class="btn-primary">預約產品諮詢</a>
+      <a href="#tech" class="btn-secondary">了解技術架構</a>
     </div>
   </div>
 </section>
@@ -338,23 +338,23 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <!-- ==================== PAIN POINTS ==================== -->
 <section id="pain" class="section">
   <div class="section-center">
-    <div class="section-label">管理現況</div>
+    <div class="section-label">企業現況</div>
     <div class="section-title">這些問題，你一定遇過</div>
     <div class="pain-grid">
       <div class="pain-card">
-        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3>LINE 群組管理崩潰</h3>
-        <p>重要訊息被洗掉、公告沒人看、報名統計靠截圖、退出群組就失聯——LINE 好用但不是管理工具。</p>
+        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>證照過期沒人知</h3>
+        <p>安全訓練過期了但人照樣進場、專業證照到期卻沒人追蹤——出事才發現，往往來不及。</p>
       </div>
       <div class="pain-card">
-        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg></div>
-        <h3>收費對帳是惡夢</h3>
-        <p>Excel 對帳、轉帳截圖比對、催繳靠人工、漏繳也不知道——每月花好幾天在對帳。</p>
+        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>驗證效率極低</h3>
+        <p>每次都要打電話到發證單位確認、翻紙本資料夾、人工比對影本——花大量時間在「確認你是你」。</p>
       </div>
       <div class="pain-card">
-        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3>活動辦了，成效說不清</h3>
-        <p>報到靠紙本簽到、出席率憑感覺、結束後沒有數據——辛苦辦活動卻說不出成果。</p>
+        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+        <h3>合規報告難產出</h3>
+        <p>稽核要報告時才開始整理——散落在 Excel、紙本、各系統。合規狀態永遠是「大概」。</p>
       </div>
     </div>
   </div>
@@ -363,124 +363,62 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <!-- ==================== SOLUTION FLOW ==================== -->
 <section id="solution" class="solution-section">
   <div class="solution-header">
-    <div class="section-label">怎麼開始</div>
-    <div class="section-title">三步驟，搞定組織管理</div>
-    <div class="section-desc">不需要技術能力，選擇場景就自動配好一切。</div>
+    <div class="section-label">Credica 企業方案</div>
+    <div class="section-title">三個角色，一個閉環</div>
+    <div class="section-desc">基於 W3C 國際標準，建構「核發 → 持有 → 驗證」的完整信任鏈。</div>
   </div>
   <div class="solution-flow">
     <div class="flow-node node-1">
       <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-      <h4>3 分鐘建立</h4>
-      <p>選擇場景類型<br>系統自動配置功能模組<br>LINE Bot、憑證模板</p>
+      <h4>企業核發</h4>
+      <p>透過管理後台批量核發<br>數位憑證，支援自訂<br>模板與到期管理</p>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-node node-2">
-      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <h4>LINE Bot 接管日常</h4>
-      <p>成員在 LINE 上查詢<br>報名、繳費回報<br>AI 7&times;24 自動回覆</p>
+      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+      <h4>個人持有</h4>
+      <p>員工在 Credica APP<br>接收憑證，自主管理<br>與出示</p>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-node node-3">
-      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-      <h4>Dashboard 掌握全局</h4>
-      <p>成員名單、出席率<br>繳費狀態、數位憑證<br>即時數據，一目了然</p>
+      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+      <h4>即時驗證</h4>
+      <p>閘門端秒級驗證<br>合規狀態即時呈現</p>
     </div>
   </div>
 </section>
 
-<!-- ==================== FEATURE SHOWCASE ==================== -->
-<section id="features" class="section">
+<!-- ==================== VERTICALS ==================== -->
+<section id="verticals" class="section">
   <div class="section-center">
-    <div class="section-label">功能介紹</div>
-    <div class="section-title">管理者需要的，<span class="hl">這裡都有</span></div>
-    <div class="section-desc">每個功能都針對組織管理的真實痛點而設計。</div>
-
-    <div class="pain-grid" style="margin-top:2.5rem;">
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(79,70,229,0.1);color:var(--teal);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        </div>
-        <h3>LINE AI 智慧助理</h3>
-        <p>不用另裝 APP，成員用 LINE 就能查活動、報名、回報繳費。AI 自動判斷意圖，24 小時服務。管理者省下每天回訊息的時間。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(6,182,212,0.1);color:var(--cyan);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-        </div>
-        <h3>數位會員證 / 出席證</h3>
-        <p>手機出示 QR Code 即可驗證身份。不用印卡、不怕忘帶。會員證到期自動提醒，管理零成本。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(139,92,246,0.1);color:var(--violet);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
-        </div>
-        <h3>繳費自動追蹤</h3>
-        <p>成員在 LINE 回報轉帳末五碼，系統自動記帳。管理者不用再一筆一筆核對，欠繳自動提醒。</p>
-      </div>
-    </div>
-
-    <div class="pain-grid" style="margin-top:1.25rem;">
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(245,158,11,0.1);color:var(--amber);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-        </div>
-        <h3>活動報名 + 簽到</h3>
-        <p>LINE 一鍵報名、現場 QR 簽到。出席率、候補人數即時更新。活動結束自動發出席證明。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(37,99,235,0.1);color:var(--blue);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <h3>身份映射 — 誰是誰</h3>
-        <p>LINE 暱稱自動對應真實姓名。重複帳號系統偵測，一鍵合併。從此不再搞不清「誰是誰」。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(244,63,94,0.1);color:var(--rose);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <h3>手機掃碼登入</h3>
-        <p>管理者用 Credica APP 掃碼登入 Dashboard。不用記密碼，安全可靠，隨時隨地管理。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== USE CASE SCENES ==================== -->
-<section id="scenes" class="section" style="background: linear-gradient(180deg, #EEF2FF 0%, #F8FAFC 100%);">
-  <div class="section-center">
-    <div class="section-label">適用場景</div>
-    <div class="section-title">不管什麼類型的組織，<span class="hl">都能用</span></div>
-    <div class="section-desc">選擇你的組織類型，系統自動配置最適合的功能模組。</div>
+    <div class="section-label">適用產業</div>
+    <div class="section-title">哪裡需要信任，哪裡就需要 Credica</div>
+    <div class="section-desc">從高風險場域到日常合規，Credica 企業方案適用於多種垂直市場。</div>
     <div class="vert-grid">
       <div class="vert-tile">
-        <div class="vert-icon">🏛️</div>
-        <div class="vert-name">社團 / 協會</div>
-        <div class="vert-desc">社費催繳、活動簽到<br>社員證——全部自動化</div>
+        <div class="vert-stat">105</div>
+        <div class="vert-name">營建工程</div>
+        <div class="vert-desc">年均職災死亡 105 人<br>證照門禁即時把關<br>不合規人員無法入場</div>
       </div>
       <div class="vert-tile">
-        <div class="vert-icon">🏠</div>
-        <div class="vert-name">社區 / 大樓</div>
-        <div class="vert-desc">管理費追蹤、訪客登記<br>數位住戶卡</div>
+        <div class="vert-stat">83萬</div>
+        <div class="vert-name">外籍勞動力</div>
+        <div class="vert-desc">在台移工 83 萬<br>工作證、體檢、訓練<br>憑證全生命週期管理</div>
       </div>
       <div class="vert-tile">
-        <div class="vert-icon">🏗️</div>
-        <div class="vert-name">營建工地</div>
-        <div class="vert-desc">入場證照核驗<br>安全訓練追蹤</div>
+        <div class="vert-stat">2026</div>
+        <div class="vert-name">ESG · CBAM</div>
+        <div class="vert-desc">碳邊境調整上路<br>供應鏈合規追溯<br>稽核數據隨時可查</div>
       </div>
       <div class="vert-tile">
-        <div class="vert-icon">🎪</div>
-        <div class="vert-name">活動 / 展會</div>
-        <div class="vert-desc">報名管理、QR 簽到<br>出席證明</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-icon">🏥</div>
+        <div class="vert-stat">跨院</div>
         <div class="vert-name">醫療機構</div>
-        <div class="vert-desc">醫事證照管理<br>合規訓練追蹤</div>
+        <div class="vert-desc">跨院醫護證照<br>即時查驗專科資格<br>訓練時數</div>
       </div>
       <div class="vert-tile">
-        <div class="vert-icon">🏢</div>
-        <div class="vert-name">企業 HR</div>
-        <div class="vert-desc">員工證、門禁管理<br>出勤紀錄</div>
+        <div class="vert-stat">1次</div>
+        <div class="vert-name">金融合規</div>
+        <div class="vert-desc">KYC 驗證一次<br>跨機構重複使用<br>減少合規成本</div>
       </div>
     </div>
   </div>
@@ -490,30 +428,30 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <section class="dash-section">
   <div class="section-center">
     <div class="section-label">管理面板預覽</div>
-    <div class="section-title">組織狀態，一眼掌握</div>
-    <div class="section-desc">登入 Dashboard 即時看到所有數據——成員、繳費、出席，不用再到處翻資料。</div>
+    <div class="section-title">合規狀態，一眼掌握</div>
+    <div class="section-desc">企業管理後台即時呈現合規數據——不是主觀評分，是可驗證的事實。</div>
   </div>
   <div class="dash-preview">
     <div class="dash-bar">
       <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
-      <span class="dash-url">dashboard.credica.app</span>
+      <span class="dash-url">dashboard.credica.app — Compliance Dashboard</span>
     </div>
     <div class="dash-body">
       <div class="dash-metrics">
         <div class="dm">
-          <div class="dm-label">成員數</div>
-          <div class="dm-value w">156</div>
-          <div class="dm-sub">Total Members</div>
+          <div class="dm-label">合規事件</div>
+          <div class="dm-value w">287</div>
+          <div class="dm-sub">Events Logged</div>
         </div>
         <div class="dm">
-          <div class="dm-label">本月繳費率</div>
-          <div class="dm-value t">87%</div>
-          <div class="dm-sub">Payment Rate</div>
+          <div class="dm-label">合規率</div>
+          <div class="dm-value t">98.5%</div>
+          <div class="dm-sub">Compliance Rate</div>
         </div>
         <div class="dm">
-          <div class="dm-label">出席率</div>
-          <div class="dm-value a">92%</div>
-          <div class="dm-sub">Attendance Rate</div>
+          <div class="dm-label">信賴區間</div>
+          <div class="dm-value a">96.2 – 99.5%</div>
+          <div class="dm-sub">95% Confidence Interval</div>
         </div>
       </div>
 
@@ -521,50 +459,44 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       <div class="dash-blur">
         <div class="dash-blur-content">
           <div class="dash-metrics">
-            <div class="dm"><div class="dm-label">活動數</div><div class="dm-value t">24</div></div>
-            <div class="dm"><div class="dm-label">已發憑證</div><div class="dm-value a">89</div></div>
-            <div class="dm"><div class="dm-label">待催繳</div><div class="dm-value w">12</div></div>
+            <div class="dm"><div class="dm-label">發行方多樣性</div><div class="dm-value t">12</div></div>
+            <div class="dm"><div class="dm-label">時間跨度</div><div class="dm-value a">18 months</div></div>
+            <div class="dm"><div class="dm-label">憑證完整度</div><div class="dm-value w">94.2%</div></div>
           </div>
         </div>
         <div class="dash-blur-overlay">
           <div class="blur-lock"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-          <div class="blur-text">更多功能等你探索</div>
-          <div class="blur-sub">免費開始，立即體驗</div>
+          <div class="blur-text">更多維度分析</div>
+          <div class="blur-sub">預約諮詢以了解完整功能</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== PRICING STRIP ==================== -->
-<section id="pricing" class="pricing-strip">
+<!-- ==================== TECHNOLOGY ==================== -->
+<section id="tech" class="section" style="background: linear-gradient(180deg, #EEF2FF 0%, #F8FAFC 100%);">
   <div class="section-center">
-    <div class="section-label">方案定價</div>
-    <div class="section-title">簡單透明，<span class="hl">免費開始</span></div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">Free</div>
-        <div class="price-amount">NT$0<span>/月</span></div>
-        <div class="price-features">30 位成員<br>10 張憑證<br>共用 LINE Bot</div>
+    <div class="section-label">技術架構</div>
+    <h2 class="section-title">企業級基礎設施，<span class="hl">開放標準</span></h2>
+    <p class="section-desc">基於國際標準打造，確保安全、隱私、互通性。</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h4><span class="tech-dot"></span>W3C Verifiable Credentials</h4>
+        <p>全球通用標準，非自建格式。確保跨系統、跨國互通。</p>
       </div>
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-amount">NT$990<span>/月</span></div>
-        <div class="price-features">200 位成員<br>100 張憑證<br>共用 LINE Bot</div>
+      <div class="tech-card">
+        <h4><span class="tech-dot"></span>零知識隱私架構</h4>
+        <p>驗證者只看到合規結果，不接觸員工個資。合規與隱私兼顧。</p>
       </div>
-      <div class="price-card highlighted">
-        <div class="price-name">Pro</div>
-        <div class="price-amount">NT$2,990<span>/月</span></div>
-        <div class="price-features">2,000 位成員<br>無限憑證<br>獨立 LINE Bot</div>
+      <div class="tech-card">
+        <h4><span class="tech-dot"></span>API 優先設計</h4>
+        <p>RESTful API + Webhook。可與現有 HR、ERP、門禁系統無縫整合。</p>
       </div>
-      <div class="price-card">
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount">專案報價</div>
-        <div class="price-features">客製功能<br>SLA 保障<br>專屬客服</div>
+      <div class="tech-card">
+        <h4><span class="tech-dot"></span>SLA 99.9% 可用性</h4>
+        <p>企業級基礎設施，專屬客戶經理，完整技術支援。</p>
       </div>
-    </div>
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="https://dashboard.credica.app/pricing" class="btn-secondary">比較完整方案 &rarr;</a>
     </div>
   </div>
 </section>
@@ -573,23 +505,23 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <section class="section">
   <div class="section-center">
     <div class="section-label">為什麼選 Credica</div>
-    <div class="section-title">讓管理變簡單的四個理由</div>
+    <div class="section-title">不只是工具，是信任基礎設施</div>
     <div class="why-grid">
       <div class="why-card">
-        <h4><span class="why-dot"></span>LINE 就是入口</h4>
-        <p>不需要成員另裝 APP。用 LINE 就能完成所有互動，導入零阻力。</p>
+        <h4><span class="why-dot"></span>國際標準，非封閉系統</h4>
+        <p>W3C VC + DID，避免供應商鎖定。您的數據與憑證永遠可攜帶。</p>
       </div>
       <div class="why-card">
-        <h4><span class="why-dot"></span>選場景就好，零設定</h4>
-        <p>不用研究怎麼設定。選擇你的組織類型，3 分鐘全部配好。</p>
+        <h4><span class="why-dot"></span>隱私法規合規</h4>
+        <p>符合台灣個資法、GDPR ready。零知識架構確保個資最小化。</p>
       </div>
       <div class="why-card">
-        <h4><span class="why-dot"></span>數位憑證國際標準</h4>
-        <p>基於 W3C Verifiable Credentials 標準。會員證不只是圖片，是可驗證的數位身份。</p>
+        <h4><span class="why-dot"></span>台灣市場深耕</h4>
+        <p>在地化、繁中、LINE 整合。針對台灣法規與業務場景設計。</p>
       </div>
       <div class="why-card">
-        <h4><span class="why-dot"></span>個人 APP 已上線</h4>
-        <p>管理者用 Credica APP 掃碼登入管理。成員只要 LINE。</p>
+        <h4><span class="why-dot"></span>漸進導入</h4>
+        <p>從單一場域開始，逐步擴展。個人 APP 已上線，員工端零學習成本。</p>
       </div>
     </div>
   </div>
@@ -599,8 +531,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <section id="contact" class="contact-section">
   <div class="contact-card">
     <div class="contact-header">
-      <h2>需要協助？聯繫我們</h2>
-      <p>有任何問題，歡迎留下資訊，我們會儘快回覆。</p>
+      <h2>預約企業方案諮詢</h2>
+      <p>留下您的資訊，我們會在 2 個工作天內與您聯繫。</p>
     </div>
     <form class="form-grid" onsubmit="handleSubmit(event)">
       <div class="form-group">
@@ -609,30 +541,31 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       </div>
       <div class="form-group">
         <label class="form-label">職稱</label>
-        <input type="text" class="form-input" placeholder="例：社團幹部">
+        <input type="text" class="form-input" placeholder="例：資訊部經理">
       </div>
       <div class="form-group">
-        <label class="form-label">組織名稱 *</label>
-        <input type="text" class="form-input" placeholder="您的組織或機構名稱" required>
+        <label class="form-label">公司名稱 *</label>
+        <input type="text" class="form-input" placeholder="您的公司或機構名稱" required>
       </div>
       <div class="form-group">
-        <label class="form-label">聯絡電話 *</label>
-        <input type="tel" class="form-input" placeholder="例：0912-345-678" required>
+        <label class="form-label">公司電話 *</label>
+        <input type="tel" class="form-input" placeholder="例：02-2345-6789" required>
       </div>
       <div class="form-group full">
         <label class="form-label">Email *</label>
-        <input type="email" class="form-input" placeholder="您的 Email" required>
+        <input type="email" class="form-input" placeholder="您的公司信箱" required>
       </div>
       <div class="form-group full">
-        <label class="form-label">您的組織類型</label>
+        <label class="form-label">您所在的產業</label>
         <select class="form-select">
-          <option value="" disabled selected>請選擇類型</option>
-          <option>社團 / 協會</option>
-          <option>社區 / 大樓管委會</option>
-          <option>補習班 / 教育機構</option>
-          <option>活動公司 / 展覽</option>
-          <option>教會 / 宗教團體</option>
-          <option>運動俱樂部</option>
+          <option value="" disabled selected>請選擇產業</option>
+          <option>營建工程</option>
+          <option>人力仲介 / 外籍勞動力</option>
+          <option>製造業 / ESG 供應鏈</option>
+          <option>醫療機構</option>
+          <option>金融 / 保險</option>
+          <option>教育 / 培訓機構</option>
+          <option>政府 / 公部門</option>
           <option>其他</option>
         </select>
       </div>
@@ -649,13 +582,13 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   </div>
 </section>
 
-<!-- ==================== BACK STRIP — ENTERPRISE ==================== -->
+<!-- ==================== BACK TO BUSINESS ==================== -->
 <div class="back-strip">
-  <h3>需要企業合規方案？</h3>
-  <p>營建工地門禁、醫療證照管理、ESG 供應鏈合規——大型企業專屬方案。</p>
-  <a href="enterprise.html" class="btn-back">
-    前往企業方案
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  <h3>需要中小組織管理方案？</h3>
+  <p>社團社費管理、社區門禁、活動報名——LINE Bot + Dashboard 3 分鐘開通。</p>
+  <a href="business.html" class="btn-back">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    前往組織管理方案
   </a>
 </div>
 
@@ -665,7 +598,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     <a href="privacy.html">隱私權政策</a>
     <a href="terms.html">使用條款</a>
     <a href="index.html">個人版</a>
-    <a href="enterprise.html">企業合規方案</a>
+    <a href="business.html">組織管理方案</a>
     <a href="mailto:support@credica.app">support@credica.app</a>
   </div>
 </footer>
