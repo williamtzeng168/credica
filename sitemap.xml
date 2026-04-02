@@ -6,22 +6,27 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://credica.app/business</loc>
+    <loc>https://credica.app/business.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://credica.app/enterprise.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://credica.app/privacy</loc>
+    <loc>https://credica.app/privacy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://credica.app/terms</loc>
+    <loc>https://credica.app/terms.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://credica.app/support</loc>
+    <loc>https://credica.app/support.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
