@@ -128,6 +128,31 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .flow-arrow { color: var(--text-3); font-size: 1.5rem; animation: arrowPulse 2s ease-in-out infinite; }
 @keyframes arrowPulse { 0%,100% { opacity: 0.3; transform: translateX(0); } 50% { opacity: 0.7; transform: translateX(5px); } }
 
+/* ==================== FEATURE TABLE ==================== */
+.ftable-wrap { max-width: 1100px; margin: 3rem auto 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ftable { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.ftable th, .ftable td { padding: 0.85rem 0.75rem; text-align: center; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+.ftable thead th { background: #F1F5F9; color: var(--text-2); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.02em; position: sticky; top: 0; }
+.ftable thead th:first-child { text-align: left; padding-left: 1.25rem; min-width: 180px; }
+.ftable tbody td:first-child { text-align: left; padding-left: 1.25rem; font-weight: 500; color: var(--text); }
+.ftable tbody tr:last-child td { border-bottom: none; }
+.ftable tbody tr:hover { background: rgba(79,70,229,0.02); }
+.ftable .check { color: var(--teal); font-weight: 700; font-size: 1.1rem; }
+.ftable .dash { color: #CBD5E1; }
+.ftable .ft-desc { display: block; font-size: 0.72rem; color: var(--text-3); font-weight: 400; margin-top: 0.15rem; line-height: 1.35; }
+
+/* 4-things summary cards */
+.four-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1100px; margin: 2.5rem auto 0; }
+.four-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.25rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.four-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.four-num { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; font-size: 1rem; font-weight: 800; color: #fff; }
+.four-card:nth-child(1) .four-num { background: var(--teal); }
+.four-card:nth-child(2) .four-num { background: var(--amber); }
+.four-card:nth-child(3) .four-num { background: var(--violet); }
+.four-card:nth-child(4) .four-num { background: var(--cyan); }
+.four-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+.four-card p { font-size: 0.82rem; color: var(--text-3); line-height: 1.5; }
+
 /* ==================== VERTICALS ==================== */
 .vert-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 1100px; margin: 3rem auto 0; }
 
@@ -278,11 +303,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   .form-grid { grid-template-columns: 1fr; }
   .nav-mid { display: none; }
   .pricing-grid { grid-template-columns: 1fr 1fr; }
+  .four-grid { grid-template-columns: 1fr 1fr; }
+  .ftable { font-size: 0.75rem; }
+  .ftable th, .ftable td { padding: 0.6rem 0.4rem; }
 }
 
 @media (max-width: 480px) {
   .pricing-grid { grid-template-columns: 1fr; }
   .vert-grid { grid-template-columns: 1fr; }
+  .four-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
@@ -388,101 +417,156 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   </div>
 </section>
 
-<!-- ==================== FEATURE SHOWCASE ==================== -->
+<!-- ==================== CREDICA 做 4 件事 ==================== -->
 <section id="features" class="section">
   <div class="section-center">
-    <div class="section-label">功能介紹</div>
-    <div class="section-title">管理者需要的，<span class="hl">這裡都有</span></div>
-    <div class="section-desc">每個功能都針對組織管理的真實痛點而設計。</div>
+    <div class="section-label">功能總覽</div>
+    <div class="section-title">Credica 幫你做 <span class="hl">4 件事</span></div>
+    <div class="section-desc">不管你是社團、社區還是活動主辦，管理組織就是這四件事。</div>
 
-    <div class="pain-grid" style="margin-top:2.5rem;">
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(79,70,229,0.1);color:var(--teal);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        </div>
-        <h3>LINE AI 智慧助理</h3>
-        <p>不用另裝 APP，成員用 LINE 就能查活動、報名、回報繳費。AI 自動判斷意圖，24 小時服務。管理者省下每天回訊息的時間。</p>
+    <div class="four-grid">
+      <div class="four-card">
+        <div class="four-num">1</div>
+        <h4>管人</h4>
+        <p>知道誰是誰<br>誰加入了、誰還沒繳費</p>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(6,182,212,0.1);color:var(--cyan);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-        </div>
-        <h3>數位會員證 / 出席證</h3>
-        <p>手機出示 QR Code 即可驗證身份。不用印卡、不怕忘帶。會員證到期自動提醒，管理零成本。</p>
+      <div class="four-card">
+        <div class="four-num">2</div>
+        <h4>管錢</h4>
+        <p>收費通知、繳費紀錄<br>對帳自動化</p>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(139,92,246,0.1);color:var(--violet);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
-        </div>
-        <h3>繳費自動追蹤</h3>
-        <p>成員在 LINE 回報轉帳末五碼，系統自動記帳。管理者不用再一筆一筆核對，欠繳自動提醒。</p>
+      <div class="four-card">
+        <div class="four-num">3</div>
+        <h4>管活動</h4>
+        <p>報名、簽到、出席紀錄<br>證明自動發放</p>
       </div>
-    </div>
-
-    <div class="pain-grid" style="margin-top:1.25rem;">
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(245,158,11,0.1);color:var(--amber);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-        </div>
-        <h3>活動報名 + 簽到</h3>
-        <p>LINE 一鍵報名、現場 QR 簽到。出席率、候補人數即時更新。活動結束自動發出席證明。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(37,99,235,0.1);color:var(--blue);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <h3>身份映射 — 誰是誰</h3>
-        <p>LINE 暱稱自動對應真實姓名。重複帳號系統偵測，一鍵合併。從此不再搞不清「誰是誰」。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon" style="background:rgba(244,63,94,0.1);color:var(--rose);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <h3>手機掃碼登入</h3>
-        <p>管理者用 Credica APP 掃碼登入 Dashboard。不用記密碼，安全可靠，隨時隨地管理。</p>
+      <div class="four-card">
+        <div class="four-num">4</div>
+        <h4>管溝通</h4>
+        <p>LINE Bot 自動回覆<br>公告推播、24 小時服務</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== USE CASE SCENES ==================== -->
+<!-- ==================== FEATURE × SCENE MATRIX ==================== -->
 <section id="scenes" class="section" style="background: linear-gradient(180deg, #EEF2FF 0%, #F8FAFC 100%);">
   <div class="section-center">
-    <div class="section-label">適用場景</div>
-    <div class="section-title">不管什麼類型的組織，<span class="hl">都能用</span></div>
-    <div class="section-desc">選擇你的組織類型，系統自動配置最適合的功能模組。</div>
-    <div class="vert-grid">
-      <div class="vert-tile">
-        <div class="vert-icon">🏛️</div>
-        <div class="vert-name">社團 / 協會</div>
-        <div class="vert-desc">社費催繳、活動簽到<br>社員證——全部自動化</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-icon">🏠</div>
-        <div class="vert-name">社區 / 大樓</div>
-        <div class="vert-desc">管理費追蹤、訪客登記<br>數位住戶卡</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-icon">🏗️</div>
-        <div class="vert-name">營建工地</div>
-        <div class="vert-desc">入場證照核驗<br>安全訓練追蹤</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-icon">🎪</div>
-        <div class="vert-name">活動 / 展會</div>
-        <div class="vert-desc">報名管理、QR 簽到<br>出席證明</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-icon">🏥</div>
-        <div class="vert-name">醫療機構</div>
-        <div class="vert-desc">醫事證照管理<br>合規訓練追蹤</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-icon">🏢</div>
-        <div class="vert-name">企業 HR</div>
-        <div class="vert-desc">員工證、門禁管理<br>出勤紀錄</div>
-      </div>
+    <div class="section-label">功能 × 場景對照</div>
+    <div class="section-title">一張表看懂 <span class="hl">你需要什麼</span></div>
+    <div class="section-desc">選擇你的組織類型，系統自動開通對應功能。不用自己設定。</div>
+
+    <div class="ftable-wrap">
+      <table class="ftable">
+        <thead>
+          <tr>
+            <th>功能</th>
+            <th>🏛️<br>社團</th>
+            <th>🏠<br>社區</th>
+            <th>🎪<br>活動</th>
+            <th>🏗️<br>工地</th>
+            <th>🏥<br>醫療</th>
+            <th>🏢<br>企業</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LINE 智慧助理<span class="ft-desc">成員用 LINE 問問題，AI 自動回覆</span></td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>成員名冊<span class="ft-desc">LINE 暱稱自動對應真名，重複自動偵測</span></td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>繳費追蹤<span class="ft-desc">LINE 回報轉帳末五碼，系統自動記帳</span></td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+          </tr>
+          <tr>
+            <td>活動報名<span class="ft-desc">LINE 一鍵報名，自動候補管理</span></td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+          </tr>
+          <tr>
+            <td>QR 簽到<span class="ft-desc">現場掃碼，即時出席率統計</span></td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+          </tr>
+          <tr>
+            <td>數位會員證<span class="ft-desc">手機出示 QR Code，可驗證真偽</span></td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>出席證明<span class="ft-desc">活動結束自動發放數位證明</span></td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+          </tr>
+          <tr>
+            <td>門禁管理<span class="ft-desc">QR Code 掃碼進出，紀錄自動留存</span></td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>合規追蹤<span class="ft-desc">證照到期提醒、訓練時數紀錄</span></td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="dash">&mdash;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="dash">&mdash;</td>
+          </tr>
+          <tr>
+            <td>管理後台<span class="ft-desc">成員、繳費、活動、統計一站管理</span></td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <p style="text-align:center;font-size:0.85rem;color:var(--text-3);margin-top:1.5rem;">
+      &#10003; = 選擇該場景時<strong>自動開通</strong>，不用另外設定
+    </p>
   </div>
 </section>
 
