@@ -28,6 +28,7 @@ COPY robots.txt /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
 COPY lang/ /usr/share/nginx/html/lang/
 COPY auth/ /usr/share/nginx/html/auth/
+COPY .well-known/ /usr/share/nginx/html/.well-known/
 
 EXPOSE 80
 

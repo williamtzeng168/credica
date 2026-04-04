@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.credica.app",
+      "sha256_cert_fingerprints": [
+        "3E:7E:BF:A1:F0:84:04:09:1C:61:C7:5D:7C:83:89:B0:44:87:E9:F9:2E:AC:EE:9F:04:BE:75:48:51:51:80:2D",
+        "42:CB:44:8A:CB:53:2A:81:92:AC:11:19:11:0B:D3:4C:F2:B5:9D:16:55:A1:FB:86:DE:32:8E:25:5E:81:52:70"
+      ]
+    }
+  }
+]
