@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>互動式操作教學 — Credica</title>
+<meta name="description" content="透過雙 iPhone 模擬器，互動式學習 Credica 數位名片的交換流程、人脈管理、憑證驗證。">
+<meta name="keywords" content="Credica 教學, 數位名片教學, 名片交換操作, Credica 操作指南">
+<meta property="og:title" content="互動式操作教學 — Credica">
+<meta property="og:description" content="跟著步驟學會 Credica：雙手機模擬真實交換場景。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://credica.app/tutorial">
+<meta property="og:image" content="https://credica.app/og-image.png">
+<link rel="canonical" href="https://credica.app/tutorial">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #F8FAFC;
+  --surface: #FFFFFF;
+  --card: #FFFFFF;
+  --border: rgba(0,0,0,0.07);
+  --teal: #4F46E5;
+  --teal-g: #6366F1;
+  --text: #1E293B;
+  --text-2: #475569;
+  --text-3: #64748B;
+  --violet: #8B5CF6;
+  --amber: #D97706;
+  --rose: #E11D48;
+  --blue: #2563EB;
+  --green: #10B981;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg, #F8FAFC 0%, #EEF2FF 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============ NAV ============ */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 22px;
+  color: var(--teal);
+  text-decoration: none;
+}
+.logo img { width: 32px; height: 32px; }
+.nav-mid { display: flex; gap: 28px; }
+.nav-mid a {
+  color: var(--text-2); text-decoration: none; font-size: 15px; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-mid a:hover, .nav-mid a.active { color: var(--teal); }
+.nav-dl {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border-radius: 10px;
+  background: var(--teal); color: white; text-decoration: none;
+  font-weight: 600; font-size: 14px;
+  transition: transform 0.2s;
+}
+.nav-dl:hover { transform: translateY(-1px); }
+.nav-dl svg { width: 16px; height: 16px; }
+
+/* ============ HERO ============ */
+.hero {
+  text-align: center;
+  padding: 48px 24px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  background: rgba(79,70,229,0.08);
+  color: var(--teal); font-size: 13px; font-weight: 600;
+  margin-bottom: 16px;
+}
+.hero-chip::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.hero h1 .hl {
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  color: var(--text-2); font-size: 17px; line-height: 1.6;
+  max-width: 640px; margin: 0 auto;
+}
+
+/* ============ STEP NAV ============ */
+.step-nav-bar {
+  max-width: 900px;
+  margin: 24px auto 8px;
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.step-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  font-weight: 600; font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.step-btn:hover:not(:disabled) {
+  background: var(--teal);
+  color: white;
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+.step-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.step-btn.primary {
+  background: var(--teal);
+  color: white;
+  border-color: var(--teal);
+  box-shadow: 0 4px 12px rgba(79,70,229,0.25);
+}
+.step-btn.primary:hover:not(:disabled) {
+  background: var(--teal-g);
+}
+.step-counter {
+  padding: 8px 16px;
+  background: rgba(79,70,229,0.08);
+  border-radius: 10px;
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 100px; text-align: center;
+}
+
+/* ============ SIM STAGE ============ */
+.sim-stage {
+  display: flex; justify-content: center; align-items: flex-start;
+  gap: 40px;
+  padding: 32px 24px;
+  flex-wrap: wrap;
+}
+.phone-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.phone-label {
+  font-size: 15px; font-weight: 600; color: var(--text-2);
+  display: flex; align-items: center; gap: 8px;
+}
+.phone-label .avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 13px;
+}
+.phone-label .avatar.a { background: linear-gradient(135deg, #4F46E5, #8B5CF6); }
+.phone-label .avatar.b { background: linear-gradient(135deg, #E11D48, #F59E0B); }
+.phone-label.active { color: var(--teal); }
+.phone-label.active::after {
+  content: '← 當前操作'; margin-left: 8px;
+  font-size: 12px; padding: 2px 8px; border-radius: 6px;
+  background: var(--teal); color: white;
+  animation: pulse 1.5s infinite;
+}
+
+/* ============ iPHONE FRAME ============ */
+.iphone {
+  width: 340px; height: 690px;
+  background: #0A0A0A;
+  border-radius: 52px;
+  padding: 10px;
+  box-shadow:
+    0 0 0 2px #1a1a1a,
+    0 30px 60px rgba(0,0,0,0.25),
+    0 12px 24px rgba(79,70,229,0.12);
+  position: relative;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.iphone.active {
+  box-shadow:
+    0 0 0 2px #1a1a1a,
+    0 0 0 4px var(--teal),
+    0 30px 60px rgba(79,70,229,0.35);
+  transform: translateY(-4px);
+}
+.iphone-screen {
+  width: 100%; height: 100%;
+  background: white;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 20px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 30px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 50;
+}
+
+/* Status bar */
+.status-bar {
+  height: 48px;
+  padding: 14px 28px 0;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  font-size: 13px; font-weight: 600;
+  color: #000;
+  flex-shrink: 0;
+}
+.status-right {
+  display: flex; gap: 4px; align-items: center;
+}
+.status-right svg { width: 14px; height: 14px; }
+
+/* App screens */
+.app-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: #F8FAFC;
+}
+.app-body::-webkit-scrollbar { display: none; }
+.app-screen {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  overflow-y: auto;
+}
+.app-screen::-webkit-scrollbar { display: none; }
+.app-screen.visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* ============ APP HEADER ============ */
+.app-header {
+  padding: 12px 20px 16px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.app-header.purple {
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  color: white; border-bottom: none;
+}
+.app-header h2 {
+  font-size: 17px; font-weight: 700;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.app-header .icon-btn {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(79,70,229,0.08);
+  color: var(--teal);
+  cursor: pointer;
+}
+.app-header.purple .icon-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+.app-header .icon-btn svg { width: 16px; height: 16px; }
+.app-header .back {
+  background: transparent;
+  color: var(--text);
+  font-size: 14px; font-weight: 500;
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer;
+  padding: 4px 8px; margin-left: -8px;
+  border-radius: 6px;
+}
+.app-header.purple .back { color: white; }
+
+/* ============ APP CONTENT ============ */
+.app-content {
+  padding: 16px;
+  flex: 1;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* ---------- HOME ---------- */
+.home-hero {
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  border-radius: 20px;
+  padding: 18px;
+  color: white;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.home-hero::before {
+  content: ''; position: absolute;
+  top: -50px; right: -50px;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+.home-hero .greet { font-size: 13px; opacity: 0.9; margin-bottom: 4px; }
+.home-hero .name { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+.home-hero .title { font-size: 12px; opacity: 0.9; margin-bottom: 14px; }
+.home-hero .stats {
+  display: flex; gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 12px;
+}
+.home-hero .stat { flex: 1; }
+.home-hero .stat .num { font-size: 18px; font-weight: 700; }
+.home-hero .stat .lbl { font-size: 11px; opacity: 0.85; }
+
+.quick-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.quick-btn {
+  background: white;
+  border-radius: 14px;
+  padding: 12px 6px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.quick-btn:active { transform: scale(0.95); background: #F8FAFC; }
+.quick-btn .ic {
+  width: 36px; height: 36px;
+  margin: 0 auto 6px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.quick-btn .ic svg { width: 18px; height: 18px; }
+.quick-btn.p1 .ic { background: rgba(79,70,229,0.1); color: var(--teal); }
+.quick-btn.p2 .ic { background: rgba(16,185,129,0.1); color: var(--green); }
+.quick-btn.p3 .ic { background: rgba(139,92,246,0.1); color: var(--violet); }
+.quick-btn.p4 .ic { background: rgba(225,29,72,0.1); color: var(--rose); }
+.quick-btn .lbl { font-size: 11px; font-weight: 600; color: var(--text); }
+
+.section-title {
+  font-size: 14px; font-weight: 700; color: var(--text);
+  margin-bottom: 10px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.section-title a { color: var(--teal); font-size: 12px; font-weight: 500; }
+
+.contact-card {
+  background: white;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 12px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.contact-card:active { background: #F1F5F9; }
+.contact-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 15px;
+  flex-shrink: 0;
+}
+.contact-info { flex: 1; min-width: 0; }
+.contact-info .n { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+.contact-info .t { font-size: 11px; color: var(--text-3); }
+.temperature {
+  padding: 3px 8px; border-radius: 100px;
+  font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; gap: 3px;
+}
+.temperature.cold { background: #DBEAFE; color: #1E40AF; }
+.temperature.warm { background: #FEF3C7; color: #92400E; }
+.temperature.hot { background: #FEE2E2; color: #991B1B; }
+
+/* ---------- SHOW QR ---------- */
+.qr-stage {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #EEF2FF 0%, white 100%);
+}
+.qr-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+  width: 100%;
+}
+.qr-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 22px;
+}
+.qr-name { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+.qr-title { font-size: 12px; color: var(--text-3); margin-bottom: 16px; }
+.qr-code-box {
+  width: 200px; height: 200px;
+  margin: 0 auto;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 10px;
+  position: relative;
+}
+.qr-code-box svg { width: 100%; height: 100%; }
+.qr-hint {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+.qr-hint strong { color: var(--teal); }
+
+/* ---------- SCAN ---------- */
+.scan-stage {
+  flex: 1;
+  background: #000;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.scan-viewfinder {
+  width: 220px; height: 220px;
+  position: relative;
+}
+.scan-viewfinder::before, .scan-viewfinder::after,
+.scan-viewfinder .c1, .scan-viewfinder .c2 {
+  content: '';
+  position: absolute;
+  width: 32px; height: 32px;
+  border: 3px solid var(--teal);
+}
+.scan-viewfinder::before { top: 0; left: 0; border-right: none; border-bottom: none; border-top-left-radius: 8px; }
+.scan-viewfinder::after { top: 0; right: 0; border-left: none; border-bottom: none; border-top-right-radius: 8px; }
+.scan-viewfinder .c1 { bottom: 0; left: 0; border-right: none; border-top: none; border-bottom-left-radius: 8px; }
+.scan-viewfinder .c2 { bottom: 0; right: 0; border-left: none; border-top: none; border-bottom-right-radius: 8px; }
+.scan-line {
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  animation: scanMove 2s ease-in-out infinite;
+}
+@keyframes scanMove {
+  0%, 100% { top: 5%; }
+  50% { top: 95%; }
+}
+.scan-hint {
+  position: absolute;
+  bottom: 50px; left: 0; right: 0;
+  text-align: center;
+  color: white;
+  font-size: 13px;
+  opacity: 0.9;
+}
+.scan-hint strong { color: var(--teal); }
+.scan-simulate {
+  position: absolute;
+  bottom: 12px; left: 50%; transform: translateX(-50%);
+  padding: 8px 16px;
+  background: var(--teal);
+  color: white;
+  border: none; border-radius: 10px;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  animation: pulse 2s infinite;
+}
+
+/* ---------- PREVIEW ---------- */
+.preview-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+.preview-header {
+  height: 80px;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  position: relative;
+}
+.preview-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: white;
+  padding: 3px;
+  position: absolute;
+  bottom: -36px; left: 16px;
+}
+.preview-avatar .inner {
+  width: 100%; height: 100%; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 26px;
+}
+.preview-body {
+  padding: 46px 16px 16px;
+}
+.preview-name { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+.preview-title { font-size: 12px; color: var(--text-3); margin-bottom: 14px; }
+.preview-fields {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.preview-field {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px; border-radius: 10px;
+  background: #F8FAFC;
+}
+.preview-field .fi {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(79,70,229,0.1); color: var(--teal);
+  flex-shrink: 0;
+}
+.preview-field .fi svg { width: 14px; height: 14px; }
+.preview-field .fk { font-size: 10px; color: var(--text-3); margin-bottom: 2px; }
+.preview-field .fv { font-size: 13px; font-weight: 600; color: var(--text); }
+
+.accept-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  color: white;
+  border: none; border-radius: 14px;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+  animation: pulse 2s infinite;
+}
+.accept-btn.secondary {
+  background: white;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  margin-top: 8px;
+  animation: none;
+}
+
+/* ---------- SUCCESS ---------- */
+.success-stage {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 32px 24px; text-align: center;
+}
+.success-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--green);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  animation: popIn 0.4s var(--ease);
+}
+.success-icon svg { width: 40px; height: 40px; }
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.success-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.success-desc { font-size: 13px; color: var(--text-3); margin-bottom: 24px; }
+
+/* ---------- CONTACT DETAIL ---------- */
+.detail-cover {
+  height: 120px;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  position: relative;
+}
+.detail-avatar {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: white; padding: 4px;
+  position: absolute;
+  bottom: -44px; left: 50%; transform: translateX(-50%);
+}
+.detail-avatar .inner {
+  width: 100%; height: 100%; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 32px;
+}
+.detail-body { padding: 56px 16px 16px; text-align: center; }
+.detail-body .n { font-size: 20px; font-weight: 700; }
+.detail-body .t { font-size: 13px; color: var(--text-3); margin-bottom: 14px; }
+
+.thermo-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid var(--border);
+}
+.thermo-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px;
+}
+.thermo-head .t { font-size: 13px; font-weight: 700; }
+.thermo-head .v { font-size: 11px; color: var(--text-3); }
+.thermo-bar {
+  height: 10px; border-radius: 100px;
+  background: linear-gradient(90deg, #DBEAFE 0%, #FEF3C7 50%, #FEE2E2 100%);
+  position: relative;
+  margin-bottom: 8px;
+}
+.thermo-marker {
+  position: absolute;
+  top: 50%; transform: translate(-50%, -50%);
+  width: 18px; height: 18px;
+  background: white; border: 3px solid var(--teal);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+  transition: left 0.8s var(--ease);
+}
+.thermo-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: var(--text-3);
+}
+.thermo-desc {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--text-2);
+  line-height: 1.5;
+}
+
+.action-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+.action-row .quick-btn { padding: 10px 4px; }
+.action-row .quick-btn .ic { width: 32px; height: 32px; }
+.action-row .quick-btn .lbl { font-size: 10px; }
+
+.info-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+}
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0;
+  font-size: 12px;
+}
+.info-row + .info-row { border-top: 1px solid var(--border); }
+.info-row .k { color: var(--text-3); }
+.info-row .v { color: var(--text); font-weight: 500; }
+
+/* ---------- CREDENTIALS ---------- */
+.cred-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cred-card:active { background: #F1F5F9; }
+.cred-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+}
+.cred-icon.a { background: linear-gradient(135deg, var(--teal), var(--violet)); }
+.cred-icon.b { background: linear-gradient(135deg, var(--amber), #F59E0B); }
+.cred-icon.c { background: linear-gradient(135deg, var(--green), #22C55E); }
+.cred-icon svg { width: 22px; height: 22px; }
+.cred-info { flex: 1; min-width: 0; }
+.cred-info .n { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+.cred-info .i { font-size: 11px; color: var(--text-3); }
+.cred-badge {
+  padding: 3px 8px; border-radius: 100px;
+  font-size: 10px; font-weight: 700;
+  background: rgba(16,185,129,0.12); color: var(--green);
+}
+
+/* ---------- CREDENTIAL DETAIL ---------- */
+.cred-big {
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  border-radius: 18px;
+  padding: 20px;
+  color: white;
+  margin: 0 16px 16px;
+  box-shadow: 0 12px 24px rgba(79,70,229,0.25);
+}
+.cred-big .type { font-size: 11px; opacity: 0.85; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+.cred-big .name { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+.cred-big .holder { font-size: 13px; opacity: 0.9; margin-bottom: 18px; }
+.cred-big .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cred-big .fld .k { font-size: 10px; opacity: 0.7; }
+.cred-big .fld .v { font-size: 12px; font-weight: 600; }
+
+.present-btn {
+  width: calc(100% - 32px);
+  margin: 0 16px 12px;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  color: white;
+  border: none; border-radius: 14px;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 8px 20px rgba(79,70,229,0.25);
+}
+
+/* Verify view */
+.verify-ok-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px;
+  text-align: center;
+  border: 2px solid var(--green);
+}
+.verify-ok-card .ic {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(16,185,129,0.12); color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px;
+}
+.verify-ok-card .ic svg { width: 32px; height: 32px; }
+.verify-ok-card .t { font-size: 15px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+.verify-ok-card .d { font-size: 12px; color: var(--text-3); }
+
+/* ---------- PROFILE ---------- */
+.profile-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+}
+.profile-card .avatar-lg {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 20px;
+  flex-shrink: 0;
+}
+.profile-info { flex: 1; }
+.profile-info .n { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.profile-info .t { font-size: 12px; color: var(--text-3); }
+
+.menu-list {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.menu-item {
+  padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 13px;
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item:active { background: #F8FAFC; }
+.menu-item .mi-ic {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal);
+  background: rgba(79,70,229,0.08);
+}
+.menu-item .mi-ic svg { width: 15px; height: 15px; }
+.menu-item .mi-t { flex: 1; font-weight: 500; }
+.menu-item .mi-r { color: var(--text-3); font-size: 11px; }
+
+/* ============ TAB BAR ============ */
+.tab-bar {
+  height: 66px;
+  padding: 8px 0 16px;
+  background: white;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-around; align-items: center;
+  flex-shrink: 0;
+}
+.tab-item {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  cursor: pointer;
+  padding: 4px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.tab-item svg { width: 22px; height: 22px; color: var(--text-3); }
+.tab-item .lbl { font-size: 10px; color: var(--text-3); font-weight: 500; }
+.tab-item.active svg, .tab-item.active .lbl { color: var(--teal); }
+.tab-item .scan-fab {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  display: flex; align-items: center; justify-content: center;
+  margin-top: -10px;
+  box-shadow: 0 6px 14px rgba(79,70,229,0.4);
+}
+.tab-item .scan-fab svg { color: white; width: 20px; height: 20px; }
+
+/* Home indicator */
+.home-indicator {
+  position: absolute;
+  bottom: 6px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 4px;
+  background: #000;
+  border-radius: 100px;
+  z-index: 60;
+}
+
+/* ============ NOTIFICATION ============ */
+.toast {
+  position: absolute;
+  top: 60px; left: 16px; right: 16px;
+  background: rgba(15,23,42,0.95);
+  color: white;
+  padding: 12px 14px;
+  border-radius: 14px;
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s var(--ease);
+  z-index: 70;
+  backdrop-filter: blur(10px);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast .ic {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.toast .ic svg { width: 16px; height: 16px; color: white; }
+.toast .t { font-size: 12px; font-weight: 700; }
+.toast .d { font-size: 10px; opacity: 0.8; }
+
+/* Highlight ring */
+.highlight-ring {
+  position: relative;
+}
+.highlight-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--teal);
+  border-radius: inherit;
+  animation: ringPulse 1.5s infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+@keyframes ringPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(79,70,229,0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(79,70,229,0); }
+}
+
+/* ============ STEP PANEL ============ */
+.step-panel {
+  max-width: 900px;
+  margin: 8px auto 64px;
+  padding: 24px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(15,23,42,0.06);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.step-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 10px;
+}
+.step-number {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--teal); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  flex-shrink: 0;
+}
+.step-desc {
+  color: var(--text-2); font-size: 15px; line-height: 1.7;
+  margin-bottom: 12px;
+}
+.step-hint {
+  padding: 12px 14px;
+  background: linear-gradient(135deg, rgba(79,70,229,0.06), rgba(139,92,246,0.06));
+  border-left: 3px solid var(--teal);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.step-hint::before { content: '💡'; flex-shrink: 0; }
+
+/* ============ PROGRESS BAR ============ */
+.progress-bar {
+  max-width: 900px;
+  margin: 16px auto 0;
+  padding: 0 24px;
+}
+.progress-track {
+  height: 6px; border-radius: 100px;
+  background: rgba(79,70,229,0.12);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--violet));
+  border-radius: 100px;
+  transition: width 0.4s var(--ease);
+}
+
+/* ============ FOOTER CTA ============ */
+.cta-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  border-radius: 24px;
+  color: white;
+}
+.cta-section h2 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+.cta-section p { opacity: 0.9; margin-bottom: 20px; }
+.cta-section .dl {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 12px;
+  background: white; color: var(--teal);
+  font-weight: 700; font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.cta-section .dl:hover { transform: translateY(-2px); }
+
+/* ============ MOBILE ============ */
+.mobile-phone-tabs {
+  display: none;
+  max-width: 360px;
+  margin: 0 auto 16px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 4px;
+  gap: 4px;
+}
+.mobile-phone-tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-family: inherit; font-weight: 600; font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.mobile-phone-tabs button.active {
+  background: var(--teal); color: white;
+}
+
+@media (max-width: 820px) {
+  nav { padding: 12px 16px; }
+  .nav-mid { display: none; }
+  .sim-stage { gap: 0; padding: 16px; display: flex; }
+  .mobile-phone-tabs { display: flex; }
+  .phone-wrap { display: none; }
+  .phone-wrap.mobile-active { display: flex; }
+  .iphone { width: 300px; height: 610px; border-radius: 46px; }
+  .iphone-screen { border-radius: 38px; }
+  .phone-label { font-size: 13px; }
+  .step-panel { margin: 8px 16px 40px; padding: 18px; }
+  .hero { padding: 28px 16px 12px; }
+  .step-nav-bar { padding: 0 16px; gap: 10px; }
+  .step-btn { padding: 9px 14px; font-size: 13px; }
+  .cta-section { margin: 24px 16px; padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img src="credica_logo.png" alt="Credica Logo">
+    Credica
+  </a>
+  <div class="nav-mid">
+    <a href="index.html#features">功能</a>
+    <a href="index.html#group">群組交換</a>
+    <a href="index.html#scenes">場景</a>
+    <a href="tutorial.html" class="active">教學</a>
+    <a href="business.html">組織管理</a>
+    <a href="https://dashboard.credica.app/pricing">定價</a>
+  </div>
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    下載 App
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-chip">互動式操作教學</div>
+  <h1>跟著兩支手機，<span class="hl">三分鐘學會</span> Credica</h1>
+  <p>雙 iPhone 模擬器，模擬真實交換名片的場景。點擊步驟按鈕或直接操作手機，體驗 Credica 的完整流程。</p>
+</section>
+
+<div class="progress-bar">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+  </div>
+</div>
+
+<div class="step-nav-bar">
+  <button class="step-btn" id="prevBtn">← 上一步</button>
+  <div class="step-counter" id="stepCounter">第 1 / 12 步</div>
+  <button class="step-btn primary" id="nextBtn">下一步 →</button>
+  <button class="step-btn" id="resetBtn">🔄 重置</button>
+</div>
+
+<div class="mobile-phone-tabs">
+  <button id="mobTabA" class="active"><span class="avatar" style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#8B5CF6);color:white;font-size:10px;display:inline-flex;align-items:center;justify-content:center;font-weight:700">明</span>王小明</button>
+  <button id="mobTabB"><span class="avatar" style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#E11D48,#F59E0B);color:white;font-size:10px;display:inline-flex;align-items:center;justify-content:center;font-weight:700">美</span>李美華</button>
+</div>
+
+<section class="sim-stage">
+
+  <!-- ============ PHONE A (王小明) ============ -->
+  <div class="phone-wrap mobile-active" id="phoneWrapA">
+    <div class="phone-label" id="labelA"><span class="avatar a">明</span>王小明 的手機</div>
+    <div class="iphone" id="phoneA">
+      <div class="dynamic-island"></div>
+      <div class="home-indicator"></div>
+      <div class="iphone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="status-right">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 18.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM5 12l-2-2a12.7 12.7 0 0118 0l-2 2a9.9 9.9 0 00-14 0zm4 4l-2-2a7 7 0 0110 0l-2 2a4.2 4.2 0 00-6 0z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="8" width="20" height="8" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><rect x="4" y="10" width="12" height="4" rx="1" fill="currentColor"/></svg>
+          </div>
+        </div>
+        <div class="app-body" data-phone="A">
+
+          <!-- Home -->
+          <div class="app-screen visible" data-screen="home">
+            <div class="app-header">
+              <h2>Credica</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg></div>
+            </div>
+            <div class="app-content">
+              <div class="home-hero">
+                <div class="greet">你好，</div>
+                <div class="name">王小明</div>
+                <div class="title">產品經理 @ Credica Inc.</div>
+                <div class="stats">
+                  <div class="stat"><div class="num">28</div><div class="lbl">人脈</div></div>
+                  <div class="stat"><div class="num">2</div><div class="lbl">憑證</div></div>
+                  <div class="stat"><div class="num">5</div><div class="lbl">活動</div></div>
+                </div>
+              </div>
+
+              <div class="quick-grid">
+                <div class="quick-btn p1" data-action="A:show-qr">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                  <div class="lbl">我的 QR</div>
+                </div>
+                <div class="quick-btn p2" data-action="A:scan">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 2H4a2 2 0 00-2 2v3M17 2h3a2 2 0 012 2v3M7 22H4a2 2 0 01-2-2v-3M17 22h3a2 2 0 002-2v-3M7 12h10"/></svg></div>
+                  <div class="lbl">掃描</div>
+                </div>
+                <div class="quick-btn p3" data-action="A:credentials">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg></div>
+                  <div class="lbl">憑證</div>
+                </div>
+                <div class="quick-btn p4" data-action="A:contacts">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+                  <div class="lbl">人脈</div>
+                </div>
+              </div>
+
+              <div class="section-title">最近人脈 <a>查看全部</a></div>
+              <div class="contact-list-home" id="contactListHomeA">
+                <div class="contact-card">
+                  <div class="contact-avatar" style="background:linear-gradient(135deg,#10B981,#22C55E)">陳</div>
+                  <div class="contact-info">
+                    <div class="n">陳志偉</div>
+                    <div class="t">軟體工程師 @ TechCorp</div>
+                  </div>
+                  <div class="temperature warm">🔥 熱</div>
+                </div>
+                <div class="contact-card">
+                  <div class="contact-avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">林</div>
+                  <div class="contact-info">
+                    <div class="n">林雅婷</div>
+                    <div class="t">行銷經理 @ Brand Co.</div>
+                  </div>
+                  <div class="temperature cold">❄️ 冷</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-bar">
+              <div class="tab-item active" data-tab="A:home"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><div class="lbl">首頁</div></div>
+              <div class="tab-item" data-action="A:show-qr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><div class="lbl">名片</div></div>
+              <div class="tab-item" data-action="A:scan"><div class="scan-fab"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 2H4a2 2 0 00-2 2v3M17 2h3a2 2 0 012 2v3M7 22H4a2 2 0 01-2-2v-3M17 22h3a2 2 0 002-2v-3M7 12h10"/></svg></div><div class="lbl">掃描</div></div>
+              <div class="tab-item" data-action="A:contacts"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div class="lbl">人脈</div></div>
+              <div class="tab-item" data-action="A:profile"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><div class="lbl">我的</div></div>
+            </div>
+          </div>
+
+          <!-- Show QR -->
+          <div class="app-screen" data-screen="show-qr">
+            <div class="app-header purple">
+              <div class="back" data-action="A:home">← 返回</div>
+              <h2 style="color:white">我的名片</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+            </div>
+            <div class="qr-stage">
+              <div class="qr-card">
+                <div class="qr-avatar" style="background:linear-gradient(135deg,#4F46E5,#8B5CF6)">明</div>
+                <div class="qr-name">王小明</div>
+                <div class="qr-title">產品經理 @ Credica Inc.</div>
+                <div class="qr-code-box">
+                  <!-- Static QR-like SVG -->
+                  <svg viewBox="0 0 33 33" shape-rendering="crispEdges">
+                    <rect width="33" height="33" fill="white"/>
+                    <g fill="black">
+                      <rect x="0" y="0" width="7" height="7"/><rect x="1" y="1" width="5" height="5" fill="white"/><rect x="2" y="2" width="3" height="3"/>
+                      <rect x="26" y="0" width="7" height="7"/><rect x="27" y="1" width="5" height="5" fill="white"/><rect x="28" y="2" width="3" height="3"/>
+                      <rect x="0" y="26" width="7" height="7"/><rect x="1" y="27" width="5" height="5" fill="white"/><rect x="2" y="28" width="3" height="3"/>
+                      <rect x="9" y="1" width="1" height="1"/><rect x="11" y="1" width="2" height="1"/><rect x="15" y="1" width="1" height="1"/><rect x="17" y="1" width="2" height="1"/><rect x="21" y="1" width="1" height="1"/>
+                      <rect x="8" y="3" width="2" height="1"/><rect x="12" y="3" width="1" height="2"/><rect x="14" y="3" width="1" height="1"/><rect x="16" y="3" width="3" height="1"/><rect x="20" y="3" width="2" height="1"/><rect x="23" y="3" width="1" height="1"/>
+                      <rect x="9" y="5" width="3" height="1"/><rect x="13" y="5" width="1" height="2"/><rect x="15" y="5" width="2" height="1"/><rect x="19" y="5" width="1" height="2"/><rect x="21" y="5" width="2" height="1"/>
+                      <rect x="8" y="7" width="1" height="3"/><rect x="10" y="7" width="1" height="2"/><rect x="14" y="7" width="2" height="1"/><rect x="17" y="7" width="1" height="2"/><rect x="20" y="7" width="1" height="1"/><rect x="22" y="7" width="2" height="1"/><rect x="25" y="7" width="1" height="2"/>
+                      <rect x="1" y="9" width="1" height="1"/><rect x="3" y="9" width="1" height="2"/><rect x="6" y="9" width="2" height="1"/><rect x="11" y="9" width="2" height="1"/><rect x="14" y="9" width="1" height="3"/><rect x="16" y="9" width="2" height="1"/><rect x="19" y="9" width="3" height="1"/><rect x="23" y="9" width="1" height="1"/><rect x="26" y="9" width="2" height="1"/><rect x="29" y="9" width="1" height="2"/><rect x="31" y="9" width="2" height="1"/>
+                      <rect x="0" y="11" width="1" height="2"/><rect x="2" y="11" width="2" height="1"/><rect x="5" y="11" width="2" height="1"/><rect x="9" y="11" width="1" height="2"/><rect x="12" y="11" width="1" height="1"/><rect x="17" y="11" width="1" height="2"/><rect x="20" y="11" width="1" height="1"/><rect x="24" y="11" width="2" height="1"/><rect x="27" y="11" width="1" height="2"/><rect x="30" y="11" width="1" height="1"/>
+                      <rect x="1" y="13" width="2" height="1"/><rect x="4" y="13" width="1" height="2"/><rect x="7" y="13" width="3" height="1"/><rect x="11" y="13" width="1" height="2"/><rect x="13" y="13" width="2" height="1"/><rect x="16" y="13" width="1" height="1"/><rect x="18" y="13" width="2" height="1"/><rect x="22" y="13" width="1" height="3"/><rect x="24" y="13" width="1" height="1"/><rect x="26" y="13" width="2" height="1"/><rect x="29" y="13" width="2" height="1"/><rect x="32" y="13" width="1" height="1"/>
+                      <rect x="0" y="15" width="3" height="1"/><rect x="5" y="15" width="1" height="2"/><rect x="7" y="15" width="2" height="1"/><rect x="10" y="15" width="1" height="1"/><rect x="13" y="15" width="1" height="1"/><rect x="15" y="15" width="2" height="1"/><rect x="18" y="15" width="1" height="2"/><rect x="21" y="15" width="1" height="1"/><rect x="24" y="15" width="2" height="1"/><rect x="28" y="15" width="1" height="2"/><rect x="30" y="15" width="2" height="1"/>
+                      <rect x="1" y="17" width="1" height="1"/><rect x="3" y="17" width="2" height="1"/><rect x="6" y="17" width="1" height="2"/><rect x="8" y="17" width="1" height="1"/><rect x="11" y="17" width="2" height="1"/><rect x="14" y="17" width="1" height="2"/><rect x="16" y="17" width="1" height="1"/><rect x="19" y="17" width="2" height="1"/><rect x="23" y="17" width="3" height="1"/><rect x="27" y="17" width="1" height="1"/><rect x="30" y="17" width="1" height="2"/><rect x="32" y="17" width="1" height="1"/>
+                      <rect x="0" y="19" width="1" height="1"/><rect x="2" y="19" width="1" height="2"/><rect x="4" y="19" width="1" height="1"/><rect x="7" y="19" width="2" height="1"/><rect x="10" y="19" width="1" height="2"/><rect x="13" y="19" width="1" height="1"/><rect x="15" y="19" width="3" height="1"/><rect x="19" y="19" width="1" height="1"/><rect x="21" y="19" width="2" height="1"/><rect x="25" y="19" width="1" height="2"/><rect x="27" y="19" width="2" height="1"/>
+                      <rect x="1" y="21" width="2" height="1"/><rect x="5" y="21" width="2" height="1"/><rect x="8" y="21" width="1" height="2"/><rect x="12" y="21" width="3" height="1"/><rect x="16" y="21" width="1" height="2"/><rect x="18" y="21" width="2" height="1"/><rect x="22" y="21" width="1" height="2"/><rect x="24" y="21" width="1" height="1"/><rect x="26" y="21" width="1" height="2"/><rect x="29" y="21" width="3" height="1"/>
+                      <rect x="9" y="23" width="1" height="1"/><rect x="11" y="23" width="1" height="2"/><rect x="13" y="23" width="3" height="1"/><rect x="17" y="23" width="2" height="1"/><rect x="20" y="23" width="2" height="1"/><rect x="23" y="23" width="1" height="2"/><rect x="28" y="23" width="1" height="1"/><rect x="31" y="23" width="2" height="1"/>
+                      <rect x="8" y="25" width="3" height="1"/><rect x="13" y="25" width="1" height="1"/><rect x="15" y="25" width="2" height="1"/><rect x="18" y="25" width="1" height="2"/><rect x="20" y="25" width="1" height="1"/><rect x="24" y="25" width="3" height="1"/><rect x="28" y="25" width="2" height="1"/>
+                      <rect x="8" y="27" width="1" height="3"/><rect x="10" y="27" width="2" height="1"/><rect x="14" y="27" width="3" height="1"/><rect x="19" y="27" width="1" height="2"/><rect x="22" y="27" width="3" height="1"/><rect x="26" y="27" width="1" height="1"/><rect x="28" y="27" width="1" height="3"/><rect x="30" y="27" width="2" height="1"/>
+                      <rect x="9" y="29" width="2" height="1"/><rect x="12" y="29" width="3" height="1"/><rect x="17" y="29" width="1" height="2"/><rect x="20" y="29" width="3" height="1"/><rect x="25" y="29" width="1" height="2"/><rect x="30" y="29" width="1" height="1"/><rect x="32" y="29" width="1" height="1"/>
+                      <rect x="10" y="31" width="1" height="2"/><rect x="13" y="31" width="2" height="1"/><rect x="16" y="31" width="1" height="1"/><rect x="18" y="31" width="2" height="1"/><rect x="21" y="31" width="1" height="2"/><rect x="23" y="31" width="3" height="1"/><rect x="27" y="31" width="1" height="1"/><rect x="30" y="31" width="2" height="1"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="qr-hint">請對方掃描此 QR Code<br><strong>即可交換名片</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scan (A does not usually scan, but included) -->
+          <div class="app-screen" data-screen="scan">
+            <div class="app-header">
+              <div class="back" data-action="A:home">← 返回</div>
+              <h2>掃描</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></div>
+            </div>
+            <div class="scan-stage">
+              <div class="scan-viewfinder">
+                <div class="c1"></div><div class="c2"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="scan-hint">將對方的 QR Code 放入框內<br><strong>自動辨識並交換</strong></div>
+            </div>
+          </div>
+
+          <!-- Contacts -->
+          <div class="app-screen" data-screen="contacts">
+            <div class="app-header">
+              <div class="back" data-action="A:home">← 返回</div>
+              <h2>我的人脈</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            </div>
+            <div class="app-content" id="contactsContentA">
+              <div class="contact-card">
+                <div class="contact-avatar" style="background:linear-gradient(135deg,#10B981,#22C55E)">陳</div>
+                <div class="contact-info">
+                  <div class="n">陳志偉</div>
+                  <div class="t">軟體工程師 @ TechCorp</div>
+                </div>
+                <div class="temperature warm">🔥 熱</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">林</div>
+                <div class="contact-info">
+                  <div class="n">林雅婷</div>
+                  <div class="t">行銷經理 @ Brand Co.</div>
+                </div>
+                <div class="temperature cold">❄️ 冷</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-avatar" style="background:linear-gradient(135deg,#8B5CF6,#EC4899)">張</div>
+                <div class="contact-info">
+                  <div class="n">張建國</div>
+                  <div class="t">業務總監 @ Sales Inc.</div>
+                </div>
+                <div class="temperature hot">🔥 超熱</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Credentials -->
+          <div class="app-screen" data-screen="credentials">
+            <div class="app-header">
+              <div class="back" data-action="A:home">← 返回</div>
+              <h2>我的憑證</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </div>
+            <div class="app-content">
+              <div class="cred-card" data-action="A:cred-detail">
+                <div class="cred-icon a"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg></div>
+                <div class="cred-info">
+                  <div class="n">員工證</div>
+                  <div class="i">Credica Inc. 發行</div>
+                </div>
+                <div class="cred-badge">已驗證</div>
+              </div>
+              <div class="cred-card">
+                <div class="cred-icon b"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <div class="cred-info">
+                  <div class="n">大學畢業證書</div>
+                  <div class="i">國立政治大學 發行</div>
+                </div>
+                <div class="cred-badge">已驗證</div>
+              </div>
+              <div class="cred-card">
+                <div class="cred-icon c"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div class="cred-info">
+                  <div class="n">社團會員證</div>
+                  <div class="i">台北扶輪社 發行</div>
+                </div>
+                <div class="cred-badge">已驗證</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Credential Detail -->
+          <div class="app-screen" data-screen="cred-detail">
+            <div class="app-header">
+              <div class="back" data-action="A:credentials">← 返回</div>
+              <h2>員工證</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></div>
+            </div>
+            <div style="padding-top:16px;">
+              <div class="cred-big">
+                <div class="type">EMPLOYEE CREDENTIAL</div>
+                <div class="name">員工證</div>
+                <div class="holder">王小明 · 產品經理</div>
+                <div class="fields">
+                  <div class="fld"><div class="k">發行機構</div><div class="v">Credica Inc.</div></div>
+                  <div class="fld"><div class="k">員工編號</div><div class="v">CD-2024-0312</div></div>
+                  <div class="fld"><div class="k">部門</div><div class="v">產品部</div></div>
+                  <div class="fld"><div class="k">到職日</div><div class="v">2024-03-01</div></div>
+                </div>
+              </div>
+              <button class="present-btn" data-action="A:present">出示此憑證</button>
+              <div style="padding:0 16px;">
+                <div class="info-card">
+                  <div class="info-row"><span class="k">憑證類型</span><span class="v">W3C Verifiable Credential</span></div>
+                  <div class="info-row"><span class="k">簽章演算法</span><span class="v">Ed25519</span></div>
+                  <div class="info-row"><span class="k">有效期限</span><span class="v">2026-03-01</span></div>
+                  <div class="info-row"><span class="k">已出示次數</span><span class="v">3 次</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Present (outgoing VP QR) -->
+          <div class="app-screen" data-screen="present">
+            <div class="app-header purple">
+              <div class="back" data-action="A:cred-detail">← 返回</div>
+              <h2 style="color:white">出示憑證</h2>
+              <div class="icon-btn"></div>
+            </div>
+            <div class="qr-stage" style="background:linear-gradient(180deg,#EDE9FE 0%,white 100%);">
+              <div class="qr-card">
+                <div style="padding:8px 0 12px;">
+                  <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">VERIFIABLE PRESENTATION</div>
+                  <div style="font-size:15px;font-weight:700;">員工證 · 王小明</div>
+                </div>
+                <div class="qr-code-box">
+                  <svg viewBox="0 0 25 25" shape-rendering="crispEdges">
+                    <rect width="25" height="25" fill="white"/>
+                    <g fill="black">
+                      <rect x="0" y="0" width="7" height="7"/><rect x="1" y="1" width="5" height="5" fill="white"/><rect x="2" y="2" width="3" height="3"/>
+                      <rect x="18" y="0" width="7" height="7"/><rect x="19" y="1" width="5" height="5" fill="white"/><rect x="20" y="2" width="3" height="3"/>
+                      <rect x="0" y="18" width="7" height="7"/><rect x="1" y="19" width="5" height="5" fill="white"/><rect x="2" y="20" width="3" height="3"/>
+                      <rect x="9" y="2" width="1" height="2"/><rect x="11" y="1" width="2" height="1"/><rect x="15" y="1" width="1" height="3"/>
+                      <rect x="8" y="5" width="2" height="1"/><rect x="12" y="5" width="1" height="1"/><rect x="14" y="4" width="2" height="2"/>
+                      <rect x="9" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="2"/><rect x="13" y="8" width="3" height="1"/><rect x="17" y="7" width="1" height="2"/>
+                      <rect x="1" y="9" width="1" height="2"/><rect x="3" y="9" width="2" height="1"/><rect x="6" y="10" width="2" height="1"/><rect x="10" y="10" width="1" height="2"/><rect x="13" y="10" width="2" height="1"/><rect x="16" y="10" width="1" height="2"/><rect x="19" y="9" width="2" height="1"/><rect x="22" y="10" width="1" height="2"/>
+                      <rect x="0" y="12" width="2" height="1"/><rect x="4" y="12" width="1" height="2"/><rect x="7" y="12" width="3" height="1"/><rect x="11" y="13" width="2" height="1"/><rect x="14" y="12" width="1" height="2"/><rect x="17" y="12" width="2" height="1"/><rect x="20" y="13" width="3" height="1"/>
+                      <rect x="2" y="14" width="1" height="2"/><rect x="5" y="14" width="2" height="1"/><rect x="9" y="14" width="1" height="1"/><rect x="12" y="15" width="2" height="1"/><rect x="15" y="14" width="1" height="2"/><rect x="18" y="14" width="1" height="1"/><rect x="21" y="15" width="1" height="1"/><rect x="24" y="14" width="1" height="2"/>
+                      <rect x="8" y="17" width="1" height="2"/><rect x="10" y="16" width="2" height="1"/><rect x="13" y="17" width="1" height="1"/><rect x="15" y="16" width="1" height="2"/><rect x="17" y="17" width="3" height="1"/><rect x="21" y="17" width="1" height="2"/>
+                      <rect x="9" y="19" width="2" height="1"/><rect x="13" y="19" width="1" height="2"/><rect x="16" y="20" width="2" height="1"/><rect x="19" y="19" width="1" height="2"/><rect x="23" y="19" width="1" height="2"/>
+                      <rect x="8" y="21" width="1" height="1"/><rect x="11" y="22" width="2" height="1"/><rect x="14" y="21" width="3" height="1"/><rect x="18" y="22" width="1" height="1"/><rect x="20" y="21" width="2" height="1"/>
+                      <rect x="9" y="23" width="3" height="1"/><rect x="13" y="23" width="1" height="2"/><rect x="15" y="24" width="2" height="1"/><rect x="18" y="23" width="1" height="1"/><rect x="20" y="23" width="1" height="2"/><rect x="23" y="24" width="2" height="1"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="qr-hint">對方掃描即可驗證<br><strong>僅揭露必要資訊（零知識）</strong></div>
+                <div style="margin-top:12px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">
+                  <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,0.12);color:var(--green);font-size:10px;font-weight:700;">✓ 姓名</span>
+                  <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,0.12);color:var(--green);font-size:10px;font-weight:700;">✓ 職稱</span>
+                  <span style="padding:4px 10px;border-radius:100px;background:rgba(16,185,129,0.12);color:var(--green);font-size:10px;font-weight:700;">✓ 發行機構</span>
+                  <span style="padding:4px 10px;border-radius:100px;background:rgba(148,163,184,0.15);color:var(--text-3);font-size:10px;font-weight:700;">✗ 員工編號</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="app-screen" data-screen="profile">
+            <div class="app-header">
+              <h2>我的</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 008.91 20"/></svg></div>
+            </div>
+            <div class="app-content">
+              <div class="profile-card">
+                <div class="avatar-lg" style="background:linear-gradient(135deg,#4F46E5,#8B5CF6)">明</div>
+                <div class="profile-info">
+                  <div class="n">王小明</div>
+                  <div class="t">產品經理 @ Credica Inc.</div>
+                </div>
+              </div>
+              <div class="menu-list">
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11V7a3 3 0 116 0v4M5 11h14v10H5z"/></svg></div><div class="mi-t">身份管理</div><span class="mi-r">2 個 ›</span></div>
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="mi-t">組織切換</div><span class="mi-r">個人 ›</span></div>
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="mi-t">備份與還原</div><span class="mi-r">›</span></div>
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div><div class="mi-t">關於 Credica</div><span class="mi-r">v2.6.0 ›</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Detail (for viewing A's contact with Mei) -->
+          <div class="app-screen" data-screen="contact-detail">
+            <div class="app-header">
+              <div class="back" data-action="A:contacts">← 返回</div>
+              <h2>人脈詳情</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></div>
+            </div>
+            <div>
+              <div class="detail-cover">
+                <div class="detail-avatar"><div class="inner" style="background:linear-gradient(135deg,#E11D48,#F59E0B)">美</div></div>
+              </div>
+              <div class="detail-body">
+                <div class="n">李美華</div>
+                <div class="t">設計總監 @ Studio X</div>
+              </div>
+              <div style="padding:0 16px 16px;">
+                <div class="thermo-card">
+                  <div class="thermo-head">
+                    <div class="t">人脈溫度</div>
+                    <div class="v">剛認識</div>
+                  </div>
+                  <div class="thermo-bar">
+                    <div class="thermo-marker" style="left:15%"></div>
+                  </div>
+                  <div class="thermo-labels"><span>❄️ 冷</span><span>🌤 溫</span><span>🔥 熱</span></div>
+                  <div class="thermo-desc">今日剛交換名片。多互動、多見面、共同參加活動可以讓溫度上升。</div>
+                </div>
+                <div class="action-row">
+                  <div class="quick-btn p1"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 13 13 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 13 13 0 002.81.7A2 2 0 0122 16.92z"/></svg></div><div class="lbl">通話</div></div>
+                  <div class="quick-btn p2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="lbl">Email</div></div>
+                  <div class="quick-btn p3"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="lbl">約見面</div></div>
+                  <div class="quick-btn p4"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="lbl">備註</div></div>
+                </div>
+                <div class="info-card">
+                  <div class="info-row"><span class="k">Email</span><span class="v">mei@studiox.com</span></div>
+                  <div class="info-row"><span class="k">電話</span><span class="v">0923-456-789</span></div>
+                  <div class="info-row"><span class="k">公司</span><span class="v">Studio X 設計工作室</span></div>
+                  <div class="info-row"><span class="k">認識於</span><span class="v">今日</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PHONE B (李美華) ============ -->
+  <div class="phone-wrap" id="phoneWrapB">
+    <div class="phone-label" id="labelB"><span class="avatar b">美</span>李美華 的手機</div>
+    <div class="iphone" id="phoneB">
+      <div class="dynamic-island"></div>
+      <div class="home-indicator"></div>
+      <div class="iphone-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="status-right">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 18.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM5 12l-2-2a12.7 12.7 0 0118 0l-2 2a9.9 9.9 0 00-14 0zm4 4l-2-2a7 7 0 0110 0l-2 2a4.2 4.2 0 00-6 0z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="8" width="20" height="8" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><rect x="4" y="10" width="12" height="4" rx="1" fill="currentColor"/></svg>
+          </div>
+        </div>
+        <div class="app-body" data-phone="B">
+
+          <!-- Home -->
+          <div class="app-screen visible" data-screen="home">
+            <div class="app-header">
+              <h2>Credica</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg></div>
+            </div>
+            <div class="app-content">
+              <div class="home-hero" style="background:linear-gradient(135deg,#E11D48,#F59E0B)">
+                <div class="greet">你好，</div>
+                <div class="name">李美華</div>
+                <div class="title">設計總監 @ Studio X</div>
+                <div class="stats">
+                  <div class="stat"><div class="num" id="heroCountB">15</div><div class="lbl">人脈</div></div>
+                  <div class="stat"><div class="num">1</div><div class="lbl">憑證</div></div>
+                  <div class="stat"><div class="num">3</div><div class="lbl">活動</div></div>
+                </div>
+              </div>
+
+              <div class="quick-grid">
+                <div class="quick-btn p1" data-action="B:show-qr">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                  <div class="lbl">我的 QR</div>
+                </div>
+                <div class="quick-btn p2" data-action="B:scan">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 2H4a2 2 0 00-2 2v3M17 2h3a2 2 0 012 2v3M7 22H4a2 2 0 01-2-2v-3M17 22h3a2 2 0 002-2v-3M7 12h10"/></svg></div>
+                  <div class="lbl">掃描</div>
+                </div>
+                <div class="quick-btn p3" data-action="B:credentials">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg></div>
+                  <div class="lbl">憑證</div>
+                </div>
+                <div class="quick-btn p4" data-action="B:contacts">
+                  <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+                  <div class="lbl">人脈</div>
+                </div>
+              </div>
+
+              <div class="section-title">最近人脈 <a>查看全部</a></div>
+              <div id="contactListHomeB">
+                <div class="contact-card">
+                  <div class="contact-avatar" style="background:linear-gradient(135deg,#06B6D4,#3B82F6)">周</div>
+                  <div class="contact-info">
+                    <div class="n">周子豪</div>
+                    <div class="t">攝影師 @ 自由工作者</div>
+                  </div>
+                  <div class="temperature warm">🔥 熱</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-bar">
+              <div class="tab-item active"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><div class="lbl">首頁</div></div>
+              <div class="tab-item" data-action="B:show-qr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><div class="lbl">名片</div></div>
+              <div class="tab-item" data-action="B:scan"><div class="scan-fab"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 2H4a2 2 0 00-2 2v3M17 2h3a2 2 0 012 2v3M7 22H4a2 2 0 01-2-2v-3M17 22h3a2 2 0 002-2v-3M7 12h10"/></svg></div><div class="lbl">掃描</div></div>
+              <div class="tab-item" data-action="B:contacts"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div class="lbl">人脈</div></div>
+              <div class="tab-item" data-action="B:profile"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><div class="lbl">我的</div></div>
+            </div>
+          </div>
+
+          <!-- Scan (B scans A's QR) -->
+          <div class="app-screen" data-screen="scan">
+            <div class="app-header">
+              <div class="back" data-action="B:home">← 返回</div>
+              <h2>掃描名片</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+            </div>
+            <div class="scan-stage">
+              <div class="scan-viewfinder">
+                <div class="c1"></div><div class="c2"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="scan-hint">對準王小明的 QR Code<br><strong>或點下方按鈕模擬掃到</strong></div>
+              <button class="scan-simulate" data-action="B:simulate-scan">📸 模擬掃描成功</button>
+            </div>
+          </div>
+
+          <!-- Preview (A's card shown on B) -->
+          <div class="app-screen" data-screen="preview">
+            <div class="app-header">
+              <div class="back" data-action="B:home">← 取消</div>
+              <h2>交換名片</h2>
+              <div class="icon-btn"></div>
+            </div>
+            <div class="app-content">
+              <div class="preview-card">
+                <div class="preview-header">
+                  <div class="preview-avatar"><div class="inner" style="background:linear-gradient(135deg,#4F46E5,#8B5CF6)">明</div></div>
+                </div>
+                <div class="preview-body">
+                  <div class="preview-name">王小明</div>
+                  <div class="preview-title">產品經理 @ Credica Inc.</div>
+                  <div class="preview-fields">
+                    <div class="preview-field">
+                      <div class="fi"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                      <div><div class="fk">Email</div><div class="fv">ming@credica.app</div></div>
+                    </div>
+                    <div class="preview-field">
+                      <div class="fi"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 13 13 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 13 13 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+                      <div><div class="fk">電話</div><div class="fv">0912-345-678</div></div>
+                    </div>
+                    <div class="preview-field">
+                      <div class="fi"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14M9 9v12M15 9v12"/></svg></div>
+                      <div><div class="fk">公司</div><div class="fv">Credica Inc.</div></div>
+                    </div>
+                    <div class="preview-field">
+                      <div class="fi"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+                      <div><div class="fk">憑證</div><div class="fv">員工證 ✓ 已由 Credica Inc. 驗證</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="accept-btn" data-action="B:accept">接受並加入人脈</button>
+              <button class="accept-btn secondary">取消</button>
+            </div>
+          </div>
+
+          <!-- Success -->
+          <div class="app-screen" data-screen="success">
+            <div class="app-header">
+              <div class="back" data-action="B:home">← 返回</div>
+              <h2>交換完成</h2>
+              <div class="icon-btn"></div>
+            </div>
+            <div class="success-stage">
+              <div class="success-icon"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="success-title">已加入人脈！</div>
+              <div class="success-desc">王小明已加入你的人脈清單<br>你的名片也已同步給對方</div>
+              <button class="present-btn" style="width:100%;max-width:260px;" data-action="B:view-contact">查看人脈卡 →</button>
+            </div>
+          </div>
+
+          <!-- Contacts -->
+          <div class="app-screen" data-screen="contacts">
+            <div class="app-header">
+              <div class="back" data-action="B:home">← 返回</div>
+              <h2>我的人脈</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            </div>
+            <div class="app-content" id="contactsContentB">
+              <div class="contact-card" data-action="B:contact-detail" id="newContactBCard" style="display:none;border:2px solid var(--teal);background:rgba(79,70,229,0.04);">
+                <div class="contact-avatar" style="background:linear-gradient(135deg,#4F46E5,#8B5CF6)">明</div>
+                <div class="contact-info">
+                  <div class="n">王小明 <span style="font-size:9px;padding:2px 6px;background:var(--teal);color:white;border-radius:100px;margin-left:4px;">NEW</span></div>
+                  <div class="t">產品經理 @ Credica Inc.</div>
+                </div>
+                <div class="temperature cold">❄️ 冷</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-avatar" style="background:linear-gradient(135deg,#06B6D4,#3B82F6)">周</div>
+                <div class="contact-info">
+                  <div class="n">周子豪</div>
+                  <div class="t">攝影師 @ 自由工作者</div>
+                </div>
+                <div class="temperature warm">🔥 熱</div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-avatar" style="background:linear-gradient(135deg,#10B981,#84CC16)">黃</div>
+                <div class="contact-info">
+                  <div class="n">黃淑芬</div>
+                  <div class="t">品牌總監 @ Lux Co.</div>
+                </div>
+                <div class="temperature hot">🔥 超熱</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Detail (B viewing A) -->
+          <div class="app-screen" data-screen="contact-detail">
+            <div class="app-header">
+              <div class="back" data-action="B:contacts">← 返回</div>
+              <h2>人脈詳情</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></div>
+            </div>
+            <div>
+              <div class="detail-cover">
+                <div class="detail-avatar"><div class="inner" style="background:linear-gradient(135deg,#4F46E5,#8B5CF6)">明</div></div>
+              </div>
+              <div class="detail-body">
+                <div class="n">王小明</div>
+                <div class="t">產品經理 @ Credica Inc.</div>
+              </div>
+              <div style="padding:0 16px 16px;">
+                <div class="thermo-card">
+                  <div class="thermo-head">
+                    <div class="t">人脈溫度</div>
+                    <div class="v" id="tempLabelB">剛認識</div>
+                  </div>
+                  <div class="thermo-bar">
+                    <div class="thermo-marker" id="tempMarkerB" style="left:15%"></div>
+                  </div>
+                  <div class="thermo-labels"><span>❄️ 冷</span><span>🌤 溫</span><span>🔥 熱</span></div>
+                  <div class="thermo-desc" id="tempDescB">今日剛交換名片。多互動、多見面、共同參加活動可以讓溫度上升。</div>
+                </div>
+                <div class="action-row">
+                  <div class="quick-btn p1" data-action="B:increase-temp"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 13 13 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 13 13 0 002.81.7A2 2 0 0122 16.92z"/></svg></div><div class="lbl">通話</div></div>
+                  <div class="quick-btn p2" data-action="B:increase-temp"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="lbl">Email</div></div>
+                  <div class="quick-btn p3" data-action="B:increase-temp"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="lbl">約見面</div></div>
+                  <div class="quick-btn p4"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="lbl">備註</div></div>
+                </div>
+                <div class="info-card">
+                  <div class="info-row"><span class="k">Email</span><span class="v">ming@credica.app</span></div>
+                  <div class="info-row"><span class="k">電話</span><span class="v">0912-345-678</span></div>
+                  <div class="info-row"><span class="k">公司</span><span class="v">Credica Inc.</span></div>
+                  <div class="info-row"><span class="k">憑證</span><span class="v" style="color:var(--green)">✓ 員工證</span></div>
+                  <div class="info-row"><span class="k">認識於</span><span class="v">今日</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Show QR -->
+          <div class="app-screen" data-screen="show-qr">
+            <div class="app-header purple">
+              <div class="back" data-action="B:home">← 返回</div>
+              <h2 style="color:white">我的名片</h2>
+              <div class="icon-btn"></div>
+            </div>
+            <div class="qr-stage">
+              <div class="qr-card">
+                <div class="qr-avatar" style="background:linear-gradient(135deg,#E11D48,#F59E0B)">美</div>
+                <div class="qr-name">李美華</div>
+                <div class="qr-title">設計總監 @ Studio X</div>
+                <div class="qr-code-box">
+                  <svg viewBox="0 0 25 25" shape-rendering="crispEdges">
+                    <rect width="25" height="25" fill="white"/>
+                    <g fill="black">
+                      <rect x="0" y="0" width="7" height="7"/><rect x="1" y="1" width="5" height="5" fill="white"/><rect x="2" y="2" width="3" height="3"/>
+                      <rect x="18" y="0" width="7" height="7"/><rect x="19" y="1" width="5" height="5" fill="white"/><rect x="20" y="2" width="3" height="3"/>
+                      <rect x="0" y="18" width="7" height="7"/><rect x="1" y="19" width="5" height="5" fill="white"/><rect x="2" y="20" width="3" height="3"/>
+                      <rect x="9" y="1" width="2" height="1"/><rect x="13" y="1" width="1" height="2"/><rect x="16" y="2" width="1" height="1"/>
+                      <rect x="8" y="3" width="1" height="2"/><rect x="10" y="4" width="2" height="1"/><rect x="14" y="3" width="2" height="1"/>
+                      <rect x="9" y="5" width="1" height="2"/><rect x="11" y="6" width="3" height="1"/><rect x="15" y="5" width="2" height="1"/>
+                      <rect x="1" y="8" width="1" height="2"/><rect x="3" y="9" width="3" height="1"/><rect x="8" y="8" width="2" height="1"/><rect x="11" y="9" width="1" height="2"/><rect x="13" y="8" width="1" height="2"/><rect x="16" y="9" width="2" height="1"/><rect x="19" y="8" width="1" height="2"/><rect x="21" y="9" width="1" height="1"/><rect x="23" y="8" width="1" height="2"/>
+                      <rect x="0" y="10" width="2" height="1"/><rect x="4" y="11" width="1" height="2"/><rect x="7" y="10" width="1" height="3"/><rect x="9" y="11" width="2" height="1"/><rect x="12" y="10" width="2" height="1"/><rect x="15" y="11" width="3" height="1"/><rect x="19" y="11" width="1" height="2"/><rect x="22" y="10" width="2" height="1"/>
+                      <rect x="2" y="12" width="2" height="1"/><rect x="5" y="13" width="2" height="1"/><rect x="10" y="13" width="1" height="2"/><rect x="13" y="12" width="1" height="2"/><rect x="16" y="13" width="2" height="1"/><rect x="20" y="12" width="2" height="1"/><rect x="23" y="13" width="1" height="1"/>
+                      <rect x="1" y="14" width="2" height="1"/><rect x="6" y="14" width="1" height="2"/><rect x="8" y="15" width="2" height="1"/><rect x="12" y="14" width="1" height="2"/><rect x="14" y="15" width="2" height="1"/><rect x="17" y="14" width="1" height="2"/><rect x="19" y="15" width="3" height="1"/><rect x="23" y="14" width="1" height="2"/>
+                      <rect x="0" y="16" width="1" height="1"/><rect x="3" y="16" width="2" height="1"/><rect x="7" y="16" width="3" height="1"/><rect x="11" y="17" width="2" height="1"/><rect x="15" y="16" width="1" height="2"/><rect x="18" y="17" width="2" height="1"/><rect x="22" y="16" width="1" height="2"/>
+                      <rect x="9" y="18" width="1" height="1"/><rect x="11" y="19" width="3" height="1"/><rect x="15" y="18" width="2" height="1"/><rect x="19" y="19" width="1" height="2"/><rect x="23" y="18" width="1" height="1"/>
+                      <rect x="8" y="20" width="1" height="1"/><rect x="10" y="21" width="2" height="1"/><rect x="13" y="20" width="1" height="2"/><rect x="15" y="21" width="3" height="1"/><rect x="20" y="20" width="2" height="1"/><rect x="23" y="21" width="1" height="2"/>
+                      <rect x="9" y="22" width="2" height="1"/><rect x="13" y="23" width="2" height="1"/><rect x="16" y="22" width="1" height="2"/><rect x="19" y="22" width="1" height="1"/><rect x="21" y="23" width="2" height="1"/>
+                      <rect x="8" y="24" width="3" height="1"/><rect x="12" y="24" width="1" height="1"/><rect x="14" y="24" width="2" height="1"/><rect x="17" y="24" width="1" height="1"/><rect x="19" y="24" width="3" height="1"/><rect x="23" y="24" width="2" height="1"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="qr-hint">請對方掃描此 QR Code<br><strong>即可交換名片</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Credentials -->
+          <div class="app-screen" data-screen="credentials">
+            <div class="app-header">
+              <div class="back" data-action="B:home">← 返回</div>
+              <h2>我的憑證</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </div>
+            <div class="app-content">
+              <div class="cred-card">
+                <div class="cred-icon c"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <div class="cred-info">
+                  <div class="n">設計師認證</div>
+                  <div class="i">台灣設計協會 發行</div>
+                </div>
+                <div class="cred-badge">已驗證</div>
+              </div>
+              <div style="padding:40px 20px;text-align:center;color:var(--text-3);font-size:12px;">
+                更多憑證將在你加入組織或完成活動後自動收到
+              </div>
+            </div>
+          </div>
+
+          <!-- Scanning A's VP (verify flow) -->
+          <div class="app-screen" data-screen="verify">
+            <div class="app-header">
+              <div class="back" data-action="B:contact-detail">← 返回</div>
+              <h2>驗證憑證</h2>
+              <div class="icon-btn"></div>
+            </div>
+            <div class="app-content">
+              <div class="verify-ok-card">
+                <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="t">憑證有效</div>
+                <div class="d">由 Credica Inc. 簽發並簽章</div>
+              </div>
+              <div class="cred-big" style="margin:0 0 12px;">
+                <div class="type">VERIFIED CREDENTIAL</div>
+                <div class="name">員工證</div>
+                <div class="holder">王小明 · 產品經理</div>
+                <div class="fields">
+                  <div class="fld"><div class="k">發行機構</div><div class="v">Credica Inc.</div></div>
+                  <div class="fld"><div class="k">簽發時間</div><div class="v">2024-03-01</div></div>
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="info-row"><span class="k">驗證結果</span><span class="v" style="color:var(--green)">✓ 通過</span></div>
+                <div class="info-row"><span class="k">簽章有效</span><span class="v" style="color:var(--green)">✓ Ed25519</span></div>
+                <div class="info-row"><span class="k">發行機構信任</span><span class="v" style="color:var(--green)">✓ 已驗證</span></div>
+                <div class="info-row"><span class="k">未被撤銷</span><span class="v" style="color:var(--green)">✓ 正常</span></div>
+                <div class="info-row"><span class="k">揭露欄位</span><span class="v">姓名、職稱、機構</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="app-screen" data-screen="profile">
+            <div class="app-header">
+              <h2>我的</h2>
+              <div class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 008.91 20"/></svg></div>
+            </div>
+            <div class="app-content">
+              <div class="profile-card">
+                <div class="avatar-lg" style="background:linear-gradient(135deg,#E11D48,#F59E0B)">美</div>
+                <div class="profile-info">
+                  <div class="n">李美華</div>
+                  <div class="t">設計總監 @ Studio X</div>
+                </div>
+              </div>
+              <div class="menu-list">
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11V7a3 3 0 116 0v4M5 11h14v10H5z"/></svg></div><div class="mi-t">身份管理</div><span class="mi-r">1 個 ›</span></div>
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="mi-t">組織切換</div><span class="mi-r">Studio X ›</span></div>
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="mi-t">備份與還原</div><span class="mi-r">›</span></div>
+                <div class="menu-item"><div class="mi-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div><div class="mi-t">關於 Credica</div><span class="mi-r">v2.6.0 ›</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Toast containers for each phone -->
+<div id="toastA" class="toast"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg></div><div><div class="t">新人脈加入</div><div class="d">李美華 剛加入你的人脈</div></div></div>
+<div id="toastB" class="toast"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg></div><div><div class="t">新人脈加入</div><div class="d">王小明 剛加入你的人脈</div></div></div>
+
+<section class="step-panel">
+  <div class="step-title"><span class="step-number" id="stepNum">1</span><span id="stepTitleText">歡迎！</span></div>
+  <div class="step-desc" id="stepDescText">左右兩支手機分別是「王小明」和「李美華」。我們接著模擬兩人在一場活動中第一次見面、互相交換數位名片的完整流程。</div>
+  <div class="step-hint" id="stepHintText">點擊右上角的「下一步 →」開始。你也可以隨時直接點擊手機上的按鈕自由探索！</div>
+</section>
+
+<section class="cta-section">
+  <h2>覺得有趣？</h2>
+  <p>立即下載 Credica，開始你真正的數位人脈。</p>
+  <a class="dl" href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+    前往 App Store 下載
+  </a>
+</section>
+
+<script>
+/* ============ STATE ============ */
+const state = {
+  stepIndex: 0,
+  tempLevel: 15, // 0-100 for B's thermometer on A
+  newContactAdded: false,
+};
+
+/* ============ SCREEN NAVIGATION ============ */
+function showScreen(phone, screen) {
+  const body = document.querySelector(`.app-body[data-phone="${phone}"]`);
+  if (!body) return;
+  body.querySelectorAll('.app-screen').forEach(s => s.classList.remove('visible'));
+  const target = body.querySelector(`.app-screen[data-screen="${screen}"]`);
+  if (target) {
+    target.classList.add('visible');
+    target.scrollTop = 0;
+  }
+}
+
+function setActivePhone(which) {
+  document.getElementById('labelA').classList.toggle('active', which === 'A' || which === 'both');
+  document.getElementById('labelB').classList.toggle('active', which === 'B' || which === 'both');
+  document.getElementById('phoneA').classList.toggle('active', which === 'A' || which === 'both');
+  document.getElementById('phoneB').classList.toggle('active', which === 'B' || which === 'both');
+}
+
+function showToast(phone, title, desc) {
+  const t = document.getElementById(`toast${phone}`);
+  if (!t) return;
+  const phoneRect = document.getElementById(`phone${phone}`).getBoundingClientRect();
+  t.style.position = 'fixed';
+  t.style.top = (phoneRect.top + 52) + 'px';
+  t.style.left = (phoneRect.left + 22) + 'px';
+  t.style.right = 'auto';
+  t.style.width = (phoneRect.width - 44) + 'px';
+  if (title) t.querySelector('.t').textContent = title;
+  if (desc) t.querySelector('.d').textContent = desc;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ============ ACTIONS ============ */
+function handleAction(action) {
+  if (!action) return;
+  const [phone, target] = action.split(':');
+
+  if (target === 'simulate-scan') {
+    showScreen('B', 'preview');
+    return;
+  }
+  if (target === 'accept') {
+    state.newContactAdded = true;
+    document.getElementById('newContactBCard').style.display = 'flex';
+    document.getElementById('heroCountB').textContent = '16';
+    showScreen('B', 'success');
+    setTimeout(() => { showToast('A', '新人脈加入', '李美華 剛加入你的人脈'); }, 400);
+    setTimeout(() => { showToast('B', '交換成功', '你的名片已傳給王小明'); }, 800);
+    return;
+  }
+  if (target === 'view-contact') {
+    showScreen('B', 'contact-detail');
+    return;
+  }
+  if (target === 'increase-temp') {
+    state.tempLevel = Math.min(100, state.tempLevel + 18);
+    const marker = document.getElementById('tempMarkerB');
+    const label = document.getElementById('tempLabelB');
+    const desc = document.getElementById('tempDescB');
+    if (marker) marker.style.left = state.tempLevel + '%';
+    if (state.tempLevel < 33) {
+      if (label) label.textContent = '剛認識';
+      if (desc) desc.textContent = '今日剛交換名片。多互動、多見面、共同參加活動可以讓溫度上升。';
+    } else if (state.tempLevel < 66) {
+      if (label) label.textContent = '慢慢熟';
+      if (desc) desc.textContent = '有幾次互動紀錄。繼續保持聯絡就能成為熟識的朋友。';
+    } else {
+      if (label) label.textContent = '熟識';
+      if (desc) desc.textContent = '多次互動、約見面、共同活動。你們是值得珍惜的人脈。';
+    }
+    return;
+  }
+
+  showScreen(phone, target);
+}
+
+/* ============ STEP DEFINITIONS ============ */
+const steps = [
+  {
+    title: '歡迎！',
+    desc: '左右兩支手機分別是「王小明」和「李美華」。我們接著模擬兩人在一場活動中第一次見面、互相交換數位名片的完整流程。',
+    hint: '點擊「下一步 →」開始，或直接點擊手機上的按鈕自由探索。',
+    run: () => {
+      showScreen('A', 'home');
+      showScreen('B', 'home');
+      setActivePhone('both');
+    }
+  },
+  {
+    title: '王小明打開 Credica',
+    desc: '王小明想把自己的名片分享給對方。他從首頁點擊「我的 QR」快捷按鈕，會跳出他的專屬 QR Code。',
+    hint: '你會看到左邊手機切到名片 QR 畫面。',
+    run: () => {
+      showScreen('A', 'show-qr');
+      showScreen('B', 'home');
+      setActivePhone('A');
+      focusPhone('A');
+    }
+  },
+  {
+    title: '李美華打開相機掃描',
+    desc: '李美華在右手機點擊中間的大型「掃描」按鈕，開啟掃描畫面。Credica 會自動辨識對方的 QR。',
+    hint: '看到右手機的掃描框了嗎？點擊下方「📸 模擬掃描成功」按鈕繼續。',
+    run: () => {
+      showScreen('A', 'show-qr');
+      showScreen('B', 'scan');
+      setActivePhone('B');
+      focusPhone('B');
+    }
+  },
+  {
+    title: '看到對方的名片預覽',
+    desc: '掃到之後，Credica 會先顯示王小明的名片預覽，讓李美華確認要不要加入人脈。注意下方的「憑證 ✓」——這代表王小明的員工身份已被 Credica Inc. 驗證過，不是自稱。',
+    hint: '點擊「接受並加入人脈」按鈕完成交換。',
+    run: () => {
+      showScreen('A', 'show-qr');
+      showScreen('B', 'preview');
+      setActivePhone('B');
+    }
+  },
+  {
+    title: '雙方同時收到通知',
+    desc: '交換瞬間完成！李美華的人脈清單多了王小明，王小明的手機也收到通知——對方已加入。雙方資料經加密，只存在各自的裝置上（Local-first）。',
+    hint: '接下來看看李美華的人脈清單。',
+    run: () => {
+      state.newContactAdded = true;
+      document.getElementById('newContactBCard').style.display = 'flex';
+      document.getElementById('heroCountB').textContent = '16';
+      showScreen('A', 'home');
+      showScreen('B', 'success');
+      setActivePhone('both');
+      setTimeout(() => showToast('A', '新人脈加入', '李美華 剛加入你的人脈'), 300);
+    }
+  },
+  {
+    title: '人脈清單：新朋友（冷）',
+    desc: '李美華進入人脈清單，可以看到王小明（標註 NEW）。但注意溫度是「❄️ 冷」——Credica 追蹤你和人脈的互動頻率，剛認識的朋友會被標示為冷。',
+    hint: '點擊王小明的人脈卡查看詳情。',
+    run: () => {
+      showScreen('A', 'home');
+      showScreen('B', 'contacts');
+      setActivePhone('B');
+    }
+  },
+  {
+    title: '人脈溫度計',
+    desc: '每位人脈都有「溫度」——Credica 會記錄你們的互動（通話、Email、見面），自動更新冷／溫／熱。點擊下方動作按鈕幾次，看看溫度上升的效果。',
+    hint: '點擊「通話」、「Email」、「約見面」任一按鈕，溫度會上升！',
+    run: () => {
+      showScreen('A', 'home');
+      showScreen('B', 'contact-detail');
+      setActivePhone('B');
+    }
+  },
+  {
+    title: '王小明的數位憑證',
+    desc: '切回王小明的手機，進入「憑證」頁面。他持有三張可驗證憑證：公司發的員工證、學校發的畢業證書、社團會員證。這些憑證都有密碼學簽章，不可偽造。',
+    hint: '點擊「員工證」看詳細資訊。',
+    run: () => {
+      showScreen('A', 'credentials');
+      showScreen('B', 'contact-detail');
+      setActivePhone('A');
+    }
+  },
+  {
+    title: '出示員工證（零知識）',
+    desc: '王小明想向李美華證明自己真的在 Credica 工作。點擊「出示此憑證」，App 會產生一個加密的 Verifiable Presentation QR Code。他可以選擇性揭露——只給姓名、職稱、發行機構，員工編號保密。',
+    hint: '看下方標籤：✓ 揭露的欄位、✗ 保密的欄位。',
+    run: () => {
+      showScreen('A', 'present');
+      showScreen('B', 'contact-detail');
+      setActivePhone('A');
+    }
+  },
+  {
+    title: '李美華驗證成功',
+    desc: '李美華掃描王小明的 VP QR Code，App 自動驗證：簽章有效、發行機構可信、憑證未被撤銷。整個驗證過程不需要聯網到 Credica Inc.，全部由密碼學證明。',
+    hint: '零知識證明：驗證通過，但王小明的員工編號等敏感資料完全沒外流。',
+    run: () => {
+      showScreen('A', 'present');
+      showScreen('B', 'verify');
+      setActivePhone('both');
+    }
+  },
+  {
+    title: '個人設定與多身份',
+    desc: '每位使用者都可以擁有多個「身份」——例如「工作身份」、「社團身份」、「個人身份」，交換名片時可以選擇要給出哪一個。切換組織也能無縫切換。',
+    hint: '點擊「組織切換」查看你所屬的組織。',
+    run: () => {
+      showScreen('A', 'profile');
+      showScreen('B', 'profile');
+      setActivePhone('both');
+    }
+  },
+  {
+    title: '完成！',
+    desc: '你已經學會 Credica 的核心功能：QR 交換名片、溫度計人脈追蹤、可驗證憑證出示與驗證、多身份管理。這只是開始——Credica 還有群組交換（一次收 50 人名片）、活動報到、組織管理等進階功能。',
+    hint: '立即下載 App，開始建立你真實的數位人脈。也可以點「🔄 重置」從頭再玩一次。',
+    run: () => {
+      showScreen('A', 'home');
+      showScreen('B', 'home');
+      setActivePhone('both');
+    }
+  },
+];
+
+function focusPhone(which) {
+  const wrap = document.getElementById(`phoneWrap${which}`);
+  if (wrap && window.innerWidth <= 820) {
+    document.getElementById('mobTabA').classList.toggle('active', which === 'A');
+    document.getElementById('mobTabB').classList.toggle('active', which === 'B');
+    document.getElementById('phoneWrapA').classList.toggle('mobile-active', which === 'A');
+    document.getElementById('phoneWrapB').classList.toggle('mobile-active', which === 'B');
+  }
+}
+
+function renderStep(idx) {
+  const step = steps[idx];
+  if (!step) return;
+  document.getElementById('stepNum').textContent = idx + 1;
+  document.getElementById('stepTitleText').textContent = step.title;
+  document.getElementById('stepDescText').textContent = step.desc;
+  document.getElementById('stepHintText').textContent = step.hint;
+  document.getElementById('stepCounter').textContent = `第 ${idx + 1} / ${steps.length} 步`;
+  document.getElementById('progressFill').style.width = ((idx + 1) / steps.length * 100) + '%';
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === steps.length - 1;
+  document.getElementById('nextBtn').textContent = idx === steps.length - 1 ? '✓ 完成' : '下一步 →';
+  if (step.run) step.run();
+}
+
+function resetAll() {
+  state.stepIndex = 0;
+  state.tempLevel = 15;
+  state.newContactAdded = false;
+  document.getElementById('newContactBCard').style.display = 'none';
+  document.getElementById('heroCountB').textContent = '15';
+  document.getElementById('tempMarkerB').style.left = '15%';
+  document.getElementById('tempLabelB').textContent = '剛認識';
+  document.getElementById('tempDescB').textContent = '今日剛交換名片。多互動、多見面、共同參加活動可以讓溫度上升。';
+  renderStep(0);
+  document.querySelectorAll('.toast').forEach(t => t.classList.remove('show'));
+}
+
+/* ============ EVENT BINDING ============ */
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-action]');
+  if (el) {
+    e.preventDefault();
+    handleAction(el.dataset.action);
+  }
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (state.stepIndex < steps.length - 1) {
+    state.stepIndex++;
+    renderStep(state.stepIndex);
+  }
+});
+document.getElementById('prevBtn').addEventListener('click', () => {
+  if (state.stepIndex > 0) {
+    state.stepIndex--;
+    renderStep(state.stepIndex);
+  }
+});
+document.getElementById('resetBtn').addEventListener('click', resetAll);
+
+document.getElementById('mobTabA').addEventListener('click', () => focusPhone('A'));
+document.getElementById('mobTabB').addEventListener('click', () => focusPhone('B'));
+
+/* Keyboard navigation */
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowRight' && state.stepIndex < steps.length - 1) {
+    state.stepIndex++; renderStep(state.stepIndex);
+  }
+  if (e.key === 'ArrowLeft' && state.stepIndex > 0) {
+    state.stepIndex--; renderStep(state.stepIndex);
+  }
+});
+
+/* Initial render */
+renderStep(0);
+</script>
+
+</body>
+</html>
