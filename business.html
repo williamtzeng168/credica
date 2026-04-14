@@ -329,21 +329,23 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica_logo.png" alt="Credica" style="width:34px;height:34px;border-radius:9px;">
+    <img src="credica_logo.png" alt="Credica Logo">
     Credica
   </a>
   <div class="nav-mid">
-    <a href="#pain">管理痛點</a>
-    <a href="#features">功能介紹</a>
-    <a href="#scenes">適用場景</a>
-    <a href="#pricing">定價</a>
-    <a href="#contact">聯繫我們</a>
+    <a href="index.html#features">功能</a>
+    <a href="index.html#group">群組交換</a>
+    <a href="index.html#scenes">場景</a>
+    <a href="tutorial.html">互動教學</a>
+    <a href="business.html" class="active">組織管理</a>
+    <a href="enterprise.html">企業合規</a>
+    <a href="https://dashboard.credica.app/pricing">定價</a>
+    <a href="index.html#faq">FAQ</a>
   </div>
-  <div class="nav-right">
-    <a href="index.html" class="nav-personal">&larr; 回個人版</a>
-    <a href="enterprise.html" class="nav-enterprise">企業合規方案</a>
-    <a href="https://dashboard.credica.app/signup?plan=free" class="nav-cta" style="text-decoration:none">免費開始</a>
-  </div>
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    下載 App
+  </a>
 </nav>
 
 <!-- ==================== HERO ==================== -->
@@ -625,33 +627,41 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="section-center">
     <div class="section-label">方案定價</div>
     <div class="section-title">簡單透明，<span class="hl">免費開始</span></div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">Free</div>
-        <div class="price-amount">NT$0<span>/月</span></div>
-        <div class="price-features">30 位成員<br>10 張憑證<br>共用 LINE Bot</div>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-amount">NT$990<span>/月</span></div>
-        <div class="price-features">200 位成員<br>100 張憑證<br>共用 LINE Bot</div>
-      </div>
-      <div class="price-card highlighted">
-        <div class="price-name">Pro</div>
-        <div class="price-amount">NT$2,990<span>/月</span></div>
-        <div class="price-features">2,000 位成員<br>無限憑證<br>獨立 LINE Bot</div>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount">專案報價</div>
-        <div class="price-features">客製功能<br>SLA 保障<br>專屬客服</div>
-      </div>
-    </div>
+    <div class="pricing-grid" id="pricing-grid"></div>
     <div style="text-align:center;margin-top:2rem;">
       <a href="https://dashboard.credica.app/pricing" class="btn-secondary">比較完整方案 &rarr;</a>
     </div>
   </div>
 </section>
+<script src="pricing-data.js"></script>
+<script>
+(function(){
+  var tiers = window.CREDICA_TIERS || [];
+  var lineL = {shared:'共用 LINE Bot', dedicated:'獨立 LINE Bot'};
+  function fq(v, u) { return v < 0 ? '無上限' : v.toLocaleString() + ' ' + u; }
+  var g = document.getElementById('pricing-grid');
+  if (!g || !tiers.length) return;
+  g.innerHTML = '';
+  tiers.forEach(function(t) {
+    var card = document.createElement('div');
+    card.className = 'price-card' + (t.id === 'pro' ? ' highlighted' : '');
+    var amt = t.price_ntd > 0
+      ? 'NT$' + t.price_ntd.toLocaleString() + '<span>/月</span>'
+      : t.price_label;
+    var features = [
+      fq(t.member_quota, '位成員'),
+      fq(t.vc_quota, '張憑證/月'),
+      fq(t.ai_quota, '次 AI/月'),
+      t.push_quota < 0 ? '自行管理推播' : t.push_quota + ' 次推播/月',
+      lineL[t.line_type] || t.line_type
+    ].join('<br>');
+    card.innerHTML = '<div class="price-name">' + t.name + '</div>'
+      + '<div class="price-amount">' + amt + '</div>'
+      + '<div class="price-features">' + features + '</div>';
+    g.appendChild(card);
+  });
+})();
+</script>
 
 <!-- ==================== WHY CREDICA ==================== -->
 <section class="section">

@@ -23,12 +23,12 @@ const I18N_DATA = {
       "store_google_soon": "Coming Soon"
     },
     "screen": {
-      "greeting": "你好，William 👋",
+      "greeting": "你好，小明 👋",
       "subtitle": "今天有 3 則跟進建議",
       "search_placeholder": "搜尋聯絡人...",
       "type_work": "工作",
       "type_primary": "主要",
-      "id_name": "曾威廉",
+      "id_name": "陳小明",
       "id_title": "資深產品經理 · Credica Inc.",
       "stat_identities": "身份名片",
       "stat_contacts": "聯絡人",
@@ -248,12 +248,12 @@ const I18N_DATA = {
       "store_google_soon": "Coming Soon"
     },
     "screen": {
-      "greeting": "你好，William 👋",
+      "greeting": "你好，小明 👋",
       "subtitle": "今天有 3 条跟进建议",
       "search_placeholder": "搜索联系人...",
       "type_work": "工作",
       "type_primary": "主要",
-      "id_name": "曾威廉",
+      "id_name": "陳小明",
       "id_title": "高级产品经理 · Credica Inc.",
       "stat_identities": "身份名片",
       "stat_contacts": "联系人",
@@ -473,12 +473,12 @@ const I18N_DATA = {
       "store_google_soon": "Coming Soon"
     },
     "screen": {
-      "greeting": "Hi, William 👋",
+      "greeting": "Hi, Sean 👋",
       "subtitle": "3 follow-up suggestions today",
       "search_placeholder": "Search contacts...",
       "type_work": "Work",
       "type_primary": "Primary",
-      "id_name": "William Tseng",
+      "id_name": "Sean Chen",
       "id_title": "Senior PM · Credica Inc.",
       "stat_identities": "Identities",
       "stat_contacts": "Contacts",
@@ -698,12 +698,12 @@ const I18N_DATA = {
       "store_google_soon": "Coming Soon"
     },
     "screen": {
-      "greeting": "こんにちは、William 👋",
+      "greeting": "こんにちは、ショーン 👋",
       "subtitle": "今日のフォローアップ提案: 3件",
       "search_placeholder": "連絡先を検索...",
       "type_work": "仕事",
       "type_primary": "メイン",
-      "id_name": "ウィリアム・ツェン",
+      "id_name": "シャン・チェン",
       "id_title": "シニアPM · Credica Inc.",
       "stat_identities": "名刺",
       "stat_contacts": "連絡先",
@@ -923,12 +923,12 @@ const I18N_DATA = {
       "store_google_soon": "Coming Soon"
     },
     "screen": {
-      "greeting": "Xin chào, William 👋",
+      "greeting": "Xin chào, Sean 👋",
       "subtitle": "3 gợi ý theo dõi hôm nay",
       "search_placeholder": "Tìm liên hệ...",
       "type_work": "Công việc",
       "type_primary": "Chính",
-      "id_name": "William Tseng",
+      "id_name": "Sean Chen",
       "id_title": "PM Cấp cao · Credica Inc.",
       "stat_identities": "Danh thiếp",
       "stat_contacts": "Liên hệ",
@@ -1148,12 +1148,12 @@ const I18N_DATA = {
       "store_google_soon": "Coming Soon"
     },
     "screen": {
-      "greeting": "สวัสดี William 👋",
+      "greeting": "สวัสดี Sean 👋",
       "subtitle": "คำแนะนำติดตาม 3 รายการวันนี้",
       "search_placeholder": "ค้นหาผู้ติดต่อ...",
       "type_work": "งาน",
       "type_primary": "หลัก",
-      "id_name": "วิลเลียม เจิ้ง",
+      "id_name": "ฌอน เฉิน",
       "id_title": "PM อาวุโส · Credica Inc.",
       "stat_identities": "นามบัตร",
       "stat_contacts": "ผู้ติดต่อ",
