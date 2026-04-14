@@ -43,6 +43,12 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 /* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
 .logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; text-decoration: none; color: var(--text); }
+.logo img { width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0; }
+.nav-mid { flex: 1; justify-content: center; }
+.nav-mid a.active { color: var(--teal); font-weight: 500; }
+.nav-dl { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+.nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(13,148,136,0.3); }
+.nav-dl svg { width: 16px; height: 16px; }
 .logo-box { width: 34px; height: 34px; background: linear-gradient(135deg, var(--teal), var(--teal-b)); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
 .logo-box svg { width: 18px; height: 18px; }
 .logo-tag { font-size: 0.6rem; font-weight: 600; color: var(--amber); background: rgba(245,158,11,0.12); padding: 0.15rem 0.5rem; border-radius: 4px; margin-left: 0.35rem; letter-spacing: 0.04em; }
