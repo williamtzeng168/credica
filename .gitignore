@@ -2,6 +2,7 @@
 node_modules/
 dist/
 .env
+.deploy-secrets
 reference-settings.png
 
 # Local R-series migration backup(R1 created, never commit)
