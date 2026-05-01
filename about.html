@@ -167,39 +167,109 @@ main { position: relative; z-index: 1; padding-top: 0; }
 .story-text p { margin-bottom: 1.25rem; }
 .story-text p:last-child { margin-bottom: 0; }
 
-/* === Philosophy === */
-.phil-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
-  margin-top: 3rem; max-width: 920px; margin-left: auto; margin-right: auto;
+/* === Philosophy — Lifecycle 動態圓形循環 === */
+.lc-wrap { max-width: 1100px; margin: 0 auto; }
+.lc-top { text-align: center; margin-bottom: 3rem; }
+.lc-body { display: flex; gap: 3rem; align-items: center; }
+.lc-ring-wrap { flex-shrink: 0; position: relative; width: 300px; height: 300px; }
+.lc-ring { width: 100%; height: 100%; position: relative; }
+.lc-circle-bg { position: absolute; inset: 40px; border-radius: 50%; border: 1.5px dashed var(--border); }
+.lc-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.lc-center-text { font-size: 0.72rem; color: var(--text-3); text-align: center; line-height: 1.5; }
+.lc-node {
+  position: absolute; width: 72px; height: 72px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  border: 2px solid transparent; z-index: 2;
 }
-.phil-card {
+.lc-node:hover { transform: scale(1.12); }
+.lc-node.active { box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+.lc-node-num { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; opacity: 0.7; }
+.lc-node-label { font-size: 0.88rem; font-weight: 700; }
+
+/* Node 位置 + 顏色 */
+.n0 { top: -4px; left: 50%; transform: translateX(-50%); background: var(--pastel-mint); color: #085041; }
+.n0:hover, .n0.active { background: #5DCAA5; color: #04342C; border-color: #1D9E75; }
+.n0.active { transform: translateX(-50%) scale(1.18); }
+.n1 { top: 50%; right: -4px; transform: translateY(-50%); background: var(--pastel-sky); color: #0C447C; }
+.n1:hover, .n1.active { background: #85B7EB; color: #042C53; border-color: #378ADD; }
+.n1.active { transform: translateY(-50%) scale(1.18); }
+.n2 { bottom: -4px; left: 50%; transform: translateX(-50%); background: var(--pastel-lavender); color: #3C3489; }
+.n2:hover, .n2.active { background: #AFA9EC; color: #26215C; border-color: #7F77DD; }
+.n2.active { transform: translateX(-50%) scale(1.18); }
+.n3 { top: 50%; left: -4px; transform: translateY(-50%); background: var(--pastel-peach); color: #712B13; }
+.n3:hover, .n3.active { background: #F0997B; color: #4A1B0C; border-color: #D85A30; }
+.n3.active { transform: translateY(-50%) scale(1.18); }
+
+/* Arrows */
+.lc-arrows { position: absolute; inset: 0; pointer-events: none; }
+.lc-arrows svg { width: 100%; height: 100%; }
+
+/* Detail card */
+.lc-detail { flex: 1; min-width: 0; }
+.lc-detail-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 18px; padding: 2rem 1.75rem;
-  transition: all 0.4s var(--ease);
+  transition: opacity 0.3s, transform 0.3s;
+  position: relative; overflow: hidden; min-height: 200px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  position: relative; overflow: hidden;
 }
-.phil-card::before {
+.lc-detail-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 2px; background: linear-gradient(90deg, var(--navy), var(--blue-text));
-  opacity: 0; transition: opacity 0.3s;
+  height: 3px; transition: background 0.4s;
 }
-.phil-card:hover { border-color: var(--navy-tint-2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(30,41,81,0.08); }
-.phil-card:hover::before { opacity: 1; }
-.phil-step {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--navy-tint); color: var(--navy);
-  font-weight: 800; font-size: 1rem; margin-bottom: 1rem;
+.lc-detail-card[data-stage="0"]::before { background: linear-gradient(90deg, #5DCAA5, #1D9E75); }
+.lc-detail-card[data-stage="1"]::before { background: linear-gradient(90deg, #85B7EB, #378ADD); }
+.lc-detail-card[data-stage="2"]::before { background: linear-gradient(90deg, #AFA9EC, #7F77DD); }
+.lc-detail-card[data-stage="3"]::before { background: linear-gradient(90deg, #F0997B, #D85A30); }
+.lc-detail-num { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 0.5rem; }
+.lc-detail-title { font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+.lc-detail-desc { font-size: 0.98rem; color: var(--text-sub); line-height: 1.75; }
+
+/* Dots */
+.lc-dots { display: flex; gap: 8px; margin-top: 1.25rem; justify-content: center; }
+.lc-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border); cursor: pointer; transition: all 0.3s;
 }
-.phil-card h3 {
-  font-size: 1.2rem; font-weight: 700;
-  margin-bottom: 0.6rem; color: var(--text);
-  letter-spacing: -0.01em;
+.lc-dot.active { width: 24px; border-radius: 4px; }
+.lc-dot[data-s="0"].active { background: #1D9E75; }
+.lc-dot[data-s="1"].active { background: #378ADD; }
+.lc-dot[data-s="2"].active { background: #7F77DD; }
+.lc-dot[data-s="3"].active { background: #D85A30; }
+
+/* Auto play */
+.lc-auto-indicator { text-align: center; margin-top: 0.75rem; }
+.lc-auto-btn {
+  font-size: 0.72rem; color: var(--text-3); background: none;
+  border: 1px solid var(--border); border-radius: 100px;
+  padding: 0.2rem 0.85rem; cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
 }
-.phil-card p {
-  font-size: 0.98rem; color: var(--text-sub);
-  line-height: 1.7;
+.lc-auto-btn:hover { border-color: var(--navy-tint-2); color: var(--text-sub); }
+
+/* Pulse */
+.lc-pulse { position: absolute; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; }
+@keyframes lc-pulse-ring { 0% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; } 100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; } }
+.lc-pulse.active { animation: lc-pulse-ring 2s ease-out infinite; }
+.p0 { top: 32px; left: 50%; width: 72px; height: 72px; background: rgba(93,202,165,0.25); }
+.p1 { top: 50%; right: 32px; width: 72px; height: 72px; background: rgba(133,183,235,0.25); transform: translate(50%,-50%); }
+.p2 { bottom: 32px; left: 50%; width: 72px; height: 72px; background: rgba(175,169,236,0.25); }
+.p3 { top: 50%; left: 32px; width: 72px; height: 72px; background: rgba(240,153,123,0.25); transform: translate(-50%,-50%); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lc-body { flex-direction: column; gap: 2rem; }
+  .lc-ring-wrap { width: 240px; height: 240px; margin: 0 auto; }
+  .lc-node { width: 60px; height: 60px; }
+  .lc-node-label { font-size: 0.82rem; }
+  .lc-node-num { font-size: 0.58rem; }
+  .lc-detail-card { min-height: 160px; padding: 1.5rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  .lc-ring-wrap { width: 220px; height: 220px; }
+  .lc-node { width: 54px; height: 54px; }
+  .lc-node-label { font-size: 0.78rem; }
 }
 
 /* === FAQ === */
@@ -255,7 +325,6 @@ footer {
   html { font-size: 16px; }
   .section { padding: 4rem 1.5rem; }
   .hero { padding: 7rem 1.5rem 3rem; min-height: 40vh; }
-  .phil-grid { gap: 1rem; }
 }
 @media (max-width: 768px) {
   .section { padding: 3rem 1.25rem; }
@@ -266,7 +335,6 @@ footer {
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
   nav { padding: 1rem 1.25rem; }
-  .phil-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; padding: 2.5rem 1.25rem; }
 }
 @media (max-width: 480px) {
@@ -633,33 +701,56 @@ footer {
   </div>
 </section>
 
-<!-- ============ Philosophy ============ -->
+<!-- ============ Philosophy — Lifecycle 動態圓形循環 ============ -->
 <section class="section" id="philosophy">
-  <div style="text-align:center;">
-    <div class="section-num">RECYCLABLE DIGITAL PASS</div>
-    <h2 class="section-title">不是會員卡 APP,<br>是<span class="hl">卡證的生命週期管理</span></h2>
-    <p style="font-size:1.05rem; color:var(--text-sub); line-height:1.7; max-width:680px; margin:0.85rem auto 0; font-weight:300;">每張卡證從誕生到失效,Credica 陪你走完 4 個階段。</p>
-  </div>
-  <div class="phil-grid">
-    <div class="phil-card">
-      <div class="phil-step">1</div>
-      <h3>取得</h3>
-      <p>從組織收到會員證、員工證、活動票、訓練證照——掃 QR 一下進到錢包。</p>
+  <div class="lc-wrap">
+    <div class="lc-top">
+      <div class="section-num">RECYCLABLE DIGITAL PASS</div>
+      <h2 class="section-title" style="text-align:center;">不是會員卡 APP,<br>是<span class="hl">卡證的生命週期管理</span></h2>
+      <p style="font-size:1.05rem; color:var(--text-sub); line-height:1.7; max-width:680px; margin:0.85rem auto 0; font-weight:300; text-align:center;">每張卡證從誕生到失效,Credica 陪你走完 4 個階段。</p>
     </div>
-    <div class="phil-card">
-      <div class="phil-step">2</div>
-      <h3>持有</h3>
-      <p>分類自動整理:身份證件、工作雇主、會員資格、訓練證照。即將到期會自動提醒。</p>
-    </div>
-    <div class="phil-card">
-      <div class="phil-step">3</div>
-      <h3>出示</h3>
-      <p>該用的時候,系統自動帶出該帶的卡證。一次出示,對方一次驗證完。</p>
-    </div>
-    <div class="phil-card">
-      <div class="phil-step">4</div>
-      <h3>歸還</h3>
-      <p>不再需要的卡證(離職、活動結束、過期),系統提醒你歸還或自動失效。</p>
+    <div class="lc-body">
+      <!-- 左：圓形循環 -->
+      <div class="lc-ring-wrap">
+        <div class="lc-ring">
+          <div class="lc-circle-bg"></div>
+          <div class="lc-pulse p0 active" id="pulse0"></div>
+          <div class="lc-pulse p1" id="pulse1"></div>
+          <div class="lc-pulse p2" id="pulse2"></div>
+          <div class="lc-pulse p3" id="pulse3"></div>
+          <div class="lc-arrows">
+            <svg viewBox="0 0 300 300" aria-hidden="true">
+              <defs><marker id="lc-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+              <path d="M185 42 Q 242 62, 254 115" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
+              <path d="M254 185 Q 242 238, 185 258" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
+              <path d="M115 258 Q 62 238, 46 185" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
+              <path d="M46 115 Q 62 62, 115 42" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
+            </svg>
+          </div>
+          <div class="lc-node n0 active" data-s="0" onclick="lcGoTo(0)"><span class="lc-node-num">01</span><span class="lc-node-label">取得</span></div>
+          <div class="lc-node n1" data-s="1" onclick="lcGoTo(1)"><span class="lc-node-num">02</span><span class="lc-node-label">持有</span></div>
+          <div class="lc-node n2" data-s="2" onclick="lcGoTo(2)"><span class="lc-node-num">03</span><span class="lc-node-label">出示</span></div>
+          <div class="lc-node n3" data-s="3" onclick="lcGoTo(3)"><span class="lc-node-num">04</span><span class="lc-node-label">歸還</span></div>
+          <div class="lc-center"><div class="lc-center-text">Credica<br>陪你走完<br>每一圈</div></div>
+        </div>
+      </div>
+      <!-- 右：詳細內容卡片 -->
+      <div class="lc-detail">
+        <div class="lc-detail-card" id="lcDetailCard" data-stage="0">
+          <div class="lc-detail-num" id="lcDetailNum">STEP 01</div>
+          <div class="lc-detail-title" id="lcDetailTitle">取得</div>
+          <div class="lc-detail-desc" id="lcDetailDesc">從組織收到會員證、員工證、活動票、訓練證照——掃 QR 一下,直接進到你的手機錢包。不用填表、不用等郵寄。</div>
+        </div>
+        <div class="lc-dots">
+          <div class="lc-dot active" data-s="0" onclick="lcGoTo(0)"></div>
+          <div class="lc-dot" data-s="1" onclick="lcGoTo(1)"></div>
+          <div class="lc-dot" data-s="2" onclick="lcGoTo(2)"></div>
+          <div class="lc-dot" data-s="3" onclick="lcGoTo(3)"></div>
+        </div>
+        <div class="lc-auto-indicator">
+          <button class="lc-auto-btn" id="lcAutoBtn" onclick="lcToggleAuto()">自動播放中</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -749,6 +840,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Lifecycle 動態圓形循環
+(function() {
+  const lcStages = [
+    { num: 'STEP 01', title: '取得', desc: '從組織收到會員證、員工證、活動票、訓練證照——掃 QR 一下,直接進到你的手機錢包。不用填表、不用等郵寄。' },
+    { num: 'STEP 02', title: '持有', desc: '分類自動整理:身份證件、工作雇主、會員資格、訓練證照。即將到期的卡證會自動提醒你,該更新的不會漏掉。' },
+    { num: 'STEP 03', title: '出示', desc: '該用的時候,系統自動帶出該帶的卡證。一次出示,對方一次驗證完——假的造不出來,真的一秒辨識。' },
+    { num: 'STEP 04', title: '歸還', desc: '離職、活動結束、證照過期——不再需要的卡證,系統提醒你歸還或自動失效。乾淨俐落,不留廢卡。' }
+  ];
+  let lcCur = 0, lcAuto = true, lcTimer = null;
+  const lcNodes = document.querySelectorAll('.lc-node');
+  const lcDots = document.querySelectorAll('.lc-dot');
+  const lcPulses = [document.getElementById('pulse0'), document.getElementById('pulse1'), document.getElementById('pulse2'), document.getElementById('pulse3')];
+  const lcCard = document.getElementById('lcDetailCard');
+  const lcNumEl = document.getElementById('lcDetailNum');
+  const lcTitleEl = document.getElementById('lcDetailTitle');
+  const lcDescEl = document.getElementById('lcDetailDesc');
+  const lcAutoBtn = document.getElementById('lcAutoBtn');
+
+  if (!lcCard) return; // 安全檢查
+
+  window.lcGoTo = function(i) {
+    lcCur = i;
+    lcNodes.forEach(function(n) { n.classList.toggle('active', +n.dataset.s === i); });
+    lcDots.forEach(function(d) { d.classList.toggle('active', +d.dataset.s === i); });
+    lcPulses.forEach(function(p, idx) { if (p) p.classList.toggle('active', idx === i); });
+    lcCard.setAttribute('data-stage', i);
+    lcCard.style.opacity = '0';
+    lcCard.style.transform = 'translateY(8px)';
+    setTimeout(function() {
+      lcNumEl.textContent = lcStages[i].num;
+      lcTitleEl.textContent = lcStages[i].title;
+      lcDescEl.textContent = lcStages[i].desc;
+      lcCard.style.opacity = '1';
+      lcCard.style.transform = 'translateY(0)';
+    }, 150);
+    if (lcAuto) lcResetTimer();
+  };
+
+  function lcNext() { window.lcGoTo((lcCur + 1) % 4); }
+  function lcResetTimer() { clearInterval(lcTimer); lcTimer = setInterval(lcNext, 4000); }
+
+  window.lcToggleAuto = function() {
+    lcAuto = !lcAuto;
+    lcAutoBtn.textContent = lcAuto ? '自動播放中' : '已暫停';
+    if (lcAuto) lcResetTimer(); else clearInterval(lcTimer);
+  };
+
+  lcResetTimer();
+})();
 </script>
 
 </body>
