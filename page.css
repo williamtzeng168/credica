@@ -33,7 +33,7 @@ nav .logo img { width: 32px; height: 32px; }
 .nav-dl {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.6rem 1.4rem;
-    background: linear-gradient(135deg, #4F46E5, #06B6D4);
+    background: linear-gradient(135deg, #1E2951, #2B5BD7);
     color: #fff; text-decoration: none;
     border-radius: 10px;
     font-size: 0.95rem; font-weight: 600;
@@ -41,7 +41,7 @@ nav .logo img { width: 32px; height: 32px; }
 }
 .nav-dl:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(79,70,229,0.35);
+    box-shadow: 0 4px 20px rgba(30,41,81,0.35);
 }
 .nav-dl svg { width: 16px; height: 16px; }
 

@@ -9,6 +9,7 @@
 <title>Credica — 社團、社區、活動管理平台</title>
 <link rel="canonical" href="https://credica.app/business.html">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
 <style>
 :root {
   --deep: #F8FAFC;
@@ -16,10 +17,10 @@
   --card: #FFFFFF;
   --card-h: #F1F5F9;
   --border: rgba(0,0,0,0.07);
-  --border-h: rgba(79,70,229,0.2);
-  --teal: #4F46E5;
-  --teal-g: #6366F1;
-  --teal-b: #4F46E5;
+  --border-h: rgba(30,41,81,0.2);
+  --teal: #1E2951;
+  --teal-g: #141B3B;
+  --teal-b: #1E2951;
   --credica-blue: #1E3A5F;
   --text: #1E293B;
   --text-2: #475569;
@@ -36,7 +37,7 @@
 html { scroll-behavior: smooth; font-size: 18px; }
 body { font-family: 'Outfit', 'Noto Sans TC', sans-serif; background: var(--deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(79,70,229,0.08), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6,182,212,0.05), transparent); pointer-events: none; z-index: 0; }
+body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30,41,81,0.08), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6,182,212,0.05), transparent); pointer-events: none; z-index: 0; }
 
 body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.5; }
 
@@ -47,7 +48,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .nav-mid { flex: 1; justify-content: center; }
 .nav-mid a.active { color: var(--teal); font-weight: 500; }
 .nav-dl { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
-.nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(13,148,136,0.3); }
+.nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
 .nav-dl svg { width: 16px; height: 16px; }
 .logo-box { width: 34px; height: 34px; background: linear-gradient(135deg, var(--teal), var(--teal-b)); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
 .logo-box svg { width: 18px; height: 18px; }
@@ -63,7 +64,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .nav-enterprise { font-size: 0.9rem; color: var(--teal); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 .nav-enterprise:hover { color: var(--teal-g); }
 .nav-cta { padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; }
-.nav-cta:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(13,148,136,0.3); }
+.nav-cta:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
 
 /* ==================== HERO ==================== */
 .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2.5rem 4rem; position: relative; }
@@ -80,13 +81,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 100px; font-size: 0.85rem; color: var(--amber); margin-bottom: 2rem; animation: fadeUp 0.7s var(--ease) both; }
 
 .hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.045em; animation: fadeUp 0.7s var(--ease) 0.1s both; }
-.hl { background: linear-gradient(135deg, #4F46E5, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hl { background: linear-gradient(135deg, #1E2951, #2B5BD7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
 .hero-sub { font-size: 1.2rem; color: var(--text-2); line-height: 1.8; margin-top: 1.5rem; font-weight: 300; max-width: 620px; margin-left: auto; margin-right: auto; animation: fadeUp 0.7s var(--ease) 0.2s both; }
 
 .hero-cta-row { display: flex; gap: 0.85rem; justify-content: center; margin-top: 2.5rem; animation: fadeUp 0.7s var(--ease) 0.3s both; }
 .btn-primary { padding: 0.9rem 2.2rem; background: linear-gradient(135deg, var(--teal), #0F766E); color: #fff; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.3s; text-decoration: none; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(13,148,136,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,41,81,0.3); }
 .btn-secondary { padding: 0.9rem 2.2rem; background: transparent; color: var(--text-2); border: 1px solid var(--border); border-radius: 12px; font-size: 1.05rem; font-weight: 400; cursor: pointer; font-family: inherit; transition: all 0.3s; text-decoration: none; }
 .btn-secondary:hover { border-color: var(--text-3); color: var(--text); }
 
@@ -100,7 +101,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
 
 .pain-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2.25rem 1.75rem; text-align: left; transition: all 0.4s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.pain-card:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(79,70,229,0.08); }
+.pain-card:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(30,41,81,0.08); }
 
 .pain-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
 .pain-card:nth-child(1) .pain-icon { background: rgba(244,63,94,0.1); color: var(--rose); }
@@ -119,13 +120,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .solution-flow { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 
 .flow-node { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2rem 1.5rem; text-align: center; width: 200px; transition: all 0.4s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.flow-node:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.flow-node:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
 
 .flow-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
 .flow-icon svg { width: 26px; height: 26px; }
 
 .node-1 .flow-icon { background: rgba(99,102,241,0.12); color: #818CF8; }
-.node-2 .flow-icon { background: rgba(13,148,136,0.12); color: var(--teal-b); }
+.node-2 .flow-icon { background: rgba(30,41,81,0.12); color: var(--teal-b); }
 .node-3 .flow-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
 
 .flow-node h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
@@ -142,7 +143,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .ftable thead th:first-child { text-align: left; padding-left: 1.25rem; min-width: 180px; }
 .ftable tbody td:first-child { text-align: left; padding-left: 1.25rem; font-weight: 500; color: var(--text); }
 .ftable tbody tr:last-child td { border-bottom: none; }
-.ftable tbody tr:hover { background: rgba(79,70,229,0.02); }
+.ftable tbody tr:hover { background: rgba(30,41,81,0.02); }
 .ftable .check { color: var(--teal); font-weight: 700; font-size: 1.1rem; }
 .ftable .dash { color: #CBD5E1; }
 .ftable .ft-desc { display: block; font-size: 0.72rem; color: var(--text-3); font-weight: 400; margin-top: 0.15rem; line-height: 1.35; }
@@ -150,7 +151,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 /* 4-things summary cards */
 .four-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1100px; margin: 2.5rem auto 0; }
 .four-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.25rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.four-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.four-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
 .four-num { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; font-size: 1rem; font-weight: 800; color: #fff; }
 .four-card:nth-child(1) .four-num { background: var(--teal); }
 .four-card:nth-child(2) .four-num { background: var(--amber); }
@@ -163,7 +164,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .vert-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 1100px; margin: 3rem auto 0; }
 
 .vert-tile { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 1rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.vert-tile:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.vert-tile:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
 
 .vert-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 
@@ -196,7 +197,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .dash-blur-content { filter: blur(6px); opacity: 0.4; pointer-events: none; user-select: none; }
 .dash-blur-content .dm-value { font-size: 1.5rem; }
 .dash-blur-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; }
-.blur-lock { width: 48px; height: 48px; border-radius: 50%; background: rgba(13,148,136,0.1); border: 1px solid rgba(13,148,136,0.2); display: flex; align-items: center; justify-content: center; color: var(--teal-b); }
+.blur-lock { width: 48px; height: 48px; border-radius: 50%; background: rgba(30,41,81,0.1); border: 1px solid rgba(30,41,81,0.2); display: flex; align-items: center; justify-content: center; color: var(--teal-b); }
 .blur-lock svg { width: 22px; height: 22px; }
 .blur-text { font-size: 1rem; color: var(--text-2); font-weight: 500; }
 .blur-sub { font-size: 0.85rem; color: var(--text-3); }
@@ -205,8 +206,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .pricing-strip { max-width: 1100px; margin: 0 auto; padding: 4rem 2.5rem; }
 .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
 .price-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.price-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
-.price-card.highlighted { border-color: var(--teal); background: linear-gradient(180deg, rgba(79,70,229,0.03) 0%, #FFFFFF 100%); box-shadow: 0 4px 20px rgba(79,70,229,0.1); }
+.price-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
+.price-card.highlighted { border-color: var(--teal); background: linear-gradient(180deg, rgba(30,41,81,0.03) 0%, #FFFFFF 100%); box-shadow: 0 4px 20px rgba(30,41,81,0.1); }
 .price-card.highlighted::before { content: '最受歡迎'; display: block; font-size: 0.7rem; font-weight: 600; color: #fff; background: var(--teal); padding: 0.2rem 0.6rem; border-radius: 4px; margin: -0.5rem auto 1rem; width: fit-content; }
 .price-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .price-amount { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
@@ -217,7 +218,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 900px; margin: 3rem auto 0; }
 
 .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.75rem; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.why-card:hover { border-color: var(--border-h); box-shadow: 0 8px 24px rgba(79,70,229,0.06); }
+.why-card:hover { border-color: var(--border-h); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
 
 .why-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
 .why-card h4 .why-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
@@ -249,7 +250,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
   border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit;
   transition: all 0.2s; outline: none;
 }
-.form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+.form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(30,41,81,0.1); }
 .form-input::placeholder { color: var(--text-3); }
 
 .form-select {
@@ -259,14 +260,14 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
   background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%2394A3B8' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 18px;
 }
-.form-select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+.form-select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(30,41,81,0.1); }
 
 .form-textarea {
   padding: 0.85rem 1rem; background: #F8FAFC; border: 1px solid var(--border);
   border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit;
   transition: all 0.2s; outline: none; resize: vertical; min-height: 120px;
 }
-.form-textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+.form-textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(30,41,81,0.1); }
 .form-textarea::placeholder { color: var(--text-3); }
 
 .form-submit {
@@ -275,7 +276,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
   color: #fff; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600;
   cursor: pointer; font-family: inherit; transition: all 0.3s;
 }
-.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(13,148,136,0.3); }
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,41,81,0.3); }
 
 .form-note { grid-column: 1 / -1; font-size: 0.8rem; color: var(--text-3); text-align: center; margin-top: 0.5rem; line-height: 1.6; }
 .form-note a { color: var(--teal-b); text-decoration: none; }
@@ -285,7 +286,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.
 .back-strip h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.65rem; }
 .back-strip p { font-size: 1rem; color: var(--text-2); line-height: 1.7; margin-bottom: 1.5rem; }
 .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text-2); font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
-.btn-back:hover { border-color: var(--teal); color: var(--teal); background: rgba(79,70,229,0.04); }
+.btn-back:hover { border-color: var(--teal); color: var(--teal); background: rgba(30,41,81,0.04); }
 .btn-back svg { width: 16px; height: 16px; }
 
 /* FOOTER */
@@ -339,14 +340,11 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     Credica
   </a>
   <div class="nav-mid">
-    <a href="index.html#features">功能</a>
-    <a href="index.html#group">群組交換</a>
-    <a href="index.html#scenes">場景</a>
+    <a href="index.html">個人版</a>
+    <a href="business.html" class="active">中小組織</a>
+    <a href="enterprise.html">企業方案</a>
     <a href="tutorial.html">互動教學</a>
-    <a href="business.html" class="active">組織管理</a>
-    <a href="enterprise.html">企業合規</a>
-    <a href="https://dashboard.credica.app/pricing">定價</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="about.html">關於</a>
   </div>
   <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -361,9 +359,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     <div class="hero-badge">組織管理平台</div>
     <h1>社團、社區、活動管理<br><span class="hl">不再手忙腳亂</span></h1>
     <p class="hero-sub">
-      LINE 群組訊息找不到、收費對帳很痛苦、<br>
-      活動報到混亂、誰來誰沒來搞不清——<br>
-      Credica 一次解決組織管理的所有瑣事。
+      LINE 訊息找不到、對帳吃力、報到混亂——<br>
+      Credica 一次解決組織管理的瑣事。
     </p>
     <div class="hero-cta-row">
       <a href="https://dashboard.credica.app/signup?plan=free" class="btn-primary">免費開始</a>
@@ -381,17 +378,17 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       <div class="pain-card">
         <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         <h3>LINE 群組管理崩潰</h3>
-        <p>重要訊息被洗掉、公告沒人看、報名統計靠截圖、退出群組就失聯——LINE 好用但不是管理工具。</p>
+        <p>訊息被洗掉、公告沒人看、退群就失聯——LINE 好用但不是管理工具。</p>
       </div>
       <div class="pain-card">
         <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg></div>
         <h3>收費對帳是惡夢</h3>
-        <p>Excel 對帳、轉帳截圖比對、催繳靠人工、漏繳也不知道——每月花好幾天在對帳。</p>
+        <p>Excel 對帳、截圖比對、漏繳沒人發現——每月花好幾天對帳。</p>
       </div>
       <div class="pain-card">
         <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <h3>活動辦了，成效說不清</h3>
-        <p>報到靠紙本簽到、出席率憑感覺、結束後沒有數據——辛苦辦活動卻說不出成果。</p>
+        <p>紙本簽到、出席率憑感覺、結束後沒數據——辛苦辦了卻說不出成果。</p>
       </div>
     </div>
   </div>
@@ -402,25 +399,25 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="solution-header">
     <div class="section-label">怎麼開始</div>
     <div class="section-title">三步驟，搞定組織管理</div>
-    <div class="section-desc">不需要技術能力，選擇場景就自動配好一切。</div>
+    <div class="section-desc">不用技術能力,選場景就配好。</div>
   </div>
   <div class="solution-flow">
     <div class="flow-node node-1">
       <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
       <h4>3 分鐘建立</h4>
-      <p>選擇場景類型<br>系統自動配置功能模組<br>LINE Bot、憑證模板</p>
+      <p>選場景<br>系統自動配置功能模組</p>
     </div>
     <div class="flow-arrow">&rarr;</div>
     <div class="flow-node node-2">
       <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
       <h4>LINE Bot 接管日常</h4>
-      <p>成員在 LINE 上查詢<br>報名、繳費回報<br>AI 7&times;24 自動回覆</p>
+      <p>成員用 LINE 報名、查詢、繳費<br>AI 全天自動回覆</p>
     </div>
     <div class="flow-arrow">&rarr;</div>
     <div class="flow-node node-3">
       <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
       <h4>Dashboard 掌握全局</h4>
-      <p>成員名單、出席率<br>繳費狀態、數位憑證<br>即時數據，一目了然</p>
+      <p>成員、繳費、出席<br>即時數據,一站掌握</p>
     </div>
   </div>
 </section>
@@ -430,7 +427,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="section-center">
     <div class="section-label">功能總覽</div>
     <div class="section-title">Credica 幫你做 <span class="hl">4 件事</span></div>
-    <div class="section-desc">不管你是社團、社區還是活動主辦，管理組織就是這四件事。</div>
+    <div class="section-desc">社團、社區、活動主辦——管理就這四件事。</div>
 
     <div class="four-grid">
       <div class="four-card">
@@ -462,7 +459,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="section-center">
     <div class="section-label">功能 × 場景對照</div>
     <div class="section-title">一張表看懂 <span class="hl">你需要什麼</span></div>
-    <div class="section-desc">選擇你的組織類型，系統自動開通對應功能。不用自己設定。</div>
+    <div class="section-desc">選組織類型,功能自動開通。零設定。</div>
 
     <div class="ftable-wrap">
       <table class="ftable">
@@ -583,7 +580,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="section-center">
     <div class="section-label">管理面板預覽</div>
     <div class="section-title">組織狀態，一眼掌握</div>
-    <div class="section-desc">登入 Dashboard 即時看到所有數據——成員、繳費、出席，不用再到處翻資料。</div>
+    <div class="section-desc">登入即時看所有數據,不用翻資料。</div>
   </div>
   <div class="dash-preview">
     <div class="dash-bar">
@@ -677,19 +674,19 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     <div class="why-grid">
       <div class="why-card">
         <h4><span class="why-dot"></span>LINE 就是入口</h4>
-        <p>不需要成員另裝 APP。用 LINE 就能完成所有互動，導入零阻力。</p>
+        <p>不用裝 APP。成員用 LINE 就能完成所有互動,導入零阻力。</p>
       </div>
       <div class="why-card">
-        <h4><span class="why-dot"></span>選場景就好，零設定</h4>
-        <p>不用研究怎麼設定。選擇你的組織類型，3 分鐘全部配好。</p>
+        <h4><span class="why-dot"></span>選場景就好,零設定</h4>
+        <p>不用研究設定。選組織類型,3 分鐘配好。</p>
       </div>
       <div class="why-card">
-        <h4><span class="why-dot"></span>數位憑證國際標準</h4>
-        <p>基於 W3C Verifiable Credentials 標準。會員證不只是圖片，是可驗證的數位身份。</p>
+        <h4><span class="why-dot"></span>會員證不是 JPG</h4>
+        <p>由原組織簽過,對方一掃就知真偽,假的造不出來。</p>
       </div>
       <div class="why-card">
         <h4><span class="why-dot"></span>個人 APP 已上線</h4>
-        <p>管理者用 Credica APP 掃碼登入管理。成員只要 LINE。</p>
+        <p>管理者用 Credica APP 管理,成員只要 LINE。</p>
       </div>
     </div>
   </div>
@@ -699,8 +696,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 <section id="contact" class="contact-section">
   <div class="contact-card">
     <div class="contact-header">
-      <h2>需要協助？聯繫我們</h2>
-      <p>有任何問題，歡迎留下資訊，我們會儘快回覆。</p>
+      <h2>需要協助?聯繫我們</h2>
+      <p>留下資訊,我們儘快回覆。</p>
     </div>
     <form class="form-grid" onsubmit="handleSubmit(event)">
       <div class="form-group">
@@ -751,8 +748,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 
 <!-- ==================== BACK STRIP — ENTERPRISE ==================== -->
 <div class="back-strip">
-  <h3>需要企業合規方案？</h3>
-  <p>營建工地門禁、醫療證照管理、ESG 供應鏈合規——大型企業專屬方案。</p>
+  <h3>需要企業合規方案?</h3>
+  <p>工地門禁、醫療證照、ESG 合規——大企業方案在這。</p>
   <a href="enterprise.html" class="btn-back">
     前往企業方案
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>

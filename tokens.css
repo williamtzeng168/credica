@@ -1,0 +1,64 @@
+/* ============================================================
+   tokens.css — Credica 設計 token 中央化
+   來源:design-refs/iphone/01-primitives.jsx (T 物件)
+   建立:2026-04-30 (Day 29 改版 R1)
+
+   使用方式:所有 HTML 在 <head> 中於其他 stylesheet 之前載入。
+   舊 :root { --bg-color, --accent-primary, ... } 變數會在 R4-R10
+   各頁重做時逐步汰換為這裡的新 token (--bg, --navy, ...)。
+   ============================================================ */
+
+:root {
+  /* === Surfaces === */
+  --bg:            #F4F5F7;     /* 全站背景 — 冷灰 */
+  --surface:       #FFFFFF;
+  --surface-muted: #FAFAFB;
+  --border:        rgba(15,18,32,0.08);
+  --divider:       rgba(15,18,32,0.06);
+
+  /* === Brand Navy(取代所有現有的紫)=== */
+  --navy:          #1E2951;     /* 主品牌色 */
+  --navy-deep:     #141B3B;     /* 漸層深色 */
+  --navy-tint:     rgba(30,41,81,0.06);
+  --navy-tint-2:   rgba(30,41,81,0.10);
+
+  /* === Text === */
+  --text:          #0F1220;
+  --text-sub:      rgba(15,18,32,0.55);
+  --text-muted:    rgba(15,18,32,0.40);
+  --text-hint:     rgba(15,18,32,0.28);
+
+  /* === Status === */
+  --ok-text:       #0E8050;
+  --ok-bg:         rgba(16,138,88,0.10);
+  --ok-bg-soft:    rgba(16,138,88,0.06);
+  --warn-text:     #B4610F;
+  --warn-bg:       rgba(229,140,29,0.12);
+  --danger-text:   #C2310F;
+  --danger-bg:     rgba(194,49,15,0.08);
+  --danger-border: rgba(194,49,15,0.40);
+  --blue-text:     #2B5BD7;
+  --blue-bg:       rgba(43,91,215,0.10);
+
+  /* === Pastel(QuickAction / Avatar / Event chips)=== */
+  --pastel-lavender: #E6E9FA;   /* 主 pastel,搭 navy */
+  --pastel-mint:     #DAF1E5;
+  --pastel-peach:    #FBE3CB;
+  --pastel-pink:     #F7D8DD;
+  --pastel-sky:      #DCEAFB;
+  --pastel-blush:    #F8DCE7;
+
+  /* === Type === */
+  --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+
+  /* === Radii === */
+  --r-card:    16px;
+  --r-chip:    999px;
+  --r-button:  14px;
+  --r-tile:    18px;
+
+  /* === Shadow === */
+  --card-shadow: 0 1px 2px rgba(15,18,32,0.04);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}

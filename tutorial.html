@@ -7,28 +7,30 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>APP 操作教學 — Credica</title>
-<meta name="description" content="跟著教學一步一步學會 Credica 數位名片 APP 的所有功能：建立名片、交換、群組、人脈圖譜、LineBot 助理。">
+<meta name="description" content="跟著教學一步一步學會 Credica APP 的所有功能:身份、聯絡人、群組、活動、憑證、AI 助理。">
 <meta property="og:title" content="APP 操作教學 — Credica">
-<meta property="og:description" content="16 個功能完整教學，每個步驟都有清楚指引，10 歲小孩也會用。">
+<meta property="og:description" content="19 個功能完整教學,每個步驟都有清楚指引,新手也能快速上手。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://credica.app/tutorial.html">
 <meta property="og:image" content="https://credica.app/og-image.png">
 <link rel="canonical" href="https://credica.app/tutorial.html">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
 <style>
 /* ============ TOKENS (real APP palette) ============ */
 :root {
-  --blue-900: #0D47A1;
-  --blue-800: #1565C0;
-  --blue-700: #1976D2;
-  --blue-600: #2563EB;
-  --blue-500: #2979FF;
-  --blue-400: #42A5F5;
-  --blue-50:  #EEF2FF;
-  --lilac-100: #E8EBFF;  /* selected tab pill */
-  --warm-bg: #F5F3EF;    /* settings page */
-  --app-bg: #F0F4FF;     /* home page surface */
+  /* R7'-B: 全站 blue → navy(對齊主站 R1-R10 navy 系統)。token 名沿用避免大量 var() 改動,值改成 navy 對應 */
+  --blue-900: #0F1220;     /* deepest text */
+  --blue-800: #141B3B;     /* navy-deep */
+  --blue-700: #1E2951;     /* navy primary */
+  --blue-600: #2B5BD7;     /* blue-text accent */
+  --blue-500: #2B5BD7;
+  --blue-400: #5B7BD8;     /* light navy variant */
+  --blue-50:  #F0F4FF;     /* navy-tint surface */
+  --lilac-100: #E6E9FA;    /* pastel-lavender (selected tab pill) */
+  --warm-bg: #FAFAFB;      /* settings page surface */
+  --app-bg: #F4F5F7;       /* home page surface (cool gray, match tokens.css) */
   --card-white: #FFFFFF;
   --ink: #1E293B;
   --ink-2: #475569;
@@ -73,16 +75,16 @@ nav {
   font-size: 0.95rem; font-weight: 400;
   transition: color 0.2s;
 }
-.nav-mid a:hover, .nav-mid a.active { color: #4F46E5; }
+.nav-mid a:hover, .nav-mid a.active { color: #1E2951; }
 .nav-dl {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.6rem 1.4rem; border-radius: 10px;
-  background: #4F46E5; color: white; text-decoration: none;
+  background: #1E2951; color: white; text-decoration: none;
   font-weight: 600; font-size: 0.95rem;
   transition: all 0.2s;
   flex-shrink: 0;
 }
-.nav-dl:hover { background: #6366F1; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(79,70,229,0.3); }
+.nav-dl:hover { background: #141B3B; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
 .nav-dl svg { width: 16px; height: 16px; }
 
 /* ============ HERO ============ */
@@ -398,7 +400,7 @@ nav {
 }
 .biz-card-list .avatar {
   width: 46px; height: 46px; border-radius: 50%;
-  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  background: linear-gradient(135deg, #141B3B, #8B5CF6);
   color: white; font-weight: 700; font-size: 16px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -893,14 +895,11 @@ footer a:hover { color: var(--blue-800); }
     Credica
   </a>
   <div class="nav-mid">
-    <a href="index.html#features">功能</a>
-    <a href="index.html#group">群組交換</a>
-    <a href="index.html#scenes">場景</a>
+    <a href="index.html">個人版</a>
+    <a href="business.html">中小組織</a>
+    <a href="enterprise.html">企業方案</a>
     <a href="tutorial.html" class="active">互動教學</a>
-    <a href="business.html">組織管理</a>
-    <a href="enterprise.html">企業合規</a>
-    <a href="https://dashboard.credica.app/pricing">定價</a>
-    <a href="index.html#faq">FAQ</a>
+    <a href="about.html">關於</a>
   </div>
   <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -911,7 +910,7 @@ footer a:hover { color: var(--blue-800); }
 <section class="hero">
   <div class="hero-chip">APP 操作教學手冊</div>
   <h1>跟著一步一步，<span class="hl">學會 Credica</span> 所有功能</h1>
-  <p>16 個功能、每一步都有清楚指引，10 歲小孩也看得懂。點擊手機畫面上脈動的號碼，體驗完整 APP 操作流程。</p>
+  <p>19 個功能、每一步都有清楚指引。點擊手機畫面上脈動的號碼,體驗完整 APP 操作流程。</p>
 </section>
 
 <main class="tutorial-main">
@@ -939,6 +938,11 @@ footer a:hover { color: var(--blue-800); }
       <ul class="feat-list" id="group-settings"></ul>
     </div>
 
+    <div class="feat-group">
+      <h3>🎫 活動與憑證</h3>
+      <ul class="feat-list" id="group-events-creds"></ul>
+    </div>
+
     <div class="free-roam">
       <span>自由瀏覽模式</span>
       <div class="switch" id="freeRoamSwitch"></div>
@@ -950,7 +954,7 @@ footer a:hover { color: var(--blue-800); }
     <div class="stage-header">
       <div class="stage-title">
         <h2 id="featureTitle">建立你的第一張名片</h2>
-        <p id="featureSubtitle">就像建立一張數位版的紙本名片。資料端對端加密，連 Credica 伺服器都看不到。</p>
+        <p id="featureSubtitle">點選任一功能開始學習。</p>
       </div>
       <div class="progress-indicator">
         <div class="progress-dots" id="progressDots"></div>
@@ -968,7 +972,7 @@ footer a:hover { color: var(--blue-800); }
       <div class="step-panel" id="stepPanel">
         <div class="step-counter" id="stepCounter">步驟 1 / 共 5 步</div>
         <div class="step-title" id="stepTitle">點擊右上角「+」按鈕</div>
-        <div class="step-desc" id="stepDesc">這裡可以新增你的第一張名片。就像建立一張數位版的紙本名片。</div>
+        <div class="step-desc" id="stepDesc">點選任一功能開始學習。</div>
         <div class="advantage" id="stepAdvantage" style="display:none;">
           <span class="tag">💡 小知識</span><span id="advantageText"></span>
         </div>
@@ -982,11 +986,11 @@ footer a:hover { color: var(--blue-800); }
 </main>
 
 <footer>
-  <div>© 2026 Credica — 可驗證的數位名片</div>
+  <div>© 2026 Credica Inc.</div>
   <div>
     <a href="index.html">首頁</a>
     <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" target="_blank" rel="noopener">下載 APP</a>
-    <a href="support.html">聯絡我們</a>
+    <a href="about.html">關於</a>
   </div>
 </footer>
 
@@ -1016,7 +1020,6 @@ const FEATURES = {
     { id:10, title:'加入群組（一鍵交換全員）', sub:'掃一次 QR，收到全群所有人名片。', steps: 4, ready: true },
     { id:11, title:'管理名片通訊錄', sub:'搜尋、翻閱、信任指標一眼辨識真偽。', steps: 5, ready: true },
     { id:12, title:'聯絡人分類與群組管理', sub:'分類 Tab + 標籤，靈活整理人脈。', steps: 6, ready: true },
-    { id:13, title:'人脈圖譜', sub:'AI 幫你分析人脈溫度、本週該聯絡誰。', steps: 5, ready: true },
   ],
   ai: [
     { id:14, title:'加入 LineBot ＋ 組織綁定', sub:'在 LINE 管理名片、查詢憑證。', steps: 4, ready: true },
@@ -1024,6 +1027,12 @@ const FEATURES = {
   ],
   settings: [
     { id:16, title:'設定畫面說明', sub:'備份、進階功能，全部由你決定。', steps: 6, ready: true },
+  ],
+  events_creds: [
+    { id:17, title:'看你被邀請參加的活動', sub:'活動 tab 看本週、即將、已結束。組織主辦的活動全部一頁掌握。', steps: 4, ready: true },
+    { id:18, title:'查看活動詳情', sub:'時間、地點、活動流程、報名費——一切資訊一頁看完。', steps: 4, ready: true },
+    { id:19, title:'看你的憑證錢包', sub:'憑證 tab 看會員證、員工證、訓練證照分類。', steps: 5, ready: true },
+    { id:20, title:'整合 QR 一次出示憑證', sub:'活動報到時自動帶出該帶的憑證,一次掃完所有驗證。', steps: 5, ready: true },
   ],
 };
 
@@ -1069,7 +1078,7 @@ FEATURE_STEPS[1] = [
   {
     title: '點右上角「儲存」完成',
     desc: '確認資料後，點擊右上角的「儲存」。你的第一張數位名片就建立好了！',
-    advantage: '這張名片附有數位簽章，對方可以驗證真偽，不怕假名片。',
+    advantage: '這張名片由你簽過,對方一掃就知真偽,假的造不出來。',
     marker: { x: 278, y: 118 },
     screen: 'edit-filled-avatar',
     isFinal: true,
@@ -1126,10 +1135,10 @@ FEATURE_STEPS[2] = [
 /* === Feature 4: 交換名片（可選分享欄位） === */
 FEATURE_STEPS[4] = [
   {
-    title: '底部 tab 點「交換」',
-    desc: '要和別人交換名片，點底部 tab bar 的「交換」按鈕。',
+    title: '首頁點 quick action「顯示 QR」',
+    desc: '要和別人交換名片,從首頁的 4 個快速操作點「顯示 QR」進入交換頁面。',
     advantage: null,
-    marker: { x: 160, y: 657 },
+    marker: { x: 50, y: 300 },
     screen: 'home-with-two-cards',
   },
   {
@@ -1156,7 +1165,7 @@ FEATURE_STEPS[4] = [
   {
     title: '讓對方掃你的 QR Code',
     desc: '回到 QR Code 頁面，把手機螢幕對準對方。對方用 Credica APP 掃，就會收到你的名片。',
-    advantage: 'QR Code 每次動態產生，不用擔心被截圖盜用。傳輸過程端對端加密。',
+    advantage: 'QR Code 每次動態產生,不用擔心被截圖盜用。資料只在你的手機上。',
     marker: { x: 160, y: 310 },
     screen: 'qr-show',
     illustration: `
@@ -1325,8 +1334,8 @@ FEATURE_STEPS[11] = [
   },
   {
     title: '信任透明度：4 指標判斷真偽',
-    desc: '每張名片都有 4 個信任指標：簽發時效、見證網路、活躍度、VC 狀態。綠色 ✓ 代表通過驗證。',
-    advantage: '不怕收到假名片或假帳號。數位簽章 + 見證網路讓你一眼判斷對方是不是真的。',
+    desc: '每張名片都有 4 個信任指標:簽發時效、見證網路、活躍度、憑證狀態。綠色 ✓ 代表通過驗證。',
+    advantage: '不怕收到假名片或假帳號。原組織簽過的證明 + 見證網路讓你一眼判斷對方是不是真的。',
     marker: { x: 280, y: 445 },
     screen: 'contact-detail',
   },
@@ -1343,46 +1352,6 @@ FEATURE_STEPS[11] = [
     advantage: '這是紙本名片永遠做不到的——你的每一個人脈都是可搜尋、可驗證的。',
     marker: null,
     screen: 'contact-detail-info',
-    isFinal: true,
-  },
-];
-
-/* === Feature 13: 人脈圖譜 === */
-FEATURE_STEPS[13] = [
-  {
-    title: '底部 tab 點「人脈」',
-    desc: '切到人脈 tab，用視覺化看你的人脈關係網。',
-    advantage: null,
-    marker: { x: 224, y: 657 },
-    screen: 'home-empty',
-  },
-  {
-    title: '儀表板模式：看總覽',
-    desc: '儀表板顯示：你有幾位聯絡人、來自幾家公司、本月新增、冷卻/休眠提醒、溫度分布、分類分布。',
-    advantage: '一眼看懂你的人脈狀態，哪些關係該聯絡了。',
-    marker: { x: 55, y: 225 },
-    screen: 'graph-dashboard',
-  },
-  {
-    title: '切到「矩陣」模式：看分類×溫度',
-    desc: '右上角切到「矩陣」模式。Credica 用 AI 把每個聯絡人自動分類（客戶/同學/顧問/供應商…）和溫度（熱絡/溫和/冷卻/休眠）。',
-    advantage: '快速找出「該聯絡但很久沒聯絡的客戶」——矩陣會把他們集中顯示。',
-    marker: { x: 275, y: 175 },
-    screen: 'graph-dashboard',
-  },
-  {
-    title: '看「本週行動清單」',
-    desc: '最下方的本週行動清單會建議你該聯絡哪幾位聯絡人（依溫度和互動記錄）。',
-    advantage: 'Credica 主動提醒你維護人脈。以前要靠記憶或 Excel，現在 AI 幫你做。',
-    marker: { x: 160, y: 605 },
-    screen: 'graph-matrix',
-  },
-  {
-    title: '🎉 AI 驅動的人脈管理',
-    desc: '人脈圖譜把你的所有聯絡人視覺化，告訴你「誰值得投資時間、誰需要重新聯絡」。',
-    advantage: '這是 Credica 最獨特的功能——不只是名片 APP，是真正幫你經營人脈的 AI 助理。',
-    marker: null,
-    screen: 'graph-matrix',
     isFinal: true,
   },
 ];
@@ -1446,7 +1415,7 @@ FEATURE_STEPS[16] = [
   {
     title: '「備份與還原」加密備份到雲端',
     desc: '所有名片、備注、合照都可以加密備份到 iCloud 或 Google Drive。',
-    advantage: '備份資料端對端加密，即使存雲端，也只有你能解密讀取。',
+    advantage: '備份資料加密儲存,即使存雲端,也只有你能解密讀取。',
     marker: { x: 160, y: 395 },
     screen: 'settings-main',
   },
@@ -1639,7 +1608,7 @@ FEATURE_STEPS[12] = [
   {
     title: '選擇分類（支援子分類）',
     desc: '從面板選適合的分類：<strong>商業</strong>（客戶 / 供應商 / 合作夥伴）、<strong>社交</strong>（同學 / 朋友）、<strong>專業</strong>。還可以「新增子分類」自訂。',
-    advantage: '每個分類有獨立顏色標記，在列表和人脈圖譜上一眼分辨。',
+    advantage: '每個分類有獨立顏色標記，在列表上一眼分辨。',
     marker: { x: 160, y: 420 },
     screen: 'category-select-sheet',
   },
@@ -1656,6 +1625,152 @@ FEATURE_STEPS[12] = [
     advantage: 'Credica 和傳統通訊錄最大差別——不是一堆名字的列表，而是可分析、可經營的人脈資產。',
     marker: null,
     screen: 'contact-with-tag',
+    isFinal: true,
+  },
+];
+
+/* === Feature 17: 看你被邀請參加的活動 (R7') === */
+FEATURE_STEPS[17] = [
+  {
+    title: '底部 tab 點「活動」',
+    desc: '從底部 tab bar 切到「活動」,看你被各組織邀請參加的所有活動。',
+    advantage: '不用每個 LINE 群輪流爬,Credica 自動匯總。',
+    marker: { x: 129, y: 660 },
+    screen: 'events-list',
+  },
+  {
+    title: '看「即將要參加」與「為你推薦」',
+    desc: '頂部兩張卡片:即將要參加(明天的活動)和為你推薦(根據你的組織推薦)。',
+    advantage: null,
+    marker: { x: 159, y: 240 },
+    screen: 'events-list',
+  },
+  {
+    title: '篩選 chip:本週 / 即將 / 已結束',
+    desc: '上方 chip 切換不同狀態的活動。本週活動有黃色標記,提醒你不要錯過。',
+    advantage: null,
+    marker: { x: 110, y: 130 },
+    screen: 'events-list',
+  },
+  {
+    title: '🎉 點任何主辦組織看該組織所有活動',
+    desc: '下方「主辦組織」清單列出每個組織開了幾場活動。點進去看該組織完整活動列表。',
+    advantage: '飯糰幫一年 12 場活動,沒參加到的也看得到。',
+    marker: { x: 159, y: 477 },
+    screen: 'org-events-list',
+    isFinal: true,
+  },
+];
+
+/* === Feature 18: 查看活動詳情 (R7') === */
+FEATURE_STEPS[18] = [
+  {
+    title: '從活動列表點任一場活動',
+    desc: '進入活動詳情頁,看完整資訊。',
+    advantage: null,
+    marker: { x: 159, y: 280 },
+    screen: 'events-list',
+  },
+  {
+    title: '看活動 hero 卡:日期 + 標題 + 時間地點',
+    desc: '頂部深色 hero 卡顯示完整資訊:日期、活動名稱、時間、地點。',
+    advantage: null,
+    marker: { x: 159, y: 180 },
+    screen: 'event-detail',
+  },
+  {
+    title: '看「活動流程」+「活動說明」',
+    desc: '中間區塊列出當天時程(19:00 集合 → 19:30 開烤 → 21:00 夜聊),以及主辦的活動說明。',
+    advantage: null,
+    marker: { x: 159, y: 360 },
+    screen: 'event-detail',
+  },
+  {
+    title: '🎉 底部「我要報名」按鈕',
+    desc: '看完詳情後,點底部 navy 大按鈕「我要報名」報名。',
+    advantage: '報名後活動會出現在首頁「即將開始」區,系統會在當天提前提醒你。',
+    marker: { x: 159, y: 650 },
+    screen: 'event-detail-with-map',
+    isFinal: true,
+  },
+];
+
+/* === Feature 19: 看你的憑證錢包 (R7') === */
+FEATURE_STEPS[19] = [
+  {
+    title: '底部 tab 點「憑證」',
+    desc: '從底部 tab bar 切到「憑證」,看你持有的所有憑證。',
+    advantage: '會員證、員工證、訓練證照、活動入場券——一個錢包全部裝得下。',
+    marker: { x: 191, y: 660 },
+    screen: 'creds-list',
+  },
+  {
+    title: '頂部 chip:全部 / 有效 / 即將到期 / 已失效',
+    desc: '快速篩選不同狀態的憑證。即將到期會自動標為黃色提醒。',
+    advantage: null,
+    marker: { x: 110, y: 130 },
+    screen: 'creds-list',
+  },
+  {
+    title: '看「即將要用」卡片',
+    desc: '系統根據你報名的活動和上工地點,自動算出明天 / 後天會用到哪些憑證。',
+    advantage: '出門前一天系統自動準備好你需要的憑證,不會臨時找不到。',
+    marker: { x: 110, y: 240 },
+    screen: 'creds-list',
+  },
+  {
+    title: '看「最近使用」5 張快速 tile',
+    desc: '中間 5 張小 icon 是你最近用過的憑證,點一下快速出示。',
+    advantage: null,
+    marker: { x: 159, y: 380 },
+    screen: 'creds-list',
+  },
+  {
+    title: '🎉 看憑證分類:身份證件 / 工作雇主 / 會員資格 / 訓練證照',
+    desc: '下方 4 個分類自動把你的憑證分類管理。每個分類顯示張數和到期狀況。',
+    advantage: '飯糰幫的會員證、政大 EMBA 校友證、健身房 X 卡、員工證——系統自動分類,你不用煩惱。',
+    marker: { x: 159, y: 500 },
+    screen: 'creds-list',
+    isFinal: true,
+  },
+];
+
+/* === Feature 20: 整合 QR 一次出示憑證 (R7') === */
+FEATURE_STEPS[20] = [
+  {
+    title: '從首頁 quick action 點「顯示 QR」',
+    desc: '首頁 4 個快速操作的第一個就是「顯示 QR」,點下去進入整合 QR 頁。',
+    advantage: null,
+    marker: { x: 50, y: 300 },
+    screen: 'home-top',
+  },
+  {
+    title: '看「驗證單位」+ 活動資訊',
+    desc: '頂部顯示驗證單位(誰來檢核)和當下活動。系統根據你的位置和時間自動帶入。',
+    advantage: 'Credica 自動知道現在是哪個活動,不用自己選。',
+    marker: { x: 159, y: 165 },
+    screen: 'unified-qr',
+  },
+  {
+    title: '看 QR + 5 分鐘有效時間',
+    desc: '中間大 QR Code 整合多張憑證——一次出示,對方一次驗證完。下方提示 QR 5 分鐘後失效。',
+    advantage: 'QR 動態產生有時效,被截圖也沒用。',
+    marker: { x: 159, y: 380 },
+    screen: 'unified-qr',
+  },
+  {
+    title: '看「整合的憑證」清單',
+    desc: '下方列出這次 QR 整合了哪些憑證:飯糰幫會員證 + 政大 EMBA 校友證(範例)。每張都顯示「已就緒」綠標。',
+    advantage: '對方一掃就同時驗證 2 張或更多憑證,不用一張一張掃。',
+    marker: { x: 159, y: 580 },
+    screen: 'unified-qr',
+  },
+  {
+    title: '🎉 點任一張憑證看詳情',
+    desc: '進入詳情頁,看憑證完整資訊:發行日、到期日、簽名驗證、撤銷狀態。底部「出示憑證」可單獨出示。',
+    advantage: '證明這張憑證真的是原組織發的、現在還有效。',
+    marker: { x: 159, y: 400 },
+    screen: 'cred-detail',
     isFinal: true,
   },
 ];
@@ -2018,7 +2133,7 @@ const SCREENS = {
           <div class="quick-cell"><div class="ico"><span class="msi">badge</span></div>管理身份</div>
         </div>
       </div>
-      ${tabBar('swap')}
+      ${tabBar('home')}
     </div>`,
 
   'qr-show': `
@@ -2268,7 +2383,7 @@ const SCREENS = {
         <div style="font-weight:700; font-size:13px; margin-bottom:8px;">成員 (10)</div>
         ${['陳小明（自己）','王大偉','林美玲','張志豪','李建宏'].map((n,i) => `
           <div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--hair);">
-            <div style="width:32px; height:32px; border-radius:50%; background:${['#6366F1','#10B981','#F59E0B','#EC4899','#06B6D4'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">${n[0]}</div>
+            <div style="width:32px; height:32px; border-radius:50%; background:${['#141B3B','#10B981','#F59E0B','#EC4899','#06B6D4'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">${n[0]}</div>
             <div style="flex:1; font-size:12px;">${n}</div>
             <span class="msi" style="color:var(--ink-4); font-size:16px;">chevron_right</span>
           </div>
@@ -2288,7 +2403,7 @@ const SCREENS = {
         </div>
         ${['林美玲','王大偉','張志豪','李建宏'].map((n,i)=>`
           <div style="background:white; border-radius:10px; padding:10px 12px; margin-bottom:6px; display:flex; gap:10px; align-items:center;">
-            <div style="width:38px; height:38px; border-radius:50%; background:${['#EC4899','#10B981','#6366F1','#F59E0B'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:${['#EC4899','#10B981','#141B3B','#F59E0B'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
             <div style="flex:1;">
               <div style="font-weight:600; font-size:13px;">${n}</div>
               <div style="font-size:11px; color:var(--ink-3);">${['行銷總監 · XYZ','工程師 · DEF 軟體','CTO · 台灣創新','業務經理 · JKL 科技'][i]}</div>
@@ -2324,85 +2439,14 @@ const SCREENS = {
             <div style="font-size:10px; padding:2px 8px; border-radius:100px; background:#D1FAE5; color:#047857; font-weight:600;">高信任</div>
           </div>
           <div style="font-size:11px; line-height:1.9;">
-            <div style="display:flex; justify-content:space-between;"><span>簽發時效 <span style="color:#059669;">SD-JWT 驗證 · 9 天前</span></span><span style="color:#10B981;">✓</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>簽發時效 <span style="color:#059669;">已驗證 · 9 天前</span></span><span style="color:#10B981;">✓</span></div>
             <div style="display:flex; justify-content:space-between;"><span>見證網路 <span style="color:var(--blue-700);">30天內 1 人見證</span></span><span style="color:var(--blue-700);">✓</span></div>
             <div style="display:flex; justify-content:space-between;"><span>活躍度 <span style="color:#059669;">9 天前使用</span></span><span style="color:#10B981;">✓</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>VC 狀態 <span style="color:#059669;">SD-JWT 已驗證</span></span><span style="color:#10B981;">✓</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>憑證狀態 <span style="color:#059669;">已驗證</span></span><span style="color:#10B981;">✓</span></div>
           </div>
         </div>
       </div>
       ${tabBar('contact')}
-    </div>`,
-
-  /* === Feature 13 screens === */
-  'graph-dashboard': `
-    <div class="phone-screen active" data-screen="graph-dashboard" style="background: var(--warm-bg);">
-      ${statusBar()}
-      <div class="app-navbar"><span>人脈圖譜</span><div style="margin-left:auto; display:flex; gap:6px;">
-        <div style="padding:5px 14px; border:1px solid var(--blue-700); border-radius:100px; font-size:11px; background:var(--lilac-100); color:var(--blue-700); font-weight:600;">✓ 儀表板</div>
-        <div style="padding:5px 14px; border:1px solid var(--hair); border-radius:100px; font-size:11px;">矩陣</div>
-      </div></div>
-      <div class="app-body warm" style="padding:10px 14px 80px;">
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
-          <div style="background:var(--lilac-100); padding:10px; border-radius:10px; text-align:center;"><div style="font-size:20px; font-weight:700; color:var(--blue-700);">17</div><div style="font-size:10px; color:var(--blue-800);">聯絡人</div></div>
-          <div style="background:#F1F5F9; padding:10px; border-radius:10px; text-align:center;"><div style="font-size:20px; font-weight:700;">10</div><div style="font-size:10px; color:var(--ink-3);">公司</div></div>
-          <div style="background:#D1FAE5; padding:10px; border-radius:10px; text-align:center;"><div style="font-size:20px; font-weight:700; color:#047857;">3</div><div style="font-size:10px; color:#047857;">本月新增</div></div>
-        </div>
-        <div style="background:#FEF3C7; border-radius:10px; padding:8px 12px; margin-top:10px; font-size:11px; color:#92400E; display:flex; align-items:center; gap:4px;">
-          <span class="msi" style="font-size:14px;">warning</span> 3 位聯絡人關係冷卻中，建議近期聯繫
-        </div>
-        <div style="background:#F1F5F9; border-radius:10px; padding:8px 12px; margin-top:6px; font-size:11px; color:var(--ink-2); display:flex; align-items:center; gap:4px;">
-          <span class="msi" style="font-size:14px;">info</span> 7 位聯絡人已進入休眠狀態
-        </div>
-        <div style="margin-top:14px; font-size:13px; font-weight:700;">溫度分布</div>
-        <div style="height:22px; border-radius:4px; overflow:hidden; display:flex; margin-top:6px;">
-          <div style="width:6%; background:#F59E0B;"></div>
-          <div style="width:53%; background:#3B82F6;"></div>
-          <div style="width:41%; background:#94A3B8;"></div>
-        </div>
-        <div style="display:flex; gap:10px; font-size:10px; margin-top:4px;">
-          <span>● 熱絡 0</span><span>● 溫和 1</span><span>● 冷卻 9</span><span>● 休眠 7</span>
-        </div>
-        <div style="margin-top:12px; font-size:13px; font-weight:700;">分類分布</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px;">
-          <div style="background:#EFF5FF; padding:10px; border-radius:8px; font-size:12px;"><strong style="color:var(--blue-700);">0</strong> 商業</div>
-          <div style="background:#FDF2F8; padding:10px; border-radius:8px; font-size:12px;"><strong style="color:#EC4899;">16</strong> 社交</div>
-          <div style="background:#F1F5F9; padding:10px; border-radius:8px; font-size:12px;"><strong>0</strong> 專業</div>
-          <div style="background:#F1F5F9; padding:10px; border-radius:8px; font-size:12px;"><strong>1</strong> 未分類</div>
-        </div>
-      </div>
-      ${tabBar('graph')}
-    </div>`,
-
-  'graph-matrix': `
-    <div class="phone-screen active" data-screen="graph-matrix" style="background: var(--warm-bg);">
-      ${statusBar()}
-      <div class="app-navbar"><span>人脈圖譜</span><div style="margin-left:auto; display:flex; gap:6px;">
-        <div style="padding:5px 14px; border:1px solid var(--hair); border-radius:100px; font-size:11px;">儀表板</div>
-        <div style="padding:5px 14px; border:1px solid var(--blue-700); border-radius:100px; font-size:11px; background:var(--lilac-100); color:var(--blue-700); font-weight:600;">✓ 矩陣</div>
-      </div></div>
-      <div class="app-body warm" style="padding:8px 12px 80px;">
-        <div style="font-weight:700; font-size:13px; margin:6px 0;">分類 × 溫度矩陣</div>
-        <table style="width:100%; border-collapse:separate; border-spacing:2px; font-size:10px;">
-          <tr>
-            <th></th>
-            <th style="color:#EF4444; padding:4px;">熱絡</th>
-            <th style="color:#F59E0B; padding:4px;">溫和</th>
-            <th style="color:#3B82F6; padding:4px;">冷卻</th>
-            <th style="color:#94A3B8; padding:4px;">休眠</th>
-          </tr>
-          ${[['客戶','0','0','0','0'],['同學','0','1','9','6'],['顧問','0','0','0','0'],['供應商','0','0','0','0']].map(r => `<tr><td style="font-weight:600; padding:6px 4px;">${r[0]}</td>${r.slice(1).map(v=>`<td style="text-align:center; padding:6px 4px; background:#F8FAFC; font-weight:${parseInt(v)>0?'700':'400'}; color:${parseInt(v)>0?'var(--ink)':'var(--ink-4)'};">${v}</td>`).join('')}</tr>`).join('')}
-        </table>
-        <div style="background:#FEE2E2; border-radius:10px; padding:10px 12px; margin-top:14px;">
-          <div style="font-weight:700; color:#DC2626; font-size:12px; margin-bottom:6px;"><span class="msi" style="font-size:14px;vertical-align:middle;">fact_check</span> 本週行動清單</div>
-          <div style="font-size:11px; color:#991B1B; line-height:1.7;">
-            1. 聯繫 王大偉 (DEF 軟體, 休眠 尚無互動)<br>
-            2. 聯繫 張雅婷 (GHI 設計, 休眠 尚無互動)<br>
-            3. 聯繫 李建宏 (JKL 科技, 休眠 尚無互動)
-          </div>
-        </div>
-      </div>
-      ${tabBar('graph')}
     </div>`,
 
   /* === Feature 14 screens === */
@@ -2432,7 +2476,7 @@ const SCREENS = {
       <div style="padding: 44px 18px 10px; font-size: 28px; font-weight:700;">設定</div>
       <div class="app-body warm" style="padding: 0;">
         <div style="text-align:center; padding:16px 0;">
-          <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,#6366F1,#8B5CF6); margin:0 auto; color:white; font-weight:700; font-size:30px; display:flex; align-items:center; justify-content:center; position:relative;">陳<div style="position:absolute; right:-2px; bottom:-2px; width:26px; height:26px; border-radius:50%; background:var(--blue-700); color:white; border:2px solid var(--warm-bg); display:flex; align-items:center; justify-content:center; font-size:12px;"><span class="msi">photo_camera</span></div></div>
+          <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,#141B3B,#8B5CF6); margin:0 auto; color:white; font-weight:700; font-size:30px; display:flex; align-items:center; justify-content:center; position:relative;">陳<div style="position:absolute; right:-2px; bottom:-2px; width:26px; height:26px; border-radius:50%; background:var(--blue-700); color:white; border:2px solid var(--warm-bg); display:flex; align-items:center; justify-content:center; font-size:12px;"><span class="msi">photo_camera</span></div></div>
           <div style="font-weight:700; font-size:16px; margin-top:10px;">陳小明</div>
           <div style="font-size:11px; color:var(--ink-3);">sean.chen@abc-tech.com</div>
           <div style="font-size:11px; color:var(--ink-3);">0912-345-678</div>
@@ -2484,7 +2528,7 @@ const SCREENS = {
       <div class="app-body warm" style="padding:10px 14px 80px; filter:blur(1px); opacity:0.5;">
         ${['林美玲 / 行銷總監 · XYZ','王大偉 / 工程師 · DEF','張志豪 / CTO · 台灣創新'].map((n,i) => `
           <div style="background:white; border-radius:10px; padding:10px 12px; margin-bottom:6px; display:flex; gap:10px; align-items:center;">
-            <div style="width:38px; height:38px; border-radius:50%; background:${['#EC4899','#10B981','#6366F1'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:${['#EC4899','#10B981','#141B3B'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
             <div style="flex:1; font-size:12px;">${n}</div>
           </div>
         `).join('')}
@@ -2576,7 +2620,7 @@ const SCREENS = {
           <div style="font-weight:700; font-size:12px; margin-bottom:4px;">信任透明度 <span style="float:right; font-size:10px; padding:2px 8px; border-radius:100px; background:#FEF3C7; color:#92400E;">待驗證</span></div>
           <div style="font-size:10px; color:var(--ink-3); line-height:1.8;">
             <div style="display:flex; justify-content:space-between;"><span>活躍度 · 無近期活動</span><span>○</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>VC 狀態 · 尚未驗證</span><span>○</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>憑證狀態 · 尚未驗證</span><span>○</span></div>
           </div>
         </div>
         <div style="border-top:1px solid var(--hair); margin-top:10px; padding:10px 0;">
@@ -2759,7 +2803,7 @@ const SCREENS = {
         </div>
         ${['王大偉','張志豪','李建宏','黃淑芬'].map((n,i)=>`
           <div style="background:white; border-radius:10px; padding:10px 12px; margin-bottom:6px; display:flex; gap:10px; align-items:center;">
-            <div style="width:38px; height:38px; border-radius:50%; background:${['#10B981','#6366F1','#F59E0B','#06B6D4'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:${['#10B981','#141B3B','#F59E0B','#06B6D4'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
             <div style="flex:1;">
               <div style="font-weight:600; font-size:13px;">${n}</div>
               <div style="font-size:11px; color:var(--ink-3);">${['工程師 · DEF 軟體','CTO · 台灣創新','業務經理 · JKL 科技','財務主管 · MNO 集團'][i]}</div>
@@ -2777,7 +2821,7 @@ const SCREENS = {
       <div class="app-body warm" style="padding:10px 14px 80px; filter:blur(1px); opacity:0.6;">
         ${['林美玲','王大偉','張志豪'].map((n,i)=>`
           <div style="background:white; border-radius:10px; padding:10px 12px; margin-bottom:6px; display:flex; gap:10px; align-items:center;">
-            <div style="width:38px; height:38px; border-radius:50%; background:${['#EC4899','#10B981','#6366F1'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:${['#EC4899','#10B981','#141B3B'][i]}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
             <div style="flex:1; font-size:12px;">${n}</div>
           </div>
         `).join('')}
@@ -2808,7 +2852,7 @@ const SCREENS = {
         ${[['全部',true],['商業'],['社交'],['專業']].map(([t,a])=>`<div style="padding:5px 13px; border-radius:100px; border:1px solid ${a?'var(--blue-700)':'var(--hair)'}; font-size:11px; color:${a?'var(--blue-700)':'var(--ink-2)'}; background:${a?'var(--lilac-100)':'white'}; font-weight:${a?'600':'400'}; white-space:nowrap;">${a?'✓ ':''}${t}</div>`).join('')}
       </div>
       <div class="app-body warm" style="padding:4px 14px 80px;">
-        ${[['林美玲','行銷總監 · XYZ 數位行銷','#EC4899'],['王大偉','工程師 · DEF 軟體','#10B981'],['張志豪','CTO · 台灣創新','#6366F1'],['李建宏','業務經理 · JKL 科技','#F59E0B']].map(([n,t,c])=>`
+        ${[['林美玲','行銷總監 · XYZ 數位行銷','#EC4899'],['王大偉','工程師 · DEF 軟體','#10B981'],['張志豪','CTO · 台灣創新','#141B3B'],['李建宏','業務經理 · JKL 科技','#F59E0B']].map(([n,t,c])=>`
           <div style="background:white; border-radius:10px; padding:10px 12px; margin-bottom:6px; display:flex; gap:10px; align-items:center;">
             <div style="width:38px; height:38px; border-radius:50%; background:${c}; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">${n[0]}</div>
             <div style="flex:1;">
@@ -2871,7 +2915,7 @@ const SCREENS = {
             <div style="display:flex; align-items:center; gap:8px;"><span style="width:10px; height:10px; border-radius:50%; background:#EC4899;"></span><strong style="font-size:13px;">社交</strong></div>
             <span class="msi" style="font-size:16px; color:var(--blue-700);">expand_less</span>
           </div>
-          ${[['同學','#6366F1'],['朋友','#EF4444']].map(([n,c]) => `
+          ${[['同學','#141B3B'],['朋友','#EF4444']].map(([n,c]) => `
             <div style="display:flex; align-items:center; gap:10px; padding:8px 20px; font-size:13px;">
               <span style="width:14px; height:14px; border-radius:50%; border:1.5px solid ${c};"></span>
               <span style="flex:1;">${n}</span>
@@ -2892,7 +2936,7 @@ const SCREENS = {
           <div style="font-size:11px; color:var(--ink-3);">行銷總監 · XYZ 數位行銷</div>
           <div style="display:flex; gap:6px; justify-content:center; margin-top:10px; flex-wrap:wrap;">
             <div style="padding:4px 10px; border-radius:100px; background:#F3E8FF; color:#A855F7; font-size:11px; font-weight:600;">合作夥伴 ×</div>
-            <div style="padding:4px 10px; border-radius:100px; background:#EEF2FF; color:#6366F1; font-size:11px; font-weight:600;">同學 ×</div>
+            <div style="padding:4px 10px; border-radius:100px; background:#EEF2FF; color:#141B3B; font-size:11px; font-weight:600;">同學 ×</div>
             <div style="padding:4px 10px; border-radius:100px; border:1px solid var(--hair); font-size:11px;">+ 分類</div>
           </div>
         </div>
@@ -2914,14 +2958,402 @@ const SCREENS = {
         <p>我們正在準備這個功能的詳細步驟示範。請先完成前面的功能教學。</p>
       </div>
     </div>`,
+
+  /* ============ R7' new SCREENS — V2 navy + pastel + new 5 tab ============ */
+  /* === S01-style home top: greeting + identity card + quick actions === */
+  'home-top': `
+    <div class="phone-screen active" data-screen="home-top" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:12px 20px 14px; display:flex; align-items:flex-end; justify-content:space-between;">
+        <div>
+          <div style="font-size:11px; color:rgba(15,18,32,0.55);">下午好</div>
+          <div style="font-size:26px; font-weight:700; letter-spacing:-0.02em; margin-top:2px; color:#0F1220;">Tim</div>
+        </div>
+        <div style="width:32px; height:32px; border-radius:50%; background:#1E2951; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:13px;">T</div>
+      </div>
+      <div style="padding:0 12px 14px;">
+        <div style="border-radius:16px; padding:14px 16px; background:linear-gradient(135deg,#1E2951 0%,#141B3B 100%); color:#fff; min-height:108px; position:relative; overflow:hidden;">
+          <div style="position:absolute; right:-30px; top:-15px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,0.04);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div style="font-size:8.5px; font-weight:600; letter-spacing:0.12em; opacity:0.7;">MY IDENTITY · 工作</div>
+            <div style="width:20px; height:20px; border-radius:50%; background:rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; font-size:8.5px; font-weight:600;">T</div>
+          </div>
+          <div style="margin-top:18px;">
+            <div style="font-size:21px; font-weight:700; letter-spacing:-0.02em;">Tim</div>
+            <div style="font-size:9px; opacity:0.7; margin-top:4px;">更新於 2026/04/28</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 12px 16px; display:grid; grid-template-columns:repeat(4,1fr); gap:7px;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div style="width:46px; height:46px; border-radius:13px; background:#E6E9FA; color:#1E2951; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:22px;">qr_code_2</span></div>
+          <div style="font-size:9.5px; color:#0F1220; font-weight:500;">顯示 QR</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div style="width:46px; height:46px; border-radius:13px; background:#DAF1E5; color:#0E8050; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:22px;">qr_code_scanner</span></div>
+          <div style="font-size:9.5px; color:#0F1220; font-weight:500;">掃描</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div style="width:46px; height:46px; border-radius:13px; background:#FBE3CB; color:#B4610F; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:22px;">apartment</span></div>
+          <div style="font-size:9.5px; color:#0F1220; font-weight:500;">我的組織</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+          <div style="width:46px; height:46px; border-radius:13px; background:#F8DCE7; color:#C42E62; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:22px;">groups</span></div>
+          <div style="font-size:9.5px; color:#0F1220; font-weight:500;">我的群組</div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; display:flex; justify-content:space-between; align-items:baseline;">
+        <div style="font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">最近憑證</div>
+        <div style="font-size:10px; color:#2B5BD7; font-weight:500;">查看全部</div>
+      </div>
+      <div style="padding:0 12px; display:flex; flex-direction:column; gap:7px;">
+        <div style="background:#fff; border-radius:13px; padding:9px 10px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:32px; height:32px; border-radius:9px; background:#E6E9FA; color:#1E2951; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:18px;">credit_card</span></div>
+          <div style="flex:1;">
+            <div style="font-size:11px; font-weight:600; color:#0F1220;">微風廣場停車券</div>
+            <div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:2px;">微風集團 · 至 2026/07</div>
+          </div>
+          <span style="padding:3px 7px; border-radius:999px; background:rgba(16,138,88,0.10); color:#0E8050; font-size:8.5px; font-weight:600;">有效</span>
+        </div>
+        <div style="background:#fff; border-radius:13px; padding:9px 10px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:32px; height:32px; border-radius:9px; background:#E6E9FA; color:#1E2951; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:18px;">credit_card</span></div>
+          <div style="flex:1;">
+            <div style="font-size:11px; font-weight:600; color:#0F1220;">台北 101 觀景台</div>
+            <div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:2px;">台北 101 · 至 2026/06</div>
+          </div>
+          <span style="padding:3px 7px; border-radius:999px; background:rgba(16,138,88,0.10); color:#0E8050; font-size:8.5px; font-weight:600;">有效</span>
+        </div>
+      </div>
+      ${tabBar('home')}
+    </div>`,
+
+  /* === S07 events list === */
+  'events-list': `
+    <div class="phone-screen active" data-screen="events-list" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:12px 20px 12px; display:flex; align-items:center; justify-content:space-between;">
+        <div style="font-size:25px; font-weight:700; letter-spacing:-0.02em; color:#0F1220;">活動</div>
+        <div style="display:flex; gap:7px;">
+          <div style="width:30px; height:30px; border-radius:10px; background:#fff; border:1px solid rgba(15,18,32,0.08); display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:16px; color:#0F1220;">search</span></div>
+          <div style="width:30px; height:30px; border-radius:10px; background:#fff; border:1px solid rgba(15,18,32,0.08); display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:16px; color:#0F1220;">calendar_month</span></div>
+        </div>
+      </div>
+      <div style="padding:0 12px 12px; display:flex; gap:5px; overflow-x:hidden;">
+        <div style="padding:5px 9px; border-radius:999px; background:#fff; border:1px solid rgba(15,18,32,0.08); font-size:9.5px; font-weight:500; color:#0F1220; display:inline-flex; align-items:center; gap:4px;">全部 <span style="padding:0 5px; border-radius:999px; background:rgba(30,41,81,0.06); color:#1E2951; font-size:8.5px; font-weight:700;">47</span></div>
+        <div style="padding:5px 9px; border-radius:999px; background:rgba(229,140,29,0.12); border:1px solid transparent; font-size:9.5px; font-weight:500; color:#B4610F; display:inline-flex; align-items:center; gap:4px;">本週 <span style="padding:0 5px; border-radius:999px; background:rgba(180,97,15,0.18); color:#B4610F; font-size:8.5px; font-weight:700;">4</span></div>
+        <div style="padding:5px 9px; border-radius:999px; background:#1E2951; border:1px solid transparent; font-size:9.5px; font-weight:500; color:#fff; display:inline-flex; align-items:center; gap:4px;">即將 <span style="padding:0 5px; border-radius:999px; background:rgba(255,255,255,0.18); color:#fff; font-size:8.5px; font-weight:700;">11</span></div>
+      </div>
+      <div style="padding:0 12px 4px;">
+        <div style="display:flex; justify-content:space-between; padding:0 4px 5px; font-size:9.5px; color:rgba(15,18,32,0.55);">
+          <span>即將要參加</span><span>為你推薦 · 3</span>
+        </div>
+        <div style="display:flex; gap:7px;">
+          <div style="flex:1; background:#fff; border-radius:12px; padding:9px 10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+            <div style="display:flex; align-items:center; gap:5px; margin-bottom:4px;"><span style="font-size:14px;">🤝</span><span style="font-size:9px; color:rgba(15,18,32,0.55);">明天</span></div>
+            <div style="font-size:10.5px; font-weight:600; color:#0F1220; line-height:1.3;">同學會春季健行</div>
+            <div style="font-size:8.5px; color:rgba(15,18,32,0.55); margin-top:3px;">4/30 09:00</div>
+          </div>
+          <div style="flex:1; background:#fff; border-radius:12px; padding:9px 10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+            <div style="display:flex; align-items:center; gap:5px; margin-bottom:4px;"><span style="font-size:14px;">🏋️</span><span style="font-size:9px; color:rgba(15,18,32,0.55);">明天</span></div>
+            <div style="font-size:10.5px; font-weight:600; color:#0F1220; line-height:1.3;">夜間 Yoga 課</div>
+            <div style="font-size:8.5px; color:rgba(15,18,32,0.55); margin-top:3px;">4/30 20:00</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:14px 18px 5px; display:flex; justify-content:space-between; font-size:9.5px; color:rgba(15,18,32,0.55);">
+        <span>主辦組織 · 8</span><span>依即將舉辦排序</span>
+      </div>
+      <div style="padding:0 12px; display:flex; flex-direction:column; gap:6px;">
+        <div style="background:#fff; border-radius:12px; padding:8px 10px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:30px; height:30px; border-radius:9px; background:#DAF1E5; display:flex; align-items:center; justify-content:center; font-size:16px;">🍙</div>
+          <div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">飯糰幫</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">12 場 · 即將 4 場</div></div>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:8px 10px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:30px; height:30px; border-radius:9px; background:#E6E9FA; display:flex; align-items:center; justify-content:center; font-size:16px;">🌐</div>
+          <div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">GDG Taipei</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">8 場 · 即將 3 場</div></div>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:8px 10px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:30px; height:30px; border-radius:9px; background:#F8DCE7; display:flex; align-items:center; justify-content:center; font-size:16px;">🎤</div>
+          <div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">演唱會主辦</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">6 場 · 即將 2 場</div></div>
+        </div>
+      </div>
+      ${tabBar('events')}
+    </div>`,
+
+  /* === S08 org events list (drilled into 飯糰幫) === */
+  'org-events-list': `
+    <div class="phone-screen active" data-screen="org-events-list" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:8px 14px 10px; display:flex; align-items:center; gap:7px;">
+        <span class="msi" style="font-size:18px; color:#0F1220;">arrow_back</span>
+        <div style="font-size:17px; font-weight:700; color:#0F1220; flex:1;">飯糰幫 · 12 場</div>
+      </div>
+      <div style="padding:0 12px 10px; display:flex; gap:5px;">
+        <div style="padding:4px 9px; border-radius:999px; background:#1E2951; color:#fff; font-size:9.5px; font-weight:500;">即將 4</div>
+        <div style="padding:4px 9px; border-radius:999px; background:#fff; border:1px solid rgba(15,18,32,0.08); color:rgba(15,18,32,0.55); font-size:9.5px; font-weight:500;">已結束 8</div>
+      </div>
+      <div style="padding:0 12px; display:flex; flex-direction:column; gap:7px;">
+        <div style="background:#fff; border-radius:12px; padding:10px 11px; display:flex; align-items:center; gap:10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:42px; height:42px; border-radius:11px; background:#fff; border:1px solid rgba(15,18,32,0.08); display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0;">
+            <div style="font-size:8px; color:rgba(15,18,32,0.55); font-weight:500;">APR</div>
+            <div style="font-size:17px; color:#1E2951; font-weight:700; line-height:1; letter-spacing:-0.02em;">30</div>
+          </div>
+          <div style="flex:1;"><div style="font-size:12px; font-weight:600; color:#0F1220;">飯糰幫春酒</div><div style="font-size:9.5px; color:rgba(15,18,32,0.55); margin-top:2px;">18:00 · 信義金融大樓</div></div>
+          <span style="padding:3px 7px; border-radius:999px; background:rgba(16,138,88,0.10); color:#0E8050; font-size:8.5px; font-weight:600;">已報名</span>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:10px 11px; display:flex; align-items:center; gap:10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:42px; height:42px; border-radius:11px; background:#fff; border:1px solid rgba(15,18,32,0.08); display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0;">
+            <div style="font-size:8px; color:rgba(15,18,32,0.55); font-weight:500;">MAY</div>
+            <div style="font-size:17px; color:#1E2951; font-weight:700; line-height:1; letter-spacing:-0.02em;">10</div>
+          </div>
+          <div style="flex:1;"><div style="font-size:12px; font-weight:600; color:#0F1220;">飯糰幫運動會</div><div style="font-size:9.5px; color:rgba(15,18,32,0.55); margin-top:2px;">09:00 · 大安森林公園</div></div>
+          <span style="padding:3px 7px; border-radius:999px; background:rgba(43,91,215,0.10); color:#2B5BD7; font-size:8.5px; font-weight:600;">可報名</span>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:10px 11px; display:flex; align-items:center; gap:10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:42px; height:42px; border-radius:11px; background:#fff; border:1px solid rgba(15,18,32,0.08); display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0;">
+            <div style="font-size:8px; color:rgba(15,18,32,0.55); font-weight:500;">JUN</div>
+            <div style="font-size:17px; color:#1E2951; font-weight:700; line-height:1; letter-spacing:-0.02em;">05</div>
+          </div>
+          <div style="flex:1;"><div style="font-size:12px; font-weight:600; color:#0F1220;">月例會 6 月</div><div style="font-size:9.5px; color:rgba(15,18,32,0.55); margin-top:2px;">19:30 · 線上</div></div>
+        </div>
+      </div>
+      ${tabBar('events')}
+    </div>`,
+
+  /* === S09 event detail (no map) === */
+  'event-detail': `
+    <div class="phone-screen active" data-screen="event-detail" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:8px 14px 10px; display:flex; align-items:center; gap:7px;">
+        <span class="msi" style="font-size:18px; color:#0F1220;">arrow_back</span>
+        <div style="font-size:13px; color:rgba(15,18,32,0.55); flex:1;">活動詳情</div>
+      </div>
+      <div style="padding:0 12px 12px;">
+        <div style="border-radius:16px; background:linear-gradient(135deg,#1E2951 0%,#141B3B 100%); padding:14px 16px; color:#fff; position:relative; overflow:hidden;">
+          <div style="position:absolute; right:-30px; top:-15px; width:130px; height:130px; border-radius:50%; background:rgba(255,255,255,0.04);"></div>
+          <div style="font-size:9px; opacity:0.7; letter-spacing:0.12em; font-weight:600;">APR · 30</div>
+          <div style="font-size:18px; font-weight:700; margin-top:6px; letter-spacing:-0.01em;">飯糰幫春酒</div>
+          <div style="font-size:10px; opacity:0.85; margin-top:8px; display:flex; align-items:center; gap:5px;">
+            <span class="msi" style="font-size:11px;">schedule</span> 18:00 - 22:00
+          </div>
+          <div style="font-size:10px; opacity:0.85; margin-top:4px; display:flex; align-items:center; gap:5px;">
+            <span class="msi" style="font-size:11px;">place</span> 新北市信義區信義金融大樓
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">活動流程</div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:#fff; border-radius:12px; padding:10px 14px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="display:flex; gap:9px; padding:5px 0;"><span style="font-family:monospace; font-size:9.5px; color:#1E2951; font-weight:600; width:40px;">19:00</span><span style="font-size:10.5px; color:#0F1220;">集合報到</span></div>
+          <div style="display:flex; gap:9px; padding:5px 0; border-top:1px solid rgba(15,18,32,0.06);"><span style="font-family:monospace; font-size:9.5px; color:#1E2951; font-weight:600; width:40px;">19:30</span><span style="font-size:10.5px; color:#0F1220;">開烤</span></div>
+          <div style="display:flex; gap:9px; padding:5px 0; border-top:1px solid rgba(15,18,32,0.06);"><span style="font-family:monospace; font-size:9.5px; color:#1E2951; font-weight:600; width:40px;">21:00</span><span style="font-size:10.5px; color:#0F1220;">夜聊閒談</span></div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">活動說明</div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:#fff; border-radius:12px; padding:10px 14px; font-size:10.5px; color:rgba(15,18,32,0.7); line-height:1.55; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          飯糰幫年度春酒,歡迎所有會員攜伴參加。當天提供烤肉吃到飽,自帶飲料佳。報名請出示會員證。
+        </div>
+      </div>
+    </div>`,
+
+  /* === S10 event detail with map + RSVP CTA === */
+  'event-detail-with-map': `
+    <div class="phone-screen active" data-screen="event-detail-with-map" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:8px 14px 10px; display:flex; align-items:center; gap:7px;">
+        <span class="msi" style="font-size:18px; color:#0F1220;">arrow_back</span>
+        <div style="font-size:13px; color:rgba(15,18,32,0.55); flex:1;">活動詳情</div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">地點</div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:linear-gradient(135deg,#DAF1E5 0%,#E6E9FA 100%); border-radius:12px; height:140px; position:relative; overflow:hidden; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:32px; height:32px; border-radius:50%; background:#1E2951; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(30,41,81,0.3);">
+            <span class="msi" style="font-size:18px; color:#fff;">place</span>
+          </div>
+          <div style="position:absolute; bottom:8px; left:10px; right:10px; background:rgba(255,255,255,0.92); border-radius:8px; padding:6px 9px;">
+            <div style="font-size:10px; font-weight:600; color:#0F1220;">信義金融大樓 5 樓會議廳</div>
+            <div style="font-size:8.5px; color:rgba(15,18,32,0.55); margin-top:1px;">新北市信義區市府路 1 號</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">參加狀態</div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:#fff; border-radius:12px; padding:10px 14px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <span class="msi" style="font-size:18px; color:#0E8050;">check_circle</span>
+          <div style="flex:1;">
+            <div style="font-size:11.5px; font-weight:600; color:#0F1220;">37 人已報名 / 上限 50</div>
+            <div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">報名截止:4/29 23:59</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">需要憑證</div>
+      <div style="padding:0 12px 14px;">
+        <div style="background:#fff; border-radius:12px; padding:9px 12px; display:flex; align-items:center; gap:8px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:26px; height:26px; border-radius:8px; background:#DAF1E5; display:flex; align-items:center; justify-content:center; font-size:14px;">🍙</div>
+          <div style="flex:1; font-size:10.5px; color:#0F1220;">飯糰幫會員證</div>
+          <span style="padding:2px 6px; border-radius:999px; background:rgba(16,138,88,0.10); color:#0E8050; font-size:8px; font-weight:600;">已就緒</span>
+        </div>
+      </div>
+      <div style="padding:0 12px;">
+        <div style="height:42px; border-radius:12px; background:#1E2951; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; letter-spacing:-0.01em; box-shadow:0 4px 14px rgba(30,41,81,0.25);">我要報名</div>
+      </div>
+    </div>`,
+
+  /* === S11 credentials list === */
+  'creds-list': `
+    <div class="phone-screen active" data-screen="creds-list" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:12px 20px 12px; display:flex; align-items:center; justify-content:space-between;">
+        <div style="font-size:25px; font-weight:700; letter-spacing:-0.02em; color:#0F1220;">憑證</div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span class="msi" style="font-size:18px; color:#0F1220;">search</span>
+          <span class="msi" style="font-size:20px; color:#0F1220;">add</span>
+        </div>
+      </div>
+      <div style="padding:0 12px 12px; display:flex; gap:5px; overflow-x:hidden;">
+        <div style="padding:4px 8px; border-radius:999px; background:#1E2951; color:#fff; font-size:9.5px; font-weight:500; display:inline-flex; align-items:center; gap:4px;">全部 <span style="padding:0 5px; border-radius:999px; background:rgba(255,255,255,0.18); font-size:8.5px; font-weight:700;">53</span></div>
+        <div style="padding:4px 8px; border-radius:999px; background:#fff; border:1px solid rgba(15,18,32,0.08); color:#0F1220; font-size:9.5px; font-weight:500; display:inline-flex; align-items:center; gap:4px;">有效 <span style="padding:0 5px; border-radius:999px; background:rgba(30,41,81,0.06); color:#1E2951; font-size:8.5px; font-weight:700;">36</span></div>
+        <div style="padding:4px 8px; border-radius:999px; background:rgba(229,140,29,0.12); color:#B4610F; font-size:9.5px; font-weight:500; display:inline-flex; align-items:center; gap:4px;">即將到期 <span style="padding:0 5px; border-radius:999px; background:rgba(180,97,15,0.18); font-size:8.5px; font-weight:700;">8</span></div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">即將要用</div>
+      <div style="padding:0 12px 12px; display:flex; gap:7px;">
+        <div style="flex:1; background:#fff; border-radius:12px; padding:9px 10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="display:flex; align-items:center; gap:5px;"><span style="font-size:14px;">🍙</span><span style="font-size:9px; color:#B4610F; font-weight:600;">明天 18:00</span></div>
+          <div style="font-size:10.5px; font-weight:600; color:#0F1220; margin-top:5px;">飯糰幫春酒</div>
+          <div style="font-size:8.5px; color:rgba(15,18,32,0.55); margin-top:2px;">會員證 + 校友證</div>
+        </div>
+        <div style="flex:1; background:#fff; border-radius:12px; padding:9px 10px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="display:flex; align-items:center; gap:5px;"><span style="font-size:14px;">🏗️</span><span style="font-size:9px; color:#B4610F; font-weight:600;">5/10 上工</span></div>
+          <div style="font-size:10.5px; font-weight:600; color:#0F1220; margin-top:5px;">工地 A 區</div>
+          <div style="font-size:8.5px; color:rgba(15,18,32,0.55); margin-top:2px;">員工證 + 公安 + 健檢</div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">最近使用</div>
+      <div style="padding:0 12px 12px; display:flex; gap:9px; justify-content:space-between;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><div style="width:36px; height:36px; border-radius:11px; background:#E6E9FA; display:flex; align-items:center; justify-content:center; font-size:18px;">🆔</div><span style="font-size:8.5px; color:#0F1220;">健保卡</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><div style="width:36px; height:36px; border-radius:11px; background:#DAF1E5; display:flex; align-items:center; justify-content:center; font-size:18px;">🍙</div><span style="font-size:8.5px; color:#0F1220;">飯糰幫</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><div style="width:36px; height:36px; border-radius:11px; background:#E6E9FA; display:flex; align-items:center; justify-content:center; font-size:18px;">🎓</div><span style="font-size:8.5px; color:#0F1220;">EMBA</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><div style="width:36px; height:36px; border-radius:11px; background:#FBE3CB; display:flex; align-items:center; justify-content:center; font-size:18px;">🏗️</div><span style="font-size:8.5px; color:#0F1220;">員工證</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><div style="width:36px; height:36px; border-radius:11px; background:#F8DCE7; display:flex; align-items:center; justify-content:center; font-size:18px;">🎤</div><span style="font-size:8.5px; color:#0F1220;">演唱會</span></div>
+      </div>
+      <div style="padding:0 12px;">
+        <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="padding:9px 12px; display:flex; align-items:center; gap:9px;"><div style="width:28px; height:28px; border-radius:8px; background:#E6E9FA; color:#1E2951; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:16px;">verified_user</span></div><div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">身份證件</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">5 張 · 全有效</div></div><span class="msi" style="font-size:14px; color:rgba(15,18,32,0.4);">chevron_right</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06); margin-left:50px;"></div>
+          <div style="padding:9px 12px; display:flex; align-items:center; gap:9px;"><div style="width:28px; height:28px; border-radius:8px; background:#FBE3CB; color:#B4610F; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:16px;">construction</span></div><div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">工作 / 雇主</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">9 張 · 2 即將到期</div></div><span class="msi" style="font-size:14px; color:rgba(15,18,32,0.4);">chevron_right</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06); margin-left:50px;"></div>
+          <div style="padding:9px 12px; display:flex; align-items:center; gap:9px;"><div style="width:28px; height:28px; border-radius:8px; background:#DAF1E5; color:#0E8050; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:16px;">groups</span></div><div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">會員資格</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">12 張 · 2 即將到期</div></div><span class="msi" style="font-size:14px; color:rgba(15,18,32,0.4);">chevron_right</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06); margin-left:50px;"></div>
+          <div style="padding:9px 12px; display:flex; align-items:center; gap:9px;"><div style="width:28px; height:28px; border-radius:8px; background:#F7D8DD; color:#C42E62; display:flex; align-items:center; justify-content:center;"><span class="msi" style="font-size:16px;">workspace_premium</span></div><div style="flex:1;"><div style="font-size:11px; font-weight:600; color:#0F1220;">訓練 / 證照</div><div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">11 張 · 全有效</div></div><span class="msi" style="font-size:14px; color:rgba(15,18,32,0.4);">chevron_right</span></div>
+        </div>
+      </div>
+      ${tabBar('creds')}
+    </div>`,
+
+  /* === S12 unified QR === */
+  'unified-qr': `
+    <div class="phone-screen active" data-screen="unified-qr" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:8px 14px 10px; display:flex; align-items:center; gap:7px;">
+        <span class="msi" style="font-size:18px; color:#0F1220;">arrow_back</span>
+        <div style="font-size:17px; font-weight:700; color:#0F1220; flex:1;">整合 QR</div>
+      </div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:rgba(15,18,32,0.04); border-radius:11px; padding:8px 11px; display:flex; align-items:center; gap:8px;">
+          <span style="font-size:14px;">🍙</span>
+          <div style="font-size:10px; color:rgba(15,18,32,0.55);">驗證單位 · <span style="color:#0F1220; font-weight:600;">飯糰幫</span></div>
+        </div>
+      </div>
+      <div style="padding:0 12px 14px;">
+        <div style="background:#fff; border-radius:12px; padding:10px 12px; display:flex; align-items:center; gap:9px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:38px; height:38px; border-radius:10px; background:#E9EDF5; display:flex; align-items:center; justify-content:center; font-size:20px;">🍙</div>
+          <div style="flex:1;">
+            <div style="font-size:12px; font-weight:700; color:#0F1220;">飯糰幫春酒</div>
+            <div style="font-size:10px; color:#B4610F; font-weight:600; margin-top:2px;">明天 18:00</div>
+            <div style="font-size:9px; color:rgba(15,18,32,0.55); margin-top:1px;">新北市信義區</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 14px 10px;">
+        <div style="background:#fff; border-radius:14px; padding:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:160px; height:160px; background:#0F1220; position:relative;">
+            <div style="position:absolute; inset:8px; background-image:repeating-linear-gradient(0deg,#0F1220 0,#0F1220 4px,#fff 4px,#fff 8px), repeating-linear-gradient(90deg,#0F1220 0,#0F1220 4px,#fff 4px,#fff 8px); background-blend-mode:multiply;"></div>
+            <div style="position:absolute; top:8px; left:8px; width:30px; height:30px; background:#fff; padding:5px;"><div style="background:#0F1220; width:100%; height:100%;"></div></div>
+            <div style="position:absolute; top:8px; right:8px; width:30px; height:30px; background:#fff; padding:5px;"><div style="background:#0F1220; width:100%; height:100%;"></div></div>
+            <div style="position:absolute; bottom:8px; left:8px; width:30px; height:30px; background:#fff; padding:5px;"><div style="background:#0F1220; width:100%; height:100%;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 18px 10px; text-align:center; font-size:9.5px; color:rgba(15,18,32,0.55);">本 QR 整合 2 張憑證——一次出示驗證</div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:rgba(229,140,29,0.12); border-radius:11px; padding:8px 11px; display:flex; align-items:center; gap:8px; color:#B4610F; font-size:9.5px;">
+          <span class="msi" style="font-size:14px;">schedule</span>
+          <div><div>生成於 4/29 15:36</div><div style="font-weight:700; margin-top:1px;">有效至 4/29 15:41</div></div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">整合的憑證</div>
+      <div style="padding:0 12px; display:flex; flex-direction:column; gap:6px;">
+        <div style="background:#fff; border-radius:11px; padding:9px 11px; display:flex; align-items:center; gap:8px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:28px; height:28px; border-radius:8px; background:#E9EDF5; display:flex; align-items:center; justify-content:center; font-size:14px;">🍙</div>
+          <div style="flex:1;"><div style="font-size:10.5px; font-weight:700; color:#0F1220;">飯糰幫會員證</div><div style="font-size:9px; color:#0E8050; margin-top:1px; font-weight:600;">已就緒</div></div>
+        </div>
+        <div style="background:#fff; border-radius:11px; padding:9px 11px; display:flex; align-items:center; gap:8px; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="width:28px; height:28px; border-radius:8px; background:#E6E9FA; display:flex; align-items:center; justify-content:center; font-size:14px;">🎓</div>
+          <div style="flex:1;"><div style="font-size:10.5px; font-weight:700; color:#0F1220;">政大 EMBA 校友證</div><div style="font-size:9px; color:#0E8050; margin-top:1px; font-weight:600;">已就緒</div></div>
+        </div>
+      </div>
+    </div>`,
+
+  /* === S13 credential detail === */
+  'cred-detail': `
+    <div class="phone-screen active" data-screen="cred-detail" style="background:#F4F5F7;">
+      ${statusBar()}
+      <div style="padding:8px 14px 10px; display:flex; align-items:center; gap:7px;">
+        <span class="msi" style="font-size:18px; color:#0F1220;">arrow_back</span>
+        <div style="font-size:17px; font-weight:700; color:#0F1220; flex:1;">憑證詳情</div>
+      </div>
+      <div style="padding:0 12px 14px;">
+        <div style="border-radius:16px; background:linear-gradient(135deg,#1E2951 0%,#141B3B 100%); padding:14px 16px; color:#fff; position:relative; overflow:hidden;">
+          <div style="position:absolute; right:-20px; top:-15px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.04);"></div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <div style="font-size:9px; opacity:0.7; letter-spacing:0.12em; font-weight:600;">會員資格</div>
+              <div style="font-size:18px; font-weight:700; margin-top:5px; letter-spacing:-0.01em;">飯糰幫會員證</div>
+            </div>
+            <span style="padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.18); font-size:9.5px; font-weight:600;">有效</span>
+          </div>
+          <div style="font-size:10px; opacity:0.85; margin-top:18px;">持有人 · Tim Chen</div>
+          <div style="font-size:10px; opacity:0.85; margin-top:3px;">會員 ID · M-2024-04-1138</div>
+        </div>
+      </div>
+      <div style="padding:0 18px 5px; font-size:10px; color:rgba(15,18,32,0.55); font-weight:500;">憑證資訊</div>
+      <div style="padding:0 12px 12px;">
+        <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 2px rgba(15,18,32,0.04);">
+          <div style="padding:9px 14px; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:10px; color:rgba(15,18,32,0.55);">發行單位</span><span style="font-size:10.5px; font-weight:600; color:#0F1220;">飯糰幫</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06);"></div>
+          <div style="padding:9px 14px; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:10px; color:rgba(15,18,32,0.55);">發行日</span><span style="font-size:10.5px; font-weight:600; color:#0F1220;">2025/04/14</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06);"></div>
+          <div style="padding:9px 14px; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:10px; color:rgba(15,18,32,0.55);">到期日</span><span style="font-size:10.5px; font-weight:600; color:#0F1220;">2026/04/13</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06);"></div>
+          <div style="padding:9px 14px; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:10px; color:rgba(15,18,32,0.55);">簽名驗證</span><span style="font-size:10.5px; font-weight:600; color:#0E8050; display:inline-flex; align-items:center; gap:3px;"><span class="msi" style="font-size:13px;">check_circle</span>通過</span></div>
+          <div style="height:1px; background:rgba(15,18,32,0.06);"></div>
+          <div style="padding:9px 14px; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:10px; color:rgba(15,18,32,0.55);">撤銷狀態</span><span style="font-size:10.5px; font-weight:600; color:#0E8050;">未撤銷</span></div>
+        </div>
+      </div>
+      <div style="padding:0 12px;">
+        <div style="height:40px; border-radius:12px; background:#1E2951; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; letter-spacing:-0.01em; box-shadow:0 4px 14px rgba(30,41,81,0.25);">出示憑證</div>
+      </div>
+    </div>`,
 };
 
+// R7'-B: 統一 tabBar 為 V2 真實 5 tab。tabBarV2 已合併,刪除舊 swap/graph(對應 V2 sub-route,非 tab)
 function tabBar(active) {
   const tabs = [
     { id:'home',    ico:'home',         label:'首頁' },
     { id:'contact', ico:'contact_page', label:'聯絡人' },
-    { id:'swap',    ico:'qr_code_2',    label:'交換' },
-    { id:'graph',   ico:'hub',          label:'人脈' },
+    { id:'events',  ico:'event',        label:'活動' },
+    { id:'creds',   ico:'credit_card',  label:'憑證' },
     { id:'setting', ico:'settings',     label:'設定' },
   ];
   return `<div class="app-tabbar">${tabs.map(t => `
@@ -2940,17 +3372,19 @@ const state = {
 
 /* ================= RENDER SIDEBAR ================= */
 function renderSidebar() {
-  const groups = { cards:'group-cards', social:'group-social', ai:'group-ai', settings:'group-settings' };
+  const groups = { cards:'group-cards', social:'group-social', ai:'group-ai', settings:'group-settings', events_creds:'group-events-creds' };
+  let displayNum = 0;  // R7'-C-fix: 連號 1-19(跨 group 累積),因 Feature 13 已刪會跳號
   for (const [key, elId] of Object.entries(groups)) {
     const el = document.getElementById(elId);
     el.innerHTML = FEATURES[key].map(f => {
+      displayNum++;
       const isActive = state.currentFeature === f.id;
       const isDone = state.completed.has(f.id);
       const isLocked = !f.ready && !state.freeRoam && !isDone;
       const cls = ['feat-item', isActive?'active':'', isDone?'completed':'', isLocked?'locked':''].filter(Boolean).join(' ');
       return `
         <li class="${cls}" data-feat="${f.id}">
-          <div class="num"><span>${f.id}</span></div>
+          <div class="num"><span>${displayNum}</span></div>
           <span class="label">${f.title}</span>
           ${isLocked ? '<span class="lockicon">🔒</span>' : ''}
         </li>`;
@@ -2970,7 +3404,7 @@ function selectFeature(id) {
   state.currentFeature = id;
   state.currentStep = 0;
   const feat = findFeature(id);
-  document.getElementById('featureTitle').textContent = `${id}. ${feat.title}`;
+  document.getElementById('featureTitle').textContent = feat.title;
   document.getElementById('featureSubtitle').textContent = feat.sub;
   renderSidebar();
   renderStage();
@@ -3078,7 +3512,7 @@ function renderProgress(total, current) {
 function findNextUnfinishedFeature(currentId) {
   // Flatten all features in sidebar order: cards, social, ai, settings
   const all = [
-    ...FEATURES.cards, ...FEATURES.social, ...FEATURES.ai, ...FEATURES.settings
+    ...FEATURES.cards, ...FEATURES.social, ...FEATURES.ai, ...FEATURES.settings, ...FEATURES.events_creds
   ];
   // Start from feature right after currentId
   const idx = all.findIndex(f => f.id === currentId);

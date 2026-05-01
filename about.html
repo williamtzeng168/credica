@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>關於 Credica — 把生活裡的人和事,串在一起</title>
+<meta name="description" content="Credica 把生活裡的卡證整理成一個錢包——會員卡、員工證、訓練證照、活動票通通收進手機。每張由原組織簽過,對方一掃就知真偽。">
+<meta name="keywords" content="關於 Credica, 數位卡證, 憑證錢包, 卡證管理, Recyclable Digital Pass">
+<meta property="og:title" content="關於 Credica — 把生活裡的人和事,串在一起">
+<meta property="og:description" content="Credica 是「卡證的生命週期管理」——取得、持有、出示、歸還,每張都可信任。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://credica.app/about.html">
+<meta property="og:image" content="https://credica.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="關於 Credica — 把生活裡的人和事,串在一起">
+<meta name="twitter:description" content="Credica 是「卡證的生命週期管理」——取得、持有、出示、歸還,每張都可信任。">
+<meta name="twitter:image" content="https://credica.app/og-image.png">
+<link rel="canonical" href="https://credica.app/about.html">
+<link rel="alternate" hreflang="zh-TW" href="https://credica.app/about.html">
+<link rel="alternate" hreflang="x-default" href="https://credica.app/about.html">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VEPFXCYNHN');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<script src="i18n-data.js"></script>
+<script src="i18n.js"></script>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30,41,81,0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(43,91,215,0.05), transparent);
+  pointer-events: none; z-index: 0;
+}
+img { max-width: 100%; display: block; }
+
+/* === NAV(對齊主站)=== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(20px); background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em;
+  text-decoration: none; color: var(--text);
+}
+.logo img { width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0; }
+.nav-mid { display: flex; gap: 2rem; flex: 1; justify-content: center; }
+.nav-mid a {
+  color: var(--text-sub); text-decoration: none;
+  font-size: 0.95rem; font-weight: 400;
+  transition: color 0.2s;
+}
+.nav-mid a:hover { color: var(--text); }
+.nav-mid a.active { color: var(--navy); font-weight: 500; }
+.nav-dl {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1.4rem; background: var(--navy); color: #fff;
+  border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; transition: all 0.2s; flex-shrink: 0;
+}
+.nav-dl:hover { background: var(--navy-deep); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
+.nav-dl svg { width: 16px; height: 16px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+.hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s ease; border-radius: 2px; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+  z-index: 999; flex-direction: column; justify-content: center; align-items: center;
+  gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.mobile-menu.active { opacity: 1; pointer-events: all; }
+.mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.3s ease; }
+.mobile-menu a:hover { color: var(--navy); }
+.mobile-menu a.active { color: var(--navy); }
+
+/* === Common === */
+main { position: relative; z-index: 1; padding-top: 0; }
+.section {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.section-num {
+  font-size: 0.78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--navy); opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800;
+  letter-spacing: -0.035em; line-height: 1.2;
+  margin-bottom: 1.25rem; color: var(--text);
+}
+.hl {
+  background: linear-gradient(135deg, var(--navy), var(--blue-text));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Hero === */
+.hero {
+  min-height: 50vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 9rem 2.5rem 4rem; max-width: 1100px; margin: 0 auto;
+  position: relative; text-align: center;
+}
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 1rem; background: var(--navy-tint);
+  border: 1px solid var(--navy-tint-2);
+  border-radius: 100px; font-size: 0.85rem; color: var(--navy);
+  margin: 0 auto 1.75rem; font-weight: 500;
+}
+.hero-chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok-text); display: inline-block; }
+.hero h1 {
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem); font-weight: 800;
+  line-height: 1.12; letter-spacing: -0.045em;
+  color: var(--text);
+}
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-sub);
+  line-height: 1.8; margin: 1.5rem auto 0;
+  font-weight: 300; max-width: 720px;
+}
+
+/* === Story === */
+.story-section { background: var(--surface-muted); }
+.story-section .section { padding: 4.5rem 2.5rem; }
+.story-text {
+  max-width: 760px; margin: 2rem auto 0;
+  font-size: 1.05rem; color: var(--text-sub);
+  line-height: 1.85; font-weight: 300;
+}
+.story-text p { margin-bottom: 1.25rem; }
+.story-text p:last-child { margin-bottom: 0; }
+
+/* === Philosophy === */
+.phil-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+  margin-top: 3rem; max-width: 920px; margin-left: auto; margin-right: auto;
+}
+.phil-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 2rem 1.75rem;
+  transition: all 0.4s var(--ease);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  position: relative; overflow: hidden;
+}
+.phil-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, var(--navy), var(--blue-text));
+  opacity: 0; transition: opacity 0.3s;
+}
+.phil-card:hover { border-color: var(--navy-tint-2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(30,41,81,0.08); }
+.phil-card:hover::before { opacity: 1; }
+.phil-step {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy-tint); color: var(--navy);
+  font-weight: 800; font-size: 1rem; margin-bottom: 1rem;
+}
+.phil-card h3 {
+  font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 0.6rem; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.phil-card p {
+  font-size: 0.98rem; color: var(--text-sub);
+  line-height: 1.7;
+}
+
+/* === FAQ === */
+.faq-list { max-width: 780px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.1rem 1.4rem; transition: all 0.25s;
+  box-shadow: 0 1px 2px rgba(15,18,32,0.03);
+}
+.faq-item[open] { border-color: var(--navy-tint-2); }
+.faq-item summary {
+  font-size: 1.05rem; font-weight: 600; cursor: pointer;
+  list-style: none; display: flex; align-items: center; justify-content: space-between;
+  color: var(--text); gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--text-3);
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { margin-top: 0.85rem; color: var(--text-sub); line-height: 1.75; font-size: 0.98rem; }
+
+/* === Contact === */
+.contact-section { background: var(--surface-muted); }
+.contact-section .section { padding: 4rem 2.5rem; text-align: center; }
+.contact-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; }
+.contact-section p { color: var(--text-sub); margin-top: 0.85rem; line-height: 1.7; }
+.contact-mail {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  margin-top: 2rem; padding: 1rem 2rem;
+  background: var(--navy); color: #fff;
+  border-radius: 14px; font-size: 1.05rem; font-weight: 600;
+  text-decoration: none; transition: all 0.3s var(--ease);
+}
+.contact-mail:hover { background: var(--navy-deep); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(30,41,81,0.28); }
+.contact-mail svg { width: 22px; height: 22px; }
+
+/* === Footer === */
+footer {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 3rem 2.5rem; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+  font-size: 0.9rem; color: var(--text-sub);
+}
+.foot-l { font-weight: 500; }
+.foot-r { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.foot-r a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+.foot-r a:hover { color: var(--navy); }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  html { font-size: 16px; }
+  .section { padding: 4rem 1.5rem; }
+  .hero { padding: 7rem 1.5rem 3rem; min-height: 40vh; }
+  .phil-grid { gap: 1rem; }
+}
+@media (max-width: 768px) {
+  .section { padding: 3rem 1.25rem; }
+  .hero { padding: 6rem 1.25rem 2.5rem; }
+  .hero h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+  .hero-sub { font-size: 1rem; }
+  .nav-mid { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+  nav { padding: 1rem 1.25rem; }
+  .phil-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; padding: 2.5rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  .section { padding: 2.5rem 1rem; }
+  .hero { padding: 5rem 1rem 2rem; }
+  .contact-mail { padding: 0.85rem 1.5rem; font-size: 0.95rem; }
+}
+
+/* ============================================================
+   R-LS-MERGE — Pain section + Day Timeline(從 lifestyle 整併)
+   ============================================================ */
+
+/* === Pain section === */
+.pain-section { background: var(--surface-muted); }
+.pain-section .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.section-sub {
+  font-size: 1.05rem; color: var(--text-sub);
+  line-height: 1.7; max-width: 680px;
+  margin: 0.85rem auto 0; font-weight: 300; text-align: center;
+}
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center; max-width: 1000px;
+  margin: 3rem auto 0;
+}
+.messy-phone {
+  width: 280px; height: 480px;
+  background: var(--surface);
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(15,18,32,0.10);
+  padding: 24px 20px; margin: 0 auto;
+  position: relative; overflow: hidden;
+}
+.messy-item {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 12px;
+  font-size: 0.82rem; color: var(--text-sub);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.messy-item:nth-child(1) { transform: rotate(-3deg); }
+.messy-item:nth-child(2) { transform: rotate(2deg); }
+.messy-item:nth-child(3) { transform: rotate(-1deg); }
+.messy-item:nth-child(4) { transform: rotate(4deg); }
+.messy-item:nth-child(5) { transform: rotate(-2deg); }
+.messy-item:nth-child(6) { transform: rotate(3deg); }
+.messy-item:nth-child(7) { transform: rotate(-4deg); }
+
+.pain-list { display: flex; flex-direction: column; gap: 1rem; }
+.pain-item {
+  display: flex; gap: 1.1rem; align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 1px 2px rgba(15,18,32,0.03);
+}
+.pain-item:hover { border-color: var(--navy-tint-2); transform: translateX(4px); }
+.pain-emoji {
+  font-size: 2rem; line-height: 1; flex-shrink: 0;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px;
+  background: var(--navy-tint);
+}
+.pain-item p {
+  font-size: 1rem; color: var(--text);
+  line-height: 1.55; flex: 1;
+  margin: 0;
+}
+
+/* === Day Timeline(navy 反差大 section)=== */
+.day-section {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border-radius: 40px;
+  margin: 4rem 2.5rem;
+  padding: 5rem 3rem;
+  color: #fff;
+  position: relative; overflow: hidden;
+}
+.day-section::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.day-section::after {
+  content: ''; position: absolute; bottom: -120px; left: -80px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.day-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+.day-section .section-num { color: rgba(255,255,255,0.7); }
+.day-section .section-title { color: #fff; text-align: center; }
+.day-section .section-title .hl {
+  background: linear-gradient(135deg, #fff, var(--pastel-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.day-section .section-sub { color: rgba(255,255,255,0.7); }
+
+/* Vertical timeline */
+.day-timeline {
+  margin: 3.5rem auto 0;
+  max-width: 620px;
+  position: relative;
+}
+.day-timeline::before {
+  content: ''; position: absolute;
+  left: 75px; top: 16px; bottom: 16px;
+  width: 2px; background: rgba(255,255,255,0.18);
+}
+.day-step {
+  display: grid;
+  grid-template-columns: 60px 36px 1fr;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1rem 0;
+  position: relative;
+}
+.day-step .day-time {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  font-size: 0.85rem; font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+  padding-top: 0.35rem;
+  text-align: right;
+}
+.day-step .day-emoji {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+  border: 2px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; line-height: 1;
+  position: relative; z-index: 1;
+  flex-shrink: 0;
+}
+.day-step .day-content { padding-top: 0.1rem; }
+.day-step h4 {
+  font-size: 1.05rem; font-weight: 700;
+  color: #fff; margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+.day-step p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mobile responsive — Pain + Day */
+@media (max-width: 1024px) {
+  .pain-grid { gap: 3rem; }
+  .day-section { margin: 3rem 1.5rem; padding: 4rem 2rem; border-radius: 32px; }
+  .day-timeline::before { left: 60px; }
+  .day-step { grid-template-columns: 48px 36px 1fr; gap: 1rem; }
+}
+@media (max-width: 768px) {
+  .pain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .messy-phone { width: 260px; height: 440px; }
+  .day-section { margin: 2.5rem 1rem; padding: 3rem 1.5rem; border-radius: 28px; }
+  .day-timeline::before { left: 56px; }
+  .day-step { grid-template-columns: 44px 32px 1fr; gap: 0.85rem; padding: 0.85rem 0; }
+  .day-step .day-time { font-size: 0.78rem; }
+  .day-step .day-emoji { width: 32px; height: 32px; font-size: 1.05rem; }
+  .day-step h4 { font-size: 1rem; }
+  .day-step p { font-size: 0.88rem; }
+}
+@media (max-width: 480px) {
+  .messy-phone { width: 240px; height: 400px; padding: 18px 14px; }
+  .messy-item { font-size: 0.74rem; padding: 8px 10px; margin-bottom: 11px; }
+  .pain-item { padding: 0.85rem 1rem; gap: 0.85rem; }
+  .pain-emoji { width: 40px; height: 40px; font-size: 1.65rem; }
+  .pain-item p { font-size: 0.92rem; }
+  .day-section { padding: 2.5rem 1rem; }
+  .day-timeline { margin-top: 2.5rem; }
+  .day-timeline::before { left: 48px; }
+  .day-step { grid-template-columns: 40px 28px 1fr; gap: 0.7rem; }
+  .day-step .day-time { font-size: 0.72rem; }
+  .day-step .day-emoji { width: 28px; height: 28px; font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img src="credica_logo.png" alt="Credica Logo">
+    Credica
+  </a>
+  <div class="nav-mid">
+    <a href="index.html" data-i18n="nav.personal">個人版</a>
+    <a href="business.html" data-i18n="nav.business">中小組織</a>
+    <a href="enterprise.html" data-i18n="nav.enterprise">企業方案</a>
+    <a href="tutorial.html" data-i18n="nav.tutorial">互動教學</a>
+    <a href="about.html" class="active" data-i18n="nav.about">關於</a>
+  </div>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener" data-i18n="nav.download">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    下載 App
+  </a>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html" data-i18n="nav.personal">個人版</a>
+  <a href="business.html" data-i18n="nav.business">中小組織</a>
+  <a href="enterprise.html" data-i18n="nav.enterprise">企業方案</a>
+  <a href="tutorial.html" data-i18n="nav.tutorial">互動教學</a>
+  <a href="about.html" class="active" data-i18n="nav.about">關於</a>
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener" data-i18n="nav.download">下載 App</a>
+</div>
+
+<main>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="hero-chip">
+    <span class="hero-chip-dot"></span>
+    關於 Credica
+  </div>
+  <h1>把生活裡的人和事,<br><span class="hl">串在一起</span></h1>
+  <p class="hero-sub">
+    會員卡、停車券、活動票、員工證、訓練證照——通通收進手機。<br>
+    不用記、不用找、不用怕弄丟,還能證明真假。
+  </p>
+</section>
+
+<!-- ============ Story ============ -->
+<div class="story-section">
+  <section class="section" id="story">
+    <div class="section-num">OUR STORY</div>
+    <h2 class="section-title">為什麼有 <span class="hl">Credica</span></h2>
+    <div class="story-text">
+      <p>會員卡、員工證、訓練證照、活動票——這些「卡證」每天在用,但它們散落在 LINE 群、Excel、紙本和不同 APP 裡,要找的時候找不到,要證明的時候沒辦法證明。</p>
+      <p>Credica 把生活裡的卡證整理成一個錢包,每張由原組織簽過——對方一掃就知真偽,假的造不出來。從會員身份到工地進場、從活動報到到訓練紀錄,Credica 讓你的「持有」可以被信任。</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ Pain (R-LS-MERGE) ============ -->
+<div class="pain-section">
+  <section class="section" id="pain">
+    <div style="text-align:center;">
+      <div class="section-num">PROBLEM</div>
+      <h2 class="section-title">你的錢包裡,到底有<br><span class="hl">多少張卡?</span></h2>
+      <p class="section-sub">其實已經很多了,只是你找不到。</p>
+    </div>
+    <div class="pain-grid">
+      <div class="messy-phone" aria-hidden="true">
+        <div class="messy-item">📧 健身房入會證明.pdf</div>
+        <div class="messy-item">🎫 那場演唱會的票呢?</div>
+        <div class="messy-item">💳 公司門禁卡(壞了)</div>
+        <div class="messy-item">📸 截圖.jpg(忘記是什麼)</div>
+        <div class="messy-item">🏨 飯店 Check-in QR Code</div>
+        <div class="messy-item">🍽️ 那家餐廳的會員卡</div>
+        <div class="messy-item">📩 LINE 訊息裡的活動連結</div>
+      </div>
+      <div class="pain-list">
+        <div class="pain-item">
+          <span class="pain-emoji">😩</span>
+          <p>健身房會員卡放錢包還是放手機?</p>
+        </div>
+        <div class="pain-item">
+          <span class="pain-emoji">🤔</span>
+          <p>上次那場活動的票,在 Email 還是 LINE?</p>
+        </div>
+        <div class="pain-item">
+          <span class="pain-emoji">😤</span>
+          <p>公司識別證又忘了帶。</p>
+        </div>
+        <div class="pain-item">
+          <span class="pain-emoji">😣</span>
+          <p>集點卡集了三張都找不到。</p>
+        </div>
+        <div class="pain-item">
+          <span class="pain-emoji">🥺</span>
+          <p>校友會的活動,怎麼證明我是校友?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ Day Timeline (R-LS-MERGE) ============ -->
+<section class="day-section" id="day">
+  <div class="day-inner">
+    <div style="text-align:center;">
+      <div class="section-num">A DAY WITH CREDICA</div>
+      <h2 class="section-title">看看一天裡,Credica<br>怎麼<span class="hl">幫上忙</span></h2>
+      <p class="section-sub">不是科技,是一個剛好懂你生活的口袋助手。</p>
+    </div>
+    <div class="day-timeline">
+      <div class="day-step">
+        <div class="day-time">07:30</div>
+        <div class="day-emoji">☀️</div>
+        <div class="day-content">
+          <h4>起床</h4>
+          <p>今天有同學會,App 自動跳出提醒和路線。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">08:30</div>
+        <div class="day-emoji">🚪</div>
+        <div class="day-content">
+          <h4>到公司</h4>
+          <p>手機一靠,門就開了。員工證再也不會忘記帶。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">12:00</div>
+        <div class="day-emoji">🥗</div>
+        <div class="day-content">
+          <h4>午餐</h4>
+          <p>常去的 Louisa,集點卡剛好排第一個。三秒結帳。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">14:00</div>
+        <div class="day-emoji">🏗️</div>
+        <div class="day-content">
+          <h4>下午會議</h4>
+          <p>跨公司會議入場,專案臨時通行證自動跳出。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">17:30</div>
+        <div class="day-emoji">🏋️</div>
+        <div class="day-content">
+          <h4>下班健身</h4>
+          <p>健身房 X 卡會員證一秒掃進。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">19:00</div>
+        <div class="day-emoji">🎤</div>
+        <div class="day-content">
+          <h4>同學會</h4>
+          <p>校友證 + 活動票券一起出示。名牌已經印好了。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">21:30</div>
+        <div class="day-emoji">🤝</div>
+        <div class="day-content">
+          <h4>認識新朋友</h4>
+          <p>掃 QR 加聯絡人,自動帶著「同學會 4/30」標籤。</p>
+        </div>
+      </div>
+      <div class="day-step">
+        <div class="day-time">23:00</div>
+        <div class="day-emoji">🌙</div>
+        <div class="day-content">
+          <h4>睡前</h4>
+          <p>今天認識的 3 個人、拿到的紀念徽章,都串好了。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Philosophy ============ -->
+<section class="section" id="philosophy">
+  <div style="text-align:center;">
+    <div class="section-num">RECYCLABLE DIGITAL PASS</div>
+    <h2 class="section-title">不是會員卡 APP,<br>是<span class="hl">卡證的生命週期管理</span></h2>
+    <p style="font-size:1.05rem; color:var(--text-sub); line-height:1.7; max-width:680px; margin:0.85rem auto 0; font-weight:300;">每張卡證從誕生到失效,Credica 陪你走完 4 個階段。</p>
+  </div>
+  <div class="phil-grid">
+    <div class="phil-card">
+      <div class="phil-step">1</div>
+      <h3>取得</h3>
+      <p>從組織收到會員證、員工證、活動票、訓練證照——掃 QR 一下進到錢包。</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-step">2</div>
+      <h3>持有</h3>
+      <p>分類自動整理:身份證件、工作雇主、會員資格、訓練證照。即將到期會自動提醒。</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-step">3</div>
+      <h3>出示</h3>
+      <p>該用的時候,系統自動帶出該帶的卡證。一次出示,對方一次驗證完。</p>
+    </div>
+    <div class="phil-card">
+      <div class="phil-step">4</div>
+      <h3>歸還</h3>
+      <p>不再需要的卡證(離職、活動結束、過期),系統提醒你歸還或自動失效。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div style="text-align:center;">
+    <div class="section-num">FAQ</div>
+    <h2 class="section-title">常見問題</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item" open>
+      <summary>Credica 是什麼?</summary>
+      <p>Credica 是一個整理你生活卡證的 APP——會員卡、員工證、訓練證照、活動票通通收進手機。每張卡證由原組織簽過,對方一掃就知真偽。從會員身份到工地進場,從活動報到到訓練紀錄,Credica 讓「我有什麼」可以被信任。</p>
+    </details>
+    <details class="faq-item">
+      <summary>我的資料儲存在哪?安全嗎?</summary>
+      <p>你的卡證和聯絡人資料只在你的手機上,連 Credica 伺服器都看不到。Credica 的伺服器只負責驗證憑證真偽和傳遞訊息——你的私人資料不經過我們。</p>
+    </details>
+    <details class="faq-item">
+      <summary>活動憑證怎麼用?</summary>
+      <p>報名活動後系統會發給你一張活動憑證(像數位入場券)。活動現場 NFC 一碰或 QR 一掃就驗證完成,主辦方一目了然你是誰、有沒有預約成功、會員身份是什麼。活動結束系統自動提醒你歸還,或在到期日後失效。</p>
+    </details>
+    <details class="faq-item">
+      <summary>卡證可以證明真假嗎?</summary>
+      <p>可以。每張 Credica 卡證由原組織簽過,假的造不出來、改不了。對方一掃 QR 立刻知道:這張會員證真的是某協會發的,這張員工證真的是某公司給的。</p>
+    </details>
+    <details class="faq-item">
+      <summary>Credica 可以免費使用嗎?</summary>
+      <p>個人用戶完全免費。組織管理者(社團、公司、主辦方)有 4 個方案,從免費到企業版可選,詳見「中小組織」與「企業方案」頁面的價格表。</p>
+    </details>
+    <details class="faq-item">
+      <summary>換手機時資料會怎樣?</summary>
+      <p>資料只在你的手機上,所以換手機要記得用備份功能。備份檔由你自己的密碼保護,只有你自己解得開——遺失密碼,連 Credica 也救不回來。建議定期備份。</p>
+    </details>
+    <details class="faq-item">
+      <summary>目前支援哪些平台?</summary>
+      <p>目前支援 iOS。Android 規劃中。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ Contact ============ -->
+<div class="contact-section">
+  <section class="section" id="contact">
+    <div class="section-num">CONTACT</div>
+    <h2>還有其他問題?</h2>
+    <p>歡迎直接 Email 聯繫,通常 1-2 個工作日內回覆。</p>
+    <a href="mailto:support@credica.app" class="contact-mail">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      support@credica.app
+    </a>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="foot-l" data-i18n="footer.copyright">&copy; 2026 Credica Inc.</div>
+  <div class="foot-r">
+    <a href="index.html" data-i18n="nav.personal">個人版</a>
+    <a href="business.html" data-i18n="nav.business">中小組織</a>
+    <a href="enterprise.html" data-i18n="nav.enterprise">企業方案</a>
+    <a href="tutorial.html" data-i18n="nav.tutorial">互動教學</a>
+    <a href="about.html" data-i18n="nav.about">關於</a>
+    <a href="privacy.html" data-i18n="footer.privacy">隱私權政策</a>
+    <a href="terms.html" data-i18n="footer.terms">使用條款</a>
+    <a href="mailto:support@credica.app" data-i18n="footer.contact">support@credica.app</a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+  }
+});
+</script>
+
+</body>
+</html>
