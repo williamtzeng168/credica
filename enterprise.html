@@ -1163,14 +1163,34 @@
   }
   replayBtn.addEventListener('click', replayChat);
 
-  // ============ 諮詢表單送出（模擬，不接後端）============
+  // ============ 諮詢表單送出 ============
+  // 收件方式：設定 CONTACT_ENDPOINT（Formspree 等表單服務的 endpoint）後，
+  // 表單走 AJAX 送出、留在頁面顯示結果；未設定時 fallback 成開啟訪客的郵件
+  // App、預填內容寄到 support@credica.app —— 任何情況都不會把諮詢需求靜默丟掉。
+  //
+  // 【設定方式】到 https://formspree.io 開一個免費表單，把它給的 endpoint
+  // （形如 https://formspree.io/f/xxxxxxxx）填入下面 CONTACT_ENDPOINT 即可。
+  var CONTACT_ENDPOINT = '';                  // ← 貼上 Formspree endpoint
+  var CONTACT_EMAIL    = 'support@credica.app';
+  var SUBMIT_DEFAULT   = '送出諮詢需求';
+
   var form = document.getElementById('contactForm');
   var submitBtn = document.getElementById('submitBtn');
+
+  function resetSubmit(delay) {
+    setTimeout(function () {
+      submitBtn.textContent = SUBMIT_DEFAULT;
+      submitBtn.style.background = '';
+      submitBtn.disabled = false;
+    }, delay);
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var required = form.querySelectorAll('[required]');
+
+    // 必填欄位檢查
     var allFilled = true;
-    required.forEach(function (input) {
+    form.querySelectorAll('[required]').forEach(function (input) {
       if (!input.value.trim()) {
         allFilled = false;
         input.style.borderColor = '#C42E62';
@@ -1180,18 +1200,57 @@
     });
     if (!allFilled) {
       submitBtn.textContent = '請先填寫標示必填的欄位';
-      setTimeout(function () { submitBtn.textContent = '送出諮詢需求'; }, 2500);
+      resetSubmit(2500);
       return;
     }
-    submitBtn.textContent = '已收到！我們會在 2 個工作天內與你聯繫';
-    submitBtn.style.background = '#0E8050';
+
+    // 蒐集欄位（中文鍵 → 收件信件直接可讀）
+    var company = document.getElementById('f-company').value.trim();
+    var fields = {
+      name:         document.getElementById('f-name').value.trim(),
+      email:        document.getElementById('f-email').value.trim(),
+      職稱:         document.getElementById('f-title').value.trim(),
+      公司:         company,
+      聯絡電話:     document.getElementById('f-phone').value.trim(),
+      產業:         document.getElementById('f-industry').value,
+      想解決的問題: document.getElementById('f-note').value.trim(),
+      _subject:     '企業方案諮詢 — ' + company
+    };
+
+    // 未設定表單服務 → 開啟郵件 App（仍確實把諮詢需求送出去）
+    if (!CONTACT_ENDPOINT) {
+      var lines = [
+        '姓名：' + fields.name, '職稱：' + fields.職稱,
+        '公司：' + fields.公司, '聯絡電話：' + fields.聯絡電話,
+        '電子信箱：' + fields.email, '產業：' + fields.產業,
+        '想解決的問題：' + fields.想解決的問題
+      ];
+      window.location.href = 'mailto:' + CONTACT_EMAIL
+        + '?subject=' + encodeURIComponent(fields._subject)
+        + '&body=' + encodeURIComponent(lines.join('\n'));
+      submitBtn.textContent = '已開啟郵件，請按寄出完成諮詢';
+      resetSubmit(4000);
+      return;
+    }
+
+    // 表單服務 → AJAX 送出，留在頁面顯示結果
     submitBtn.disabled = true;
-    setTimeout(function () {
-      submitBtn.textContent = '送出諮詢需求';
-      submitBtn.style.background = '';
-      submitBtn.disabled = false;
+    submitBtn.textContent = '送出中…';
+    fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(fields)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      submitBtn.textContent = '已收到！我們會在 2 個工作天內與你聯繫';
+      submitBtn.style.background = '#0E8050';
       form.reset();
-    }, 4500);
+      resetSubmit(5000);
+    }).catch(function () {
+      submitBtn.textContent = '送出失敗，請改寫信到 ' + CONTACT_EMAIL;
+      submitBtn.style.background = '#C42E62';
+      resetSubmit(5000);
+    });
   });
 </script>
 </body>
