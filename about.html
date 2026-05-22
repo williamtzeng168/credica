@@ -1,31 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關於 Credica — 把生活裡的人、事、證，好好串起來</title>
+<meta name="description" content="Credica 為什麼存在？我們相信生活裡的關係與信任值得被妥善對待。一個免費的個人 App，加上願意採用的組織，讓一群人一起受惠。">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>關於 Credica — 把生活裡的人和事,串在一起</title>
-<meta name="description" content="Credica 把生活裡的卡證整理成一個錢包——會員卡、員工證、訓練證照、活動票通通收進手機。每張由原組織簽過,對方一掃就知真偽。">
-<meta name="keywords" content="關於 Credica, 數位卡證, 憑證錢包, 卡證管理, Recyclable Digital Pass">
-<meta property="og:title" content="關於 Credica — 把生活裡的人和事,串在一起">
-<meta property="og:description" content="Credica 是「卡證的生命週期管理」——取得、持有、出示、歸還,每張都可信任。">
+<link rel="canonical" href="https://credica.app/about.html">
+<meta property="og:title" content="關於 Credica — 把生活裡的人、事、證，好好串起來">
+<meta property="og:description" content="Credica 為什麼存在？我們相信生活裡的關係與信任值得被妥善對待。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://credica.app/about.html">
 <meta property="og:image" content="https://credica.app/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="關於 Credica — 把生活裡的人和事,串在一起">
-<meta name="twitter:description" content="Credica 是「卡證的生命週期管理」——取得、持有、出示、歸還,每張都可信任。">
-<meta name="twitter:image" content="https://credica.app/og-image.png">
-<link rel="canonical" href="https://credica.app/about.html">
-<link rel="alternate" hreflang="zh-TW" href="https://credica.app/about.html">
-<link rel="alternate" hreflang="x-default" href="https://credica.app/about.html">
-
-<!-- Google Analytics -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -33,864 +24,684 @@
   gtag('js', new Date());
   gtag('config', 'G-VEPFXCYNHN');
 </script>
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tokens.css">
-<script src="i18n-data.js"></script>
-<script src="i18n.js"></script>
-
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 18px; }
-body {
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-body::before {
-  content: ''; position: fixed; inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30,41,81,0.08), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(43,91,215,0.05), transparent);
-  pointer-events: none; z-index: 0;
-}
-img { max-width: 100%; display: block; }
+  /* ============================================================
+     來源：credica/tokens.css + credica/business.html :root
+     （此處為 mockup 備份值，與已上線的 business.html / index.html
+       共用全站設計語言；本頁僅新增 about 專屬樣式）
+     ============================================================ */
+  :root {
+    --bg:            #F8FAFC;
+    --deep:          #F8FAFC;
+    --surface:       #FFFFFF;
+    --card:          #FFFFFF;
+    --surface-muted: #FAFAFB;
+    --border:        rgba(0,0,0,0.07);
+    --border-h:      rgba(30,41,81,0.2);
+    --divider:       rgba(15,18,32,0.06);
 
-/* === NAV(對齊主站)=== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between;
-  backdrop-filter: blur(20px); background: rgba(255,255,255,0.85);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.logo {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em;
-  text-decoration: none; color: var(--text);
-}
-.logo img { width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0; }
-.nav-mid { display: flex; gap: 2rem; flex: 1; justify-content: center; }
-.nav-mid a {
-  color: var(--text-sub); text-decoration: none;
-  font-size: 0.95rem; font-weight: 400;
-  transition: color 0.2s;
-}
-.nav-mid a:hover { color: var(--text); }
-.nav-mid a.active { color: var(--navy); font-weight: 500; }
-.nav-dl {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.6rem 1.4rem; background: var(--navy); color: #fff;
-  border-radius: 10px; font-size: 0.95rem; font-weight: 600;
-  text-decoration: none; transition: all 0.2s; flex-shrink: 0;
-}
-.nav-dl:hover { background: var(--navy-deep); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
-.nav-dl svg { width: 16px; height: 16px; }
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
-.hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s ease; border-radius: 2px; }
-.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    --navy:          #1E2951;
+    --navy-deep:     #141B3B;
+    --navy-tint:     rgba(30,41,81,0.06);
+    --navy-tint-2:   rgba(30,41,81,0.10);
+    --teal:          #1E2951;
+    --teal-b:        #1E2951;
+    --teal-g:        #141B3B;
 
-.mobile-menu {
-  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-  background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
-  z-index: 999; flex-direction: column; justify-content: center; align-items: center;
-  gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-}
-.mobile-menu.active { opacity: 1; pointer-events: all; }
-.mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.3s ease; }
-.mobile-menu a:hover { color: var(--navy); }
-.mobile-menu a.active { color: var(--navy); }
+    --text:          #1E293B;
+    --text-2:        #475569;
+    --text-3:        #64748B;
 
-/* === Common === */
-main { position: relative; z-index: 1; padding-top: 0; }
-.section {
-  padding: 5rem 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-}
-.section-num {
-  font-size: 0.78rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--navy); opacity: 0.7;
-  margin-bottom: 1rem;
-}
-.section-title {
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 800;
-  letter-spacing: -0.035em; line-height: 1.2;
-  margin-bottom: 1.25rem; color: var(--text);
-}
-.hl {
-  background: linear-gradient(135deg, var(--navy), var(--blue-text));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+    --ok-text:       #0E8050;
+    --ok-bg:         rgba(16,138,88,0.10);
+    --warn-text:     #B4610F;
+    --warn-bg:       rgba(229,140,29,0.12);
+    --blue-text:     #2B5BD7;
+    --blue-bg:       rgba(43,91,215,0.10);
+    --rose-text:     #C42E62;
+    --rose-bg:       rgba(196,46,98,0.10);
 
-/* === Hero === */
-.hero {
-  min-height: 50vh; display: flex; flex-direction: column; justify-content: center;
-  padding: 9rem 2.5rem 4rem; max-width: 1100px; margin: 0 auto;
-  position: relative; text-align: center;
-}
-.hero-chip {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.4rem 1rem; background: var(--navy-tint);
-  border: 1px solid var(--navy-tint-2);
-  border-radius: 100px; font-size: 0.85rem; color: var(--navy);
-  margin: 0 auto 1.75rem; font-weight: 500;
-}
-.hero-chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok-text); display: inline-block; }
-.hero h1 {
-  font-size: clamp(2.4rem, 4.8vw, 3.8rem); font-weight: 800;
-  line-height: 1.12; letter-spacing: -0.045em;
-  color: var(--text);
-}
-.hero-sub {
-  font-size: 1.15rem; color: var(--text-sub);
-  line-height: 1.8; margin: 1.5rem auto 0;
-  font-weight: 300; max-width: 720px;
-}
+    --pastel-lavender: #E6E9FA;
+    --pastel-mint:     #DAF1E5;
+    --pastel-peach:    #FBE3CB;
+    --pastel-blush:    #F8DCE7;
+    --pastel-sky:      #DCEAFB;
 
-/* === Story === */
-.story-section { background: var(--surface-muted); }
-.story-section .section { padding: 4.5rem 2.5rem; }
-.story-text {
-  max-width: 760px; margin: 2rem auto 0;
-  font-size: 1.05rem; color: var(--text-sub);
-  line-height: 1.85; font-weight: 300;
-}
-.story-text p { margin-bottom: 1.25rem; }
-.story-text p:last-child { margin-bottom: 0; }
+    --line-green:    #06C755;
 
-/* === Philosophy — Lifecycle 動態圓形循環 === */
-.lc-wrap { max-width: 1100px; margin: 0 auto; }
-.lc-top { text-align: center; margin-bottom: 3rem; }
-.lc-body { display: flex; gap: 3rem; align-items: center; }
-.lc-ring-wrap { flex-shrink: 0; position: relative; width: 300px; height: 300px; }
-.lc-ring { width: 100%; height: 100%; position: relative; }
-.lc-circle-bg { position: absolute; inset: 40px; border-radius: 50%; border: 1.5px dashed var(--border); }
-.lc-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
-.lc-center-text { font-size: 0.72rem; color: var(--text-3); text-align: center; line-height: 1.5; }
-.lc-node {
-  position: absolute; width: 72px; height: 72px; border-radius: 50%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  cursor: pointer; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-  border: 2px solid transparent; z-index: 2;
-}
-.lc-node:hover { transform: scale(1.12); }
-.lc-node.active { box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
-.lc-node-num { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; opacity: 0.7; }
-.lc-node-label { font-size: 0.88rem; font-weight: 700; }
+    --r-card:   16px;
+    --r-button: 14px;
+    --card-shadow: 0 1px 2px rgba(15,18,32,0.04);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --font: 'Outfit', 'Noto Sans TC', sans-serif;
+  }
 
-/* Node 位置 + 顏色 */
-.n0 { top: -4px; left: 50%; transform: translateX(-50%); background: var(--pastel-mint); color: #085041; }
-.n0:hover, .n0.active { background: #5DCAA5; color: #04342C; border-color: #1D9E75; }
-.n0.active { transform: translateX(-50%) scale(1.18); }
-.n1 { top: 50%; right: -4px; transform: translateY(-50%); background: var(--pastel-sky); color: #0C447C; }
-.n1:hover, .n1.active { background: #85B7EB; color: #042C53; border-color: #378ADD; }
-.n1.active { transform: translateY(-50%) scale(1.18); }
-.n2 { bottom: -4px; left: 50%; transform: translateX(-50%); background: var(--pastel-lavender); color: #3C3489; }
-.n2:hover, .n2.active { background: #AFA9EC; color: #26215C; border-color: #7F77DD; }
-.n2.active { transform: translateX(-50%) scale(1.18); }
-.n3 { top: 50%; left: -4px; transform: translateY(-50%); background: var(--pastel-peach); color: #712B13; }
-.n3:hover, .n3.active { background: #F0997B; color: #4A1B0C; border-color: #D85A30; }
-.n3.active { transform: translateY(-50%) scale(1.18); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 18px; }
+  body {
+    font-family: var(--font);
+    background: var(--deep);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30,41,81,0.08), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6,182,212,0.05), transparent); pointer-events: none; z-index: 0; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
 
-/* Arrows */
-.lc-arrows { position: absolute; inset: 0; pointer-events: none; }
-.lc-arrows svg { width: 100%; height: 100%; }
+  /* ====================== NAV（全站共用外殼，與 business.html / index.html 一致）====================== */
+  nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
+  .logo-img { width: 34px; height: 34px; object-fit: contain; }
+  .nav-mid { display: flex; gap: 2rem; flex: 1; justify-content: center; }
+  .nav-mid a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.2s; }
+  .nav-mid a:hover { color: var(--teal-b); }
+  .nav-mid a.active { color: var(--teal-b); font-weight: 600; }
+  .nav-dl { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; text-decoration: none; }
+  .nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
+  .nav-dl svg { width: 16px; height: 16px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s ease; border-radius: 2px; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .mobile-menu.active { opacity: 1; pointer-events: all; }
+  .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.3s ease; }
+  .mobile-menu a:hover { color: var(--teal-b); }
+  .mobile-menu a.active { color: var(--teal-b); }
+  @media (max-width: 968px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-mid { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+  }
 
-/* Detail card */
-.lc-detail { flex: 1; min-width: 0; }
-.lc-detail-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 18px; padding: 2rem 1.75rem;
-  transition: opacity 0.3s, transform 0.3s;
-  position: relative; overflow: hidden; min-height: 200px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.lc-detail-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; transition: background 0.4s;
-}
-.lc-detail-card[data-stage="0"]::before { background: linear-gradient(90deg, #5DCAA5, #1D9E75); }
-.lc-detail-card[data-stage="1"]::before { background: linear-gradient(90deg, #85B7EB, #378ADD); }
-.lc-detail-card[data-stage="2"]::before { background: linear-gradient(90deg, #AFA9EC, #7F77DD); }
-.lc-detail-card[data-stage="3"]::before { background: linear-gradient(90deg, #F0997B, #D85A30); }
-.lc-detail-num { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 0.5rem; }
-.lc-detail-title { font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; letter-spacing: -0.01em; }
-.lc-detail-desc { font-size: 0.98rem; color: var(--text-sub); line-height: 1.75; }
+  /* ====================== LAYOUT（共用）====================== */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+  section { padding: 3.5rem 0; }
+  .sec-head { text-align: center; max-width: 680px; margin: 0 auto 2.25rem; }
+  .sec-kicker {
+    display: inline-block;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--navy);
+    background: var(--navy-tint);
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+    margin-bottom: 0.85rem;
+  }
+  .sec-title {
+    font-size: clamp(1.6rem, 5.5vw, 2.3rem);
+    font-weight: 800; letter-spacing: -0.02em; line-height: 1.2;
+  }
+  .sec-desc {
+    margin-top: 0.75rem;
+    font-size: 1rem; color: var(--text-2); line-height: 1.7;
+  }
+  .hl {
+    background: linear-gradient(135deg, var(--navy), var(--blue-text));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-/* Dots */
-.lc-dots { display: flex; gap: 8px; margin-top: 1.25rem; justify-content: center; }
-.lc-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--border); cursor: pointer; transition: all 0.3s;
-}
-.lc-dot.active { width: 24px; border-radius: 4px; }
-.lc-dot[data-s="0"].active { background: #1D9E75; }
-.lc-dot[data-s="1"].active { background: #378ADD; }
-.lc-dot[data-s="2"].active { background: #7F77DD; }
-.lc-dot[data-s="3"].active { background: #D85A30; }
+  /* ====================== HERO ====================== */
+  .hero {
+    padding: 3rem 0 3.25rem;
+    text-align: center;
+  }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.35rem 0.9rem;
+    background: var(--navy-tint); border: 1px solid var(--navy-tint-2);
+    border-radius: 999px;
+    font-size: 0.82rem; color: var(--navy); font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .chip-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--ok-text); animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-/* Auto play */
-.lc-auto-indicator { text-align: center; margin-top: 0.75rem; }
-.lc-auto-btn {
-  font-size: 0.72rem; color: var(--text-3); background: none;
-  border: 1px solid var(--border); border-radius: 100px;
-  padding: 0.2rem 0.85rem; cursor: pointer; transition: all 0.2s;
-  font-family: inherit;
-}
-.lc-auto-btn:hover { border-color: var(--navy-tint-2); color: var(--text-sub); }
+  .hero h1 {
+    font-size: clamp(1.95rem, 7.5vw, 2.9rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.18;
+  }
+  .hero-sub {
+    margin: 1.1rem auto 0;
+    max-width: 540px;
+    font-size: 1.05rem; color: var(--text-2); line-height: 1.75;
+  }
 
-/* Pulse */
-.lc-pulse { position: absolute; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; }
-@keyframes lc-pulse-ring { 0% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; } 100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; } }
-.lc-pulse.active { animation: lc-pulse-ring 2s ease-out infinite; }
-.p0 { top: 32px; left: 50%; width: 72px; height: 72px; background: rgba(93,202,165,0.25); }
-.p1 { top: 50%; right: 32px; width: 72px; height: 72px; background: rgba(133,183,235,0.25); transform: translate(50%,-50%); }
-.p2 { bottom: 32px; left: 50%; width: 72px; height: 72px; background: rgba(175,169,236,0.25); }
-.p3 { top: 50%; left: 32px; width: 72px; height: 72px; background: rgba(240,153,123,0.25); transform: translate(-50%,-50%); }
+  /* ====================== BELIEF（我們相信什麼）====================== */
+  .belief { background: var(--surface-muted); }
+  .belief-lead {
+    max-width: 720px; margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem; color: var(--text-2); line-height: 1.85;
+    font-weight: 300;
+  }
+  .belief-lead strong {
+    font-weight: 700; color: var(--text);
+  }
+  .belief-grid {
+    display: grid; grid-template-columns: 1fr; gap: 0.9rem;
+    max-width: 760px; margin: 2.25rem auto 0;
+  }
+  .belief-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-card); padding: 1.4rem 1.4rem;
+    box-shadow: var(--card-shadow);
+    display: flex; gap: 0.95rem; align-items: flex-start;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .belief-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(30,41,81,0.10);
+  }
+  .belief-emoji {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; background: var(--navy-tint);
+  }
+  .belief-card h3 { font-size: 1.05rem; font-weight: 700; }
+  .belief-card p {
+    margin-top: 0.3rem;
+    font-size: 0.92rem; color: var(--text-2); line-height: 1.7;
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .lc-body { flex-direction: column; gap: 2rem; }
-  .lc-ring-wrap { width: 240px; height: 240px; margin: 0 auto; }
-  .lc-node { width: 60px; height: 60px; }
-  .lc-node-label { font-size: 0.82rem; }
-  .lc-node-num { font-size: 0.58rem; }
-  .lc-detail-card { min-height: 160px; padding: 1.5rem 1.25rem; }
-}
-@media (max-width: 480px) {
-  .lc-ring-wrap { width: 220px; height: 220px; }
-  .lc-node { width: 54px; height: 54px; }
-  .lc-node-label { font-size: 0.78rem; }
-}
+  /* ====================== WHAT（Credica 是什麼 — 人事證）====================== */
+  .core-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+  }
+  .core-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-card); padding: 1.7rem 1.5rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .core-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(30,41,81,0.10);
+  }
+  .core-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .core-icon svg { width: 25px; height: 25px; }
+  .core-card:nth-child(1) .core-icon { background: var(--pastel-lavender); color: var(--navy); }
+  .core-card:nth-child(2) .core-icon { background: var(--pastel-sky); color: var(--blue-text); }
+  .core-card:nth-child(3) .core-icon { background: var(--pastel-mint); color: var(--ok-text); }
+  .core-word {
+    font-size: 1.45rem; font-weight: 800; letter-spacing: -0.01em;
+  }
+  .core-card h3 {
+    font-size: 1rem; font-weight: 700; color: var(--text-2);
+    margin-top: 0.15rem;
+  }
+  .core-card p {
+    margin-top: 0.6rem;
+    font-size: 0.93rem; color: var(--text-2); line-height: 1.75;
+  }
 
-/* === FAQ === */
-.faq-list { max-width: 780px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 0.75rem; }
-.faq-item {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 1.1rem 1.4rem; transition: all 0.25s;
-  box-shadow: 0 1px 2px rgba(15,18,32,0.03);
-}
-.faq-item[open] { border-color: var(--navy-tint-2); }
-.faq-item summary {
-  font-size: 1.05rem; font-weight: 600; cursor: pointer;
-  list-style: none; display: flex; align-items: center; justify-content: space-between;
-  color: var(--text); gap: 1rem;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after {
-  content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--text-3);
-  transition: transform 0.2s; flex-shrink: 0;
-}
-.faq-item[open] summary::after { content: '−'; }
-.faq-item p { margin-top: 0.85rem; color: var(--text-sub); line-height: 1.75; font-size: 0.98rem; }
+  /* ====================== VISION（願景 / 我們要去哪 — navy section）====================== */
+  .vision {
+    background: linear-gradient(155deg, var(--navy), var(--navy-deep));
+    color: #fff;
+  }
+  .vision .sec-kicker { background: rgba(255,255,255,0.14); color: #fff; }
+  .vision .sec-title { color: #fff; }
+  .vision .sec-desc { color: rgba(255,255,255,0.80); }
 
-/* === Contact === */
-.contact-section { background: var(--surface-muted); }
-.contact-section .section { padding: 4rem 2.5rem; text-align: center; }
-.contact-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; }
-.contact-section p { color: var(--text-sub); margin-top: 0.85rem; line-height: 1.7; }
-.contact-mail {
-  display: inline-flex; align-items: center; gap: 0.7rem;
-  margin-top: 2rem; padding: 1rem 2rem;
-  background: var(--navy); color: #fff;
-  border-radius: 14px; font-size: 1.05rem; font-weight: 600;
-  text-decoration: none; transition: all 0.3s var(--ease);
-}
-.contact-mail:hover { background: var(--navy-deep); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(30,41,81,0.28); }
-.contact-mail svg { width: 22px; height: 22px; }
+  .vision-flow {
+    max-width: 720px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr; gap: 0.85rem;
+  }
+  .vstep {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 16px;
+    padding: 1.25rem 1.3rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .vstep-num {
+    width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(255,255,255,0.14);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 800; color: #fff;
+  }
+  .vstep h4 { font-size: 1.05rem; font-weight: 700; color: #fff; }
+  .vstep p {
+    margin-top: 0.3rem;
+    font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.7;
+  }
+  .vision-note {
+    max-width: 620px; margin: 1.75rem auto 0;
+    text-align: center;
+    font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7;
+  }
 
-/* === Footer === */
-footer {
-  background: var(--surface); border-top: 1px solid var(--border);
-  padding: 3rem 2.5rem; display: flex; align-items: center;
-  justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
-  font-size: 0.9rem; color: var(--text-sub);
-}
-.foot-l { font-weight: 500; }
-.foot-r { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.foot-r a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
-.foot-r a:hover { color: var(--navy); }
+  /* ====================== TRUST（隱私與信任承諾）====================== */
+  .trust-grid {
+    display: grid; grid-template-columns: 1fr; gap: 0.9rem;
+    max-width: 820px; margin: 0 auto;
+  }
+  .trust-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 4px solid var(--ok-text);
+    border-radius: var(--r-card); padding: 1.35rem 1.4rem;
+    box-shadow: var(--card-shadow);
+    display: flex; gap: 0.95rem; align-items: flex-start;
+  }
+  .trust-check {
+    width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
+    background: var(--ok-bg); color: var(--ok-text);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .trust-check svg { width: 17px; height: 17px; }
+  .trust-card h3 { font-size: 1.02rem; font-weight: 700; }
+  .trust-card p {
+    margin-top: 0.3rem;
+    font-size: 0.9rem; color: var(--text-2); line-height: 1.7;
+  }
 
-/* === Responsive === */
-@media (max-width: 1024px) {
-  html { font-size: 16px; }
-  .section { padding: 4rem 1.5rem; }
-  .hero { padding: 7rem 1.5rem 3rem; min-height: 40vh; }
-}
-@media (max-width: 768px) {
-  .section { padding: 3rem 1.25rem; }
-  .hero { padding: 6rem 1.25rem 2.5rem; }
-  .hero h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
-  .hero-sub { font-size: 1rem; }
-  .nav-mid { display: none; }
-  .hamburger { display: flex; }
-  .mobile-menu { display: flex; }
-  nav { padding: 1rem 1.25rem; }
-  footer { flex-direction: column; align-items: flex-start; padding: 2.5rem 1.25rem; }
-}
-@media (max-width: 480px) {
-  html { font-size: 15px; }
-  .section { padding: 2.5rem 1rem; }
-  .hero { padding: 5rem 1rem 2rem; }
-  .contact-mail { padding: 0.85rem 1.5rem; font-size: 0.95rem; }
-}
+  /* ====================== FOR YOU（給不同的你）====================== */
+  .foryou { background: var(--surface-muted); }
+  .foryou-cards {
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+    max-width: 760px; margin: 0 auto;
+  }
+  .foryou-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 1.9rem 1.6rem;
+    box-shadow: var(--card-shadow);
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+  .foryou-card.primary {
+    border-color: var(--navy);
+    box-shadow: 0 10px 32px rgba(30,41,81,0.12);
+  }
+  .foryou-emoji {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem; margin-bottom: 0.7rem;
+  }
+  .foryou-card.primary .foryou-emoji { background: var(--pastel-lavender); }
+  .foryou-card.secondary .foryou-emoji { background: var(--pastel-peach); }
+  .foryou-card h3 { font-size: 1.18rem; font-weight: 800; }
+  .foryou-card p {
+    margin-top: 0.45rem; margin-bottom: 1.2rem;
+    font-size: 0.92rem; color: var(--text-2); line-height: 1.7;
+  }
 
-/* ============================================================
-   R-LS-MERGE — Pain section + Day Timeline(從 lifestyle 整併)
-   ============================================================ */
+  /* ====================== BUTTONS（共用）====================== */
+  .btn-solid {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.85rem 1.7rem;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: var(--r-button);
+    font-family: inherit; font-size: 1rem; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+  }
+  .btn-solid:hover { transform: translateY(-2px); background: var(--navy-deep); }
+  .btn-solid svg { width: 16px; height: 16px; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.85rem 1.7rem;
+    background: transparent; color: var(--navy);
+    border: 1.5px solid var(--navy); border-radius: var(--r-button);
+    font-family: inherit; font-size: 1rem; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+  }
+  .btn-outline:hover { transform: translateY(-2px); background: var(--navy-tint); }
+  .btn-outline svg { width: 16px; height: 16px; }
 
-/* === Pain section === */
-.pain-section { background: var(--surface-muted); }
-.pain-section .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
-.section-sub {
-  font-size: 1.05rem; color: var(--text-sub);
-  line-height: 1.7; max-width: 680px;
-  margin: 0.85rem auto 0; font-weight: 300; text-align: center;
-}
-.pain-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-  align-items: center; max-width: 1000px;
-  margin: 3rem auto 0;
-}
-.messy-phone {
-  width: 280px; height: 480px;
-  background: var(--surface);
-  border-radius: 32px;
-  border: 1px solid var(--border);
-  box-shadow: 0 16px 40px rgba(15,18,32,0.10);
-  padding: 24px 20px; margin: 0 auto;
-  position: relative; overflow: hidden;
-}
-.messy-item {
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 10px; padding: 10px 12px;
-  font-size: 0.82rem; color: var(--text-sub);
-  margin-bottom: 14px;
-  display: flex; align-items: center; gap: 8px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-.messy-item:nth-child(1) { transform: rotate(-3deg); }
-.messy-item:nth-child(2) { transform: rotate(2deg); }
-.messy-item:nth-child(3) { transform: rotate(-1deg); }
-.messy-item:nth-child(4) { transform: rotate(4deg); }
-.messy-item:nth-child(5) { transform: rotate(-2deg); }
-.messy-item:nth-child(6) { transform: rotate(3deg); }
-.messy-item:nth-child(7) { transform: rotate(-4deg); }
+  /* ====================== CONTACT ====================== */
+  .contact-sec { text-align: center; }
+  .contact-sec h2 {
+    font-size: clamp(1.5rem, 4.5vw, 2rem); font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .contact-sec p { color: var(--text-2); margin-top: 0.7rem; line-height: 1.7; }
+  .contact-mail {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin-top: 1.6rem; padding: 0.9rem 1.7rem;
+    background: var(--navy); color: #fff;
+    border-radius: var(--r-button); font-size: 1rem; font-weight: 700;
+    text-decoration: none; transition: transform 0.15s, background 0.2s;
+  }
+  .contact-mail:hover { transform: translateY(-2px); background: var(--navy-deep); }
+  .contact-mail svg { width: 18px; height: 18px; }
 
-.pain-list { display: flex; flex-direction: column; gap: 1rem; }
-.pain-item {
-  display: flex; gap: 1.1rem; align-items: center;
-  padding: 1rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  transition: all 0.25s var(--ease);
-  box-shadow: 0 1px 2px rgba(15,18,32,0.03);
-}
-.pain-item:hover { border-color: var(--navy-tint-2); transform: translateX(4px); }
-.pain-emoji {
-  font-size: 2rem; line-height: 1; flex-shrink: 0;
-  width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 14px;
-  background: var(--navy-tint);
-}
-.pain-item p {
-  font-size: 1rem; color: var(--text);
-  line-height: 1.55; flex: 1;
-  margin: 0;
-}
+  /* ====================== FOOTER（全站共用外殼，與 business.html / index.html 一致）====================== */
+  footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .foot-l { font-size: 0.85rem; color: var(--text-3); }
+  .foot-r { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .foot-r a { font-size: 0.85rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
+  .foot-r a:hover { color: var(--text); }
 
-/* === Day Timeline(navy 反差大 section)=== */
-.day-section {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
-  border-radius: 40px;
-  margin: 4rem 2.5rem;
-  padding: 5rem 3rem;
-  color: #fff;
-  position: relative; overflow: hidden;
-}
-.day-section::before {
-  content: ''; position: absolute; top: -100px; right: -100px;
-  width: 400px; height: 400px; border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-}
-.day-section::after {
-  content: ''; position: absolute; bottom: -120px; left: -80px;
-  width: 320px; height: 320px; border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-}
-.day-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
-.day-section .section-num { color: rgba(255,255,255,0.7); }
-.day-section .section-title { color: #fff; text-align: center; }
-.day-section .section-title .hl {
-  background: linear-gradient(135deg, #fff, var(--pastel-lavender));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.day-section .section-sub { color: rgba(255,255,255,0.7); }
+  /* ====================== ENTRANCE ANIMATION ====================== */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+  .hero > * { animation: fadeUp 0.6s var(--ease) both; }
+  .hero .hero-chip { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.12s; }
+  .hero .hero-sub { animation-delay: 0.2s; }
 
-/* Vertical timeline */
-.day-timeline {
-  margin: 3.5rem auto 0;
-  max-width: 620px;
-  position: relative;
-}
-.day-timeline::before {
-  content: ''; position: absolute;
-  left: 75px; top: 16px; bottom: 16px;
-  width: 2px; background: rgba(255,255,255,0.18);
-}
-.day-step {
-  display: grid;
-  grid-template-columns: 60px 36px 1fr;
-  gap: 1.25rem;
-  align-items: flex-start;
-  padding: 1rem 0;
-  position: relative;
-}
-.day-step .day-time {
-  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
-  font-size: 0.85rem; font-weight: 600;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 0.04em;
-  padding-top: 0.35rem;
-  text-align: right;
-}
-.day-step .day-emoji {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.10);
-  border: 2px solid rgba(255,255,255,0.18);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; line-height: 1;
-  position: relative; z-index: 1;
-  flex-shrink: 0;
-}
-.day-step .day-content { padding-top: 0.1rem; }
-.day-step h4 {
-  font-size: 1.05rem; font-weight: 700;
-  color: #fff; margin-bottom: 0.35rem;
-  letter-spacing: -0.01em;
-}
-.day-step p {
-  font-size: 0.92rem;
-  color: rgba(255,255,255,0.78);
-  line-height: 1.6;
-  margin: 0;
-}
+  /* ====================== DESKTOP ====================== */
+  @media (min-width: 720px) {
+    .wrap { padding: 0 2rem; }
+    section { padding: 4.75rem 0; }
+    .hero { padding: 4rem 0 4rem; }
+    .belief-grid { grid-template-columns: 1fr 1fr; }
+    .core-grid { grid-template-columns: repeat(3, 1fr); }
+    .vision-flow { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .foryou-cards { grid-template-columns: 1fr 1fr; }
+  }
 
-/* Mobile responsive — Pain + Day */
-@media (max-width: 1024px) {
-  .pain-grid { gap: 3rem; }
-  .day-section { margin: 3rem 1.5rem; padding: 4rem 2rem; border-radius: 32px; }
-  .day-timeline::before { left: 60px; }
-  .day-step { grid-template-columns: 48px 36px 1fr; gap: 1rem; }
-}
-@media (max-width: 768px) {
-  .pain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .messy-phone { width: 260px; height: 440px; }
-  .day-section { margin: 2.5rem 1rem; padding: 3rem 1.5rem; border-radius: 28px; }
-  .day-timeline::before { left: 56px; }
-  .day-step { grid-template-columns: 44px 32px 1fr; gap: 0.85rem; padding: 0.85rem 0; }
-  .day-step .day-time { font-size: 0.78rem; }
-  .day-step .day-emoji { width: 32px; height: 32px; font-size: 1.05rem; }
-  .day-step h4 { font-size: 1rem; }
-  .day-step p { font-size: 0.88rem; }
-}
-@media (max-width: 480px) {
-  .messy-phone { width: 240px; height: 400px; padding: 18px 14px; }
-  .messy-item { font-size: 0.74rem; padding: 8px 10px; margin-bottom: 11px; }
-  .pain-item { padding: 0.85rem 1rem; gap: 0.85rem; }
-  .pain-emoji { width: 40px; height: 40px; font-size: 1.65rem; }
-  .pain-item p { font-size: 0.92rem; }
-  .day-section { padding: 2.5rem 1rem; }
-  .day-timeline { margin-top: 2.5rem; }
-  .day-timeline::before { left: 48px; }
-  .day-step { grid-template-columns: 40px 28px 1fr; gap: 0.7rem; }
-  .day-step .day-time { font-size: 0.72rem; }
-  .day-step .day-emoji { width: 28px; height: 28px; font-size: 0.95rem; }
-}
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 </style>
 </head>
 <body>
 
+<!-- ======================= NAV（共用外殼）======================= -->
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica_logo.png" alt="Credica Logo">
+    <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
     Credica
   </a>
   <div class="nav-mid">
-    <a href="index.html" data-i18n="nav.personal">個人版</a>
-    <a href="business.html" data-i18n="nav.business">中小組織</a>
-    <a href="enterprise.html" data-i18n="nav.enterprise">企業方案</a>
-    <a href="tutorial.html" data-i18n="nav.tutorial">互動教學</a>
-    <a href="about.html" class="active" data-i18n="nav.about">關於</a>
+    <a href="index.html">個人版</a>
+    <a href="business.html">中小組織</a>
+    <a href="enterprise.html">企業方案</a>
+    <a href="tutorial.html">互動教學</a>
+    <a href="about.html" class="active">關於</a>
   </div>
-  <button class="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
+  <button class="hamburger" aria-label="開啟選單">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener" data-i18n="nav.download">
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     下載 App
   </a>
 </nav>
-
 <div class="mobile-menu">
-  <a href="index.html" data-i18n="nav.personal">個人版</a>
-  <a href="business.html" data-i18n="nav.business">中小組織</a>
-  <a href="enterprise.html" data-i18n="nav.enterprise">企業方案</a>
-  <a href="tutorial.html" data-i18n="nav.tutorial">互動教學</a>
-  <a href="about.html" class="active" data-i18n="nav.about">關於</a>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener" data-i18n="nav.download">下載 App</a>
+  <a href="index.html">個人版</a>
+  <a href="business.html">中小組織</a>
+  <a href="enterprise.html">企業方案</a>
+  <a href="tutorial.html">互動教學</a>
+  <a href="about.html" class="active">關於</a>
+  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener">下載 App</a>
 </div>
 
-<main>
+<span id="top"></span>
 
-<!-- ============ Hero ============ -->
-<section class="hero">
-  <div class="hero-chip">
-    <span class="hero-chip-dot"></span>
+<!-- ======================= HERO ======================= -->
+<section class="hero wrap">
+  <span class="hero-chip">
+    <span class="chip-dot"></span>
     關於 Credica
-  </div>
-  <h1>把生活裡的人和事,<br><span class="hl">串在一起</span></h1>
+  </span>
+  <h1>把生活裡的人、事、證，<br><span class="hl">好好串起來</span></h1>
   <p class="hero-sub">
-    會員卡、停車券、活動票、員工證、訓練證照——通通收進手機。<br>
-    不用記、不用找、不用怕弄丟,還能證明真假。
+    我們在做的，不只是一個 App。<br>
+    我們相信，生活裡每一段關係、每一份信任，
+    都值得被妥善對待——而不是散落在各處、慢慢被遺忘。
   </p>
 </section>
 
-<!-- ============ Story ============ -->
-<div class="story-section">
-  <section class="section" id="story">
-    <div class="section-num">OUR STORY</div>
-    <h2 class="section-title">為什麼有 <span class="hl">Credica</span></h2>
-    <div class="story-text">
-      <p>會員卡、員工證、訓練證照、活動票——這些「卡證」每天在用,但它們散落在 LINE 群、Excel、紙本和不同 APP 裡,要找的時候找不到,要證明的時候沒辦法證明。</p>
-      <p>Credica 把生活裡的卡證整理成一個錢包,每張由原組織簽過——對方一掃就知真偽,假的造不出來。從會員身份到工地進場、從活動報到到訓練紀錄,Credica 讓你的「持有」可以被信任。</p>
+<!-- ======================= 我們相信什麼 ======================= -->
+<section id="belief" class="belief">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">我們相信什麼</span>
+      <h2 class="sec-title">為什麼會有 <span class="hl">Credica</span></h2>
     </div>
-  </section>
-</div>
-
-<!-- ============ Pain (R-LS-MERGE) ============ -->
-<div class="pain-section">
-  <section class="section" id="pain">
-    <div style="text-align:center;">
-      <div class="section-num">PROBLEM</div>
-      <h2 class="section-title">你的錢包裡,到底有<br><span class="hl">多少張卡?</span></h2>
-      <p class="section-sub">其實已經很多了,只是你找不到。</p>
-    </div>
-    <div class="pain-grid">
-      <div class="messy-phone" aria-hidden="true">
-        <div class="messy-item">📧 健身房入會證明.pdf</div>
-        <div class="messy-item">🎫 那場演唱會的票呢?</div>
-        <div class="messy-item">💳 公司門禁卡(壞了)</div>
-        <div class="messy-item">📸 截圖.jpg(忘記是什麼)</div>
-        <div class="messy-item">🏨 飯店 Check-in QR Code</div>
-        <div class="messy-item">🍽️ 那家餐廳的會員卡</div>
-        <div class="messy-item">📩 LINE 訊息裡的活動連結</div>
-      </div>
-      <div class="pain-list">
-        <div class="pain-item">
-          <span class="pain-emoji">😩</span>
-          <p>健身房會員卡放錢包還是放手機?</p>
-        </div>
-        <div class="pain-item">
-          <span class="pain-emoji">🤔</span>
-          <p>上次那場活動的票,在 Email 還是 LINE?</p>
-        </div>
-        <div class="pain-item">
-          <span class="pain-emoji">😤</span>
-          <p>公司識別證又忘了帶。</p>
-        </div>
-        <div class="pain-item">
-          <span class="pain-emoji">😣</span>
-          <p>集點卡集了三張都找不到。</p>
-        </div>
-        <div class="pain-item">
-          <span class="pain-emoji">🥺</span>
-          <p>校友會的活動,怎麼證明我是校友?</p>
+    <p class="belief-lead">
+      我們發現一件事：生活裡真正重要的，往往是<strong>遇見的人、參與的事、累積下來的身分與紀錄</strong>。
+      但這些東西很難「好好留下、繼續下去」——名片進了抽屜、活動票淹沒在訊息裡、
+      會員身分換手機就不見了。<br><br>
+      關係與信任，明明很珍貴，卻最容易被生活的忙碌沖散。
+      Credica 想做的，就是讓這些值得的東西，被好好接住、好好延續。
+    </p>
+    <div class="belief-grid">
+      <div class="belief-card">
+        <div class="belief-emoji">🫶</div>
+        <div>
+          <h3>關係值得被記得</h3>
+          <p>每一次見面、每一個朋友、每一段共事，都不該見過就忘。它們應該被輕鬆留下、隨時找得回來。</p>
         </div>
       </div>
-    </div>
-  </section>
-</div>
-
-<!-- ============ Day Timeline (R-LS-MERGE) ============ -->
-<section class="day-section" id="day">
-  <div class="day-inner">
-    <div style="text-align:center;">
-      <div class="section-num">A DAY WITH CREDICA</div>
-      <h2 class="section-title">看看一天裡,Credica<br>怎麼<span class="hl">幫上忙</span></h2>
-      <p class="section-sub">不是科技,是一個剛好懂你生活的口袋助手。</p>
-    </div>
-    <div class="day-timeline">
-      <div class="day-step">
-        <div class="day-time">07:30</div>
-        <div class="day-emoji">☀️</div>
-        <div class="day-content">
-          <h4>起床</h4>
-          <p>今天有同學會,App 自動跳出提醒和路線。</p>
+      <div class="belief-card">
+        <div class="belief-emoji">🌱</div>
+        <div>
+          <h3>身分值得被延續</h3>
+          <p>你是某個社團的成員、某段訓練的完成者——這些身分是你累積的，不該因為換手機、換工作就歸零。</p>
         </div>
       </div>
-      <div class="day-step">
-        <div class="day-time">08:30</div>
-        <div class="day-emoji">🚪</div>
-        <div class="day-content">
-          <h4>到公司</h4>
-          <p>手機一靠,門就開了。員工證再也不會忘記帶。</p>
+      <div class="belief-card">
+        <div class="belief-emoji">🤝</div>
+        <div>
+          <h3>信任值得被守護</h3>
+          <p>「你說的是真的嗎」——這個問題不該每次都靠猜。真的就是真的，假的就該被一眼看穿。</p>
         </div>
       </div>
-      <div class="day-step">
-        <div class="day-time">12:00</div>
-        <div class="day-emoji">🥗</div>
-        <div class="day-content">
-          <h4>午餐</h4>
-          <p>常去的 Louisa,集點卡剛好排第一個。三秒結帳。</p>
-        </div>
-      </div>
-      <div class="day-step">
-        <div class="day-time">14:00</div>
-        <div class="day-emoji">🏗️</div>
-        <div class="day-content">
-          <h4>下午會議</h4>
-          <p>跨公司會議入場,專案臨時通行證自動跳出。</p>
-        </div>
-      </div>
-      <div class="day-step">
-        <div class="day-time">17:30</div>
-        <div class="day-emoji">🏋️</div>
-        <div class="day-content">
-          <h4>下班健身</h4>
-          <p>健身房 X 卡會員證一秒掃進。</p>
-        </div>
-      </div>
-      <div class="day-step">
-        <div class="day-time">19:00</div>
-        <div class="day-emoji">🎤</div>
-        <div class="day-content">
-          <h4>同學會</h4>
-          <p>校友證 + 活動票券一起出示。名牌已經印好了。</p>
-        </div>
-      </div>
-      <div class="day-step">
-        <div class="day-time">21:30</div>
-        <div class="day-emoji">🤝</div>
-        <div class="day-content">
-          <h4>認識新朋友</h4>
-          <p>掃 QR 加聯絡人,自動帶著「同學會 4/30」標籤。</p>
-        </div>
-      </div>
-      <div class="day-step">
-        <div class="day-time">23:00</div>
-        <div class="day-emoji">🌙</div>
-        <div class="day-content">
-          <h4>睡前</h4>
-          <p>今天認識的 3 個人、拿到的紀念徽章,都串好了。</p>
+      <div class="belief-card">
+        <div class="belief-emoji">🪶</div>
+        <div>
+          <h3>這一切都該很輕</h3>
+          <p>留下、延續、守護，都不該是負擔。它應該像把東西放進口袋一樣自然，不用學、不用記。</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ Philosophy — Lifecycle 動態圓形循環 ============ -->
-<section class="section" id="philosophy">
-  <div class="lc-wrap">
-    <div class="lc-top">
-      <div class="section-num">RECYCLABLE DIGITAL PASS</div>
-      <h2 class="section-title" style="text-align:center;">不是會員卡 APP,<br>是<span class="hl">卡證的生命週期管理</span></h2>
-      <p style="font-size:1.05rem; color:var(--text-sub); line-height:1.7; max-width:680px; margin:0.85rem auto 0; font-weight:300; text-align:center;">每張卡證從誕生到失效,Credica 陪你走完 4 個階段。</p>
+<!-- ======================= Credica 是什麼（人、事、證）======================= -->
+<section id="what">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Credica 是什麼</span>
+      <h2 class="sec-title">圍繞著三件事：<br><span class="hl">人、事、證</span></h2>
+      <p class="sec-desc">這三個字，是我們看待生活的方式。Credica 想做的，就是把它們好好接住、串在一起。</p>
     </div>
-    <div class="lc-body">
-      <!-- 左：圓形循環 -->
-      <div class="lc-ring-wrap">
-        <div class="lc-ring">
-          <div class="lc-circle-bg"></div>
-          <div class="lc-pulse p0 active" id="pulse0"></div>
-          <div class="lc-pulse p1" id="pulse1"></div>
-          <div class="lc-pulse p2" id="pulse2"></div>
-          <div class="lc-pulse p3" id="pulse3"></div>
-          <div class="lc-arrows">
-            <svg viewBox="0 0 300 300" aria-hidden="true">
-              <defs><marker id="lc-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-              <path d="M185 42 Q 242 62, 254 115" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
-              <path d="M254 185 Q 242 238, 185 258" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
-              <path d="M115 258 Q 62 238, 46 185" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
-              <path d="M46 115 Q 62 62, 115 42" fill="none" stroke="var(--border)" stroke-width="1.2" marker-end="url(#lc-ah)"/>
-            </svg>
-          </div>
-          <div class="lc-node n0 active" data-s="0" onclick="lcGoTo(0)"><span class="lc-node-num">01</span><span class="lc-node-label">取得</span></div>
-          <div class="lc-node n1" data-s="1" onclick="lcGoTo(1)"><span class="lc-node-num">02</span><span class="lc-node-label">持有</span></div>
-          <div class="lc-node n2" data-s="2" onclick="lcGoTo(2)"><span class="lc-node-num">03</span><span class="lc-node-label">出示</span></div>
-          <div class="lc-node n3" data-s="3" onclick="lcGoTo(3)"><span class="lc-node-num">04</span><span class="lc-node-label">歸還</span></div>
-          <div class="lc-center"><div class="lc-center-text">Credica<br>陪你走完<br>每一圈</div></div>
+    <div class="core-grid">
+      <div class="core-card">
+        <div class="core-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="core-word">人</div>
+        <h3>遇見的每一個人</h3>
+        <p>同學、同事、新朋友——你在哪裡遇見、為了什麼相識，都被輕輕記下。需要的時候，你找得到，也記得起來。</p>
+      </div>
+      <div class="core-card">
+        <div class="core-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="core-word">事</div>
+        <h3>參與的每一件事</h3>
+        <p>聚會、活動、課程——從報名到入場，都不再靠群組接龍與紙本點名。一件事的開始與結束，都被好好接住。</p>
+      </div>
+      <div class="core-card">
+        <div class="core-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div class="core-word">證</div>
+        <h3>累積的每一份身分</h3>
+        <p>會員身分、員工證、活動票、結業紀錄——都收進手機，由發出的組織背書。對方一看就知真假，假的造不出來。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 願景 / 我們要去哪（navy section）======================= -->
+<section id="vision" class="vision">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">我們要去哪</span>
+      <h2 class="sec-title">一個人受惠，<br><span style="color:#fff;">到一群人一起受惠</span></h2>
+      <p class="sec-desc">Credica 從一個免費的個人 App 開始，但我們想去的地方，遠不只如此。</p>
+    </div>
+    <div class="vision-flow">
+      <div class="vstep">
+        <div class="vstep-num">1</div>
+        <div>
+          <h4>先讓一個人，輕鬆連結</h4>
+          <p>任何人都能免費下載 Credica，把遇見的人、參與的事、拿到的身分收好。這是我們的起點，永遠免費。</p>
         </div>
       </div>
-      <!-- 右：詳細內容卡片 -->
-      <div class="lc-detail">
-        <div class="lc-detail-card" id="lcDetailCard" data-stage="0">
-          <div class="lc-detail-num" id="lcDetailNum">STEP 01</div>
-          <div class="lc-detail-title" id="lcDetailTitle">取得</div>
-          <div class="lc-detail-desc" id="lcDetailDesc">從組織收到會員證、員工證、活動票、訓練證照——掃 QR 一下,直接進到你的手機錢包。不用填表、不用等郵寄。</div>
+      <div class="vstep">
+        <div class="vstep-num">2</div>
+        <div>
+          <h4>當組織也加入，一群人一起受惠</h4>
+          <p>當社團、社區、公司願意採用 Credica，他們發出的會員身分、活動與通知，就直接出現在成員本來就有的 App 裡。組織省力，成員也更順。</p>
         </div>
-        <div class="lc-dots">
-          <div class="lc-dot active" data-s="0" onclick="lcGoTo(0)"></div>
-          <div class="lc-dot" data-s="1" onclick="lcGoTo(1)"></div>
-          <div class="lc-dot" data-s="2" onclick="lcGoTo(2)"></div>
-          <div class="lc-dot" data-s="3" onclick="lcGoTo(3)"></div>
+      </div>
+      <div class="vstep">
+        <div class="vstep-num">3</div>
+        <div>
+          <h4>越串越多，連結越有意義</h4>
+          <p>你在這個社團遇見的人、在那場活動拿到的身分，都串在同一個地方。生活裡分散的關係，慢慢連成一張完整的網。</p>
         </div>
-        <div class="lc-auto-indicator">
-          <button class="lc-auto-btn" id="lcAutoBtn" onclick="lcToggleAuto()">自動播放中</button>
+      </div>
+    </div>
+    <p class="vision-note">
+      這是我們相信會慢慢長出來的願景。我們不會對任何一個人做超出能力的承諾——
+      只專注把每一步，誠實地做好。
+    </p>
+  </div>
+</section>
+
+<!-- ======================= 隱私與信任承諾 ======================= -->
+<section id="trust">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">我們的承諾</span>
+      <h2 class="sec-title">你的東西，<br><span class="hl">永遠是你的</span></h2>
+      <p class="sec-desc">我們做的是「信任」這件事，所以我們對待你的資料，不能不誠實。這是我們對每一位使用者與每一個組織的承諾。</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <h3>資料留在你的手機裡</h3>
+          <p>你的聯絡人與身分資料，主要存在你自己的手機上。它們是你的，由你保管、由你決定。</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <h3>我們不靠賣資料賺錢</h3>
+          <p>Credica 不會把你的個人資料拿去販售，也不會交給第三方做廣告。我們的收入來自願意付費的組織方案。</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <h3>你決定要出示什麼</h3>
+          <p>哪一份身分要給誰看、什麼時候出示，都由你自己選擇。沒有人能在你不知情的情況下取走。</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <h3>說人話，不藏細節</h3>
+          <p>我們盡量用一般人聽得懂的話說明，不用艱澀的術語把事情包起來。完整規則寫在隱私權政策裡。</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section" id="faq">
-  <div style="text-align:center;">
-    <div class="section-num">FAQ</div>
-    <h2 class="section-title">常見問題</h2>
-  </div>
-  <div class="faq-list">
-    <details class="faq-item" open>
-      <summary>Credica 是什麼?</summary>
-      <p>Credica 是一個整理你生活卡證的 APP——會員卡、員工證、訓練證照、活動票通通收進手機。每張卡證由原組織簽過,對方一掃就知真偽。從會員身份到工地進場,從活動報到到訓練紀錄,Credica 讓「我有什麼」可以被信任。</p>
-    </details>
-    <details class="faq-item">
-      <summary>我的資料儲存在哪?安全嗎?</summary>
-      <p>你的卡證和聯絡人資料只在你的手機上,連 Credica 伺服器都看不到。Credica 的伺服器只負責驗證憑證真偽和傳遞訊息——你的私人資料不經過我們。</p>
-    </details>
-    <details class="faq-item">
-      <summary>活動憑證怎麼用?</summary>
-      <p>報名活動後系統會發給你一張活動憑證(像數位入場券)。活動現場 NFC 一碰或 QR 一掃就驗證完成,主辦方一目了然你是誰、有沒有預約成功、會員身份是什麼。活動結束系統自動提醒你歸還,或在到期日後失效。</p>
-    </details>
-    <details class="faq-item">
-      <summary>卡證可以證明真假嗎?</summary>
-      <p>可以。每張 Credica 卡證由原組織簽過,假的造不出來、改不了。對方一掃 QR 立刻知道:這張會員證真的是某協會發的,這張員工證真的是某公司給的。</p>
-    </details>
-    <details class="faq-item">
-      <summary>Credica 可以免費使用嗎?</summary>
-      <p>個人用戶完全免費。組織管理者(社團、公司、主辦方)有 4 個方案,從免費到企業版可選,詳見「中小組織」與「企業方案」頁面的價格表。</p>
-    </details>
-    <details class="faq-item">
-      <summary>換手機時資料會怎樣?</summary>
-      <p>資料只在你的手機上,所以換手機要記得用備份功能。備份檔由你自己的密碼保護,只有你自己解得開——遺失密碼,連 Credica 也救不回來。建議定期備份。</p>
-    </details>
-    <details class="faq-item">
-      <summary>目前支援哪些平台?</summary>
-      <p>目前支援 iOS。Android 規劃中。</p>
-    </details>
+<!-- ======================= 給不同的你 ======================= -->
+<section id="foryou" class="foryou">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">給不同的你</span>
+      <h2 class="sec-title">不論你是誰，<br><span class="hl">都有一條剛好的路</span></h2>
+      <p class="sec-desc">看完想再往下走一步？這裡有兩條路，挑一條適合你的就好，不急。</p>
+    </div>
+    <div class="foryou-cards">
+      <div class="foryou-card primary">
+        <div class="foryou-emoji">📱</div>
+        <h3>我是想試試看的個人</h3>
+        <p>下載免費的 Credica App，把你遇見的人、參與的事、拿到的身分，都好好收進口袋。完全免費。</p>
+        <a class="btn-solid" href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" target="_blank" rel="noopener">
+          下載 App
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="foryou-card secondary">
+        <div class="foryou-emoji">🏢</div>
+        <h3>我在帶一個組織</h3>
+        <p>社團、社區、公司——想知道 Credica 怎麼讓帶一群人變輕鬆？看看我們為組織準備的方案。</p>
+        <a class="btn-outline" href="business.html">
+          看組織方案
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ Contact ============ -->
-<div class="contact-section">
-  <section class="section" id="contact">
-    <div class="section-num">CONTACT</div>
-    <h2>還有其他問題?</h2>
-    <p>歡迎直接 Email 聯繫,通常 1-2 個工作日內回覆。</p>
+<!-- ======================= 聯繫 ======================= -->
+<section id="contact" class="contact-sec">
+  <div class="wrap">
+    <span class="sec-kicker">聯繫我們</span>
+    <h2>還想多聊聊？</h2>
+    <p>不論是合作、建議，或只是想多認識我們——歡迎直接寫信。<br>通常 1 到 2 個工作日內回覆。</p>
     <a href="mailto:support@credica.app" class="contact-mail">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       support@credica.app
     </a>
-  </section>
-</div>
+  </div>
+</section>
 
-</main>
-
+<!-- ======================= FOOTER（共用外殼）======================= -->
 <footer>
-  <div class="foot-l" data-i18n="footer.copyright">&copy; 2026 Credica Inc.</div>
+  <div class="foot-l">&copy; 2026 Credica Inc.</div>
   <div class="foot-r">
-    <a href="index.html" data-i18n="nav.personal">個人版</a>
-    <a href="business.html" data-i18n="nav.business">中小組織</a>
-    <a href="enterprise.html" data-i18n="nav.enterprise">企業方案</a>
-    <a href="tutorial.html" data-i18n="nav.tutorial">互動教學</a>
-    <a href="about.html" data-i18n="nav.about">關於</a>
-    <a href="privacy.html" data-i18n="footer.privacy">隱私權政策</a>
-    <a href="terms.html" data-i18n="footer.terms">使用條款</a>
-    <a href="mailto:support@credica.app" data-i18n="footer.contact">support@credica.app</a>
+    <a href="index.html">個人版</a>
+    <a href="business.html">中小組織</a>
+    <a href="enterprise.html">企業方案</a>
+    <a href="tutorial.html">互動教學</a>
+    <a href="about.html">關於</a>
+    <a href="privacy.html">隱私權政策</a>
+    <a href="terms.html">使用條款</a>
+    <a href="mailto:support@credica.app">support@credica.app</a>
   </div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
+  // ============ Mobile menu（與 business.html 一致）============
+  var hamburger = document.querySelector('.hamburger');
+  var mobileMenu = document.querySelector('.mobile-menu');
+  hamburger.addEventListener('click', function () {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
     });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
-  }
-});
-
-// Lifecycle 動態圓形循環
-(function() {
-  const lcStages = [
-    { num: 'STEP 01', title: '取得', desc: '從組織收到會員證、員工證、活動票、訓練證照——掃 QR 一下,直接進到你的手機錢包。不用填表、不用等郵寄。' },
-    { num: 'STEP 02', title: '持有', desc: '分類自動整理:身份證件、工作雇主、會員資格、訓練證照。即將到期的卡證會自動提醒你,該更新的不會漏掉。' },
-    { num: 'STEP 03', title: '出示', desc: '該用的時候,系統自動帶出該帶的卡證。一次出示,對方一次驗證完——假的造不出來,真的一秒辨識。' },
-    { num: 'STEP 04', title: '歸還', desc: '離職、活動結束、證照過期——不再需要的卡證,系統提醒你歸還或自動失效。乾淨俐落,不留廢卡。' }
-  ];
-  let lcCur = 0, lcAuto = true, lcTimer = null;
-  const lcNodes = document.querySelectorAll('.lc-node');
-  const lcDots = document.querySelectorAll('.lc-dot');
-  const lcPulses = [document.getElementById('pulse0'), document.getElementById('pulse1'), document.getElementById('pulse2'), document.getElementById('pulse3')];
-  const lcCard = document.getElementById('lcDetailCard');
-  const lcNumEl = document.getElementById('lcDetailNum');
-  const lcTitleEl = document.getElementById('lcDetailTitle');
-  const lcDescEl = document.getElementById('lcDetailDesc');
-  const lcAutoBtn = document.getElementById('lcAutoBtn');
-
-  if (!lcCard) return; // 安全檢查
-
-  window.lcGoTo = function(i) {
-    lcCur = i;
-    lcNodes.forEach(function(n) { n.classList.toggle('active', +n.dataset.s === i); });
-    lcDots.forEach(function(d) { d.classList.toggle('active', +d.dataset.s === i); });
-    lcPulses.forEach(function(p, idx) { if (p) p.classList.toggle('active', idx === i); });
-    lcCard.setAttribute('data-stage', i);
-    lcCard.style.opacity = '0';
-    lcCard.style.transform = 'translateY(8px)';
-    setTimeout(function() {
-      lcNumEl.textContent = lcStages[i].num;
-      lcTitleEl.textContent = lcStages[i].title;
-      lcDescEl.textContent = lcStages[i].desc;
-      lcCard.style.opacity = '1';
-      lcCard.style.transform = 'translateY(0)';
-    }, 150);
-    if (lcAuto) lcResetTimer();
-  };
-
-  function lcNext() { window.lcGoTo((lcCur + 1) % 4); }
-  function lcResetTimer() { clearInterval(lcTimer); lcTimer = setInterval(lcNext, 4000); }
-
-  window.lcToggleAuto = function() {
-    lcAuto = !lcAuto;
-    lcAutoBtn.textContent = lcAuto ? '自動播放中' : '已暫停';
-    if (lcAuto) lcResetTimer(); else clearInterval(lcTimer);
-  };
-
-  lcResetTimer();
-})();
+  });
 </script>
-
 </body>
 </html>
