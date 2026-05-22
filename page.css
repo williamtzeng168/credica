@@ -1,230 +1,84 @@
 /* ==============================
-   Shared styles for sub-pages
-   (privacy, terms, support)
+   Shared styles for sub-pages (privacy, terms)
+   全站共用外殼 —— 淺色，與 index.html / business.html 一致
    ============================== */
 
-/* Unified nav (dark theme variant) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body {
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    background: #F8FAFC;
+    color: #1E293B;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+a { color: inherit; }
+
+/* ===== NAV（與 index.html 一致）===== */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1rem 2.5rem;
     display: flex; align-items: center; justify-content: space-between;
-    backdrop-filter: blur(20px);
-    background: rgba(3, 0, 20, 0.75);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
-nav .logo {
+.logo {
     display: flex; align-items: center; gap: 0.6rem;
     font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em;
-    color: #fff; text-decoration: none;
+    color: #1E293B; text-decoration: none;
 }
-nav .logo img { width: 32px; height: 32px; }
-.nav-mid {
-    display: flex; gap: 2rem; flex: 1; justify-content: center;
-}
+.logo img { width: 34px; height: 34px; object-fit: contain; }
+.nav-mid { display: flex; gap: 2rem; flex: 1; justify-content: center; }
 .nav-mid a {
-    color: rgba(255,255,255,0.72); text-decoration: none;
-    font-size: 0.95rem; font-weight: 400;
-    transition: color 0.2s;
+    color: #475569; text-decoration: none;
+    font-size: 0.95rem; font-weight: 400; transition: color 0.2s;
 }
-.nav-mid a:hover,
-.nav-mid a.active {
-    color: #06B6D4;
-}
+.nav-mid a:hover, .nav-mid a.active { color: #1E2951; }
+.nav-mid a.active { font-weight: 600; }
 .nav-dl {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 1.4rem;
-    background: linear-gradient(135deg, #1E2951, #2B5BD7);
-    color: #fff; text-decoration: none;
-    border-radius: 10px;
-    font-size: 0.95rem; font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 0.6rem 1.4rem; border-radius: 10px;
+    background: #1E2951; color: #fff; text-decoration: none;
+    font-size: 0.95rem; font-weight: 600; transition: all 0.2s;
 }
-.nav-dl:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(30,41,81,0.35);
-}
+.nav-dl:hover { background: #141B3B; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
 .nav-dl svg { width: 16px; height: 16px; }
-
-@media (max-width: 840px) {
+@media (max-width: 968px) {
+    nav { padding: 1rem 1.5rem; }
     .nav-mid { display: none; }
-    nav { padding: 0.9rem 1.25rem; }
 }
 
-.page-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 120px 5% 80px;
-}
-
+/* ===== 法務頁內文 ===== */
+.page-content { max-width: 800px; margin: 0 auto; padding: 120px 5% 80px; }
 .page-content h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    line-height: 1.2;
+    font-size: 2.8rem; font-weight: 800; margin-bottom: 12px;
+    line-height: 1.2; letter-spacing: -0.03em; color: #0F1220;
 }
-
 .page-meta {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 48px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--glass-border);
+    color: #64748B; font-size: 0.9rem; margin-bottom: 48px;
+    padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.07);
 }
-
-.page-subtitle {
-    color: var(--text-secondary);
-    font-size: 1.15rem;
-    margin-bottom: 48px;
-}
-
-.page-content section {
-    margin-bottom: 40px;
-}
-
-.page-content h2 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: var(--text-primary);
-}
-
-.page-content h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    margin-top: 20px;
-    color: var(--text-primary);
-}
-
-.page-content p {
-    color: #CBD5E1;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    margin-bottom: 12px;
-}
-
-.page-content ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 16px;
-}
-
+.page-subtitle { color: #64748B; font-size: 1.15rem; margin-bottom: 48px; }
+.page-content section { margin-bottom: 40px; }
+.page-content h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; color: #1E293B; }
+.page-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; margin-top: 20px; color: #1E293B; }
+.page-content p { color: #475569; font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px; }
+.page-content ul { list-style: none; padding: 0; margin-bottom: 16px; }
 .page-content ul li {
-    color: #CBD5E1;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    padding-left: 20px;
-    position: relative;
-    margin-bottom: 6px;
+    color: #475569; font-size: 0.95rem; line-height: 1.8;
+    padding-left: 20px; position: relative; margin-bottom: 6px;
 }
-
 .page-content ul li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 11px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-secondary);
+    content: ''; position: absolute; left: 0; top: 11px;
+    width: 6px; height: 6px; border-radius: 50%; background: #2B5BD7;
 }
+.page-content a { color: #2B5BD7; text-decoration: none; transition: color 0.2s; }
+.page-content a:hover { color: #1E2951; }
+.page-content strong { color: #1E293B; font-weight: 700; }
 
-.page-content a {
-    color: var(--accent-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.page-content a:hover {
-    color: var(--text-primary);
-}
-
-.page-content strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-/* FAQ Items */
-.faq-item {
-    padding: 24px 28px;
-    margin-bottom: 16px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    transition: border-color 0.3s ease;
-}
-
-.faq-item:hover {
-    border-color: rgba(6, 182, 212, 0.3);
-}
-
-.faq-item h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-}
-
-.faq-item p,
-.faq-item ul {
-    margin-bottom: 0;
-}
-
-.faq-item p:not(:last-child) {
-    margin-bottom: 10px;
-}
-
-/* Support Contact */
-.support-contact {
-    margin-top: 16px;
-}
-
-.support-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    display: inline-flex;
-}
-
-.support-contact-item a {
-    font-size: 1rem;
-}
-
-/* Page Footer */
-.page-footer {
-    border-top: 1px solid var(--glass-border);
-    padding: 30px 5%;
-    text-align: center;
-}
-
-.page-footer p {
-    color: rgba(148, 163, 184, 0.6);
-    font-size: 0.8rem;
-}
-
-.page-footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-bottom: 16px;
-}
-
-.page-footer-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
-}
-
-.page-footer-links a:hover {
-    color: var(--text-primary);
-}
-
-/* ===== 全站共用外殼（與 index.html 一致）===== */
-html { font-size: 18px; }
+/* ===== 頁尾（與 index.html 一致）===== */
 footer {
     border-top: 1px solid rgba(0,0,0,0.07);
     padding: 2.5rem 2.5rem; max-width: 1200px; margin: 0 auto;
@@ -238,15 +92,6 @@ footer {
 
 /* Responsive */
 @media (max-width: 600px) {
-    .page-content {
-        padding-top: 100px;
-    }
-
-    .page-content h1 {
-        font-size: 2rem;
-    }
-
-    .faq-item {
-        padding: 20px 20px;
-    }
+    .page-content { padding-top: 100px; }
+    .page-content h1 { font-size: 2rem; }
 }
