@@ -1,329 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credica 組織方案 — 給社團與組織的 AI 智慧助理</title>
+<meta name="description" content="給社團、社區、中小組織——Credica 提供一位住在 LINE 裡的 AI 智慧助理，自動接住成員的提問、活動報名與通知，加上一個管理面板，讓帶一群人變輕鬆。">
+<meta name="keywords" content="社團管理, 組織管理, AI 智慧助理, 活動報名, 數位會員證, LINE 助理">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>Credica — 社團、社區、活動管理平台</title>
 <link rel="canonical" href="https://credica.app/business.html">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tokens.css">
-<style>
-:root {
-  --deep: #F8FAFC;
-  --surface: #FFFFFF;
-  --card: #FFFFFF;
-  --card-h: #F1F5F9;
-  --border: rgba(0,0,0,0.07);
-  --border-h: rgba(30,41,81,0.2);
-  --teal: #1E2951;
-  --teal-g: #141B3B;
-  --teal-b: #1E2951;
-  --credica-blue: #1E3A5F;
-  --text: #1E293B;
-  --text-2: #475569;
-  --text-3: #64748B;
-  --violet: #8B5CF6;
-  --amber: #D97706;
-  --rose: #E11D48;
-  --blue: #2563EB;
-  --cyan: #0891B2;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 18px; }
-body { font-family: 'Outfit', 'Noto Sans TC', sans-serif; background: var(--deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-
-body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30,41,81,0.08), transparent), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6,182,212,0.05), transparent); pointer-events: none; z-index: 0; }
-
-body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.5; }
-
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; text-decoration: none; color: var(--text); }
-.logo img { width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0; }
-.nav-mid { flex: 1; justify-content: center; }
-.nav-mid a.active { color: var(--teal); font-weight: 500; }
-.nav-dl { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
-.nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
-.nav-dl svg { width: 16px; height: 16px; }
-.logo-box { width: 34px; height: 34px; background: linear-gradient(135deg, var(--teal), var(--teal-b)); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-.logo-box svg { width: 18px; height: 18px; }
-.logo-tag { font-size: 0.6rem; font-weight: 600; color: var(--amber); background: rgba(245,158,11,0.12); padding: 0.15rem 0.5rem; border-radius: 4px; margin-left: 0.35rem; letter-spacing: 0.04em; }
-
-.nav-mid { display: flex; gap: 2rem; }
-.nav-mid a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.2s; }
-.nav-mid a:hover { color: #fff; }
-
-.nav-right { display: flex; gap: 0.75rem; align-items: center; }
-.nav-personal { font-size: 0.9rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
-.nav-personal:hover { color: var(--text); }
-.nav-enterprise { font-size: 0.9rem; color: var(--teal); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-.nav-enterprise:hover { color: var(--teal-g); }
-.nav-cta { padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; }
-.nav-cta:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
-
-/* ==================== HERO ==================== */
-.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2.5rem 4rem; position: relative; }
-
-.hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.orb { position: absolute; border-radius: 50%; filter: blur(90px); }
-.orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, var(--teal), transparent 70%); top: 5%; left: 25%; opacity: 0.1; animation: f1 8s ease-in-out infinite; }
-.orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, var(--amber), transparent 70%); top: 30%; right: 15%; opacity: 0.06; animation: f2 10s ease-in-out infinite; }
-@keyframes f1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px,-20px); } }
-@keyframes f2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-20px,30px); } }
-
-.hero-inner { position: relative; z-index: 2; max-width: 800px; }
-
-.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 100px; font-size: 0.85rem; color: var(--amber); margin-bottom: 2rem; animation: fadeUp 0.7s var(--ease) both; }
-
-.hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.045em; animation: fadeUp 0.7s var(--ease) 0.1s both; }
-.hl { background: linear-gradient(135deg, #1E2951, #2B5BD7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-.hero-sub { font-size: 1.2rem; color: var(--text-2); line-height: 1.8; margin-top: 1.5rem; font-weight: 300; max-width: 620px; margin-left: auto; margin-right: auto; animation: fadeUp 0.7s var(--ease) 0.2s both; }
-
-.hero-cta-row { display: flex; gap: 0.85rem; justify-content: center; margin-top: 2.5rem; animation: fadeUp 0.7s var(--ease) 0.3s both; }
-.btn-primary { padding: 0.9rem 2.2rem; background: linear-gradient(135deg, var(--teal), #0F766E); color: #fff; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.3s; text-decoration: none; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,41,81,0.3); }
-.btn-secondary { padding: 0.9rem 2.2rem; background: transparent; color: var(--text-2); border: 1px solid var(--border); border-radius: 12px; font-size: 1.05rem; font-weight: 400; cursor: pointer; font-family: inherit; transition: all 0.3s; text-decoration: none; }
-.btn-secondary:hover { border-color: var(--text-3); color: var(--text); }
-
-/* ==================== PAIN POINTS ==================== */
-.section { padding: 6rem 2.5rem; }
-.section-center { text-align: center; max-width: 1200px; margin: 0 auto; }
-.section-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--teal); font-weight: 500; margin-bottom: 0.75rem; }
-.section-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
-.section-desc { font-size: 1.1rem; color: var(--text-2); line-height: 1.7; margin-top: 0.85rem; max-width: 650px; margin-left: auto; margin-right: auto; }
-
-.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
-
-.pain-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2.25rem 1.75rem; text-align: left; transition: all 0.4s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.pain-card:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(30,41,81,0.08); }
-
-.pain-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
-.pain-card:nth-child(1) .pain-icon { background: rgba(244,63,94,0.1); color: var(--rose); }
-.pain-card:nth-child(2) .pain-icon { background: rgba(245,158,11,0.1); color: var(--amber); }
-.pain-card:nth-child(3) .pain-icon { background: rgba(139,92,246,0.1); color: var(--violet); }
-.pain-icon svg { width: 24px; height: 24px; }
-
-.pain-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; }
-.pain-card p { font-size: 1rem; color: var(--text-3); line-height: 1.7; }
-
-/* ==================== SOLUTION - VISUAL ==================== */
-.solution-section { max-width: 1100px; margin: 0 auto; padding: 6rem 2.5rem; }
-
-.solution-header { text-align: center; margin-bottom: 3.5rem; }
-
-.solution-flow { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-
-.flow-node { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2rem 1.5rem; text-align: center; width: 200px; transition: all 0.4s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.flow-node:hover { border-color: var(--border-h); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
-
-.flow-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-.flow-icon svg { width: 26px; height: 26px; }
-
-.node-1 .flow-icon { background: rgba(99,102,241,0.12); color: #818CF8; }
-.node-2 .flow-icon { background: rgba(30,41,81,0.12); color: var(--teal-b); }
-.node-3 .flow-icon { background: rgba(245,158,11,0.12); color: var(--amber); }
-
-.flow-node h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
-.flow-node p { font-size: 0.85rem; color: var(--text-3); line-height: 1.5; }
-
-.flow-arrow { color: var(--text-3); font-size: 1.5rem; animation: arrowPulse 2s ease-in-out infinite; }
-@keyframes arrowPulse { 0%,100% { opacity: 0.3; transform: translateX(0); } 50% { opacity: 0.7; transform: translateX(5px); } }
-
-/* ==================== FEATURE TABLE ==================== */
-.ftable-wrap { max-width: 1100px; margin: 3rem auto 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.ftable { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-.ftable th, .ftable td { padding: 0.85rem 0.75rem; text-align: center; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
-.ftable thead th { background: #F1F5F9; color: var(--text-2); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.02em; position: sticky; top: 0; }
-.ftable thead th:first-child { text-align: left; padding-left: 1.25rem; min-width: 180px; }
-.ftable tbody td:first-child { text-align: left; padding-left: 1.25rem; font-weight: 500; color: var(--text); }
-.ftable tbody tr:last-child td { border-bottom: none; }
-.ftable tbody tr:hover { background: rgba(30,41,81,0.02); }
-.ftable .check { color: var(--teal); font-weight: 700; font-size: 1.1rem; }
-.ftable .dash { color: #CBD5E1; }
-.ftable .ft-desc { display: block; font-size: 0.72rem; color: var(--text-3); font-weight: 400; margin-top: 0.15rem; line-height: 1.35; }
-
-/* 4-things summary cards */
-.four-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1100px; margin: 2.5rem auto 0; }
-.four-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.25rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.four-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
-.four-num { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; font-size: 1rem; font-weight: 800; color: #fff; }
-.four-card:nth-child(1) .four-num { background: var(--teal); }
-.four-card:nth-child(2) .four-num { background: var(--amber); }
-.four-card:nth-child(3) .four-num { background: var(--violet); }
-.four-card:nth-child(4) .four-num { background: var(--cyan); }
-.four-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-.four-card p { font-size: 0.82rem; color: var(--text-3); line-height: 1.5; }
-
-/* ==================== VERTICALS ==================== */
-.vert-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 1100px; margin: 3rem auto 0; }
-
-.vert-tile { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 1rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.vert-tile:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
-
-.vert-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-
-.vert-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
-.vert-desc { font-size: 0.8rem; color: var(--text-3); line-height: 1.45; }
-
-/* ==================== DASHBOARD PREVIEW ==================== */
-.dash-section { max-width: 1000px; margin: 0 auto; padding: 6rem 2.5rem; }
-
-.dash-preview { background: #F8FAFC; border: 1px solid var(--border); border-radius: 22px; overflow: hidden; margin-top: 3rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-
-.dash-bar { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
-.dot-r { width: 10px; height: 10px; border-radius: 50%; background: #EF4444; }
-.dot-y { width: 10px; height: 10px; border-radius: 50%; background: #F59E0B; }
-.dot-g { width: 10px; height: 10px; border-radius: 50%; background: #10B981; }
-.dash-url { font-size: 0.75rem; color: var(--text-3); margin-left: 0.75rem; font-family: 'JetBrains Mono', monospace; }
-
-.dash-body { padding: 2.25rem; }
-
-.dash-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
-.dm { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
-.dm-label { font-size: 0.8rem; color: var(--text-3); margin-bottom: 0.4rem; }
-.dm-value { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
-.dm-value.t { color: var(--teal-b); }
-.dm-value.a { color: var(--amber); }
-.dm-value.w { color: var(--text); }
-.dm-sub { font-size: 0.7rem; color: var(--text-3); margin-top: 0.2rem; font-family: 'JetBrains Mono', monospace; }
-
-.dash-blur { position: relative; }
-.dash-blur-content { filter: blur(6px); opacity: 0.4; pointer-events: none; user-select: none; }
-.dash-blur-content .dm-value { font-size: 1.5rem; }
-.dash-blur-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; }
-.blur-lock { width: 48px; height: 48px; border-radius: 50%; background: rgba(30,41,81,0.1); border: 1px solid rgba(30,41,81,0.2); display: flex; align-items: center; justify-content: center; color: var(--teal-b); }
-.blur-lock svg { width: 22px; height: 22px; }
-.blur-text { font-size: 1rem; color: var(--text-2); font-weight: 500; }
-.blur-sub { font-size: 0.85rem; color: var(--text-3); }
-
-/* ==================== PRICING STRIP ==================== */
-.pricing-strip { max-width: 1100px; margin: 0 auto; padding: 4rem 2.5rem; }
-.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
-.price-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.price-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
-.price-card.highlighted { border-color: var(--teal); background: linear-gradient(180deg, rgba(30,41,81,0.03) 0%, #FFFFFF 100%); box-shadow: 0 4px 20px rgba(30,41,81,0.1); }
-.price-card.highlighted::before { content: '最受歡迎'; display: block; font-size: 0.7rem; font-weight: 600; color: #fff; background: var(--teal); padding: 0.2rem 0.6rem; border-radius: 4px; margin: -0.5rem auto 1rem; width: fit-content; }
-.price-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.price-amount { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
-.price-amount span { font-size: 0.85rem; font-weight: 400; color: var(--text-3); }
-.price-features { margin-top: 1rem; font-size: 0.85rem; color: var(--text-3); line-height: 1.8; }
-
-/* ==================== WHY CREDICA ==================== */
-.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 900px; margin: 3rem auto 0; }
-
-.why-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.75rem; transition: all 0.3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-.why-card:hover { border-color: var(--border-h); box-shadow: 0 8px 24px rgba(30,41,81,0.06); }
-
-.why-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-.why-card h4 .why-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.why-card:nth-child(1) h4 .why-dot { background: var(--teal-b); }
-.why-card:nth-child(2) h4 .why-dot { background: var(--amber); }
-.why-card:nth-child(3) h4 .why-dot { background: var(--violet); }
-.why-card:nth-child(4) h4 .why-dot { background: var(--cyan); }
-
-.why-card p { font-size: 0.95rem; color: var(--text-3); line-height: 1.7; }
-
-/* ==================== CONTACT FORM ==================== */
-.contact-section { max-width: 700px; margin: 0 auto; padding: 6rem 2.5rem; }
-
-.contact-card { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 3rem; position: relative; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-.contact-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--amber)); }
-
-.contact-header { text-align: center; margin-bottom: 2.5rem; }
-.contact-header h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; }
-.contact-header p { font-size: 1rem; color: var(--text-2); margin-top: 0.6rem; line-height: 1.7; }
-
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-group.full { grid-column: 1 / -1; }
-
-.form-label { font-size: 0.85rem; color: var(--text-2); font-weight: 500; }
-
-.form-input {
-  padding: 0.85rem 1rem; background: #F8FAFC; border: 1px solid var(--border);
-  border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit;
-  transition: all 0.2s; outline: none;
-}
-.form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(30,41,81,0.1); }
-.form-input::placeholder { color: var(--text-3); }
-
-.form-select {
-  padding: 0.85rem 1rem; background: #F8FAFC; border: 1px solid var(--border);
-  border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit;
-  transition: all 0.2s; outline: none; appearance: none; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%2394A3B8' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 18px;
-}
-.form-select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(30,41,81,0.1); }
-
-.form-textarea {
-  padding: 0.85rem 1rem; background: #F8FAFC; border: 1px solid var(--border);
-  border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit;
-  transition: all 0.2s; outline: none; resize: vertical; min-height: 120px;
-}
-.form-textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(30,41,81,0.1); }
-.form-textarea::placeholder { color: var(--text-3); }
-
-.form-submit {
-  grid-column: 1 / -1; margin-top: 0.5rem;
-  padding: 1rem 2rem; background: linear-gradient(135deg, var(--teal), #0F766E);
-  color: #fff; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600;
-  cursor: pointer; font-family: inherit; transition: all 0.3s;
-}
-.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,41,81,0.3); }
-
-.form-note { grid-column: 1 / -1; font-size: 0.8rem; color: var(--text-3); text-align: center; margin-top: 0.5rem; line-height: 1.6; }
-.form-note a { color: var(--teal-b); text-decoration: none; }
-
-/* ==================== BACK STRIP ==================== */
-.back-strip { max-width: 800px; margin: 0 auto; text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border); }
-.back-strip h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.65rem; }
-.back-strip p { font-size: 1rem; color: var(--text-2); line-height: 1.7; margin-bottom: 1.5rem; }
-.btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; background: transparent; border: 1px solid var(--border); border-radius: 12px; color: var(--text-2); font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
-.btn-back:hover { border-color: var(--teal); color: var(--teal); background: rgba(30,41,81,0.04); }
-.btn-back svg { width: 16px; height: 16px; }
-
-/* FOOTER */
-footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-.foot-l { font-size: 0.85rem; color: var(--text-3); }
-.foot-r { display: flex; gap: 1.5rem; }
-.foot-r a { font-size: 0.85rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
-.foot-r a:hover { color: var(--text); }
-
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-@media (max-width: 900px) {
-  html { font-size: 16px; }
-  .hero { padding: 7rem 1.5rem 4rem; }
-  .pain-grid { grid-template-columns: 1fr; }
-  .solution-flow { flex-direction: column; }
-  .flow-arrow { transform: rotate(90deg); }
-  .vert-grid { grid-template-columns: 1fr 1fr; }
-  .dash-metrics { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .nav-mid { display: none; }
-  .pricing-grid { grid-template-columns: 1fr 1fr; }
-  .four-grid { grid-template-columns: 1fr 1fr; }
-  .ftable { font-size: 0.75rem; }
-  .ftable th, .ftable td { padding: 0.6rem 0.4rem; }
-}
-
-@media (max-width: 480px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-  .vert-grid { grid-template-columns: 1fr; }
-  .four-grid { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
-</style>
-<!-- Google tag (gtag.js) -->
+<meta property="og:title" content="Credica 組織方案 — 給社團與組織的 AI 智慧助理">
+<meta property="og:description" content="一位住在 LINE 裡的 AI 智慧助理，加上一個管理面板，讓帶一群人變輕鬆。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://credica.app/business.html">
+<meta property="og:image" content="https://credica.app/og-image.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -331,457 +25,1243 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   gtag('js', new Date());
   gtag('config', 'G-VEPFXCYNHN');
 </script>
+<style>
+  /* ============================================================
+     來源：credica/tokens.css + apps/design/credica-app-home/mockup.html :root
+     （此處為 mockup 備份值，與已核可的首頁 mockup 共用設計語言）
+     ============================================================ */
+  :root {
+    --bg:            #F4F5F7;
+    --surface:       #FFFFFF;
+    --surface-muted: #FAFAFB;
+    --border:        rgba(15,18,32,0.08);
+    --border-h:      rgba(30,41,81,0.20);
+    --divider:       rgba(15,18,32,0.06);
+
+    --navy:          #1E2951;
+    --navy-deep:     #141B3B;
+    --navy-tint:     rgba(30,41,81,0.06);
+    --navy-tint-2:   rgba(30,41,81,0.10);
+
+    --text:          #1E293B;
+    --text-2:        #475569;
+    --text-3:        #64748B;
+
+    --ok-text:       #0E8050;
+    --ok-bg:         rgba(16,138,88,0.10);
+    --warn-text:     #B4610F;
+    --warn-bg:       rgba(229,140,29,0.12);
+    --blue-text:     #2B5BD7;
+    --blue-bg:       rgba(43,91,215,0.10);
+    --rose-text:     #C42E62;
+    --rose-bg:       rgba(196,46,98,0.10);
+
+    --pastel-lavender: #E6E9FA;
+    --pastel-mint:     #DAF1E5;
+    --pastel-peach:    #FBE3CB;
+    --pastel-blush:    #F8DCE7;
+    --pastel-sky:      #DCEAFB;
+
+    --line-green:    #06C755;
+
+    --r-card:   16px;
+    --r-button: 14px;
+    --card-shadow: 0 1px 2px rgba(15,18,32,0.04);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --font: 'Outfit', 'Noto Sans TC', -apple-system, BlinkMacSystemFont,
+            "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+
+  /* ====================== NAV ====================== */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.25rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em;
+    text-decoration: none; color: var(--text);
+  }
+  .logo-img { width: 32px; height: 32px; object-fit: contain; }
+  .nav-links {
+    display: none;
+    gap: 1.6rem; flex: 1; justify-content: center;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--text-2);
+    font-size: 0.95rem; font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-links a.current { color: var(--navy); font-weight: 700; }
+  .nav-dl {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: 10px;
+    font-family: inherit; font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .nav-dl:hover { background: var(--navy-deep); transform: translateY(-1px); }
+  .nav-dl svg { width: 15px; height: 15px; }
+
+  .hamburger {
+    display: flex; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+  }
+  .hamburger span {
+    width: 22px; height: 2px; background: var(--text);
+    border-radius: 2px; transition: all 0.25s;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0.5rem 1.25rem 1rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 0.85rem 0.25rem;
+    text-decoration: none; color: var(--text);
+    font-size: 1.05rem; font-weight: 500;
+    border-bottom: 1px solid var(--divider);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a.current { color: var(--navy); font-weight: 700; }
+
+  /* ====================== LAYOUT ====================== */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+  section { padding: 3.5rem 0; }
+  .sec-head { text-align: center; max-width: 660px; margin: 0 auto 2.25rem; }
+  .sec-kicker {
+    display: inline-block;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--navy);
+    background: var(--navy-tint);
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+    margin-bottom: 0.85rem;
+  }
+  .sec-title {
+    font-size: clamp(1.6rem, 5.5vw, 2.3rem);
+    font-weight: 800; letter-spacing: -0.02em; line-height: 1.2;
+  }
+  .sec-desc {
+    margin-top: 0.75rem;
+    font-size: 1rem; color: var(--text-2); line-height: 1.7;
+  }
+  .hl {
+    background: linear-gradient(135deg, var(--navy), var(--blue-text));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ====================== HERO ====================== */
+  .hero {
+    padding: 2.75rem 0 3.25rem;
+    text-align: center;
+  }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.35rem 0.9rem;
+    background: var(--navy-tint); border: 1px solid var(--navy-tint-2);
+    border-radius: 999px;
+    font-size: 0.82rem; color: var(--navy); font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .chip-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--ok-text); animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  .hero h1 {
+    font-size: clamp(1.95rem, 7.5vw, 2.9rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.18;
+  }
+  .hero-sub {
+    margin: 1.1rem auto 0;
+    max-width: 480px;
+    font-size: 1.05rem; color: var(--text-2); line-height: 1.7;
+  }
+  .hero-cta-row {
+    display: flex; flex-wrap: wrap; gap: 0.65rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+  }
+  .hero-note {
+    margin-top: 0.95rem;
+    font-size: 0.82rem; color: var(--text-3);
+  }
+
+  /* ====================== BUTTONS ====================== */
+  .btn-solid {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.85rem 1.7rem;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: var(--r-button);
+    font-family: inherit; font-size: 1rem; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+  }
+  .btn-solid:hover { transform: translateY(-2px); background: var(--navy-deep); }
+  .btn-solid svg { width: 16px; height: 16px; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.85rem 1.7rem;
+    background: transparent; color: var(--navy);
+    border: 1.5px solid var(--navy); border-radius: var(--r-button);
+    font-family: inherit; font-size: 1rem; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+  }
+  .btn-outline:hover { transform: translateY(-2px); background: var(--navy-tint); }
+  .btn-outline svg { width: 16px; height: 16px; }
+
+  /* ====================== HERO STAGE: 兩種星期一 ====================== */
+  .hero-stage {
+    margin: 2.25rem auto 0;
+    max-width: 520px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.4rem 1.3rem 1.5rem;
+    box-shadow: 0 12px 32px rgba(30,41,81,0.08);
+  }
+  .hs-title {
+    font-size: 0.86rem; font-weight: 700; color: var(--text-2);
+    margin-bottom: 0.95rem;
+  }
+  .hs-rows { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
+  .hs-row {
+    display: flex; align-items: center; gap: 0.85rem;
+    padding: 0.85rem 0.9rem;
+    border-radius: 13px;
+    text-align: left;
+  }
+  .hs-row.before { background: var(--rose-bg); }
+  .hs-row.after  { background: var(--ok-bg); }
+  .hs-emoji {
+    width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem; background: #fff;
+  }
+  .hs-text { flex: 1; min-width: 0; }
+  .hs-tag {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.02em;
+  }
+  .hs-row.before .hs-tag { color: var(--rose-text); }
+  .hs-row.after  .hs-tag { color: var(--ok-text); }
+  .hs-line { font-size: 0.92rem; font-weight: 600; margin-top: 0.15rem; }
+
+  /* ====================== PAIN ====================== */
+  .pain-grid {
+    display: grid; grid-template-columns: 1fr; gap: 0.9rem;
+  }
+  .pain-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 4px solid var(--rose-text);
+    border-radius: var(--r-card); padding: 1.5rem 1.4rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .pain-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(30,41,81,0.10);
+  }
+  .pain-emoji { font-size: 1.7rem; }
+  .pain-card h3 { font-size: 1.08rem; font-weight: 700; margin-top: 0.5rem; }
+  .pain-card p {
+    margin-top: 0.4rem;
+    font-size: 0.92rem; color: var(--text-2); line-height: 1.7;
+  }
+
+  /* ====================== AI 助理（主角） ====================== */
+  .ai {
+    background: linear-gradient(155deg, var(--navy), var(--navy-deep));
+    color: #fff;
+  }
+  .ai .sec-kicker { background: rgba(255,255,255,0.14); color: #fff; }
+  .ai .sec-title { color: #fff; }
+  .ai .sec-desc { color: rgba(255,255,255,0.80); }
+
+  .ai-layout {
+    display: grid; grid-template-columns: 1fr; gap: 2rem;
+    align-items: center;
+  }
+
+  /* LINE 對話示意 */
+  .line-chat {
+    width: 100%; max-width: 340px; margin: 0 auto;
+    background: #8CABD9;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(15,18,32,0.32);
+  }
+  .lc-header {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    background: var(--line-green);
+    color: #fff;
+  }
+  .lc-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #fff; color: var(--line-green);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .lc-avatar svg { width: 19px; height: 19px; }
+  .lc-name { font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
+  .lc-status { font-size: 0.7rem; opacity: 0.85; }
+  .lc-body {
+    padding: 1rem 0.85rem 1.1rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    min-height: 320px;
+  }
+  .lc-time {
+    align-self: center;
+    font-size: 0.66rem; color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.12);
+    padding: 0.15rem 0.7rem; border-radius: 999px;
+    margin-bottom: 0.15rem;
+  }
+  .lc-msg {
+    max-width: 80%;
+    font-size: 0.86rem; line-height: 1.55;
+    padding: 0.6rem 0.8rem;
+    border-radius: 14px;
+    opacity: 0; transform: translateY(8px);
+    animation: chatIn 0.4s var(--ease) forwards;
+  }
+  @keyframes chatIn { to { opacity: 1; transform: translateY(0); } }
+  .lc-msg.user {
+    align-self: flex-end;
+    background: var(--line-green); color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .lc-msg.bot {
+    align-self: flex-start;
+    background: #fff; color: var(--text);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .lc-msg .who {
+    display: block;
+    font-size: 0.66rem; font-weight: 700; color: var(--blue-text);
+    margin-bottom: 0.2rem;
+  }
+  .lc-msg.user:nth-of-type(2) { animation-delay: 0.1s; }
+  .lc-replay {
+    margin: 0.9rem auto 0;
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 999px;
+    color: #fff; font-family: inherit;
+    font-size: 0.8rem; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .lc-replay:hover { background: rgba(255,255,255,0.26); }
+  .lc-replay svg { width: 13px; height: 13px; }
+
+  /* AI 好處清單 */
+  .ai-points { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  .ai-point {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    display: flex; gap: 0.85rem; align-items: flex-start;
+  }
+  .ai-point-ic {
+    width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
+    background: rgba(255,255,255,0.14); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ai-point-ic svg { width: 19px; height: 19px; }
+  .ai-point h4 { font-size: 1rem; font-weight: 700; }
+  .ai-point p {
+    margin-top: 0.25rem;
+    font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.6;
+  }
+  .ai-tasks {
+    margin-top: 1.25rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    justify-content: center;
+  }
+  .ai-task-chip {
+    font-size: 0.8rem; font-weight: 600;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: #fff;
+    padding: 0.4rem 0.85rem; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .ai-task-chip svg { width: 13px; height: 13px; color: #8FE3B8; }
+
+  /* ====================== PHONE（App 畫面示意） ====================== */
+  .phone {
+    width: 268px; background: var(--bg); border-radius: 34px;
+    box-shadow: 0 0 0 8px #0c0c0c, 0 0 0 10px #2a2a2a, 0 24px 48px rgba(15,18,32,0.28);
+    overflow: hidden; position: relative; font-family: var(--font); margin: 0 auto;
+  }
+  .phone-island {
+    position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+    width: 82px; height: 21px; border-radius: 14px; background: #000; z-index: 5;
+  }
+  .ph-statusbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 22px 6px; font-size: 12px; font-weight: 700; color: var(--text);
+  }
+  .ph-sb-right { display: flex; align-items: center; gap: 4px; }
+  .ph-screen { padding: 0 0 14px; }
+  .ph-orghead { display: flex; align-items: center; gap: 8px; padding: 4px 17px 12px; }
+  .ph-orglogo {
+    width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+    background: var(--pastel-peach); color: var(--warn-text);
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
+  }
+  .ph-org-name { font-size: 13.5px; font-weight: 800; letter-spacing: -0.01em; }
+  .ph-org-role { font-size: 9.5px; color: var(--text-3); margin-top: 1px; }
+  .ph-card {
+    margin: 0 14px 13px; border-radius: 15px; padding: 14px 15px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .ph-card::after {
+    content: ''; position: absolute; right: -28px; top: -22px;
+    width: 116px; height: 116px; border-radius: 50%; background: rgba(255,255,255,0.05);
+  }
+  .ph-card-label { font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em; opacity: 0.7; }
+  .ph-card-name { font-size: 18px; font-weight: 800; margin-top: 13px; letter-spacing: -0.02em; }
+  .ph-card-meta { font-size: 9px; opacity: 0.75; margin-top: 4px; }
+  .ph-sect-row {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 2px 20px 6px;
+  }
+  .ph-sect-row .t { font-size: 10.5px; font-weight: 700; color: var(--text-2); }
+  .ph-list { padding: 0 14px; display: flex; flex-direction: column; gap: 6px; }
+  .ph-list + .ph-sect-row { padding-top: 11px; }
+  .ph-row {
+    background: var(--surface); border-radius: 11px; box-shadow: var(--card-shadow);
+    padding: 8px 9px; display: flex; align-items: center; gap: 8px;
+  }
+  .ph-row-icon {
+    width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ph-row-text { flex: 1; min-width: 0; }
+  .ph-row-title { font-size: 11.5px; font-weight: 700; line-height: 1.25; }
+  .ph-row-sub { font-size: 9px; color: var(--text-3); margin-top: 2px; }
+  .ph-pill {
+    flex-shrink: 0; padding: 3px 7px; border-radius: 999px;
+    font-size: 8.5px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .ph-pill svg { width: 10px; height: 10px; }
+  .ph-pill.ok { background: var(--ok-bg); color: var(--ok-text); }
+
+  /* ====================== APP 整合 layout ====================== */
+  .appint-layout {
+    display: grid; grid-template-columns: 1fr; gap: 2.25rem; align-items: center;
+  }
+  .appint-cards { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .appint-phone-stage { display: flex; justify-content: center; }
+
+  /* ====================== CAPABILITIES ====================== */
+  .cap-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+  }
+  .cap-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-card); padding: 1.5rem 1.4rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .cap-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(30,41,81,0.10);
+  }
+  .cap-icon {
+    width: 48px; height: 48px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.9rem;
+  }
+  .cap-icon svg { width: 23px; height: 23px; }
+  .cap-card:nth-child(1) .cap-icon { background: var(--pastel-lavender); color: var(--navy); }
+  .cap-card:nth-child(2) .cap-icon { background: var(--pastel-peach); color: var(--warn-text); }
+  .cap-card:nth-child(3) .cap-icon { background: var(--pastel-mint); color: var(--ok-text); }
+  .cap-card:nth-child(4) .cap-icon { background: var(--pastel-blush); color: var(--rose-text); }
+  .cap-card:nth-child(5) .cap-icon { background: var(--pastel-sky); color: var(--blue-text); }
+  .cap-card h3 { font-size: 1.1rem; font-weight: 700; }
+  .cap-card p {
+    margin-top: 0.4rem;
+    font-size: 0.9rem; color: var(--text-2); line-height: 1.65;
+  }
+  .cap-gain {
+    margin-top: 0.85rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.82rem; font-weight: 700; color: var(--ok-text);
+    background: var(--ok-bg);
+    padding: 0.35rem 0.75rem; border-radius: 999px;
+  }
+  .cap-gain svg { width: 13px; height: 13px; }
+
+  /* ====================== VALUE / 省人力 ====================== */
+  .value { background: var(--surface-muted); }
+  .ba-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+    max-width: 760px; margin: 0 auto;
+  }
+  .ba-col {
+    border-radius: var(--r-card);
+    padding: 1.5rem 1.4rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+  }
+  .ba-col.before { border-top: 4px solid var(--rose-text); }
+  .ba-col.after  { border-top: 4px solid var(--ok-text); }
+  .ba-tag {
+    display: inline-block;
+    font-size: 0.78rem; font-weight: 700;
+    padding: 0.3rem 0.8rem; border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .ba-col.before .ba-tag { background: var(--rose-bg); color: var(--rose-text); }
+  .ba-col.after  .ba-tag { background: var(--ok-bg); color: var(--ok-text); }
+  .ba-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .ba-list li {
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    font-size: 0.92rem; color: var(--text-2); line-height: 1.55;
+  }
+  .ba-mark {
+    width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .ba-mark svg { width: 12px; height: 12px; }
+  .ba-col.before .ba-mark { background: var(--rose-bg); color: var(--rose-text); }
+  .ba-col.after  .ba-mark { background: var(--ok-bg); color: var(--ok-text); }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem;
+    max-width: 760px; margin: 1.75rem auto 0;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.1rem 0.6rem; text-align: center;
+    box-shadow: var(--card-shadow);
+  }
+  .stat-num {
+    font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+  .stat-label {
+    font-size: 0.76rem; color: var(--text-3); margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+  .stat-foot {
+    text-align: center; font-size: 0.78rem; color: var(--text-3);
+    margin-top: 1rem;
+  }
+
+  /* ====================== PLAN ====================== */
+  .plan-card {
+    max-width: 620px; margin: 0 auto;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 1.9rem 1.6rem;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+  }
+  .plan-free {
+    display: inline-flex; align-items: baseline; gap: 0.35rem;
+    margin-bottom: 0.4rem;
+  }
+  .plan-free .amt { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.02em; }
+  .plan-free .unit { font-size: 0.95rem; color: var(--text-3); }
+  .plan-card p {
+    font-size: 0.95rem; color: var(--text-2); line-height: 1.7;
+    max-width: 420px; margin: 0 auto 1.25rem;
+  }
+  .plan-points {
+    list-style: none; display: flex; flex-direction: column; gap: 0.5rem;
+    max-width: 360px; margin: 0 auto 1.5rem; text-align: left;
+  }
+  .plan-points li {
+    display: flex; gap: 0.55rem; align-items: center;
+    font-size: 0.9rem; color: var(--text-2);
+  }
+  .plan-check {
+    width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0;
+    background: var(--ok-bg); color: var(--ok-text);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .plan-check svg { width: 12px; height: 12px; }
+
+  /* ====================== FINAL CTA ====================== */
+  .cta-final { text-align: center; }
+  .cta-cards {
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+    max-width: 760px; margin: 2rem auto 0;
+  }
+  .cta-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 1.8rem 1.5rem;
+    box-shadow: var(--card-shadow);
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+  .cta-card.primary {
+    border-color: var(--navy);
+    box-shadow: 0 10px 32px rgba(30,41,81,0.12);
+  }
+  .cta-card-emoji { font-size: 2rem; }
+  .cta-card h3 { font-size: 1.18rem; font-weight: 800; margin-top: 0.55rem; }
+  .cta-card p {
+    margin-top: 0.4rem; margin-bottom: 1.1rem;
+    font-size: 0.9rem; color: var(--text-2); line-height: 1.65;
+  }
+
+  /* ====================== FOOTER ====================== */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    padding: 2.5rem 0 2rem;
+  }
+  .foot-top {
+    display: flex; flex-direction: column; gap: 1.75rem;
+  }
+  .foot-brand { display: flex; flex-direction: column; gap: 0.6rem; }
+  .foot-tag { font-size: 0.85rem; color: var(--text-3); line-height: 1.6; max-width: 280px; }
+  .foot-cols {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem 1rem;
+  }
+  .foot-col h4 {
+    font-size: 0.78rem; font-weight: 700; color: var(--text-3);
+    letter-spacing: 0.06em; margin-bottom: 0.7rem;
+  }
+  .foot-col a {
+    display: block;
+    font-size: 0.9rem; color: var(--text-2);
+    text-decoration: none; padding: 0.3rem 0;
+  }
+  .foot-col a:hover { color: var(--navy); }
+  .foot-bottom {
+    margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--divider);
+    font-size: 0.82rem; color: var(--text-3);
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1rem;
+    justify-content: space-between; align-items: center;
+  }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+  .hero > * { animation: fadeUp 0.6s var(--ease) both; }
+  .hero .hero-chip { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.12s; }
+  .hero .hero-sub { animation-delay: 0.2s; }
+  .hero .hero-cta-row { animation-delay: 0.28s; }
+  .hero .hero-note { animation-delay: 0.34s; }
+  .hero .hero-stage { animation-delay: 0.4s; }
+
+  /* ====================== DESKTOP ====================== */
+  @media (min-width: 720px) {
+    nav { padding: 0.9rem 2rem; }
+    .nav-links { display: flex; }
+    .hamburger { display: none; }
+    .wrap { padding: 0 2rem; }
+    section { padding: 4.75rem 0; }
+    .hero { padding: 3.5rem 0 4rem; }
+    .pain-grid { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .ai-layout { grid-template-columns: 0.9fr 1.1fr; }
+    .cap-grid { grid-template-columns: repeat(3, 1fr); }
+    .appint-layout { grid-template-columns: 1fr 300px; gap: 2.75rem; }
+    .appint-cards { grid-template-columns: 1fr 1fr; }
+    .ba-grid { grid-template-columns: 1fr 1fr; }
+    .cta-cards { grid-template-columns: 1fr 1fr; }
+    .foot-top { flex-direction: row; justify-content: space-between; }
+    .foot-cols { grid-template-columns: repeat(3, 1fr); max-width: 560px; }
+  }
+  @media (min-width: 1000px) {
+    .cap-grid { grid-template-columns: repeat(5, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
 </head>
 <body>
 
+<!-- ======================= NAV ======================= -->
 <nav>
-  <a href="index.html" class="logo">
-    <img src="credica_logo.png" alt="Credica Logo">
+  <a href="#top" class="logo">
+    <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
     Credica
   </a>
-  <div class="nav-mid">
-    <a href="index.html">個人版</a>
-    <a href="business.html" class="active">中小組織</a>
-    <a href="enterprise.html">企業方案</a>
-    <a href="tutorial.html">互動教學</a>
-    <a href="about.html">關於</a>
+  <div class="nav-links">
+    <a href="#pain">給組織</a>
+    <a href="#ai">AI 助理</a>
+    <a href="#capabilities">能做什麼</a>
+    <a href="#plan">方案</a>
   </div>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    下載 App
+  <a class="nav-dl" href="https://dashboard.credica.app/signup?plan=free" data-cta="signup">
+    免費開始
   </a>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- ==================== HERO ==================== -->
-<section class="hero">
-  <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
-  <div class="hero-inner">
-    <div class="hero-badge">組織管理平台</div>
-    <h1>社團、社區、活動管理<br><span class="hl">不再手忙腳亂</span></h1>
-    <p class="hero-sub">
-      LINE 訊息找不到、對帳吃力、報到混亂——<br>
-      Credica 一次解決組織管理的瑣事。
-    </p>
-    <div class="hero-cta-row">
-      <a href="https://dashboard.credica.app/signup?plan=free" class="btn-primary">免費開始</a>
-      <a href="https://dashboard.credica.app/pricing" class="btn-secondary">比較方案</a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== PAIN POINTS ==================== -->
-<section id="pain" class="section">
-  <div class="section-center">
-    <div class="section-label">管理現況</div>
-    <div class="section-title">這些問題，你一定遇過</div>
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3>LINE 群組管理崩潰</h3>
-        <p>訊息被洗掉、公告沒人看、退群就失聯——LINE 好用但不是管理工具。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg></div>
-        <h3>收費對帳是惡夢</h3>
-        <p>Excel 對帳、截圖比對、漏繳沒人發現——每月花好幾天對帳。</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3>活動辦了，成效說不清</h3>
-        <p>紙本簽到、出席率憑感覺、結束後沒數據——辛苦辦了卻說不出成果。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SOLUTION FLOW ==================== -->
-<section id="solution" class="solution-section">
-  <div class="solution-header">
-    <div class="section-label">怎麼開始</div>
-    <div class="section-title">三步驟，搞定組織管理</div>
-    <div class="section-desc">不用技術能力,選場景就配好。</div>
-  </div>
-  <div class="solution-flow">
-    <div class="flow-node node-1">
-      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-      <h4>3 分鐘建立</h4>
-      <p>選場景<br>系統自動配置功能模組</p>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-node node-2">
-      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <h4>LINE Bot 接管日常</h4>
-      <p>成員用 LINE 報名、查詢、繳費<br>AI 全天自動回覆</p>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-node node-3">
-      <div class="flow-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-      <h4>Dashboard 掌握全局</h4>
-      <p>成員、繳費、出席<br>即時數據,一站掌握</p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CREDICA 做 4 件事 ==================== -->
-<section id="features" class="section">
-  <div class="section-center">
-    <div class="section-label">功能總覽</div>
-    <div class="section-title">Credica 幫你做 <span class="hl">4 件事</span></div>
-    <div class="section-desc">社團、社區、活動主辦——管理就這四件事。</div>
-
-    <div class="four-grid">
-      <div class="four-card">
-        <div class="four-num">1</div>
-        <h4>管人</h4>
-        <p>知道誰是誰<br>誰加入了、誰還沒繳費</p>
-      </div>
-      <div class="four-card">
-        <div class="four-num">2</div>
-        <h4>管錢</h4>
-        <p>收費通知、繳費紀錄<br>對帳自動化</p>
-      </div>
-      <div class="four-card">
-        <div class="four-num">3</div>
-        <h4>管活動</h4>
-        <p>報名、簽到、出席紀錄<br>證明自動發放</p>
-      </div>
-      <div class="four-card">
-        <div class="four-num">4</div>
-        <h4>管溝通</h4>
-        <p>LINE Bot 自動回覆<br>公告推播、24 小時服務</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== FEATURE × SCENE MATRIX ==================== -->
-<section id="scenes" class="section" style="background: linear-gradient(180deg, #EEF2FF 0%, #F8FAFC 100%);">
-  <div class="section-center">
-    <div class="section-label">功能 × 場景對照</div>
-    <div class="section-title">一張表看懂 <span class="hl">你需要什麼</span></div>
-    <div class="section-desc">選組織類型,功能自動開通。零設定。</div>
-
-    <div class="ftable-wrap">
-      <table class="ftable">
-        <thead>
-          <tr>
-            <th>功能</th>
-            <th>🏛️<br>社團</th>
-            <th>🏠<br>社區</th>
-            <th>🎪<br>活動</th>
-            <th>🏗️<br>工地</th>
-            <th>🏥<br>醫療</th>
-            <th>🏢<br>企業</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LINE 智慧助理<span class="ft-desc">成員用 LINE 問問題，AI 自動回覆</span></td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>成員名冊<span class="ft-desc">LINE 暱稱自動對應真名，重複自動偵測</span></td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>繳費追蹤<span class="ft-desc">LINE 回報轉帳末五碼，系統自動記帳</span></td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-          </tr>
-          <tr>
-            <td>活動報名<span class="ft-desc">LINE 一鍵報名，自動候補管理</span></td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-          </tr>
-          <tr>
-            <td>QR 簽到<span class="ft-desc">現場掃碼，即時出席率統計</span></td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-          </tr>
-          <tr>
-            <td>數位會員證<span class="ft-desc">手機出示 QR Code，可驗證真偽</span></td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>出席證明<span class="ft-desc">活動結束自動發放數位證明</span></td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-          </tr>
-          <tr>
-            <td>門禁管理<span class="ft-desc">QR Code 掃碼進出，紀錄自動留存</span></td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-          <tr>
-            <td>合規追蹤<span class="ft-desc">證照到期提醒、訓練時數紀錄</span></td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="dash">&mdash;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="dash">&mdash;</td>
-          </tr>
-          <tr>
-            <td>管理後台<span class="ft-desc">成員、繳費、活動、統計一站管理</span></td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-            <td class="check">&#10003;</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p style="text-align:center;font-size:0.85rem;color:var(--text-3);margin-top:1.5rem;">
-      &#10003; = 選擇該場景時<strong>自動開通</strong>，不用另外設定
-    </p>
-  </div>
-</section>
-
-<!-- ==================== DASHBOARD PREVIEW ==================== -->
-<section class="dash-section">
-  <div class="section-center">
-    <div class="section-label">管理面板預覽</div>
-    <div class="section-title">組織狀態，一眼掌握</div>
-    <div class="section-desc">登入即時看所有數據,不用翻資料。</div>
-  </div>
-  <div class="dash-preview">
-    <div class="dash-bar">
-      <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
-      <span class="dash-url">dashboard.credica.app</span>
-    </div>
-    <div class="dash-body">
-      <div class="dash-metrics">
-        <div class="dm">
-          <div class="dm-label">成員數</div>
-          <div class="dm-value w">156</div>
-          <div class="dm-sub">Total Members</div>
-        </div>
-        <div class="dm">
-          <div class="dm-label">本月繳費率</div>
-          <div class="dm-value t">87%</div>
-          <div class="dm-sub">Payment Rate</div>
-        </div>
-        <div class="dm">
-          <div class="dm-label">出席率</div>
-          <div class="dm-value a">92%</div>
-          <div class="dm-sub">Attendance Rate</div>
-        </div>
-      </div>
-
-      <!-- Blurred area to tease more -->
-      <div class="dash-blur">
-        <div class="dash-blur-content">
-          <div class="dash-metrics">
-            <div class="dm"><div class="dm-label">活動數</div><div class="dm-value t">24</div></div>
-            <div class="dm"><div class="dm-label">已發憑證</div><div class="dm-value a">89</div></div>
-            <div class="dm"><div class="dm-label">待催繳</div><div class="dm-value w">12</div></div>
-          </div>
-        </div>
-        <div class="dash-blur-overlay">
-          <div class="blur-lock"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-          <div class="blur-text">更多功能等你探索</div>
-          <div class="blur-sub">免費開始，立即體驗</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== PRICING STRIP ==================== -->
-<section id="pricing" class="pricing-strip">
-  <div class="section-center">
-    <div class="section-label">方案定價</div>
-    <div class="section-title">簡單透明，<span class="hl">免費開始</span></div>
-    <div class="pricing-grid" id="pricing-grid"></div>
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="https://dashboard.credica.app/pricing" class="btn-secondary">比較完整方案 &rarr;</a>
-    </div>
-  </div>
-</section>
-<script src="pricing-data.js"></script>
-<script>
-(function(){
-  var tiers = window.CREDICA_TIERS || [];
-  var lineL = {shared:'共用 LINE Bot', dedicated:'獨立 LINE Bot'};
-  function fq(v, u) { return v < 0 ? '無上限' : v.toLocaleString() + ' ' + u; }
-  var g = document.getElementById('pricing-grid');
-  if (!g || !tiers.length) return;
-  g.innerHTML = '';
-  tiers.forEach(function(t) {
-    var card = document.createElement('div');
-    card.className = 'price-card' + (t.id === 'pro' ? ' highlighted' : '');
-    var amt = t.price_ntd > 0
-      ? 'NT$' + t.price_ntd.toLocaleString() + '<span>/月</span>'
-      : t.price_label;
-    var features = [
-      fq(t.member_quota, '位成員'),
-      fq(t.vc_quota, '張憑證/月'),
-      fq(t.ai_quota, '次 AI/月'),
-      t.push_quota < 0 ? '自行管理推播' : t.push_quota + ' 次推播/月',
-      lineL[t.line_type] || t.line_type
-    ].join('<br>');
-    card.innerHTML = '<div class="price-name">' + t.name + '</div>'
-      + '<div class="price-amount">' + amt + '</div>'
-      + '<div class="price-features">' + features + '</div>';
-    g.appendChild(card);
-  });
-})();
-</script>
-
-<!-- ==================== WHY CREDICA ==================== -->
-<section class="section">
-  <div class="section-center">
-    <div class="section-label">為什麼選 Credica</div>
-    <div class="section-title">讓管理變簡單的四個理由</div>
-    <div class="why-grid">
-      <div class="why-card">
-        <h4><span class="why-dot"></span>LINE 就是入口</h4>
-        <p>不用裝 APP。成員用 LINE 就能完成所有互動,導入零阻力。</p>
-      </div>
-      <div class="why-card">
-        <h4><span class="why-dot"></span>選場景就好,零設定</h4>
-        <p>不用研究設定。選組織類型,3 分鐘配好。</p>
-      </div>
-      <div class="why-card">
-        <h4><span class="why-dot"></span>會員證不是 JPG</h4>
-        <p>由原組織簽過,對方一掃就知真偽,假的造不出來。</p>
-      </div>
-      <div class="why-card">
-        <h4><span class="why-dot"></span>個人 APP 已上線</h4>
-        <p>管理者用 Credica APP 管理,成員只要 LINE。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CONTACT FORM ==================== -->
-<section id="contact" class="contact-section">
-  <div class="contact-card">
-    <div class="contact-header">
-      <h2>需要協助?聯繫我們</h2>
-      <p>留下資訊,我們儘快回覆。</p>
-    </div>
-    <form class="form-grid" onsubmit="handleSubmit(event)">
-      <div class="form-group">
-        <label class="form-label">姓名 *</label>
-        <input type="text" class="form-input" placeholder="您的姓名" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">職稱</label>
-        <input type="text" class="form-input" placeholder="例：社團幹部">
-      </div>
-      <div class="form-group">
-        <label class="form-label">組織名稱 *</label>
-        <input type="text" class="form-input" placeholder="您的組織或機構名稱" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">聯絡電話 *</label>
-        <input type="tel" class="form-input" placeholder="例：0912-345-678" required>
-      </div>
-      <div class="form-group full">
-        <label class="form-label">Email *</label>
-        <input type="email" class="form-input" placeholder="您的 Email" required>
-      </div>
-      <div class="form-group full">
-        <label class="form-label">您的組織類型</label>
-        <select class="form-select">
-          <option value="" disabled selected>請選擇類型</option>
-          <option>社團 / 協會</option>
-          <option>社區 / 大樓管委會</option>
-          <option>補習班 / 教育機構</option>
-          <option>活動公司 / 展覽</option>
-          <option>教會 / 宗教團體</option>
-          <option>運動俱樂部</option>
-          <option>其他</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label class="form-label">您想解決的問題（選填）</label>
-        <textarea class="form-textarea" placeholder="簡單描述您目前遇到的痛點或想了解的功能..."></textarea>
-      </div>
-      <button type="submit" class="form-submit">送出諮詢需求</button>
-      <div class="form-note">
-        我們重視您的隱私，資料僅用於聯繫諮詢。<br>
-        也可以直接寫信至 <a href="mailto:support@credica.app">support@credica.app</a>
-      </div>
-    </form>
-  </div>
-</section>
-
-<!-- ==================== BACK STRIP — ENTERPRISE ==================== -->
-<div class="back-strip">
-  <h3>需要企業合規方案?</h3>
-  <p>工地門禁、醫療證照、ESG 合規——大企業方案在這。</p>
-  <a href="enterprise.html" class="btn-back">
-    前往企業方案
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-  </a>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#pain">給組織</a>
+  <a href="#ai">AI 助理</a>
+  <a href="#capabilities">能做什麼</a>
+  <a href="#plan">方案</a>
+  <a href="https://dashboard.credica.app/signup?plan=free" data-cta="signup">免費開始</a>
 </div>
 
+<span id="top"></span>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero wrap">
+  <span class="hero-chip">
+    <span class="chip-dot"></span>
+    給社團、社區、中小組織的經營者
+  </span>
+  <h1>把「帶一群人」這件事，<br><span class="hl">變得輕鬆</span></h1>
+  <p class="hero-sub">
+    經營一個社團，你最想花心力的，是把活動辦好、把大家好好聚在一起——
+    而不是被回不完的訊息綁住。Credica 給你一位住在 LINE 裡的 AI 智慧助理，
+    成員的提問、活動報名與通知，都先由它替你接著；
+    讓你和幹部，把時間留給真正想做的事。
+  </p>
+  <div class="hero-cta-row">
+    <a class="btn-solid" href="https://dashboard.credica.app/signup?plan=free" data-cta="signup">
+      免費開始
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+    <a class="btn-outline" href="https://dashboard.credica.app/pricing" data-cta="pricing">
+      比較方案
+    </a>
+  </div>
+  <p class="hero-note">免費開始 · 不用先付費 · 成員只要用 LINE，不用學新軟體</p>
+
+  <!-- hero stage: 兩種星期一早上 -->
+  <div class="hero-stage" aria-hidden="true">
+    <div class="hs-title">同一個星期一早上，兩種社團幹部</div>
+    <div class="hs-rows">
+      <div class="hs-row before">
+        <div class="hs-emoji">😮‍💨</div>
+        <div class="hs-text">
+          <div class="hs-tag">沒有 Credica</div>
+          <div class="hs-line">手機 27 則未讀，週末活動誰要來，還在一個個問</div>
+        </div>
+      </div>
+      <div class="hs-row after">
+        <div class="hs-emoji">😌</div>
+        <div class="hs-text">
+          <div class="hs-tag">有 Credica</div>
+          <div class="hs-line">AI 助理昨晚已回完報名提問，今早活動名單清清楚楚</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PAIN ======================= -->
+<section id="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">你是不是也這樣</span>
+      <h2 class="sec-title">帶一群人，<br><span class="hl">最累的不是辦活動</span></h2>
+      <p class="sec-desc">是那些回不完的訊息、對不完的帳、追不完的人——全部都靠你和幾位幹部的時間在硬撐。</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-emoji">💬</div>
+        <h3>回不完的問題</h3>
+        <p>「活動幾點？」「還能報名嗎？」同樣的問題每天有人問，晚上十一點還在回，漏回一個還會被埋怨。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🗂️</div>
+        <h3>永遠對不準的名冊</h3>
+        <p>誰還是社員、誰剛加入、誰的資格快到期——名冊靠記憶和零散訊息拼湊，永遠對不準。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">📋</div>
+        <h3>追不完的人</h3>
+        <p>活動報名靠群組接龍，名單散在訊息裡；現場拿紙筆點名，結束後還不知道到底來了幾個。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= AI 助理（主角） ======================= -->
+<section id="ai" class="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">最重要的事</span>
+      <h2 class="sec-title">你的組織，<br><span style="color:#fff;">多了一位不用睡覺的小幫手</span></h2>
+      <p class="sec-desc">採用 Credica，你的成員打開原本就在用的 LINE，就能直接問問題——AI 智慧助理即時回答，不分白天晚上。</p>
+    </div>
+
+    <div class="ai-layout">
+      <!-- LINE 對話示意 -->
+      <div class="line-chat">
+        <div class="lc-header">
+          <div class="lc-avatar">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 4.36 3.57 8 8.4 8.69.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .88.55 1.08-.46 5.83-3.43 7.95-5.88C21.36 14.78 22 12.9 22 10.8 22 5.94 17.52 2 12 2z"/></svg>
+          </div>
+          <div>
+            <div class="lc-name">晨光攝影社 · 智慧助理</div>
+            <div class="lc-status">隨時在線 · 馬上回覆</div>
+          </div>
+        </div>
+        <div class="lc-body" id="chatBody">
+          <span class="lc-time">晚上 11:24</span>
+          <div class="lc-msg user">這週六的外拍活動還能報名嗎？</div>
+          <div class="lc-msg bot">
+            <span class="who">智慧助理</span>
+            可以喔！「陽明山日出外拍」5/30（六）05:00 在停車場集合，<br>
+            目前還有 6 個名額。要我幫您報名嗎？回覆「報名」就完成登記。
+          </div>
+          <div class="lc-msg user">報名</div>
+          <div class="lc-msg bot">
+            <span class="who">智慧助理</span>
+            已幫您報名成功 🎉 活動票券已送進您的 Credica App，<br>
+            當天出示給工作人員掃一下就能入場。出發前我會再提醒您。
+          </div>
+        </div>
+        <button class="lc-replay" id="replayChat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
+          重新播放對話
+        </button>
+      </div>
+
+      <!-- AI 好處 -->
+      <div>
+        <div class="ai-points">
+          <div class="ai-point">
+            <div class="ai-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>半夜也有人回</h4>
+              <p>成員不分時間問問題，AI 助理都即時回答。你和幹部不用再守著手機，也不怕漏接誰。</p>
+            </div>
+          </div>
+          <div class="ai-point">
+            <div class="ai-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <h4>例行小事，自動處理</h4>
+              <p>活動報名、票券發送、通知提醒、現場報到——這些重複的事交給 AI 助理，等於多請了一位不用發薪水的人。</p>
+            </div>
+          </div>
+          <div class="ai-point">
+            <div class="ai-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <div>
+              <h4>越用，越懂你的社團</h4>
+              <p>把社團自己的規章、活動辦法、報名規則交給它，它就會照你的內容回答，回得越來越準。</p>
+            </div>
+          </div>
+        </div>
+        <div class="ai-tasks">
+          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>回答常見問題</span>
+          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>協助活動報名</span>
+          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>發送活動票券</span>
+          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>發送活動通知</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CAPABILITIES ======================= -->
+<section id="capabilities" style="background:var(--surface-muted);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">不只 AI 助理</span>
+      <h2 class="sec-title">經營一個組織，<br><span class="hl">該省的力都幫你省</span></h2>
+      <p class="sec-desc">成員、活動、票券、會員證、管理面板——每一項都是為了讓你少花時間、少出錯。</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>成員名冊</h3>
+        <p>誰加入了、誰是誰、聯絡方式在哪——一份永遠最新的名冊，不再靠記憶和零散的訊息。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          省下整理通訊錄的時間
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>活動線上報名 + 掃碼報到</h3>
+        <p>成員在 LINE 一鍵報名，名額自動管理；活動當天手機掃一下就完成報到，出席人數即時清楚。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          告別群組接龍與紙本點名
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 1 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 11v2"/><path d="M13 17v2"/></svg>
+        </div>
+        <h3>活動票券</h3>
+        <p>成員報名後，數位活動票券直接發進他的 App；活動當天掃碼核銷入場，不用印紙本、也不怕重複入場。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          報名到入場，一條龍不出錯
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>數位會員證</h3>
+        <p>發給成員一張手機裡的數位會員證，對方一掃就知真偽，假的造不出來，不用再印實體卡。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          省下印卡與補發的成本
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3>一個管理面板</h3>
+        <p>成員、活動、報名、出席——打開一個面板全部看得到，組織狀況一眼掌握，不用翻好幾個地方。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          資料集中，不再到處找
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 整合 CREDICA APP ======================= -->
+<section id="app-integration">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">整合 Credica App</span>
+      <h2 class="sec-title">你的成員，<br><span class="hl">本來就有一支 App</span></h2>
+      <p class="sec-desc">Credica 有一支免費的個人 App，一般人用它收自己的名片與卡證。當你的組織採用 Credica，你發出去的東西，就直接出現在成員本來就在用的 App 裡——你不用自己開發一支 App。</p>
+    </div>
+    <div class="appint-layout">
+      <div class="appint-cards">
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>會員證直接進成員的 App</h3>
+        <p>你發的數位會員證，成員收進自己手機的 Credica App，隨身帶著、不會像 LINE 訊息被洗掉。組織不必為了發一張卡，自己去做一支 App。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          省下自己開發 App 的成本
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+        </div>
+        <h3>掃一下就加入，不用填表</h3>
+        <p>新成員用 App 掃一個 QR Code，就完成加入、拿到會員證。不用填表、不用你一個個手動建檔。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          新成員上手不花你時間
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>活動與卡證，送到他們的 App</h3>
+        <p>除了 LINE，你的活動、報到、會員資訊也都在成員的 App 裡。報到時成員出示 App、手機掃一下就完成。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          多一個觸及成員的管道
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
+        </div>
+        <h3>成員資料，自己保持最新</h3>
+        <p>成員在 App 裡更新自己的聯絡方式，你的名冊就跟著更新——不用每年重問一次「電話換了沒」。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          名冊長期不會過期
+        </span>
+      </div>
+      </div>
+      <div class="appint-phone-stage">
+        <div class="phone" aria-hidden="true">
+          <div class="phone-island"></div>
+          <div class="ph-statusbar">
+            <span>9:41</span>
+            <span class="ph-sb-right">
+              <svg width="15" height="9" viewBox="0 0 18 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="0.5"/><rect x="5" y="5" width="3" height="6" rx="0.5"/><rect x="10" y="2" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="11" rx="0.5"/></svg>
+              <svg width="16" height="9" viewBox="0 0 22 12" fill="currentColor"><rect x="1" y="2" width="18" height="8" rx="2" stroke="currentColor" fill="none"/><rect x="2.5" y="3.5" width="14" height="5" rx="1"/><rect x="20" y="4.5" width="1.5" height="3" rx="0.5"/></svg>
+            </span>
+          </div>
+          <div class="ph-screen">
+            <div class="ph-orghead">
+              <div class="ph-orglogo">📷</div>
+              <div>
+                <div class="ph-org-name">晨光攝影社</div>
+                <div class="ph-org-role">社員 · 林映琳</div>
+              </div>
+            </div>
+            <div class="ph-card">
+              <div class="ph-card-label">社員證</div>
+              <div class="ph-card-name">林映琳</div>
+              <div class="ph-card-meta">晨光攝影社 · 2023 年加入 · 有效</div>
+            </div>
+            <div class="ph-sect-row"><span class="t">我的活動票券</span></div>
+            <div class="ph-list">
+              <div class="ph-row">
+                <div class="ph-row-icon" style="background:var(--pastel-peach)">🌅</div>
+                <div class="ph-row-text">
+                  <div class="ph-row-title">陽明山日出外拍</div>
+                  <div class="ph-row-sub">5/30（六）05:00 · 停車場集合</div>
+                </div>
+                <span class="ph-pill ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已報名</span>
+              </div>
+              <div class="ph-row">
+                <div class="ph-row-icon" style="background:var(--pastel-blush)">🖼️</div>
+                <div class="ph-row-text">
+                  <div class="ph-row-title">人像棚拍工作坊</div>
+                  <div class="ph-row-sub">6/14（六）14:00 · 社辦教室</div>
+                </div>
+                <span class="ph-pill ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已報名</span>
+              </div>
+            </div>
+            <div class="ph-sect-row"><span class="t">社團最新</span></div>
+            <div class="ph-list">
+              <div class="ph-row">
+                <div class="ph-row-icon" style="background:var(--pastel-mint)">🏆</div>
+                <div class="ph-row-text">
+                  <div class="ph-row-title">暑期攝影比賽 開始報名</div>
+                  <div class="ph-row-sub">即日起 — 6/30 截止</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= VALUE / 省人力 ======================= -->
+<section id="value" class="value">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">省下來的，是這些</span>
+      <h2 class="sec-title">同樣帶 100 位成員，<br><span class="hl">兩種帶法</span></h2>
+      <p class="sec-desc">下面是一個 100 人社團，採用 Credica 前後的真實感受對比。數字為合理估算，實際依組織狀況不同。</p>
+    </div>
+
+    <div class="ba-grid">
+      <div class="ba-col before">
+        <span class="ba-tag">以前 · 全靠人力</span>
+        <ul class="ba-list">
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>幹部每天花 1～2 小時回成員的重複問題</li>
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>每辦一場活動，報名名單得自己一條條湊</li>
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>活動報名靠接龍，每次都有人漏報</li>
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>誰還是社員、資格到期沒，翻訊息才知道</li>
+        </ul>
+      </div>
+      <div class="ba-col after">
+        <span class="ba-tag">採用 Credica 之後</span>
+        <ul class="ba-list">
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>常見問題 AI 助理自動回，幹部幾乎不用插手</li>
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>報名名單自動統整，活動前一目了然</li>
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>線上報名、掃碼報到，名單永遠正確</li>
+          <li><span class="ba-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>打開面板就知道成員、報名與出席狀況</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">約 20 小時</div>
+        <div class="stat-label">幹部每月省下的時間</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24 小時</div>
+        <div class="stat-label">AI 助理每天在線回覆</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0 漏接</div>
+        <div class="stat-label">成員的問題不再被洗掉</div>
+      </div>
+    </div>
+    <p class="stat-foot">以上為一個 100 人社團的合理估算，實際成效依組織規模與使用方式而定。</p>
+  </div>
+</section>
+
+<!-- ======================= PLAN ======================= -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">方案與費用</span>
+      <h2 class="sec-title">從免費開始，<br><span class="hl">組織長大再升級</span></h2>
+      <p class="sec-desc">不用先付錢、不用綁約。小型組織免費就夠用；成員變多、需求變大，再選付費方案。</p>
+    </div>
+    <div class="plan-card">
+      <div class="plan-free">
+        <span class="amt">免費</span>
+        <span class="unit">開始使用</span>
+      </div>
+      <p>建立你的組織、邀請成員、開通 AI 智慧助理——這些一開始都不用付費。確認對組織有幫助，再決定要不要升級。</p>
+      <ul class="plan-points">
+        <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>免費方案即可建立組織、邀請成員</li>
+        <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>付費方案開放更多成員人數與 AI 回覆次數</li>
+        <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>各方案費用與額度，請看完整方案頁</li>
+      </ul>
+      <a class="btn-outline" href="https://dashboard.credica.app/pricing" data-cta="pricing">
+        看完整方案與費用
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FINAL CTA ======================= -->
+<section id="cta" class="cta-final" style="background:var(--surface-muted);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">開始使用</span>
+      <h2 class="sec-title">讓帶人這件事，<br><span class="hl">從今天起變輕鬆</span></h2>
+    </div>
+    <div class="cta-cards">
+      <div class="cta-card primary">
+        <div class="cta-card-emoji">🚀</div>
+        <h3>免費開始</h3>
+        <p>3 分鐘建立你的組織，馬上體驗 AI 智慧助理。不用先付費。</p>
+        <a class="btn-solid" href="https://dashboard.credica.app/signup?plan=free" data-cta="signup">
+          免費開始
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="cta-card">
+        <div class="cta-card-emoji">💬</div>
+        <h3>還想多了解</h3>
+        <p>不確定哪個方案適合你的組織？比較方案，或直接寫信問我們。</p>
+        <a class="btn-outline" href="mailto:support@credica.app" data-cta="contact">
+          聯繫我們
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
 <footer>
-  <div class="foot-l">&copy; 2026 Credica Inc.</div>
-  <div class="foot-r">
-    <a href="privacy.html">隱私權政策</a>
-    <a href="terms.html">使用條款</a>
-    <a href="index.html">個人版</a>
-    <a href="enterprise.html">企業合規方案</a>
-    <a href="mailto:support@credica.app">support@credica.app</a>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="logo"><img src="credica_logo.png" alt="Credica Logo" class="logo-img">Credica</a>
+        <p class="foot-tag">給社團、社區、中小組織——一個 AI 智慧助理，加上一個管理面板，讓帶一群人變輕鬆。</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>給組織</h4>
+          <a href="#ai">AI 智慧助理</a>
+          <a href="#capabilities">能做什麼</a>
+          <a href="#app-integration">整合 Credica App</a>
+          <a href="#value">省下多少力</a>
+          <a href="#plan">方案與費用</a>
+        </div>
+        <div class="foot-col">
+          <h4>開始使用</h4>
+          <a href="https://dashboard.credica.app/signup?plan=free" data-cta="signup">免費開始</a>
+          <a href="https://dashboard.credica.app/pricing" data-cta="pricing">比較方案</a>
+        </div>
+        <div class="foot-col">
+          <h4>關於</h4>
+          <a href="about.html">關於 Credica</a>
+          <a href="privacy.html">隱私權政策</a>
+          <a href="terms.html">使用條款</a>
+          <a href="mailto:support@credica.app">support@credica.app</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Credica Inc.</span>
+      <span>成員只要用 LINE · 經營者用一個管理面板</span>
+    </div>
   </div>
 </footer>
 
 <script>
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
-  btn.textContent = '已送出！我們會儘快聯繫您';
-  btn.style.background = '#059669';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = '送出諮詢需求';
-    btn.style.background = '';
-    btn.disabled = false;
-    e.target.reset();
-  }, 4000);
-}
-</script>
+  // ============ Mobile menu ============
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function () {
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
 
+  // ============ LINE chat replay ============
+  var chatBody = document.getElementById('chatBody');
+  var replayBtn = document.getElementById('replayChat');
+  var chatHTML = chatBody.innerHTML;
+  function replayChat() {
+    chatBody.innerHTML = '';
+    chatBody.offsetHeight; // force reflow
+    chatBody.innerHTML = chatHTML;
+    var msgs = chatBody.querySelectorAll('.lc-msg');
+    msgs.forEach(function (m, i) {
+      m.style.animation = 'none';
+      m.offsetHeight;
+      m.style.animation = 'chatIn 0.4s var(--ease) forwards';
+      m.style.animationDelay = (0.25 + i * 0.55) + 's';
+    });
+  }
+  replayBtn.addEventListener('click', replayChat);
+</script>
 </body>
 </html>
