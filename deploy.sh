@@ -59,6 +59,15 @@ else
   warn "Step 1/4 — 跳過本機 commit/push (--skip-commit)"
 fi
 
+# ─── 預檢: SSH 連線 ─────────────────────────────────────
+# VM 的 22 埠偶發不通(本 session 踩過)。先探一次,給清楚訊息,
+# 而非讓後面的 step 中途以難懂的方式中斷。
+say "預檢 — SSH 連線 $VM_HOST"
+if ! sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 \
+     "$VM_USER@$VM_HOST" 'echo ok' >/dev/null 2>&1; then
+  die "SSH 連不上 $VM_USER@$VM_HOST — VM 的 22 埠可能不通。改用 VPS 主控台手動 rebuild,或稍後再試。"
+fi
+
 # ─── Step 2: VM git pull ────────────────────────────────
 say "Step 2/4 — VM 拉新版本"
 sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" \
@@ -66,16 +75,33 @@ sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" \
 
 # ─── Step 3: Docker rebuild + recreate ──────────────────
 say "Step 3/4 — Docker rebuild + recreate"
-sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" \
-  "cd $VM_PATH && docker compose up -d --build $CONTAINER 2>&1 | tail -8 && docker ps --filter name=$CONTAINER --format '{{.Names}} {{.Status}}'"
+# 關鍵:遠端命令必須用 bash 並開 `set -o pipefail`。否則
+# `docker compose up -d --build | tail` 的退出碼會是 tail 的 0,
+# build 失敗也被蓋成功 → ssh 回 0 → 本機 set -e 不觸發 → 誤報「部署成功」。
+# (commit 5690ef0 事故:enterprise.html 漏 COPY、docker build 失敗卻報成功。)
+if ! sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" \
+     "bash -c 'set -eo pipefail; cd $VM_PATH && docker compose up -d --build $CONTAINER 2>&1 | tail -15'"; then
+  die "Docker build / recreate 失敗 —— 線上仍是舊版本,未更新。請看上方 build log 的錯誤訊息。"
+fi
 
-# ─── Step 4: 驗證 ───────────────────────────────────────
-say "Step 4/4 — 驗證部署"
+# build 成功不代表容器有起來:確認容器確實在 Up 狀態(啟動即崩潰也要抓到)。
+CONTAINER_STATUS=$(sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no "$VM_USER@$VM_HOST" \
+  "docker ps --filter name=$CONTAINER --format '{{.Status}}'" 2>/dev/null || true)
+say "容器狀態: ${CONTAINER_STATUS:-（docker ps 找不到 $CONTAINER）}"
+case "$CONTAINER_STATUS" in
+  Up*) : ;;
+  *)   die "容器 $CONTAINER 未在執行(狀態:${CONTAINER_STATUS:-不存在})—— build 成功但容器沒起來,線上服務異常。" ;;
+esac
+
+# ─── Step 4: 驗證公開網址 ───────────────────────────────
+# 走到這裡 build + 容器都已確認成功 → 容器就是新版本,curl 200 才是真驗證
+# (舊版 bug:Step 3 假成功時這個 curl 會打到沒被汰換的舊容器、照樣回 200)。
+say "Step 4/4 — 驗證公開網址"
 sleep 2
 LOCAL_HASH=$(git rev-parse --short HEAD)
-HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$PUBLIC_URL/about.html")
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "$PUBLIC_URL/about.html" || true)
 if [[ "$HTTP_CODE" == "200" ]]; then
   echo -e "${GREEN}✓ 部署成功${NC} — commit ${LOCAL_HASH} 已生效於 ${PUBLIC_URL}"
 else
-  die "公開網址回 HTTP $HTTP_CODE,請檢查 nginx/容器狀態"
+  die "公開網址回 HTTP $HTTP_CODE —— build 與容器都正常,但對外服務異常,請檢查 nginx / Cloudflare。"
 fi
