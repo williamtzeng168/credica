@@ -16,7 +16,7 @@ COPY page.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 COPY privacy.html /usr/share/nginx/html/
 COPY terms.html /usr/share/nginx/html/
-COPY support.html /usr/share/nginx/html/
+COPY about.html /usr/share/nginx/html/
 COPY business.html /usr/share/nginx/html/
 COPY pricing-data.js /usr/share/nginx/html/
 COPY enterprise.html /usr/share/nginx/html/
@@ -30,7 +30,6 @@ COPY favicon-32.png /usr/share/nginx/html/
 COPY apple-touch-icon.png /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
-COPY lang/ /usr/share/nginx/html/lang/
 COPY auth/ /usr/share/nginx/html/auth/
 COPY .well-known/ /usr/share/nginx/html/.well-known/
 
