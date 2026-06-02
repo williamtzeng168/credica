@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "58D4U7PGKB.com.credica.app",
+        "appIDs": ["58D4U7PGKB.com.credica.app"],
+        "paths": ["/join-code/*"],
+        "components": [
+          {
+            "/": "/join-code/*",
+            "comment": "Org public join code — open the Credica app directly"
+          }
+        ]
+      }
+    ]
+  }
+}

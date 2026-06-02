@@ -9,7 +9,9 @@ COPY nginx.conf /etc/nginx/conf.d/credica.conf
 
 # Copy static site files
 COPY index.html /usr/share/nginx/html/
+COPY join-code.html /usr/share/nginx/html/
 COPY style.css /usr/share/nginx/html/
+COPY tokens.css /usr/share/nginx/html/
 COPY page.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 COPY privacy.html /usr/share/nginx/html/
