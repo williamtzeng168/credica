@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Credica 組織方案 — 給社團與組織的 AI 智慧助理</title>
-<meta name="description" content="給社團、社區、中小組織——Credica 提供一位住在 LINE 裡的 AI 智慧助理，自動接住成員的提問、活動報名與通知，加上一個管理面板，讓帶一群人變輕鬆。">
-<meta name="keywords" content="社團管理, 組織管理, AI 智慧助理, 活動報名, 數位會員證, LINE 助理">
+<meta name="description" content="給社團、社區、中小組織——Credica 提供一位住在成員 App 裡的 AI 智慧助理（LINE 也能用），自動接住成員的提問、活動報名、繳費與通知，加上一個管理面板，讓帶一群人變輕鬆。">
+<meta name="keywords" content="社團管理, 組織管理, AI 智慧助理, 活動報名, 數位會員證, AI 收件夾, 繳費管理">
+<link rel="icon" type="image/svg+xml" href="credica-mark.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="canonical" href="https://credica.app/business.html">
 <meta property="og:title" content="Credica 組織方案 — 給社團與組織的 AI 智慧助理">
-<meta property="og:description" content="一位住在 LINE 裡的 AI 智慧助理，加上一個管理面板，讓帶一群人變輕鬆。">
+<meta property="og:description" content="一位住在成員 App 裡的 AI 智慧助理，加上一個管理面板，讓帶一群人變輕鬆。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://credica.app/business.html">
 <meta property="og:image" content="https://credica.app/og-image.png">
@@ -278,67 +279,93 @@
     align-items: center;
   }
 
-  /* LINE 對話示意 */
+  /* App 對話示意（Credica App · AI 收件夾） */
   .line-chat {
     width: 100%; max-width: 340px; margin: 0 auto;
-    background: #8CABD9;
-    border-radius: 22px;
+    background: #fff;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 18px 40px rgba(15,18,32,0.32);
+    box-shadow: 0 0 0 8px #0c0c0c, 0 0 0 10px #2a2a2a, 0 24px 48px rgba(15,18,32,0.45);
   }
   .lc-header {
     display: flex; align-items: center; gap: 0.6rem;
-    padding: 0.85rem 1rem;
-    background: var(--line-green);
-    color: #fff;
+    padding: 1rem 1rem 0.7rem;
+    background: #fff;
+    border-bottom: 1px solid rgba(15,23,42,0.07);
+    color: #0F172A;
   }
+  .lc-back { color: #4F46E5; font-size: 1.2rem; font-weight: 600; line-height: 1; }
   .lc-avatar {
     width: 34px; height: 34px; border-radius: 50%;
-    background: #fff; color: var(--line-green);
+    background: linear-gradient(135deg, #14B8A6, #0F766E); color: #fff;
     display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 800;
     flex-shrink: 0;
   }
   .lc-avatar svg { width: 19px; height: 19px; }
-  .lc-name { font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
-  .lc-status { font-size: 0.7rem; opacity: 0.85; }
+  .lc-name { font-size: 0.92rem; font-weight: 800; line-height: 1.2; }
+  .lc-status { font-size: 0.68rem; color: #94A3B8; margin-top: 1px; }
   .lc-body {
-    padding: 1rem 0.85rem 1.1rem;
+    padding: 1rem 0.85rem 0.7rem;
+    background: #fff;
     display: flex; flex-direction: column; gap: 0.6rem;
     min-height: 320px;
   }
   .lc-time {
     align-self: center;
-    font-size: 0.66rem; color: rgba(255,255,255,0.9);
-    background: rgba(0,0,0,0.12);
+    font-size: 0.66rem; color: #94A3B8;
+    background: #F1F5F9;
     padding: 0.15rem 0.7rem; border-radius: 999px;
     margin-bottom: 0.15rem;
   }
   .lc-msg {
-    max-width: 80%;
+    max-width: 82%;
     font-size: 0.86rem; line-height: 1.55;
     padding: 0.6rem 0.8rem;
-    border-radius: 14px;
+    border-radius: 16px;
     opacity: 0; transform: translateY(8px);
     animation: chatIn 0.4s var(--ease) forwards;
   }
   @keyframes chatIn { to { opacity: 1; transform: translateY(0); } }
   .lc-msg.user {
     align-self: flex-end;
-    background: var(--line-green); color: #fff;
-    border-bottom-right-radius: 4px;
+    background: #4F46E5; color: #fff;
+    border-bottom-right-radius: 5px;
   }
   .lc-msg.bot {
     align-self: flex-start;
-    background: #fff; color: var(--text);
-    border-bottom-left-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    background: #F1F5F9; color: #0F172A;
+    border-bottom-left-radius: 5px;
   }
   .lc-msg .who {
     display: block;
-    font-size: 0.66rem; font-weight: 700; color: var(--blue-text);
+    font-size: 0.66rem; font-weight: 700; color: #4338CA;
     margin-bottom: 0.2rem;
   }
   .lc-msg.user:nth-of-type(2) { animation-delay: 0.1s; }
+  .lc-composer {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 0.85rem 1.1rem;
+    background: #fff;
+    border-top: 1px solid rgba(15,23,42,0.06);
+  }
+  .lc-composer .plus {
+    width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0;
+    background: #F1F5F9; color: #475569;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .lc-composer .input {
+    flex: 1; padding: 0.5rem 0.85rem; border-radius: 999px;
+    background: #F8FAFC; border: 1px solid rgba(15,23,42,0.08);
+    font-size: 0.8rem; color: #94A3B8;
+  }
+  .lc-composer .send {
+    width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0;
+    background: #4F46E5; color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+  }
   .lc-replay {
     margin: 0.9rem auto 0;
     display: flex; align-items: center; gap: 0.4rem;
@@ -414,7 +441,7 @@
   .ph-org-role { font-size: 9.5px; color: var(--text-3); margin-top: 1px; }
   .ph-card {
     margin: 0 14px 13px; border-radius: 15px; padding: 14px 15px;
-    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
     color: #fff; position: relative; overflow: hidden;
   }
   .ph-card::after {
@@ -657,7 +684,7 @@
 <!-- ======================= NAV ======================= -->
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
+    <img src="credica-mark.svg" alt="Credica Logo" class="logo-img">
     Credica
   </a>
   <div class="nav-mid">
@@ -697,8 +724,8 @@
   <h1>把「帶一群人」這件事，<br><span class="hl">變得輕鬆</span></h1>
   <p class="hero-sub">
     經營一個社團，你最想花心力的，是把活動辦好、把大家好好聚在一起——
-    而不是被回不完的訊息綁住。Credica 給你一位住在 LINE 裡的 AI 智慧助理，
-    成員的提問、活動報名與通知，都先由它替你接著；
+    而不是被回不完的訊息綁住。Credica 給你一位住在成員手機裡的 AI 智慧助理，
+    提問、活動報名、繳費與通知，都先由它替你接著；
     讓你和幹部，把時間留給真正想做的事。
   </p>
   <div class="hero-cta-row">
@@ -710,7 +737,7 @@
       比較方案
     </a>
   </div>
-  <p class="hero-note">免費開始 · 不用先付費 · 成員只要用 LINE，不用學新軟體</p>
+  <p class="hero-note">免費開始 · 不用先付費 · 成員用 Credica App 或 LINE 都能上手，不用學新軟體</p>
 
   <!-- hero stage: 兩種星期一早上 -->
   <div class="hero-stage" aria-hidden="true">
@@ -768,19 +795,18 @@
     <div class="sec-head">
       <span class="sec-kicker">最重要的事</span>
       <h2 class="sec-title">你的組織，<br><span style="color:#fff;">多了一位不用睡覺的小幫手</span></h2>
-      <p class="sec-desc">採用 Credica，你的成員打開原本就在用的 LINE，就能直接問問題——AI 智慧助理即時回答，不分白天晚上。</p>
+      <p class="sec-desc">採用 Credica，你的成員打開 App 的「AI 收件夾」就能直接問問題——AI 智慧助理即時回答，不分白天晚上；習慣 LINE 的成員，同一位助理在 LINE 也找得到。</p>
     </div>
 
     <div class="ai-layout">
-      <!-- LINE 對話示意 -->
+      <!-- App 對話示意（AI 收件夾） -->
       <div class="line-chat">
         <div class="lc-header">
-          <div class="lc-avatar">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 4.36 3.57 8 8.4 8.69.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .88.55 1.08-.46 5.83-3.43 7.95-5.88C21.36 14.78 22 12.9 22 10.8 22 5.94 17.52 2 12 2z"/></svg>
-          </div>
+          <span class="lc-back">‹</span>
+          <div class="lc-avatar">晨</div>
           <div>
-            <div class="lc-name">晨光攝影社 · 智慧助理</div>
-            <div class="lc-status">隨時在線 · 馬上回覆</div>
+            <div class="lc-name">晨光攝影社 助理</div>
+            <div class="lc-status">Credica App · AI 收件夾 · 隨時在線</div>
           </div>
         </div>
         <div class="lc-body" id="chatBody">
@@ -794,9 +820,14 @@
           <div class="lc-msg user">報名</div>
           <div class="lc-msg bot">
             <span class="who">智慧助理</span>
-            已幫您報名成功 🎉 活動票券已送進您的 Credica App，<br>
-            當天出示給工作人員掃一下就能入場。出發前我會再提醒您。
+            已幫您報名成功 🎉 報到 QR 已放進您 App 的「我的活動」，<br>
+            當天出示給工作人員掃一下就完成報到。出發前我會再提醒您。
           </div>
+        </div>
+        <div class="lc-composer">
+          <span class="plus">＋</span>
+          <span class="input">輸入訊息…</span>
+          <span class="send">↑</span>
         </div>
         <button class="lc-replay" id="replayChat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
@@ -838,8 +869,8 @@
         <div class="ai-tasks">
           <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>回答常見問題</span>
           <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>協助活動報名</span>
-          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>發送活動票券</span>
-          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>發送活動通知</span>
+          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>收繳費證明、送審核</span>
+          <span class="ai-task-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>活動通知與報到提醒</span>
         </div>
       </div>
     </div>
@@ -871,7 +902,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <h3>活動線上報名 + 掃碼報到</h3>
-        <p>成員在 LINE 一鍵報名，名額自動管理；活動當天手機掃一下就完成報到，出席人數即時清楚。</p>
+        <p>成員在 App 一鍵報名、名片自動帶入資料，名額自動管理；活動當天出示報到 QR，掃一下就完成報到，出席人數即時清楚。</p>
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           告別群組接龍與紙本點名
@@ -886,6 +917,17 @@
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           報名到入場，一條龍不出錯
+        </span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
+        </div>
+        <h3>會費與活動費，線上收齊</h3>
+        <p>成員轉帳後直接在 App 上傳繳費證明，財務在一個收件匣集中審核——誰繳了、誰沒繳，一眼清楚，不用再對帳追人。</p>
+        <span class="cap-gain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          省下對帳與追繳的時間
         </span>
       </div>
       <div class="cap-card">
@@ -951,7 +993,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <h3>活動與卡證，送到他們的 App</h3>
-        <p>除了 LINE，你的活動、報到、會員資訊也都在成員的 App 裡。報到時成員出示 App、手機掃一下就完成。</p>
+        <p>你的活動、報到、會員與繳費資訊，都在成員的 App 裡。報到時成員出示報到 QR、手機掃一下就完成。</p>
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           多一個觸及成員的管道
@@ -992,7 +1034,7 @@
               <div class="ph-card-name">林映琳</div>
               <div class="ph-card-meta">晨光攝影社 · 2023 年加入 · 有效</div>
             </div>
-            <div class="ph-sect-row"><span class="t">我的活動票券</span></div>
+            <div class="ph-sect-row"><span class="t">我的活動</span></div>
             <div class="ph-list">
               <div class="ph-row">
                 <div class="ph-row-icon" style="background:var(--pastel-peach)">🌅</div>

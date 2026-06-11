@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="credica-mark.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>APP 操作教學 — Credica</title>
 <meta name="description" content="跟著教學一步一步學會 Credica APP 的所有功能:名片、群組、活動、卡夾、AI 助理。">
 <meta property="og:title" content="APP 操作教學 — Credica">
-<meta property="og:description" content="19 個功能完整教學,每個步驟都有清楚指引,新手也能快速上手。">
+<meta property="og:description" content="24 個功能完整教學,每個步驟都有清楚指引,新手也能快速上手。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://credica.app/tutorial.html">
 <meta property="og:image" content="https://credica.app/og-image.png">
@@ -805,6 +806,127 @@ nav {
   display: inline-flex; align-items: center; justify-content: center;
 }
 
+/* ── 我的組織 / 卡片縮圖（教學頁補齊） ───── */
+.aps-canvas .a-thumb {
+  width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 23px; color: #fff;
+}
+.aps-canvas .a-org { font-size: 11px; color: #475569; font-weight: 600; letter-spacing: 0.3px; }
+.aps-canvas .a-name { font-size: 15px; font-weight: 700; color: #0F172A; margin-top: 1px; }
+.aps-canvas .a-orgrow {
+  display: flex; align-items: center; gap: 12px; margin: 0 18px 10px;
+  padding: 12px 14px; background: #fff; border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 14px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); position: relative;
+}
+.aps-canvas .a-orgrow.pinned { border-left: 3px solid #4F46E5; padding-left: 11px; }
+.aps-canvas .a-orgname { font-size: 14.5px; font-weight: 700; display: flex; gap: 5px; align-items: center; color: #0F172A; }
+.aps-canvas .a-verify {
+  width: 14px; height: 14px; border-radius: 9999px; background: #10B981; color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0;
+}
+.aps-canvas .a-orgmeta { display: flex; gap: 5px; align-items: center; margin-top: 5px; flex-wrap: wrap; }
+.aps-canvas .a-tag { font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; background: #F8FAFC; color: #475569; border: 1px solid rgba(15,23,42,0.07); }
+.aps-canvas .a-tag.brand { background: #EEF2FF; color: #4338CA; border-color: transparent; }
+.aps-canvas .a-tag.ok { background: #ECFDF5; color: #047857; border-color: transparent; }
+.aps-canvas .a-tag.warn { background: #FFFBEB; color: #B45309; border-color: transparent; }
+.aps-canvas .a-pin {
+  width: 28px; height: 28px; border-radius: 9px; flex-shrink: 0; font-size: 13px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #F8FAFC; color: #94A3B8;
+}
+.aps-canvas .a-pin.on { background: #EEF2FF; color: #4338CA; }
+.aps-canvas .a-addcard {
+  margin: 12px 18px; padding: 14px 16px; border-radius: 14px;
+  border: 1.5px dashed rgba(79,70,229,0.55);
+  background: linear-gradient(135deg, rgba(99,102,241,0.07), rgba(236,72,153,0.05));
+  display: flex; gap: 12px; align-items: center;
+}
+.aps-canvas .a-addcard .ico {
+  width: 38px; height: 38px; border-radius: 12px; background: #EEF2FF; color: #4F46E5;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;
+}
+.aps-canvas .a-addcard .t { font-size: 14px; font-weight: 700; color: #0F172A; }
+.aps-canvas .a-addcard .s { font-size: 11.5px; color: #475569; margin-top: 2px; }
+
+/* ── AI 收件夾 對話（組織助理） ─────────── */
+.aps-canvas .a-chatlist { padding: 10px 16px 0; display: flex; flex-direction: column; gap: 10px; }
+.aps-canvas .a-bub {
+  max-width: 78%; padding: 11px 14px; border-radius: 18px;
+  font-size: 13.5px; line-height: 1.6;
+}
+.aps-canvas .a-bub.user { align-self: flex-end; background: #4F46E5; color: #fff; border-bottom-right-radius: 6px; }
+.aps-canvas .a-bub.bot { align-self: flex-start; background: #F1F5F9; color: #0F172A; border-bottom-left-radius: 6px; }
+.aps-canvas .a-botcard {
+  align-self: flex-start; width: 82%;
+  border: 1px solid rgba(15,23,42,0.08); border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.05); overflow: hidden; background: #fff;
+}
+.aps-canvas .a-botcard .bc-head {
+  padding: 10px 14px; background: #F7F7FF; font-size: 12px; font-weight: 800; color: #4338CA;
+  border-bottom: 1px solid rgba(79,70,229,0.10);
+}
+.aps-canvas .a-botcard .bc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 9px 14px; font-size: 12.5px; border-bottom: 1px solid rgba(15,23,42,0.05);
+}
+.aps-canvas .a-botcard .bc-row:last-child { border-bottom: 0; }
+.aps-canvas .a-botcard .bc-l { color: #94A3B8; }
+.aps-canvas .a-botcard .bc-v { font-weight: 700; color: #0F172A; }
+.aps-canvas .a-chips-strip { display: flex; gap: 8px; padding: 4px 16px 0; flex-wrap: wrap; }
+.aps-canvas .a-qchip {
+  padding: 8px 13px; border-radius: 9999px; font-size: 12.5px; font-weight: 700;
+  background: #EEF2FF; color: #4338CA; border: 1px solid rgba(79,70,229,0.25);
+}
+.aps-canvas .a-composer {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; gap: 8px; align-items: center;
+  padding: 10px 14px 26px; background: rgba(255,255,255,0.96);
+  border-top: 1px solid rgba(15,23,42,0.07); z-index: 4;
+}
+.aps-canvas .a-composer .plus {
+  width: 36px; height: 36px; border-radius: 9999px; flex-shrink: 0;
+  background: #F1F5F9; color: #475569; font-size: 20px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.aps-canvas .a-composer .inputbox {
+  flex: 1; padding: 10px 14px; border-radius: 9999px;
+  background: #F8FAFC; border: 1px solid rgba(15,23,42,0.08);
+  font-size: 13.5px; color: #94A3B8;
+}
+.aps-canvas .a-composer .send {
+  width: 36px; height: 36px; border-radius: 9999px; flex-shrink: 0;
+  background: #4F46E5; color: #fff; font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.aps-canvas .a-imgbub {
+  align-self: flex-end; width: 150px; height: 104px; border-radius: 16px;
+  border-bottom-right-radius: 6px; overflow: hidden;
+  background: linear-gradient(150deg, #E2E8F0, #CBD5E1);
+  display: flex; align-items: center; justify-content: center; font-size: 34px;
+  position: relative;
+}
+.aps-canvas .a-imgbub .tag {
+  position: absolute; left: 8px; bottom: 8px; font-size: 9.5px; font-weight: 700;
+  background: rgba(15,23,42,0.7); color: #fff; padding: 2px 8px; border-radius: 9999px;
+}
+
+/* ── 申請進度 timeline ───────────────────── */
+.aps-canvas .a-tl { padding: 6px 26px; }
+.aps-canvas .a-tlrow { display: flex; gap: 14px; }
+.aps-canvas .a-tlrail { display: flex; flex-direction: column; align-items: center; width: 22px; flex-shrink: 0; }
+.aps-canvas .a-tldot {
+  width: 22px; height: 22px; border-radius: 9999px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; background: #ECFDF5; color: #047857;
+}
+.aps-canvas .a-tldot.now { background: #4F46E5; color: #fff; box-shadow: 0 0 0 5px rgba(79,70,229,0.15); }
+.aps-canvas .a-tldot.todo { background: #F1F5F9; color: #C1C7CF; }
+.aps-canvas .a-tlline { width: 2.5px; flex: 1; min-height: 30px; background: rgba(15,23,42,0.10); margin: 4px 0; border-radius: 2px; }
+.aps-canvas .a-tlbody { padding: 1px 0 22px; }
+.aps-canvas .a-tlt { font-size: 14px; font-weight: 700; color: #0F172A; }
+.aps-canvas .a-tls { font-size: 11.5px; color: #94A3B8; margin-top: 2px; line-height: 1.5; }
+
 /* ============ PULSE MARKER ============ */
 .pulse-marker {
   position: absolute;
@@ -1004,7 +1126,7 @@ footer { border-top: 1px solid var(--hair); padding: 2.5rem 2.5rem; max-width: 1
 
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica_logo.png" alt="Credica Logo">
+    <img src="credica-mark.svg" alt="Credica Logo">
     Credica
   </a>
   <div class="nav-mid">
@@ -1023,7 +1145,7 @@ footer { border-top: 1px solid var(--hair); padding: 2.5rem 2.5rem; max-width: 1
 <section class="hero">
   <div class="hero-chip">APP 操作教學手冊</div>
   <h1>跟著一步一步，<span class="hl">學會 Credica</span> 所有功能</h1>
-  <p>19 個功能、每一步都有清楚指引。點擊手機畫面上脈動的號碼,體驗完整 APP 操作流程。</p>
+  <p>24 個功能、每一步都有清楚指引。點擊手機畫面上脈動的號碼,體驗完整 APP 操作流程。</p>
 </section>
 
 <main class="tutorial-main">
@@ -1042,18 +1164,18 @@ footer { border-top: 1px solid var(--hair); padding: 2.5rem 2.5rem; max-width: 1
     </div>
 
     <div class="feat-group">
-      <h3>🤖 智慧助手</h3>
+      <h3>🎴 我的卡夾</h3>
+      <ul class="feat-list" id="group-wallet"></ul>
+    </div>
+
+    <div class="feat-group">
+      <h3>📬 AI 收件夾</h3>
       <ul class="feat-list" id="group-ai"></ul>
     </div>
 
     <div class="feat-group">
       <h3>⚙️ 設定</h3>
       <ul class="feat-list" id="group-settings"></ul>
-    </div>
-
-    <div class="feat-group">
-      <h3>🎫 活動與卡夾</h3>
-      <ul class="feat-list" id="group-events-creds"></ul>
     </div>
 
     <div class="free-roam">
@@ -1139,18 +1261,23 @@ const FEATURES = {
     { id:11, title:'管理名片通訊錄', sub:'搜尋、翻閱、信任指標一眼辨識真偽。', steps: 5, ready: true },
     { id:12, title:'聯絡人分類與群組管理', sub:'分類 Tab + 標籤，靈活整理人脈。', steps: 6, ready: true },
   ],
+  wallet: [
+    { id:21, title:'加入組織（邀請碼 / 掃 QR / 連結）', sub:'加入後會員證、活動、繳費、通知全自動串起來。', steps: 4, ready: true },
+    { id:22, title:'申請建立自己的組織', sub:'社團、球隊、讀書會 — 送出申請，平台人工審核。', steps: 4, ready: true },
+    { id:17, title:'看你報名的活動', sub:'「我的活動」：今天待辦與所有報名活動一頁掌握。', steps: 4, ready: true },
+    { id:18, title:'活動報名（名片自動帶入）', sub:'看詳情 → 名片帶入 → 勾同意送出，10 秒完成。', steps: 6, ready: true },
+    { id:23, title:'活動繳費（上傳繳費證明）', sub:'照轉入帳戶轉帳、上傳截圖、填末五碼，等通知就好。', steps: 5, ready: true },
+    { id:24, title:'活動報到（出示報到 QR）', sub:'當天待辦一鍵出示，掃完報到證明自動進卡夾。', steps: 4, ready: true },
+    { id:19, title:'看你的卡夾', sub:'會員證、報到證明依組織分組，一眼找到。', steps: 5, ready: true },
+    { id:20, title:'一起出示：一個 QR 驗多張', sub:'需要同時出示多張證明時，自動湊齊、一掃全驗。', steps: 5, ready: true },
+  ],
   ai: [
-    { id:14, title:'LINE 連動 ＋ 組織助理', sub:'綁定 LINE，在 LINE 查名片、問組織助理。', steps: 4, ready: true },
-    { id:15, title:'詢問組織助理（AI 客服）', sub:'像跟真人對話一樣，隨時問隨時答。', steps: 5, ready: false },
+    { id:25, title:'問助理問題（會費 / 活動 / 報名）', sub:'像聊天一樣問，用你的真實資料回答。', steps: 4, ready: true },
+    { id:26, title:'傳繳費收據給助理', sub:'對話裡傳收據，自動送審、結果通知你。', steps: 4, ready: true },
   ],
   settings: [
     { id:16, title:'「我」頁面說明', sub:'備份、個資授權、LINE 連動，全部由你決定。', steps: 6, ready: true },
-  ],
-  events_creds: [
-    { id:17, title:'看你報名的活動', sub:'我的卡夾 →「我的活動」：今天待辦與所有報名活動一頁掌握。', steps: 4, ready: true },
-    { id:18, title:'查看活動詳情', sub:'時間、地點、活動流程、費用——一切資訊一頁看完。', steps: 4, ready: true },
-    { id:19, title:'看你的卡夾', sub:'會員證、報到證明依組織分組，一眼找到。', steps: 5, ready: true },
-    { id:20, title:'一起出示：一個 QR 驗多張', sub:'需要同時出示多張證明時，自動湊齊、一掃全驗。', steps: 5, ready: true },
+    { id:14, title:'LINE 連動 ＋ 組織助理', sub:'綁定 LINE，在 LINE 查名片、問組織助理。', steps: 4, ready: true },
   ],
 };
 
@@ -1167,7 +1294,7 @@ FEATURE_STEPS[1] = [
     title: '在「名片」分頁，點「編輯個人名片」',
     desc: '你註冊時系統已經幫你建了一張基本名片（只有姓名和 Email）。打開 APP 第一個分頁「名片」，點下方的「編輯個人名片」把它補完整 — 加公司、職稱、自我介紹。',
     advantage: '越完整的名片，對方一眼就知道你是誰、在做什麼。',
-    marker: M(305, 472),
+    marker: M(305, 448),
     screen: 'mycard-virgin',
   },
   {
@@ -1202,7 +1329,7 @@ FEATURE_STEPS[1] = [
     title: '點右上角「儲存」完成',
     desc: '確認資料後，點擊右上角的「儲存」。你的第一張數位名片就建立好了！',
     advantage: '這張名片由你簽過,對方一掃就知真偽,假的造不出來。',
-    marker: M(352, 68),
+    marker: M(352, 96),
     screen: 'edit-filled-avatar',
     isFinal: true,
   },
@@ -1214,7 +1341,7 @@ FEATURE_STEPS[2] = [
     title: '在「我的身份」點右上角 +',
     desc: '同一個人可能有多種身份：工作、社團、副業、個人。Credica 允許你建立多張身份名片，場合不同用不同張。',
     advantage: '工作歸工作、社交歸社交。工作名片給客戶，社團名片給球友，Email、電話、自我介紹都不一樣。',
-    marker: M(352, 68),
+    marker: M(352, 96),
     screen: 'identities-one',
   },
   {
@@ -1235,7 +1362,7 @@ FEATURE_STEPS[2] = [
     title: '點右上角「儲存」完成',
     desc: '儲存後，回到「我的身份」就有兩張名片：工作（主要，漸層紫）+ 社團（藍綠色）。',
     advantage: '交換名片時 APP 會問你要用哪一張，對方只會看到那一張。同事永遠不會知道你社團的 LINE 和 Email。',
-    marker: M(352, 68),
+    marker: M(352, 96),
     screen: 'edit-club-filled',
   },
   {
@@ -1261,14 +1388,14 @@ FEATURE_STEPS[3] = [
     title: '「名片」分頁點「掃描對方名片」',
     desc: '收到紙本名片？在「名片」分頁中間的三個動作裡點「掃描對方名片」。',
     advantage: null,
-    marker: M(195, 472),
+    marker: M(195, 448),
     screen: 'mycard',
   },
   {
     title: '選「拍攝紙本名片」',
     desc: '底部彈出選項：拍攝紙本名片 / 從相簿選取 / 手動輸入。點「拍攝紙本名片」開啟相機。',
     advantage: null,
-    marker: M(195, 668),
+    marker: M(330, 668),
     screen: 'ocr-sheet',
   },
   {
@@ -1289,7 +1416,7 @@ FEATURE_STEPS[3] = [
     title: '確認合併後的辨識結果',
     desc: '正反面合併後所有欄位都自動填好：姓名、英文姓名、公司、職稱、電話、Email 等。不對的地方直接點欄位修改，再點右上角「儲存」。',
     advantage: '一張中英雙面名片，10 秒鐘就完整建檔。以前要手動 key-in 2 分鐘，現在完全自動。',
-    marker: M(352, 68),
+    marker: M(352, 96),
     screen: 'ocr-both',
   },
   {
@@ -1308,7 +1435,7 @@ FEATURE_STEPS[4] = [
     title: '「名片」分頁點「分享我的名片」',
     desc: '要和別人交換名片，在「名片」分頁點藍色的「分享我的名片」。',
     advantage: null,
-    marker: M(85, 472),
+    marker: M(85, 448),
     screen: 'mycard',
   },
   {
@@ -1322,7 +1449,7 @@ FEATURE_STEPS[4] = [
     title: '點「選擇揭露欄位」',
     desc: '你可以決定哪些欄位要分享給對方。不想給手機號碼？關掉就好。',
     advantage: '你的隱私你做主！只分享你願意公開的資訊。',
-    marker: M(195, 505),
+    marker: M(300, 505),
     screen: 'qr-show',
   },
   {
@@ -1370,7 +1497,7 @@ FEATURE_STEPS[5] = [
     title: '點「開啟相機」拍合照',
     desc: '橘色卡片中央的「開啟相機」按鈕，點下去就能拍一張合照留念。',
     advantage: '合照自動綁定這張名片，以後翻名片時看到這次見面的畫面，回憶瞬間湧上。',
-    marker: M(195, 455),
+    marker: M(285, 455),
     screen: 'exchange-saved',
   },
   {
@@ -1403,7 +1530,7 @@ FEATURE_STEPS[6] = [
     title: '在「互動記錄」點「🎤 語音」',
     desc: '找到「互動記錄」區塊，右側有「🎤 語音」按鈕。點它開始語音備注。',
     advantage: '不用打字，用說的就好。在社交場合邊走邊記憶。',
-    marker: M(345, 340),
+    marker: M(345, 368),
     screen: 'contact-detail',
   },
   {
@@ -1424,7 +1551,7 @@ FEATURE_STEPS[6] = [
     title: '🎉 備注已儲存',
     desc: '點右上角「儲存」後，備注就和這位聯絡人永久綁定。下次翻名片時一眼想起這個人。',
     advantage: '搭配地點、時間、合照、語音備注——四合一記憶系統，你不會再忘記任何重要人脈。',
-    marker: M(352, 68),
+    marker: M(352, 96),
     screen: 'voice-done',
     isFinal: true,
   },
@@ -1450,14 +1577,14 @@ FEATURE_STEPS[7] = [
     title: '點右上角「儲存」',
     desc: '儲存後系統會自動把更新推送給所有收過你名片的人。你會看到「已通知 X 位聯絡人」的提示。',
     advantage: null,
-    marker: M(352, 68),
+    marker: M(352, 96),
     screen: 'edit-update',
   },
   {
     title: '🎉 對方的 AI 收件夾收到「名片已更新」',
     desc: '所有收過你名片的人，打開 APP 的「AI 收件夾」會看到「陳品妤 更新了名片資訊 / 更新了職稱、部門」。他們打開名片詳情就能看到最新版本。',
     advantage: '紙本名片最大的缺點：發出去就收不回來，資訊過時也沒辦法。Credica 改一次，所有人都同步。',
-    marker: M(195, 250),
+    marker: M(330, 250),
     screen: 'inbox-update',
     isFinal: true,
   },
@@ -1469,7 +1596,7 @@ FEATURE_STEPS[8] = [
     title: '「名片」分頁切到「名片夾」',
     desc: '想移除名片夾中某位聯絡人？在「名片」分頁上方切到「名片夾」。',
     advantage: null,
-    marker: M(195, 79),
+    marker: M(195, 112),
     screen: 'mycard',
   },
   {
@@ -1502,7 +1629,7 @@ FEATURE_STEPS[9] = [
     title: '「名片」分頁切到「群組交換」',
     desc: '要把一群人的名片整理在一起？在「名片」分頁上方切到「群組交換」。',
     advantage: '群組適合研討會、聚餐、球敘等多人同時交換名片的場合。',
-    marker: M(307, 79),
+    marker: M(307, 112),
     screen: 'mycard',
   },
   {
@@ -1516,14 +1643,14 @@ FEATURE_STEPS[9] = [
     title: '填群組名稱，選要分享哪張名片',
     desc: '輸入群組名稱（例「2026 行銷小聚」）、場合、地點，再選要用哪張名片分享給群組成員。',
     advantage: '分享給群組的名片可以挑：商務聚會用工作名片、球敘用社團名片。',
-    marker: M(195, 145),
+    marker: M(300, 145),
     screen: 'group-create',
   },
   {
     title: '點最下方的「建立群組」',
     desc: '按下建立按鈕，系統就產生群組 QR + 6 字群組碼。',
     advantage: null,
-    marker: M(195, 420),
+    marker: M(290, 420),
     screen: 'group-create',
   },
   {
@@ -1550,7 +1677,7 @@ FEATURE_STEPS[10] = [
     title: '「名片」分頁點「掃描對方名片」',
     desc: '看到主辦方給的群組 QR 或 6 字群組碼？用「名片」分頁的掃描功能加入。',
     advantage: null,
-    marker: M(195, 472),
+    marker: M(195, 448),
     screen: 'mycard',
   },
   {
@@ -1572,7 +1699,7 @@ FEATURE_STEPS[10] = [
     title: '確認加入群組',
     desc: '系統顯示群組名稱、成員數量、建立者。選好要分享哪張名片後，點「確認加入」。',
     advantage: null,
-    marker: M(195, 640),
+    marker: M(290, 640),
     screen: 'group-join',
   },
   {
@@ -1591,7 +1718,7 @@ FEATURE_STEPS[11] = [
     title: '「名片」分頁切到「名片夾」',
     desc: '在「名片」分頁上方切到「名片夾」，看所有收到的名片。',
     advantage: null,
-    marker: M(195, 79),
+    marker: M(195, 112),
     screen: 'mycard',
   },
   {
@@ -1645,21 +1772,21 @@ FEATURE_STEPS[12] = [
     title: '點一位聯絡人 → 點「+ 分類」',
     desc: '進入聯絡人詳情頁，在姓名下方有「+ 分類」按鈕。點它開啟分類選擇面板。',
     advantage: null,
-    marker: M(60, 470),
+    marker: M(110, 212),
     screen: 'contact-categorize',
   },
   {
     title: '選擇分類（支援子分類）',
     desc: '從面板選適合的分類：<strong>商業</strong>（客戶 / 供應商 / 合作夥伴）、<strong>社交</strong>（同學 / 朋友 / 社團）、<strong>專業</strong>。還可以「新增子分類」自訂。',
     advantage: '每個分類有獨立顏色標記，在列表上一眼分辨。',
-    marker: M(195, 540),
+    marker: M(330, 540),
     screen: 'category-sheet',
   },
   {
     title: '分類標籤顯示在聯絡人上',
     desc: '選完分類後，聯絡人詳情和列表都會顯示分類標籤（例「合作夥伴」）。可以再加多個分類——一個人可以同時是夥伴和朋友。',
     advantage: '分類比群組更靈活——一個人可以有多個分類，讓你從不同角度找到他。',
-    marker: M(120, 470),
+    marker: M(250, 222),
     screen: 'contact-tag',
   },
   {
@@ -1678,14 +1805,14 @@ FEATURE_STEPS[14] = [
     title: '「我」分頁找到「LINE 連動」',
     desc: '底部 tab 切到「我」，在「帳號」區點「LINE 連動」。',
     advantage: null,
-    marker: M(195, 285),
+    marker: M(300, 285),
     screen: 'me',
   },
   {
     title: '點「綁定 LINE」綠色按鈕',
     desc: '進入 LINE 連動頁面，點大大的綠色「綁定 LINE」按鈕，跳轉 LINE 完成授權。',
     advantage: null,
-    marker: M(195, 318),
+    marker: M(290, 318),
     screen: 'line-bind',
   },
   {
@@ -1711,35 +1838,35 @@ FEATURE_STEPS[16] = [
     title: '底部 tab 點「我」',
     desc: '最後來看看「我」頁面 — 帳號、偏好、安全與隱私都在這。',
     advantage: null,
-    marker: M(341, 830),
+    marker: M(341, 812),
     screen: 'mycard',
   },
   {
     title: '頂部是你的個人資料',
     desc: '你的頭像、姓名、Email 和加入的組織顯示在最上方。',
     advantage: null,
-    marker: M(195, 165),
+    marker: M(330, 170),
     screen: 'me',
   },
   {
     title: '「編輯個人名片」管你的多張名片',
     desc: '這裡管理你的工作 / 社團名片，也可以在這裡設主要名片。',
     advantage: null,
-    marker: M(195, 340),
+    marker: M(300, 340),
     screen: 'me',
   },
   {
     title: '「已授權的個資」看誰拿了你的資料',
     desc: '哪些組織取得了你哪些個資，全部列出來。不想給了，隨時可以收回。',
     advantage: '你的個資去向完全透明 — 這是 Credica 隱私設計的核心。',
-    marker: M(195, 590),
+    marker: M(300, 590),
     screen: 'me',
   },
   {
     title: '「備份與救援碼」加密備份',
     desc: '名片、聯絡人、卡片都可以加密備份。換手機時用救援碼還原，資料不遺失。',
     advantage: '備份資料加密儲存，即使存雲端，也只有你能解密讀取。',
-    marker: M(195, 648),
+    marker: M(300, 648),
     screen: 'me',
   },
   {
@@ -1758,14 +1885,14 @@ FEATURE_STEPS[17] = [
     title: '底部 tab 點「我的卡夾」',
     desc: '從底部 tab 切到「我的卡夾」，這裡裝著你的卡片、組織和活動。',
     advantage: null,
-    marker: M(146, 830),
+    marker: M(146, 812),
     screen: 'mycard',
   },
   {
     title: '上方切到「我的活動」',
     desc: '切到「我的活動」分頁，看你報名的所有活動 — 跨所有組織自動匯總。',
     advantage: '不用每個 LINE 群輪流爬，Credica 自動匯總。',
-    marker: M(307, 79),
+    marker: M(307, 112),
     screen: 'wallet',
   },
   {
@@ -1812,7 +1939,7 @@ FEATURE_STEPS[18] = [
     title: '🎉 底部「我要報名」按鈕',
     desc: '看完詳情後，點底部大按鈕「我要報名」。報名後活動會進「我的活動」，當天自動提醒你。',
     advantage: '報名、繳費、報到、出席證明 — 之後的每一步 Credica 都會接著帶你走。',
-    marker: M(195, 818),
+    marker: M(290, 818),
     screen: 'event-detail',
     isFinal: true,
   },
@@ -1824,7 +1951,7 @@ FEATURE_STEPS[19] = [
     title: '底部 tab 點「我的卡夾」',
     desc: '從底部 tab 切到「我的卡夾」，預設就是「卡夾」分頁 — 你持有的所有卡片。',
     advantage: '會員證、隊員證、員工證、報到證明——一個卡夾全部裝得下。',
-    marker: M(146, 830),
+    marker: M(146, 812),
     screen: 'mycard',
   },
   {
@@ -1894,6 +2021,301 @@ FEATURE_STEPS[20] = [
     advantage: '免重複出示、免逐一確認 — 多張證明一次過。',
     marker: null,
     screen: 'present-qr',
+    isFinal: true,
+  },
+];
+
+/* === 我的卡夾教學群組（使用者角色）＋ AI 收件夾教學 ＋ 流程修正覆寫 === */
+
+/* Feature 14（覆寫）: LINE 連動 — 對齊真實綁定流程 */
+FEATURE_STEPS[14] = [
+  {
+    title: '「我」分頁找到「LINE 連動」',
+    desc: '底部 tab 切到「我」，在「帳號」區點「LINE 連動」。',
+    advantage: null,
+    marker: M(300, 285),
+    screen: 'me',
+  },
+  {
+    title: '點「綁定 LINE」，會開啟 LINE',
+    desc: '進入 LINE 連動頁面，點綠色「綁定 LINE」按鈕，會自動開啟 LINE 到 Credica 官方帳號 — 開啟後在聊天室輸入「綁定」就會自動完成。',
+    advantage: null,
+    marker: M(290, 318),
+    screen: 'line-bind',
+  },
+  {
+    title: '在 LINE 聊天室輸入「綁定」',
+    desc: '回到 LINE 後，在聊天室輸入兩個字「綁定」，就會自動完成連動 — 不用抄驗證碼。',
+    advantage: '綁定一次就好，之後 LINE 和 APP 的資料自動互通。',
+    marker: M(195, 440),
+    screen: 'line-bind',
+  },
+  {
+    title: '🎉 綁定完成，在 LINE 繼續',
+    desc: '綁定成功後，你在 LINE 裡就能直接用 Credica：查名片、問組織助理（會費、活動、報名）、收活動通知。一個 LINE 就能對到多個組織。',
+    advantage: '不用切換 APP！你需要的功能在 LINE 裡全部找得到。',
+    marker: null,
+    screen: 'line-bound',
+    isFinal: true,
+  },
+];
+
+/* Feature 18（覆寫）: 活動報名 — 看詳情 → 名片帶入 → 送出 */
+FEATURE_STEPS[18] = [
+  {
+    title: '從「我的活動」點一場活動',
+    desc: '進入活動詳情頁，看完整資訊再決定要不要報名。',
+    advantage: null,
+    marker: M(195, 435),
+    screen: 'events',
+  },
+  {
+    title: '看活動 hero 卡＋流程＋費用',
+    desc: '頂部漸層卡顯示日期、活動名稱、主辦組織、集合時間地點；往下有當天流程、活動說明和費用。',
+    advantage: null,
+    marker: M(195, 215),
+    screen: 'event-detail',
+  },
+  {
+    title: '點底部「我要報名」',
+    desc: '決定參加，點底部大按鈕「我要報名」進入報名表。',
+    advantage: null,
+    marker: M(290, 818),
+    screen: 'event-detail',
+  },
+  {
+    title: '報名表用名片自動帶入',
+    desc: '姓名、手機、Email 自動從你的名片帶入，不用重打。主辦自訂的欄位（例如緊急聯絡人）填一下即可。想換身份就點「換一張」。',
+    advantage: '報名 10 秒完成 — 名片就是你的萬用表單。',
+    marker: M(195, 158),
+    screen: 'register-form',
+  },
+  {
+    title: '勾選同意 → 完成報名',
+    desc: '勾選「我同意活動條款與個資使用範圍」（可先看條款），再點「完成報名」。',
+    advantage: '你授權了哪些個資給主辦，之後在「我 → 已授權的個資」都查得到、可收回。',
+    marker: M(290, 600),
+    screen: 'register-form',
+  },
+  {
+    title: '🎉 報名成功',
+    desc: '活動已加入「我的活動」，活動前自動提醒。需要繳費的活動會標「待繳費」，可以直接「前往繳費」。',
+    advantage: '報名、繳費、報到、出席證明 — 之後的每一步 Credica 都接著帶你走。',
+    marker: null,
+    screen: 'register-success',
+    isFinal: true,
+  },
+];
+
+/* === Feature 21: 加入組織 === */
+FEATURE_STEPS[21] = [
+  {
+    title: '我的卡夾 →「我的組織」→ 加入新組織',
+    desc: '切到「我的卡夾」的「我的組織」分頁，點下方的「加入新組織」。',
+    advantage: '加入組織後，會員證、活動、繳費、通知全部自動串起來。',
+    marker: M(330, 505),
+    screen: 'myorgs',
+  },
+  {
+    title: '輸入邀請碼，或掃 QR',
+    desc: '輸入組織給你的邀請碼，或點「掃描 QR Code」掃管理員出示的 QR。朋友傳的邀請連結直接點開也可以。',
+    advantage: null,
+    marker: M(300, 300),
+    screen: 'join-org',
+  },
+  {
+    title: '確認加入＋決定要不要公開',
+    desc: '確認組織名稱沒錯。「公開在我的名片」開關由你決定：打開＝交換名片時對方看得到你屬於這個組織。',
+    advantage: '隱私由你掌控 — 不想讓別人知道你在哪個組織，就關掉。',
+    marker: M(345, 442),
+    screen: 'join-confirm',
+  },
+  {
+    title: '🎉 已加入，會員證自動進卡夾',
+    desc: '加入完成！會員證自動加入「我的卡夾」，組織助理也出現在 AI 收件夾，會費、活動都可以問它。',
+    advantage: null,
+    marker: null,
+    screen: 'join-done',
+    isFinal: true,
+  },
+];
+
+/* === Feature 22: 申請建立自己的組織 === */
+FEATURE_STEPS[22] = [
+  {
+    title: '「我的組織」最下面點「申請建立 ›」',
+    desc: '想成立自己的社團、球隊、讀書會？在「我的組織」列表最下面點「申請建立 ›」。',
+    advantage: null,
+    marker: M(278, 562),
+    screen: 'myorgs',
+  },
+  {
+    title: '填組織名稱、類型、聯絡電話',
+    desc: '填組織名稱（例「河畔慢跑團」）、選類型、留聯絡電話，方便平台審核時聯繫你。',
+    advantage: null,
+    marker: M(300, 215),
+    screen: 'apply-form',
+  },
+  {
+    title: '送出申請，由平台人工審核',
+    desc: '點「送出申請」。為了確保平台上的組織都是真的，每件申請都由真人審核，約 1–2 個工作天。',
+    advantage: '審核制讓所有人加入組織時更安心 — 你看到的「已認證」勾勾就是這樣來的。',
+    marker: M(290, 475),
+    screen: 'apply-form',
+  },
+  {
+    title: '🎉 申請進度隨時看',
+    desc: '送出後可以隨時回來看進度：已送出 → 平台審核中 → 開通通知。通過後組織立即可用，你就是管理者。',
+    advantage: null,
+    marker: M(195, 310),
+    screen: 'apply-status',
+    isFinal: true,
+  },
+];
+
+/* === Feature 23: 活動繳費（上傳繳費證明） === */
+FEATURE_STEPS[23] = [
+  {
+    title: '「我的活動」待辦點「繳費 ›」',
+    desc: '要繳費的活動會出現在「今天 / 待辦」和活動列表（標「待繳費」）。點「繳費 ›」進入繳費頁。',
+    advantage: '該繳什麼、繳多少，APP 自動幫你列好，不會漏。',
+    marker: M(310, 232),
+    screen: 'events',
+  },
+  {
+    title: '照「轉入帳戶」轉帳，可一鍵複製帳號',
+    desc: '繳費頁列出應繳金額和組織的轉入帳戶。點「複製」把帳號帶去你的銀行 APP 轉帳。',
+    advantage: null,
+    marker: M(320, 212),
+    screen: 'fee-page',
+  },
+  {
+    title: '① 上傳轉帳截圖',
+    desc: '轉完帳回來，把轉帳成功的截圖拍照或從相簿選擇上傳。',
+    advantage: null,
+    marker: M(195, 405),
+    screen: 'fee-page',
+  },
+  {
+    title: '② 填末五碼 → 送出繳費證明',
+    desc: '填上轉出帳號末五碼（方便財務對帳），點「送出繳費證明」。',
+    advantage: null,
+    marker: M(290, 570),
+    screen: 'fee-page',
+  },
+  {
+    title: '🎉 送出後等通知就好',
+    desc: '財務確認後會自動通知你，「我的活動」也會更新為已繳費。若被退回會附原因，直接重新上傳即可。',
+    advantage: '不用再傳訊息問「收到了嗎」— 狀態全程透明。',
+    marker: null,
+    screen: 'fee-submitted',
+    isFinal: true,
+  },
+];
+
+/* === Feature 24: 活動報到（出示報到 QR） === */
+FEATURE_STEPS[24] = [
+  {
+    title: '活動當天，待辦出現「🟢 報到」',
+    desc: '活動當天打開「我的活動」，今天的活動會浮在「今天 / 待辦」最上面，點「🟢 報到」。',
+    advantage: '不用翻找報名紀錄 — 當天要做的事自動浮上來。',
+    marker: M(310, 168),
+    screen: 'events',
+  },
+  {
+    title: '出示你的報到 QR',
+    desc: '畫面變成全版報到碼：大 QR + 你的名字 + 6 字代碼。把手機亮給現場工作人員。',
+    advantage: 'QR 會自動刷新，截圖或轉傳都沒用 — 只有本人到場才有效。',
+    marker: M(195, 320),
+    screen: 'checkin-qr',
+  },
+  {
+    title: '工作人員掃描（或念 6 字代碼）',
+    desc: '工作人員用 APP 一掃就完成報到。現場太暗掃不到？念出 6 字代碼一樣可以。',
+    advantage: null,
+    marker: M(195, 555),
+    screen: 'checkin-qr',
+    illustration: `
+      <div class="mini-phones">
+        <div class="mini-phone"><div class="qr"></div></div>
+        <div class="mini-arrow">→</div>
+        <div class="mini-phone dark"><div class="scanframe"></div></div>
+      </div>
+      <div class="caption"><strong>現場工作人員掃你的報到 QR</strong><br>一秒完成報到，不用簽名、不用唱名。</div>
+    `,
+  },
+  {
+    title: '🎉 報到完成，證明自動進卡夾',
+    desc: '報到完成後，「報到證明」自動加入你的卡夾，主辦那邊也同步看到你已到。',
+    advantage: '參加過的每場活動都自動留下證明 — 出席紀錄不用自己記。',
+    marker: null,
+    screen: 'checkin-done',
+    isFinal: true,
+  },
+];
+
+/* === Feature 25: 問助理問題（AI 收件夾） === */
+FEATURE_STEPS[25] = [
+  {
+    title: 'AI 收件夾點開組織助理',
+    desc: '底部 tab 切到「AI 收件夾」，每個你加入的組織都有自己的助理。點開想問的組織。',
+    advantage: '會費、活動、報名 — 不用等管理員有空，助理隨時在線。',
+    marker: M(330, 245),
+    screen: 'inbox',
+  },
+  {
+    title: '像聊天一樣問它',
+    desc: '直接打字問，例如「我的會費繳到什麼時候？」「下次活動是哪天？」「幫我看報名成功了沒」。',
+    advantage: null,
+    marker: M(290, 818),
+    screen: 'chat-question',
+  },
+  {
+    title: '助理用你的真實資料回答',
+    desc: '助理查的是你在這個組織的真實狀態：會費繳到哪天、報了哪些活動。答不了的問題會自動轉給管理員，回覆後通知你。',
+    advantage: '不是罐頭回覆 — 是查你本人的資料後回答。',
+    marker: M(335, 300),
+    screen: 'chat-question',
+  },
+  {
+    title: '🎉 快速按鈕直接辦事',
+    desc: '回答下面的快速按鈕可以直接做事：看近期活動、出示會員證、找管理員。一路點下去就辦完了。',
+    advantage: null,
+    marker: M(195, 545),
+    screen: 'chat-question',
+    isFinal: true,
+  },
+];
+
+/* === Feature 26: 傳繳費收據給助理 === */
+FEATURE_STEPS[26] = [
+  {
+    title: '對話輸入列點「＋」',
+    desc: '助理提醒你繳費？轉完帳直接在對話裡點輸入列左邊的「＋」加附件。',
+    advantage: '不用切去繳費頁 — 在對話裡就能完成。',
+    marker: M(48, 818),
+    screen: 'chat-attach',
+  },
+  {
+    title: '拍照或從相簿選收據',
+    desc: '選「拍照」直接拍轉帳畫面，或「從相簿選取」已存的截圖。PDF 收據用「選擇檔案」。',
+    advantage: null,
+    marker: M(330, 650),
+    screen: 'chat-attach',
+  },
+  {
+    title: '送出，助理確認收到',
+    desc: '收據送出後，助理馬上回覆「收到你的繳費證明 ✓」，並自動送交財務審核。',
+    advantage: null,
+    marker: M(195, 330),
+    screen: 'chat-receipt',
+  },
+  {
+    title: '🎉 之後等通知就好',
+    desc: '審核狀態直接顯示在對話裡（審核中 → 已通過）。通過後會員證 / 活動狀態自動更新，全程不用追問。',
+    advantage: '傳收據給助理＝完成繳費回報 — 跟傳 LINE 給總務一樣自然，但不會被洗版淹沒。',
+    marker: null,
+    screen: 'chat-receipt',
     isFinal: true,
   },
 ];
@@ -2772,7 +3194,7 @@ const SCREENS = {
         <span class="a-av av-i">陳</span>
         <div class="bd">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt" style="font-weight:700">名片更新</span><span class="a-time">剛剛</span></div>
-          <div class="a-prev">陳品妤 更新了名片資訊：職稱「行銷企劃 → 行銷總監」、部門「品牌組 → 品牌策略部」</div>
+          <div class="a-prev">對方更新了名片資訊 — 陳品妤：職稱「行銷企劃 → 行銷總監」、部門「品牌組 → 品牌策略部」</div>
           <span class="a-src src-sys">系統</span>
         </div>
       </div>
@@ -2968,6 +3390,440 @@ const SCREENS = {
     ${tabBar(0)}`),
 };
 
+/* ── 我的卡夾教學（加入組織 / 申請建立 / 報名 / 繳費 / 報到）＋ AI 收件夾教學 新畫面 ── */
+Object.assign(SCREENS, {
+
+  /* 我的組織（含 加入新組織 卡＋底部 申請建立 › 連結） */
+  'myorgs': screenWrap(`
+    ${statusBar()}
+    ${subTabs('wallet', 1)}
+    <div class="a-body">
+      <div class="a-head" style="display:block"><span class="h">我的組織</span><div class="sub">您是 5 個組織的成員 · 點按 📌 置頂常用</div></div>
+      <div class="a-orgrow pinned">
+        <div class="a-thumb g-teal" style="width:42px;height:42px;font-size:20px">🏸</div>
+        <div style="flex:1;min-width:0">
+          <div class="a-orgname">城東羽球社 <span class="a-verify">✓</span></div>
+          <div class="a-orgmeta"><span class="a-tag brand">社團</span><span class="a-tag">會員</span><span class="a-tag ok">會費已繳</span></div>
+        </div>
+        <span class="a-pin on">📌</span>
+      </div>
+      <div class="a-orgrow pinned">
+        <div class="a-thumb g-amber" style="width:42px;height:42px;font-size:20px">⛰️</div>
+        <div style="flex:1;min-width:0">
+          <div class="a-orgname">山嵐登山協會 <span class="a-verify">✓</span></div>
+          <div class="a-orgmeta"><span class="a-tag brand">社團</span><span class="a-tag">幹部</span><span class="a-tag">下次活動 6/20</span></div>
+        </div>
+        <span class="a-pin on">📌</span>
+      </div>
+      <div class="a-orgrow">
+        <div class="a-thumb g-indigo" style="width:42px;height:42px;font-size:20px">🏢</div>
+        <div style="flex:1;min-width:0">
+          <div class="a-orgname">澄光創意 <span class="a-verify">✓</span></div>
+          <div class="a-orgmeta"><span class="a-tag brand">公司</span><span class="a-tag">員工</span></div>
+        </div>
+        <span class="a-pin">📌</span>
+      </div>
+      <div class="a-orgrow">
+        <div class="a-thumb g-purple" style="width:42px;height:42px;font-size:20px">💎</div>
+        <div style="flex:1;min-width:0">
+          <div class="a-orgname">樂活生活俱樂部 <span class="a-verify">✓</span></div>
+          <div class="a-orgmeta"><span class="a-tag brand">社團</span><span class="a-tag">Silver 等級</span></div>
+        </div>
+        <span class="a-pin">📌</span>
+      </div>
+      <div class="a-addcard">
+        <span class="ico">＋</span>
+        <div style="flex:1">
+          <div class="t">加入新組織</div>
+          <div class="s">輸入邀請碼、掃 QR、或點開朋友寄的邀請連結</div>
+        </div>
+        <span class="a-chev">›</span>
+      </div>
+      <div style="text-align:center;padding:6px 0 0">
+        <span style="font-size:13px;color:#4F46E5;font-weight:600">想成立自己的組織？申請建立 ›</span>
+      </div>
+    </div>
+    ${tabBar(1)}`),
+
+  /* 加入組織（邀請碼 / 掃 QR） */
+  'join-org': screenWrap(`
+    ${statusBar()}
+    ${navBar('加入組織')}
+    <div class="a-body">
+      <div style="text-align:center;padding:18px 24px 4px">
+        <span style="width:64px;height:64px;border-radius:18px;background:#EEF2FF;color:#4F46E5;display:inline-flex;align-items:center;justify-content:center;font-size:30px">🏛</span>
+        <div style="font-size:20px;font-weight:800;margin-top:12px">加入組織</div>
+        <div style="font-size:13px;color:#475569;margin-top:4px;line-height:1.6">輸入組織給你的邀請碼，<br>或掃管理員出示的 QR Code</div>
+      </div>
+      <div class="a-form" style="padding-top:12px">
+        <div class="a-field fo">
+          <div class="fl">邀請碼</div>
+          <div class="fv">CHD-2026<span class="a-cursor"></span></div>
+        </div>
+        <div class="a-btn pr">加入</div>
+        <div style="text-align:center;font-size:12px;color:#94A3B8;padding:14px 0">— 或 —</div>
+        <div class="a-btn sec">📷 掃描 QR Code</div>
+        <div style="font-size:11.5px;color:#94A3B8;text-align:center;margin-top:14px;line-height:1.6">朋友傳給你的邀請連結也可以直接點開，<br>會自動帶你到這裡</div>
+      </div>
+    </div>`),
+
+  /* 確認加入（含「公開在我的名片」開關） */
+  'join-confirm': screenWrap(`
+    ${statusBar()}
+    ${navBar('加入組織')}
+    <div class="a-body">
+      <div style="text-align:center;padding:20px 24px 0">
+        <span class="a-av av-t" style="width:64px;height:64px;border-radius:18px;font-size:30px;display:inline-flex">🏸</span>
+        <div style="font-size:20px;font-weight:800;margin-top:12px">城東羽球社</div>
+        <div style="font-size:13px;color:#475569;margin-top:4px">已認證組織 · 你將以「一般會員」加入</div>
+      </div>
+      <div style="margin:18px 20px 0;border:1px solid rgba(15,23,42,0.08);border-radius:14px;padding:4px 14px">
+        <div class="a-sheetrow" style="border-bottom:0">
+          <div style="flex:1"><div class="tt">公開在我的名片</div><div class="ss">打開＝交換名片時對方看得到你屬於這個組織</div></div>
+          <span class="a-tgl"></span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;padding:18px 20px 0">
+        <div class="a-btn sec" style="flex:1">取消</div>
+        <div class="a-btn pr" style="flex:1">確認加入</div>
+      </div>
+    </div>`),
+
+  'join-done': screenWrap(`
+    ${statusBar()}
+    ${navBar('加入組織')}
+    <div class="a-body">
+      <div class="a-celebrate" style="padding-bottom:12px">
+        <div class="a-celeicon">✓</div>
+        <div class="a-celetitle">已加入「城東羽球社」</div>
+        <div class="a-celesub">接下來組織的活動、通知都會自動找到你</div>
+      </div>
+      <div class="a-stl">
+        <div class="a-stlrow"><span class="a-stlic g-teal">🪪</span><div style="flex:1"><div class="a-stlt" style="font-size:14px">會員證已加入「我的卡夾」</div><div class="a-stls">城東羽球社 · 一般會員</div></div><span class="a-chev">›</span></div>
+        <div class="a-stlrow"><span class="a-stlic g-indigo">💬</span><div style="flex:1"><div class="a-stlt" style="font-size:14px">組織助理已可在 AI 收件夾找到</div><div class="a-stls">會費、活動、報名都可以問它</div></div><span class="a-chev">›</span></div>
+      </div>
+    </div>`),
+
+  /* 申請建立組織 */
+  'apply-form': screenWrap(`
+    ${statusBar()}
+    ${navBar('申請建立組織')}
+    <div class="a-body">
+      <div style="margin:12px 18px 0;background:#F7F7FF;border:1px solid rgba(79,70,229,0.18);border-radius:12px;padding:10px 14px;font-size:12px;color:#4338CA;line-height:1.6">
+        建立組織後你就是管理者，可以發會員證、辦活動、收會費。送出後由平台人工審核。
+      </div>
+      <div class="a-form" style="padding-top:12px">
+        ${editFieldRows([
+          { l: '組織名稱 *', v: '河畔慢跑團', fo: true, cur: true },
+          { l: '聯絡電話 *', v: '0912-345-678' },
+        ])}
+        <div class="a-formh">組織類型</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+          <span class="a-chip on">社團</span><span class="a-chip">公司</span><span class="a-chip">公益</span><span class="a-chip">其他</span>
+        </div>
+        <div class="a-btn pr">送出申請</div>
+        <div style="font-size:11.5px;color:#94A3B8;text-align:center;margin-top:10px">審核約 1–2 個工作天，結果會通知你</div>
+      </div>
+    </div>`),
+
+  'apply-status': screenWrap(`
+    ${statusBar()}
+    ${navBar('申請進度')}
+    <div class="a-body">
+      <div style="display:flex;gap:12px;align-items:center;padding:16px 22px 14px">
+        <span class="a-av av-e" style="border-radius:14px;width:48px;height:48px;font-size:22px">🏃</span>
+        <div style="flex:1">
+          <div style="font-size:17px;font-weight:800">河畔慢跑團</div>
+          <div style="font-size:12px;color:#475569">2026/06/12 送出申請</div>
+        </div>
+        <span class="a-pill p-brand">審核中</span>
+      </div>
+      <div class="a-tl">
+        <div class="a-tlrow">
+          <div class="a-tlrail"><span class="a-tldot">✓</span><span class="a-tlline"></span></div>
+          <div class="a-tlbody"><div class="a-tlt">申請已送出</div><div class="a-tls">今天 10:24</div></div>
+        </div>
+        <div class="a-tlrow">
+          <div class="a-tlrail"><span class="a-tldot now">●</span><span class="a-tlline"></span></div>
+          <div class="a-tlbody"><div class="a-tlt">平台審核中</div><div class="a-tls">約 1–2 個工作天，由真人審核</div></div>
+        </div>
+        <div class="a-tlrow">
+          <div class="a-tlrail"><span class="a-tldot todo">3</span></div>
+          <div class="a-tlbody"><div class="a-tlt">開通通知</div><div class="a-tls">通過後組織立即可用，AI 收件夾會通知你</div></div>
+        </div>
+      </div>
+    </div>`),
+
+  /* 活動報名表（名片自動帶入） */
+  'register-form': screenWrap(`
+    ${statusBar()}
+    ${navBar('活動報名')}
+    <div class="a-body">
+      <div style="padding:10px 20px 0;font-size:13px;color:#475569">⛰️ 合歡北峰兩日行 · 山嵐登山協會</div>
+      <div style="margin:10px 18px 0;background:#F7F7FF;border:1px solid rgba(79,70,229,0.18);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px">
+        <span class="a-av av-i" style="width:32px;height:32px;font-size:12px">陳</span>
+        <div style="flex:1;font-size:12.5px;color:#4338CA"><b>已用「工作 · 陳品妤」名片帶入</b><br><span style="color:#94A3B8">欄位自動填好，可直接修改</span></div>
+        <span style="font-size:12px;color:#4F46E5;font-weight:700">換一張 ›</span>
+      </div>
+      <div class="a-form" style="padding-top:12px">
+        ${editFieldRows([
+          { l: '姓名 *', v: '陳品妤' },
+          { l: '手機 *', v: '0912-345-678' },
+          { l: 'Email', v: 'pinyu.chen@example.com' },
+          { l: '緊急聯絡人（主辦自訂欄位）', v: '陳大明 0922-333-444' },
+        ])}
+        <div style="display:flex;gap:8px;align-items:flex-start;margin:2px 0 14px">
+          <span style="width:20px;height:20px;border-radius:6px;background:#4F46E5;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">✓</span>
+          <span style="font-size:12.5px;color:#475569;line-height:1.5">我同意活動條款與個資使用範圍 <span style="color:#4F46E5;font-weight:700">📄 查看條款 ›</span></span>
+        </div>
+        <div class="a-btn pr">完成報名</div>
+      </div>
+    </div>`),
+
+  'register-success': screenWrap(`
+    ${statusBar()}
+    ${navBar('活動報名')}
+    <div class="a-body">
+      <div class="a-celebrate" style="padding-bottom:12px">
+        <div class="a-celeicon">🎉</div>
+        <div class="a-celetitle">報名成功！</div>
+        <div class="a-celesub">已加入「我的活動」，活動前會自動提醒你</div>
+      </div>
+      <div style="margin:0 20px;border:1px solid rgba(15,23,42,0.08);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:center">
+        <span class="a-thumb g-amber" style="width:44px;height:44px;font-size:21px">⛰️</span>
+        <div style="flex:1">
+          <div class="a-org">山嵐登山協會</div>
+          <div class="a-name">合歡北峰兩日行</div>
+          <div style="font-size:12px;color:#475569;margin-top:3px">6/20（六）07:00 · 清境集合</div>
+        </div>
+        <span class="a-pill p-warn">待繳費</span>
+      </div>
+      <div style="display:flex;gap:10px;padding:16px 20px 0">
+        <div class="a-btn sec" style="flex:1">回我的活動</div>
+        <div class="a-btn pr" style="flex:1">前往繳費</div>
+      </div>
+    </div>`),
+
+  /* 活動繳費（上傳繳費證明） */
+  'fee-page': screenWrap(`
+    ${statusBar()}
+    ${navBar('活動繳費')}
+    <div class="a-body">
+      <div style="padding:10px 20px 0">
+        <div style="font-size:13px;color:#475569">🎫 活動：合歡北峰兩日行</div>
+        <div style="font-size:24px;font-weight:800;margin-top:4px">應繳金額 NT$ 2,400</div>
+      </div>
+      <div style="margin:12px 18px 0;border:1px solid rgba(15,23,42,0.08);border-radius:14px;padding:12px 14px">
+        <div style="font-size:11.5px;color:#94A3B8;font-weight:700">🏦 轉入帳戶</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:700">灣岸銀行（999）</div>
+            <div style="font-size:14px;font-family:'SF Mono',ui-monospace,monospace;letter-spacing:0.5px">123-456-789012</div>
+          </div>
+          <span class="a-pill p-brand" style="font-size:12px;padding:6px 12px">複製</span>
+        </div>
+      </div>
+      <div class="a-form" style="padding-top:14px">
+        <div class="a-formh" style="margin-top:0">① 上傳轉帳截圖</div>
+        <div style="border:1.5px dashed rgba(15,23,42,0.2);border-radius:14px;padding:20px;text-align:center;margin-bottom:14px">
+          <div style="font-size:28px">📷</div>
+          <div style="font-size:13.5px;font-weight:700;margin-top:6px">拍照或從相簿選擇</div>
+          <div style="font-size:11.5px;color:#94A3B8;margin-top:3px">支援轉帳成功截圖、收據照片</div>
+        </div>
+        <div class="a-formh" style="margin-top:0">② 轉出帳號末五碼</div>
+        ${editFieldRows([{ l: '末五碼', v: '54321' }])}
+        <div class="a-btn pr">送出繳費證明</div>
+        <div style="text-align:center;margin-top:12px"><span style="font-size:12.5px;color:#4F46E5;font-weight:600">查看我的繳費紀錄 ›</span></div>
+      </div>
+    </div>`),
+
+  'fee-submitted': screenWrap(`
+    ${statusBar()}
+    ${navBar('活動繳費')}
+    <div class="a-body">
+      <div class="a-celebrate" style="padding-bottom:10px">
+        <div class="a-celeicon" style="background:linear-gradient(135deg,#6366F1,#4F46E5)">🧾</div>
+        <div class="a-celetitle">繳費證明已送出</div>
+        <div class="a-celesub">財務確認後會通知你，不用一直回來看</div>
+      </div>
+      <div style="text-align:center"><span class="a-pill p-brand" style="font-size:12.5px;padding:6px 14px">審核中</span></div>
+      <div class="a-tl" style="margin-top:14px">
+        <div class="a-tlrow">
+          <div class="a-tlrail"><span class="a-tldot">✓</span><span class="a-tlline"></span></div>
+          <div class="a-tlbody"><div class="a-tlt">已送出繳費證明</div><div class="a-tls">轉帳截圖 + 末五碼 54321</div></div>
+        </div>
+        <div class="a-tlrow">
+          <div class="a-tlrail"><span class="a-tldot now">●</span><span class="a-tlline"></span></div>
+          <div class="a-tlbody"><div class="a-tlt">財務審核中</div><div class="a-tls">通過後「我的活動」自動更新為已繳費</div></div>
+        </div>
+        <div class="a-tlrow">
+          <div class="a-tlrail"><span class="a-tldot todo">3</span></div>
+          <div class="a-tlbody"><div class="a-tlt">完成</div><div class="a-tls">若被退回會收到原因，可重新上傳</div></div>
+        </div>
+      </div>
+    </div>`),
+
+  /* 活動報到（出示報到 QR） */
+  'checkin-qr': screenWrap(`
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(165deg,#4F46E5 0%,#6D28D9 60%,#4338CA 100%);color:#fff">
+      ${statusBar({ light: true })}
+      <div style="display:flex;align-items:center;padding:16px 16px 0">
+        <span style="font-size:18px">‹</span>
+        <span style="flex:1;text-align:center;font-size:16px;font-weight:700;margin-right:18px">我的報到碼</span>
+      </div>
+      <div style="text-align:center;font-size:13px;opacity:0.8;margin-top:8px">城東羽球社</div>
+      <div style="text-align:center;font-size:22px;font-weight:800;margin-top:4px">六月例行球敘</div>
+      <div style="width:216px;height:216px;margin:20px auto 0;background:#fff;border-radius:20px;padding:14px;box-shadow:0 18px 44px rgba(0,0,0,0.28)">${QR60}</div>
+      <div style="text-align:center;font-size:12px;opacity:0.75;margin-top:12px">🔄 1:25 後自動刷新</div>
+      <div style="text-align:center;font-size:17px;font-weight:700;margin-top:12px">陳品妤</div>
+      <div style="text-align:center;font-family:'SF Mono',ui-monospace,monospace;font-size:24px;font-weight:800;letter-spacing:6px;margin-top:4px">7M2KQ8</div>
+      <div style="text-align:center;font-size:12px;opacity:0.75;line-height:1.7;margin-top:12px">請現場工作人員掃此 QR 完成報到<br>掃描失敗可念出上方 6 字代碼</div>
+      <div style="display:flex;gap:10px;padding:0 24px;margin-top:16px">
+        <span style="flex:1;text-align:center;padding:11px;border-radius:12px;background:rgba(255,255,255,0.14);font-size:13px;font-weight:600">📍 活動位置</span>
+        <span style="flex:1;text-align:center;padding:11px;border-radius:12px;background:rgba(255,255,255,0.14);font-size:13px;font-weight:600">📞 主辦聯絡</span>
+      </div>
+    </div>`),
+
+  'checkin-done': screenWrap(`
+    ${statusBar()}
+    ${navBar('我的報到碼')}
+    <div class="a-body">
+      <div class="a-celebrate" style="padding-bottom:12px">
+        <div class="a-celeicon">✓</div>
+        <div class="a-celetitle">報到完成！</div>
+        <div class="a-celesub">六月例行球敘 · 19:02 報到</div>
+      </div>
+      <div class="a-stl">
+        <div class="a-stlrow"><span class="a-stlic g-sky">📜</span><div style="flex:1"><div class="a-stlt" style="font-size:14px">報到證明已加入「我的卡夾」</div><div class="a-stls">城東羽球社 · 累積出席 10 次</div></div><span class="a-chev">›</span></div>
+        <div class="a-stlrow"><span class="a-stlic g-teal">👋</span><div style="flex:1"><div class="a-stlt" style="font-size:14px">主辦也同步看到你已到</div><div class="a-stls">不用再簽到、不用回報</div></div></div>
+      </div>
+    </div>`),
+
+  /* AI 收件夾 — 入口列表 */
+  'inbox': screenWrap(`
+    ${statusBar()}
+    <div class="a-body">
+      <div class="a-head"><span class="h">AI 收件夾</span><span class="a-unreadpill">3 則未讀</span></div>
+      <div class="a-chips" style="padding-top:8px">
+        <span class="a-chip on">全部 <span class="n">12</span></span>
+        <span class="a-chip">APP 推播 <span class="n">3</span></span>
+        <span class="a-chip">LINE 助理 <span class="n">2</span></span>
+        <span class="a-chip">系統通知 <span class="n">2</span></span>
+      </div>
+      <div class="a-day">今天</div>
+      <div class="a-row unread">
+        <span class="a-av av-t">羽</span>
+        <div class="bd">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">城東羽球社 助理</span><span class="a-time">14:32</span></div>
+          <div class="a-prev">📣 六月例行球敘 明天 19:00 開打，記得帶球拍，已經 18 人報名了</div>
+          <span class="a-src src-app">APP 推播</span>
+        </div>
+      </div>
+      <div class="a-row unread">
+        <span class="a-av av-a">山</span>
+        <div class="bd">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">山嵐登山協會 助理</span><span class="a-time">11:08</span></div>
+          <div class="a-prev">品妤您好，合歡北峰兩日行 報名已完成，行程費 NT$2,400 待繳</div>
+          <span class="a-src src-line">LINE 助理</span>
+        </div>
+      </div>
+      <div class="a-row">
+        <span class="a-av av-p">C</span>
+        <div class="bd">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">Credica 助理</span><span class="a-time">昨天</span></div>
+          <div class="a-prev">您好，我是 Credica 助理。APP 怎麼用、加入組織、客服都可以問我 ›</div>
+          <span class="a-src src-line">LINE 助理</span>
+        </div>
+      </div>
+    </div>
+    ${tabBar(2)}`),
+
+  /* 組織助理對話 — 問問題 */
+  'chat-question': screenWrap(`
+    ${statusBar()}
+    ${navBar('城東羽球社 助理')}
+    <div class="a-body">
+      <div class="a-chatlist">
+        <div class="a-bub user">我的會費繳到什麼時候？</div>
+        <div class="a-botcard">
+          <div class="bc-head">🪪 你的會費狀態</div>
+          <div class="bc-row"><span class="bc-l">狀態</span><span class="bc-v" style="color:#047857">✓ 已繳清</span></div>
+          <div class="bc-row"><span class="bc-l">有效至</span><span class="bc-v">2026/12/31</span></div>
+          <div class="bc-row"><span class="bc-l">下次繳費</span><span class="bc-v">2027/01（會提前提醒你）</span></div>
+        </div>
+        <div class="a-bub bot">都繳清了，放心打球 🏸 還想查什麼嗎？</div>
+      </div>
+      <div class="a-chips-strip">
+        <span class="a-qchip">📅 看近期活動</span>
+        <span class="a-qchip">🪪 我的會員證</span>
+        <span class="a-qchip">💬 找管理員</span>
+      </div>
+      <div class="a-composer">
+        <span class="plus">＋</span>
+        <span class="inputbox">輸入訊息…</span>
+        <span class="send">↑</span>
+      </div>
+    </div>`),
+
+  /* 組織助理對話 — 加入附件 sheet */
+  'chat-attach': screenWrap(`
+    ${statusBar()}
+    ${navBar('城東羽球社 助理')}
+    <div class="a-body">
+      <div class="a-chatlist">
+        <div class="a-bub bot">嗨品妤！年度球衣費 NT$600 還沒收到，匯款後把收據傳給我就可以囉。</div>
+      </div>
+      <div class="a-dim"></div>
+      <div class="a-sheet">
+        <div class="grab"></div>
+        <div class="sh-t">加入附件</div>
+        <div class="a-sheetrow"><span class="ic">📷</span><div><div class="tt">拍照</div><div class="ss">直接拍轉帳畫面或紙本收據</div></div></div>
+        <div class="a-sheetrow"><span class="ic">🖼</span><div><div class="tt">從相簿選取</div><div class="ss">選一張已存的截圖</div></div></div>
+        <div class="a-sheetrow"><span class="ic">📎</span><div><div class="tt">選擇檔案</div><div class="ss">PDF、文件（10 MB 以內）</div></div></div>
+      </div>
+      <div class="a-composer">
+        <span class="plus" style="background:#EEF2FF;color:#4F46E5">＋</span>
+        <span class="inputbox">輸入訊息…</span>
+        <span class="send">↑</span>
+      </div>
+    </div>`),
+
+  /* 組織助理對話 — 已送出收據 */
+  'chat-receipt': screenWrap(`
+    ${statusBar()}
+    ${navBar('城東羽球社 助理')}
+    <div class="a-body">
+      <div class="a-chatlist">
+        <div class="a-bub bot">嗨品妤！年度球衣費 NT$600 還沒收到，匯款後把收據傳給我就可以囉。</div>
+        <div class="a-imgbub">🧾<span class="tag">轉帳截圖.jpg</span></div>
+        <div class="a-bub user">轉好了，末五碼 54321</div>
+        <div class="a-bub bot">收到你的繳費證明 ✓<br>已送交財務審核，通過後會馬上通知你。</div>
+        <div style="align-self:flex-start"><span class="a-pill p-brand">🧾 球衣費 NT$600 · 審核中</span></div>
+      </div>
+      <div class="a-composer">
+        <span class="plus">＋</span>
+        <span class="inputbox">輸入訊息…</span>
+        <span class="send">↑</span>
+      </div>
+    </div>`),
+});
+
+/* LINE 連動畫面 — 對齊真實綁定流程（在 LINE 聊天室輸入「綁定」） */
+SCREENS['line-bind'] = screenWrap(`
+  ${statusBar()}
+  ${navBar('LINE 連動')}
+  <div class="a-body">
+    <div style="text-align:center;padding:22px 24px 0">
+      <span style="width:72px;height:72px;border-radius:20px;background:#06C755;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 10px 26px rgba(6,199,85,0.3)">💬</span>
+      <div style="font-size:19px;font-weight:800;margin-top:14px">把 Credica 接到你的 LINE</div>
+      <div style="font-size:13px;color:#475569;margin-top:6px;line-height:1.7">連動後在 LINE 就能查名片、問組織助理、<br>收活動通知 — 不用打開 APP</div>
+    </div>
+    <div style="padding:20px 20px 0"><div class="a-btn line">綁定 LINE</div></div>
+    <div style="margin:16px 20px 0;background:#E6F9EE;border:1px solid rgba(6,199,85,0.3);border-radius:12px;padding:12px 14px;font-size:12.5px;color:#047A38;line-height:1.7">
+      💡 按下後會開啟 LINE — 在 Credica 官方帳號的聊天室輸入「<b>綁定</b>」，就會自動完成，不用抄驗證碼。
+    </div>
+  </div>`);
+
 /* ================= STATE ================= */
 const state = {
   currentFeature: 1,
@@ -2978,7 +3834,7 @@ const state = {
 
 /* ================= RENDER SIDEBAR ================= */
 function renderSidebar() {
-  const groups = { cards:'group-cards', social:'group-social', ai:'group-ai', settings:'group-settings', events_creds:'group-events-creds' };
+  const groups = { cards:'group-cards', social:'group-social', wallet:'group-wallet', ai:'group-ai', settings:'group-settings' };
   let displayNum = 0;  // R7'-C-fix: 連號 1-19(跨 group 累積),因 Feature 13 已刪會跳號
   for (const [key, elId] of Object.entries(groups)) {
     const el = document.getElementById(elId);
@@ -3118,7 +3974,7 @@ function renderProgress(total, current) {
 function findNextUnfinishedFeature(currentId) {
   // Flatten all features in sidebar order: cards, social, ai, settings
   const all = [
-    ...FEATURES.cards, ...FEATURES.social, ...FEATURES.ai, ...FEATURES.settings, ...FEATURES.events_creds
+    ...FEATURES.cards, ...FEATURES.social, ...FEATURES.wallet, ...FEATURES.ai, ...FEATURES.settings
   ];
   // Start from feature right after currentId
   const idx = all.findIndex(f => f.id === currentId);

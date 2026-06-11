@@ -6,6 +6,7 @@
 <title>Credica 企業方案 — 員工證照與資格，變成可驗證、不出錯的事</title>
 <meta name="description" content="給人資、工安、法遵與稽核單位——Credica 把員工的證照與訓練資格做成可驗證的數位證照，一掃知真偽、到期自動提醒、稽核報告即時產出。">
 <meta name="keywords" content="員工證照管理, 數位證照, 法遵, 工安, 稽核, 證照到期提醒">
+<link rel="icon" type="image/svg+xml" href="credica-mark.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -277,35 +278,42 @@
   .ai .sec-desc { color: rgba(255,255,255,0.80); }
   .ai-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
   .line-green { --line-green: #06C755; }
+  /* App 對話示意（Credica App · AI 收件夾） */
   .line-chat {
     width: 100%; max-width: 340px; margin: 0 auto;
-    background: #8CABD9;
-    border-radius: 22px; overflow: hidden;
-    box-shadow: 0 18px 40px rgba(15,18,32,0.32);
+    background: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 0 8px #0c0c0c, 0 0 0 10px #2a2a2a, 0 24px 48px rgba(15,18,32,0.45);
   }
   .lc-header {
     display: flex; align-items: center; gap: 0.6rem;
-    padding: 0.85rem 1rem;
-    background: #06C755; color: #fff;
+    padding: 1rem 1rem 0.7rem;
+    background: #fff;
+    border-bottom: 1px solid rgba(15,23,42,0.07);
+    color: #0F172A;
   }
+  .lc-back { color: #4F46E5; font-size: 1.2rem; font-weight: 600; line-height: 1; }
   .lc-avatar {
     width: 34px; height: 34px; border-radius: 50%;
-    background: #fff; color: #06C755;
+    background: linear-gradient(135deg, #14B8A6, #0F766E); color: #fff;
     display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 800;
     flex-shrink: 0;
   }
   .lc-avatar svg { width: 19px; height: 19px; }
-  .lc-name { font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
-  .lc-status { font-size: 0.7rem; opacity: 0.85; }
+  .lc-name { font-size: 0.92rem; font-weight: 800; line-height: 1.2; }
+  .lc-status { font-size: 0.68rem; color: #94A3B8; margin-top: 1px; }
   .lc-body {
-    padding: 1rem 0.85rem 1.1rem;
+    padding: 1rem 0.85rem 0.7rem;
+    background: #fff;
     display: flex; flex-direction: column; gap: 0.6rem;
     min-height: 320px;
   }
   .lc-time {
     align-self: center;
-    font-size: 0.66rem; color: rgba(255,255,255,0.9);
-    background: rgba(0,0,0,0.12);
+    font-size: 0.66rem; color: #94A3B8;
+    background: #F1F5F9;
     padding: 0.15rem 0.7rem; border-radius: 999px;
     margin-bottom: 0.15rem;
   }
@@ -313,26 +321,49 @@
     max-width: 82%;
     font-size: 0.86rem; line-height: 1.55;
     padding: 0.6rem 0.8rem;
-    border-radius: 14px;
+    border-radius: 16px;
     opacity: 0; transform: translateY(8px);
     animation: chatIn 0.4s var(--ease) forwards;
   }
   @keyframes chatIn { to { opacity: 1; transform: translateY(0); } }
   .lc-msg.user {
     align-self: flex-end;
-    background: #06C755; color: #fff;
-    border-bottom-right-radius: 4px;
+    background: #4F46E5; color: #fff;
+    border-bottom-right-radius: 5px;
   }
   .lc-msg.bot {
     align-self: flex-start;
-    background: #fff; color: var(--text);
-    border-bottom-left-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    background: #F1F5F9; color: #0F172A;
+    border-bottom-left-radius: 5px;
   }
   .lc-msg .who {
     display: block;
-    font-size: 0.66rem; font-weight: 700; color: var(--blue-text);
+    font-size: 0.66rem; font-weight: 700; color: #4338CA;
     margin-bottom: 0.2rem;
+  }
+  .lc-msg.user:nth-of-type(2) { animation-delay: 0.1s; }
+  .lc-composer {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 0.85rem 1.1rem;
+    background: #fff;
+    border-top: 1px solid rgba(15,23,42,0.06);
+  }
+  .lc-composer .plus {
+    width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0;
+    background: #F1F5F9; color: #475569;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .lc-composer .input {
+    flex: 1; padding: 0.5rem 0.85rem; border-radius: 999px;
+    background: #F8FAFC; border: 1px solid rgba(15,23,42,0.08);
+    font-size: 0.8rem; color: #94A3B8;
+  }
+  .lc-composer .send {
+    width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0;
+    background: #4F46E5; color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
   }
   .lc-replay {
     margin: 0.9rem auto 0;
@@ -446,7 +477,7 @@
   .ph-org-role { font-size: 9.5px; color: var(--text-3); margin-top: 1px; }
   .ph-card {
     margin: 0 14px 13px; border-radius: 15px; padding: 14px 15px;
-    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
     color: #fff; position: relative; overflow: hidden;
   }
   .ph-card::after {
@@ -588,7 +619,7 @@
 <!-- ======================= NAV（全站共用外殼）======================= -->
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica_logo.png" alt="Credica Logo" class="logo-img">
+    <img src="credica-mark.svg" alt="Credica Logo" class="logo-img">
     Credica
   </a>
   <div class="nav-mid">
@@ -755,19 +786,18 @@
     <div class="sec-head">
       <span class="sec-kicker">不用睡覺的小幫手</span>
       <h2 class="sec-title">員工的證照問題，<br><span style="color:#fff;">智慧助理先替你接著</span></h2>
-      <p class="sec-desc">員工打開原本就在用的 LINE，就能問自己的證照與資格——智慧助理即時回答，還會主動提醒快到期的人。</p>
+      <p class="sec-desc">員工打開手機 App 的「AI 收件夾」，就能問自己的證照與資格——智慧助理即時回答，還會主動提醒快到期的人；習慣 LINE 的員工，在 LINE 也能用同一位助理。</p>
     </div>
 
     <div class="ai-layout">
-      <!-- LINE 對話示意 -->
+      <!-- App 對話示意（AI 收件夾） -->
       <div class="line-chat">
         <div class="lc-header">
-          <div class="lc-avatar">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 4.36 3.57 8 8.4 8.69.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .88.55 1.08-.46 5.83-3.43 7.95-5.88C21.36 14.78 22 12.9 22 10.8 22 5.94 17.52 2 12 2z"/></svg>
-          </div>
+          <span class="lc-back">‹</span>
+          <div class="lc-avatar" style="background:linear-gradient(135deg,#F59E0B,#C2410C)">大</div>
           <div>
-            <div class="lc-name">大有營造 · 智慧助理</div>
-            <div class="lc-status">隨時在線 · 馬上回覆</div>
+            <div class="lc-name">大有營造 助理</div>
+            <div class="lc-status">Credica App · AI 收件夾 · 隨時在線</div>
           </div>
         </div>
         <div class="lc-body" id="chatBody">
@@ -789,6 +819,11 @@
             已幫您登記 6 月 3 日的複訓 ✅<br>
             完成複訓後，新的數位證照會自動更新到您的 Credica App，進場掃一下就通行。
           </div>
+        </div>
+        <div class="lc-composer">
+          <span class="plus">＋</span>
+          <span class="input">輸入訊息…</span>
+          <span class="send">↑</span>
         </div>
         <button class="lc-replay" id="replayChat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
