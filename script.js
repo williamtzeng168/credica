@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const screens = document.querySelectorAll('.app-screen');
     const dots = document.querySelectorAll('.screen-dot');
     const screenLabel = document.querySelector('.screen-label');
-    let screenLabels = ['首頁總覽', '我的組織', '活動行程', '憑證錢包', '統一 QR'];
+    let screenLabels = ['我的名片', '名片夾', '我的卡夾', '報到 QR', 'AI 收件夾'];
     const screenLabelKeys = ['screen.label_home', 'screen.label_orgs', 'screen.label_events', 'screen.label_creds', 'screen.label_qr'];
 
     // Allow i18n.js to update screen labels
