@@ -365,6 +365,84 @@
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 0.85rem;
   }
+  /* Flex 卡片式對話（對齊 APP 實際呈現） */
+  .lc-src {
+    align-self: flex-start;
+    font-size: 0.66rem; font-weight: 700; color: #4338CA;
+    background: #EEF2FF; padding: 0.2rem 0.7rem; border-radius: 999px;
+    opacity: 0; transform: translateY(8px); animation: chatIn 0.4s var(--ease) forwards;
+  }
+  .lc-card {
+    align-self: flex-start; width: 94%;
+    background: #fff; border: 1px solid rgba(15,23,42,0.10);
+    border-radius: 16px; box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+    overflow: hidden; font-size: 0.82rem;
+    opacity: 0; transform: translateY(8px); animation: chatIn 0.4s var(--ease) forwards;
+  }
+  .lc-card-head {
+    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+    padding: 0.55rem 0.8rem;
+    background: #F7F7FF; border-bottom: 1px solid rgba(79,70,229,0.10);
+    font-weight: 800; color: #4338CA; font-size: 0.76rem;
+  }
+  .lc-card-head .tag {
+    background: #fff; border: 1px solid rgba(79,70,229,0.25); border-radius: 999px;
+    padding: 0.1rem 0.55rem; font-size: 0.64rem; color: #4F46E5; white-space: nowrap;
+  }
+  .lc-card-body { padding: 0.65rem 0.8rem 0.75rem; }
+  .lc-ev { display: flex; gap: 0.7rem; align-items: center; }
+  .lc-ev-date { width: 52px; flex-shrink: 0; text-align: center; border-radius: 12px; overflow: hidden; border: 1px solid rgba(15,23,42,0.10); }
+  .lc-ev-date .m { background: #4F46E5; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.14rem 0; }
+  .lc-ev-date .d { font-size: 1.15rem; font-weight: 800; color: #0F172A; padding-top: 0.08rem; line-height: 1.2; }
+  .lc-ev-date .w { font-size: 0.6rem; color: #94A3B8; padding-bottom: 0.16rem; }
+  .lc-ev-title { font-size: 0.95rem; font-weight: 800; color: #0F172A; }
+  .lc-ev-meta { font-size: 0.73rem; color: #475569; margin-top: 0.2rem; line-height: 1.55; }
+  .lc-banner {
+    margin-top: 0.6rem; background: #ECFDF5; color: #047857;
+    font-weight: 700; font-size: 0.75rem; padding: 0.45rem 0.7rem; border-radius: 10px;
+    display: flex; gap: 0.4rem; align-items: center;
+  }
+  .lc-irow { display: flex; justify-content: space-between; align-items: center; padding: 0.42rem 0; border-bottom: 1px solid rgba(15,23,42,0.05); font-size: 0.77rem; }
+  .lc-irow:last-child { border-bottom: 0; }
+  .lc-irow .k { color: #94A3B8; flex-shrink: 0; }
+  .lc-irow .v { font-weight: 700; color: #0F172A; text-align: right; }
+  .lc-irow .v.warn { color: #B45309; }
+  .lc-copy {
+    font-size: 0.64rem; font-weight: 700; color: #4F46E5;
+    border: 1px solid rgba(79,70,229,0.30); border-radius: 999px;
+    padding: 0.12rem 0.5rem; margin-left: 0.45rem; white-space: nowrap;
+  }
+  .lc-btnrow { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+  .lc-btn { flex: 1; text-align: center; padding: 0.5rem; border-radius: 10px; font-size: 0.77rem; font-weight: 700; }
+  .lc-btn.pr { background: #4F46E5; color: #fff; }
+  .lc-btn.sec { background: #F1F5F9; color: #0F172A; }
+  .lc-tlrow { display: flex; gap: 0.55rem; padding: 0.2rem 0; align-items: flex-start; }
+  .lc-tldot {
+    width: 16px; height: 16px; border-radius: 999px; flex-shrink: 0; margin-top: 1px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.58rem; font-weight: 800; background: #ECFDF5; color: #047857;
+  }
+  .lc-tldot.now { background: #FFFBEB; color: #B45309; }
+  .lc-tldot.todo { background: #F1F5F9; color: #C1C7CF; }
+  .lc-tlt { font-size: 0.76rem; font-weight: 700; color: #0F172A; }
+  .lc-tls { font-size: 0.66rem; color: #94A3B8; margin-top: 0.05rem; }
+  .lc-acts {
+    align-self: flex-start; display: flex; gap: 0.9rem;
+    font-size: 0.7rem; color: #94A3B8; font-weight: 600; padding: 0 0.2rem;
+    opacity: 0; transform: translateY(8px); animation: chatIn 0.4s var(--ease) forwards;
+  }
+  .lc-quick {
+    display: flex; gap: 0.4rem; align-items: baseline;
+    padding: 0.5rem 0.85rem 0;
+    font-size: 0.68rem; color: #0F172A; font-weight: 800;
+    border-top: 1px solid rgba(15,23,42,0.05); background: #fff;
+  }
+  .lc-quick span { font-weight: 400; color: #94A3B8; }
+  .lc-header .pref {
+    margin-left: auto; flex-shrink: 0;
+    font-size: 0.64rem; font-weight: 700; color: #475569;
+    border: 1px solid rgba(15,23,42,0.12); border-radius: 999px; padding: 0.28rem 0.6rem;
+  }
   .lc-replay {
     margin: 0.9rem auto 0;
     display: flex; align-items: center; gap: 0.4rem;
@@ -619,9 +697,7 @@
 <!-- ======================= NAV（全站共用外殼）======================= -->
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica-mark.svg" alt="Credica Logo" class="logo-img">
-    Credica
-  </a>
+    <img src="credica-wordmark.png" alt="Credica" style="height:40px;width:auto;display:block"></a>
   <div class="nav-mid">
     <a href="index.html">個人版</a>
     <a href="business.html">中小組織</a>
@@ -797,33 +873,41 @@
           <div class="lc-avatar" style="background:linear-gradient(135deg,#F59E0B,#C2410C)">大</div>
           <div>
             <div class="lc-name">大有營造 助理</div>
-            <div class="lc-status">Credica App · AI 收件夾 · 隨時在線</div>
+            <div class="lc-status"><span style="color:#10B981">●</span> 已認證組織 · LINE 已連動</div>
           </div>
+          <span class="pref">⚙ 通知偏好</span>
         </div>
         <div class="lc-body" id="chatBody">
           <span class="lc-time">下午 4:18</span>
-          <div class="lc-msg bot">
-            <span class="who">智慧助理</span>
-            提醒您：您的「高架作業安全衛生訓練」將在 6 月 15 日到期。<br>
-            到期後將無法進入工地，建議盡快安排複訓。
-          </div>
-          <div class="lc-msg user">我要怎麼複訓？</div>
-          <div class="lc-msg bot">
-            <span class="who">智慧助理</span>
-            最近一場複訓在 6 月 3 日（二）08:30，地點在公司教育訓練中心。<br>
-            要我幫您登記這一場嗎？回覆「登記」即可完成。
+          <span class="lc-src">🏢 來自 大有營造（透過 Credica 代發）</span>
+          <div class="lc-msg bot">提醒您：您的「高架作業安全衛生訓練」即將到期，狀態在這 👇</div>
+          <div class="lc-card">
+            <div class="lc-card-head">🪪 證照狀態 <span class="tag">高架作業安全衛生訓練</span></div>
+            <div class="lc-card-body">
+              <div class="lc-irow"><span class="k">有效至</span><span class="v warn">2026/06/15（28 天後到期）</span></div>
+              <div class="lc-irow"><span class="k">到期影響</span><span class="v">無法進入工地</span></div>
+              <div class="lc-irow"><span class="k">最近複訓</span><span class="v">6/3（三）08:30 · 教育訓練中心</span></div>
+              <div class="lc-btnrow"><span class="lc-btn pr">幫我登記複訓</span></div>
+            </div>
           </div>
           <div class="lc-msg user">登記</div>
-          <div class="lc-msg bot">
-            <span class="who">智慧助理</span>
-            已幫您登記 6 月 3 日的複訓 ✅<br>
-            完成複訓後，新的數位證照會自動更新到您的 Credica App，進場掃一下就通行。
+          <span class="lc-src">🏢 來自 大有營造（透過 Credica 代發）</span>
+          <div class="lc-msg bot">✅ 已幫您登記 6/3 的複訓。完成後新的數位證照會自動更新到您的 App，進場掃一下就通行。</div>
+          <div class="lc-card">
+            <div class="lc-card-head">📋 複訓登記回執 <span class="tag">6/3（三）08:30</span></div>
+            <div class="lc-card-body">
+              <div class="lc-tlrow"><span class="lc-tldot">✓</span><div><div class="lc-tlt">已登記複訓</div><div class="lc-tls">6/3（三）08:30 · 教育訓練中心</div></div></div>
+              <div class="lc-tlrow"><span class="lc-tldot now">●</span><div><div class="lc-tlt">完成複訓</div><div class="lc-tls">當天簽到後自動回報</div></div></div>
+              <div class="lc-tlrow"><span class="lc-tldot todo">3</span><div><div class="lc-tlt">新證照自動更新</div><div class="lc-tls">更新後進場掃一下就通行</div></div></div>
+            </div>
           </div>
+          <div class="lc-acts">⧉ 複製　　↳ 追問</div>
         </div>
+        <div class="lc-quick">常見問題 <span>· 組織預設</span></div>
         <div class="lc-composer">
           <span class="plus">＋</span>
-          <span class="input">輸入訊息…</span>
-          <span class="send">↑</span>
+          <span class="input">輸入訊息給 大有營造…</span>
+          <span class="send" style="width:auto;padding:0 0.7rem;border-radius:999px;font-size:0.72rem;font-weight:700">送出</span>
         </div>
         <button class="lc-replay" id="replayChat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
@@ -1064,7 +1148,7 @@
                 <div class="ph-row-icon" style="background:var(--pastel-sky)">🔔</div>
                 <div class="ph-row-text">
                   <div class="ph-row-title">高架作業訓練即將到期</div>
-                  <div class="ph-row-sub">建議於 6/3 前完成複訓</div>
+                  <div class="ph-row-sub">建議於 6/3 完成複訓</div>
                 </div>
               </div>
             </div>
@@ -1188,7 +1272,7 @@
     chatBody.innerHTML = '';
     chatBody.offsetHeight; // 強制重排
     chatBody.innerHTML = chatHTML;
-    var msgs = chatBody.querySelectorAll('.lc-msg');
+    var msgs = chatBody.querySelectorAll('.lc-msg, .lc-src, .lc-card, .lc-acts');
     msgs.forEach(function (m, i) {
       m.style.animation = 'none';
       m.offsetHeight;

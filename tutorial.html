@@ -927,6 +927,60 @@ nav {
 .aps-canvas .a-tlt { font-size: 14px; font-weight: 700; color: #0F172A; }
 .aps-canvas .a-tls { font-size: 11.5px; color: #94A3B8; margin-top: 2px; line-height: 1.5; }
 
+/* ── 第三批：聊天 header / 來源 chip / 回執卡 timeline / 已授權個資 ── */
+.aps-canvas .a-chatnav {
+  display: flex; align-items: center; gap: 9px;
+  padding: 7px 14px; border-bottom: 1px solid rgba(15,23,42,0.06); flex-shrink: 0;
+}
+.aps-canvas .a-chatnav .bk { color: #4F46E5; font-size: 20px; }
+.aps-canvas .a-chatnav .nm { font-size: 15px; font-weight: 800; }
+.aps-canvas .a-chatnav .st { font-size: 10.5px; color: #94A3B8; margin-top: 1px; }
+.aps-canvas .a-chatnav .pref {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 11px; font-weight: 700; color: #475569;
+  border: 1px solid rgba(15,23,42,0.12); border-radius: 9999px; padding: 5px 10px;
+}
+.aps-canvas .a-srcchip {
+  align-self: flex-start; font-size: 10.5px; font-weight: 700;
+  color: #4338CA; background: #EEF2FF; padding: 3px 10px; border-radius: 9999px;
+}
+.aps-canvas .a-actsrow { align-self: flex-start; display: flex; gap: 14px; font-size: 11px; color: #94A3B8; font-weight: 600; padding: 0 2px; }
+.aps-canvas .a-quickrow {
+  position: absolute; left: 0; right: 0; bottom: 70px; z-index: 4;
+  display: flex; gap: 6px; align-items: baseline;
+  padding: 8px 16px 0; font-size: 11px; font-weight: 800; color: #0F172A;
+  border-top: 1px solid rgba(15,23,42,0.05); background: #fff;
+}
+.aps-canvas .a-quickrow span { font-weight: 400; color: #94A3B8; }
+.aps-canvas .a-botcard .bc-tag {
+  background: #fff; border: 1px solid rgba(79,70,229,0.25); border-radius: 9999px;
+  padding: 1px 8px; font-size: 10px; color: #4F46E5; font-weight: 700; white-space: nowrap;
+}
+.aps-canvas .a-ctl { padding: 6px 14px 12px; }
+.aps-canvas .a-ctlrow { display: flex; gap: 8px; padding: 3px 0; align-items: flex-start; }
+.aps-canvas .a-ctldot {
+  width: 18px; height: 18px; border-radius: 9999px; flex-shrink: 0; margin-top: 1px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; background: #ECFDF5; color: #047857;
+}
+.aps-canvas .a-ctldot.now { background: #FFFBEB; color: #B45309; }
+.aps-canvas .a-ctldot.todo { background: #F1F5F9; color: #C1C7CF; }
+.aps-canvas .a-ctlt { font-size: 12.5px; font-weight: 700; color: #0F172A; }
+.aps-canvas .a-ctls { font-size: 10.5px; color: #94A3B8; margin-top: 1px; }
+.aps-canvas .a-consent-lead {
+  margin: 10px 18px; background: #EEF2FF; border-radius: 12px;
+  padding: 11px 14px; font-size: 12.5px; color: #4338CA; line-height: 1.65;
+}
+.aps-canvas .a-grant { border-top: 1px solid rgba(15,23,42,0.06); padding: 11px 14px; }
+.aps-canvas .a-grant .gt { display: flex; justify-content: space-between; align-items: baseline; }
+.aps-canvas .a-grant .gname { font-size: 14px; font-weight: 800; }
+.aps-canvas .a-grant .gdate { font-size: 10.5px; color: #94A3B8; }
+.aps-canvas .a-gchips { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 7px; }
+.aps-canvas .a-gchip { font-size: 10.5px; background: #F1F5F9; color: #475569; border-radius: 9999px; padding: 3px 9px; font-weight: 600; }
+.aps-canvas .a-gfoot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.aps-canvas .a-gvalid { font-size: 11px; color: #94A3B8; }
+.aps-canvas .a-revoke { font-size: 12px; font-weight: 700; color: #C53030; border: 1.5px solid #C53030; border-radius: 9999px; padding: 4px 14px; }
+
 /* ============ PULSE MARKER ============ */
 .pulse-marker {
   position: absolute;
@@ -1126,9 +1180,7 @@ footer { border-top: 1px solid var(--hair); padding: 2.5rem 2.5rem; max-width: 1
 
 <nav>
   <a href="index.html" class="logo">
-    <img src="credica-mark.svg" alt="Credica Logo">
-    Credica
-  </a>
+    <img src="credica-wordmark.png" alt="Credica" style="height:40px;width:auto;display:block"></a>
   <div class="nav-mid">
     <a href="index.html">個人版</a>
     <a href="business.html">中小組織</a>
@@ -1276,7 +1328,7 @@ const FEATURES = {
     { id:26, title:'傳繳費收據給助理', sub:'對話裡傳收據，自動送審、結果通知你。', steps: 4, ready: true },
   ],
   settings: [
-    { id:16, title:'「我」頁面說明', sub:'備份、個資授權、LINE 連動，全部由你決定。', steps: 6, ready: true },
+    { id:16, title:'「我」頁面說明', sub:'備份、個資授權、LINE 連動，全部由你決定。', steps: 7, ready: true },
     { id:14, title:'LINE 連動 ＋ 組織助理', sub:'綁定 LINE，在 LINE 查名片、問組織助理。', steps: 4, ready: true },
   ],
 };
@@ -1863,6 +1915,13 @@ FEATURE_STEPS[16] = [
     screen: 'me',
   },
   {
+    title: '每一筆授權都看得到、收得回',
+    desc: '點進去，每個組織取得了你哪些個資＋用途（驗證會員身份、參加活動…）一筆一筆列出來，含授權日與有效期。不想給了，按「撤回」即刻收回，也可以一鍵撤回整個組織的全部授權。',
+    advantage: '別的服務把你的個資拿去哪你不知道；Credica 連「哪一天、為了什麼、給了哪幾欄」都讓你看得到、收得回。',
+    marker: M(330, 388),
+    screen: 'consents',
+  },
+  {
     title: '「備份與救援碼」加密備份',
     desc: '名片、聯絡人、卡片都可以加密備份。換手機時用救援碼還原，資料不遺失。',
     advantage: '備份資料加密儲存，即使存雲端，也只有你能解密讀取。',
@@ -2304,15 +2363,15 @@ FEATURE_STEPS[26] = [
     screen: 'chat-attach',
   },
   {
-    title: '送出，助理確認收到',
-    desc: '收據送出後，助理馬上回覆「收到你的繳費證明 ✓」，並自動送交財務審核。',
+    title: '送出，馬上拿到「繳費回執」',
+    desc: '收據送出後，助理回覆「已收到您的繳費證明」，並給你一張繳費回執卡 — 已收到 → 幹部審核中 → 完成，進度一目了然。',
     advantage: null,
-    marker: M(195, 330),
+    marker: M(330, 480),
     screen: 'chat-receipt',
   },
   {
     title: '🎉 之後等通知就好',
-    desc: '審核狀態直接顯示在對話裡（審核中 → 已通過）。通過後會員證 / 活動狀態自動更新，全程不用追問。',
+    desc: '回執卡上的進度會自動更新（幹部審核中 → 完成），核准後直接推播通知你，會員證 / 活動狀態同步更新，全程不用追問。',
     advantage: '傳收據給助理＝完成繳費回報 — 跟傳 LINE 給總務一樣自然，但不會被洗版淹沒。',
     marker: null,
     screen: 'chat-receipt',
@@ -3823,6 +3882,134 @@ SCREENS['line-bind'] = screenWrap(`
       💡 按下後會開啟 LINE — 在 Credica 官方帳號的聊天室輸入「<b>綁定</b>」，就會自動完成，不用抄驗證碼。
     </div>
   </div>`);
+
+/* ── 第三批：已授權的個資畫面＋聊天畫面對齊實際 APP（來源 chip / 回執卡 / 常見問題列） ── */
+function chatNav() {
+  return `<div class="a-chatnav">
+    <span class="bk">‹</span>
+    <span class="a-av av-t" style="width:34px;height:34px;font-size:13px">羽</span>
+    <div>
+      <div class="nm">城東羽球社 助理</div>
+      <div class="st"><span style="color:#10B981">●</span> 已認證組織 · LINE 已連動</div>
+    </div>
+    <span class="pref">⚙ 通知偏好</span>
+  </div>`;
+}
+function chatComposer(activePlus) {
+  return `<div class="a-quickrow">常見問題 <span>· 組織預設</span></div>
+  <div class="a-composer">
+    <span class="plus"${activePlus ? ' style="background:#EEF2FF;color:#4F46E5"' : ''}>＋</span>
+    <span class="inputbox">輸入訊息給 城東羽球社…</span>
+    <span class="send" style="width:auto;padding:0 12px;border-radius:9999px;font-size:12px;font-weight:700">送出</span>
+  </div>`;
+}
+
+Object.assign(SCREENS, {
+
+  /* 已授權的個資（我 → 安全與隱私） */
+  'consents': screenWrap(`
+    ${statusBar()}
+    ${navBar('已授權的個資')}
+    <div class="a-body">
+      <div class="a-consent-lead">🔒 這裡列出每個組織取得了你哪些個資＋用途。<br>不想給了？按「撤回」即刻收回。</div>
+      <div class="a-sect">有效的授權</div>
+      <div style="margin:0 18px;border:1px solid rgba(15,23,42,0.08);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.05)">
+        <div style="display:flex;gap:11px;align-items:center;padding:13px 14px">
+          <span class="a-av av-t" style="border-radius:12px">羽</span>
+          <div>
+            <div style="font-size:15px;font-weight:800">城東羽球社</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:1px">3 筆授權 · 最近一次 2026-06-11</div>
+          </div>
+        </div>
+        <div class="a-grant">
+          <div class="gt"><span class="gname">驗證會員身份</span><span class="gdate">授權於 2026-06-08</span></div>
+          <div class="a-gchips"><span class="a-gchip">姓名</span><span class="a-gchip">電子郵件</span><span class="a-gchip">電話</span></div>
+          <div class="a-gfoot"><span class="a-gvalid">有效至 2027-06-08</span><span class="a-revoke">撤回</span></div>
+        </div>
+        <div class="a-grant">
+          <div class="gt"><span class="gname">參加活動</span><span class="gdate">授權於 2026-06-11</span></div>
+          <div class="a-gchips"><span class="a-gchip">姓名</span><span class="a-gchip">電話</span><span class="a-gchip">電子郵件</span></div>
+          <div class="a-gfoot"><span class="a-gvalid">有效至 2027-06-11</span><span class="a-revoke">撤回</span></div>
+        </div>
+        <div class="a-grant">
+          <div class="gt"><span class="gname">參加活動</span><span class="gdate">授權於 2026-05-24</span></div>
+          <div class="a-gchips"><span class="a-gchip">姓名</span><span class="a-gchip">電話</span></div>
+          <div class="a-gfoot"><span class="a-gvalid">有效至 2027-05-24</span><span class="a-revoke">撤回</span></div>
+        </div>
+        <div style="text-align:center;padding:12px;border-top:1px solid rgba(15,23,42,0.06);font-size:13px;font-weight:700;color:#C53030">撤回這個組織的全部授權</div>
+      </div>
+    </div>`),
+
+  /* 組織助理對話 — 問問題（對齊實際呈現） */
+  'chat-question': screenWrap(`
+    ${statusBar()}
+    ${chatNav()}
+    <div class="a-body">
+      <div class="a-chatlist">
+        <div class="a-bub user">我的會費繳到什麼時候？</div>
+        <span class="a-srcchip">🏢 來自 城東羽球社（透過 Credica 代發）</span>
+        <div class="a-botcard">
+          <div class="bc-head" style="display:flex;justify-content:space-between;align-items:center">🪪 你的會費狀態 <span class="bc-tag">城東羽球社</span></div>
+          <div class="bc-row"><span class="bc-l">狀態</span><span class="bc-v" style="color:#047857">✓ 已繳清</span></div>
+          <div class="bc-row"><span class="bc-l">有效至</span><span class="bc-v">2026/12/31</span></div>
+          <div class="bc-row"><span class="bc-l">下次繳費</span><span class="bc-v">2027/01（會提前提醒你）</span></div>
+        </div>
+        <div class="a-bub bot">都繳清了，放心打球 🏸 還想查什麼嗎？</div>
+        <div class="a-actsrow">⧉ 複製　　↳ 追問</div>
+      </div>
+      <div class="a-chips-strip">
+        <span class="a-qchip">📅 看近期活動</span>
+        <span class="a-qchip">🪪 我的會員證</span>
+        <span class="a-qchip">💬 找管理員</span>
+      </div>
+      ${chatComposer(false)}
+    </div>`),
+
+  /* 組織助理對話 — 加入附件 sheet */
+  'chat-attach': screenWrap(`
+    ${statusBar()}
+    ${chatNav()}
+    <div class="a-body">
+      <div class="a-chatlist">
+        <span class="a-srcchip">🏢 來自 城東羽球社（透過 Credica 代發）</span>
+        <div class="a-bub bot">嗨品妤！年度球衣費 NT$600 還沒收到 — 轉帳後點下方「＋」上傳繳費證明（轉帳截圖即可），我會幫您回報。</div>
+      </div>
+      <div class="a-dim"></div>
+      <div class="a-sheet">
+        <div class="grab"></div>
+        <div class="sh-t">加入附件</div>
+        <div class="a-sheetrow"><span class="ic">📷</span><div><div class="tt">拍照</div><div class="ss">直接拍轉帳畫面或紙本收據</div></div></div>
+        <div class="a-sheetrow"><span class="ic">🖼</span><div><div class="tt">從相簿選取</div><div class="ss">選一張已存的截圖</div></div></div>
+        <div class="a-sheetrow"><span class="ic">📎</span><div><div class="tt">選擇檔案</div><div class="ss">PDF、文件（10 MB 以內）</div></div></div>
+      </div>
+      ${chatComposer(true)}
+    </div>`),
+
+  /* 組織助理對話 — 已送出收據（繳費回執卡 · 對齊實際呈現） */
+  'chat-receipt': screenWrap(`
+    ${statusBar()}
+    ${chatNav()}
+    <div class="a-body">
+      <div class="a-chatlist">
+        <div class="a-bub user" style="padding:8px;max-width:62%">
+          <div style="height:92px;border-radius:12px;background:linear-gradient(150deg,#E2E8F0,#CBD5E1);display:flex;align-items:center;justify-content:center;font-size:30px">🧾</div>
+          <div style="font-size:12px;margin-top:7px;opacity:0.92">轉好了，末五碼 54321</div>
+        </div>
+        <span class="a-srcchip">🏢 來自 城東羽球社（透過 Credica 代發）</span>
+        <div class="a-bub bot">✅ 已收到您的繳費證明，將盡快審核。<br>核准後會馬上通知您。</div>
+        <div class="a-botcard">
+          <div class="bc-head" style="display:flex;justify-content:space-between;align-items:center">🧾 繳費回執 <span class="bc-tag">球衣費 · NT$600</span></div>
+          <div class="a-ctl">
+            <div class="a-ctlrow"><span class="a-ctldot">✓</span><div><div class="a-ctlt">已收到繳費證明</div><div class="a-ctls">6/12 19:08</div></div></div>
+            <div class="a-ctlrow"><span class="a-ctldot now">●</span><div><div class="a-ctlt">幹部審核中</div><div class="a-ctls">通常 1 個工作天內完成</div></div></div>
+            <div class="a-ctlrow"><span class="a-ctldot todo">○</span><div><div class="a-ctlt">完成</div><div class="a-ctls">核准後會推播通知您</div></div></div>
+          </div>
+        </div>
+        <div class="a-actsrow">⧉ 複製　　↳ 追問</div>
+      </div>
+      ${chatComposer(false)}
+    </div>`),
+});
 
 /* ================= STATE ================= */
 const state = {

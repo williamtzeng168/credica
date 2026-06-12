@@ -25,6 +25,7 @@ COPY i18n.js /usr/share/nginx/html/
 COPY i18n-data.js /usr/share/nginx/html/
 COPY credica_logo.png /usr/share/nginx/html/
 COPY credica-mark.svg /usr/share/nginx/html/
+COPY credica-wordmark.png /usr/share/nginx/html/
 COPY og-image.png /usr/share/nginx/html/
 COPY credica_full.png /usr/share/nginx/html/
 COPY favicon-16.png /usr/share/nginx/html/
