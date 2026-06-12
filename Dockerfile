@@ -21,6 +21,7 @@ COPY business.html /usr/share/nginx/html/
 COPY pricing-data.js /usr/share/nginx/html/
 COPY enterprise.html /usr/share/nginx/html/
 COPY tutorial.html /usr/share/nginx/html/
+COPY pricing.html /usr/share/nginx/html/
 COPY i18n.js /usr/share/nginx/html/
 COPY i18n-data.js /usr/share/nginx/html/
 COPY credica_logo.png /usr/share/nginx/html/
