@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# ⛔ 已作廢（2026-06-12）：官網已遷移到 Zeabur Tokyo，舊 VM 43.166.141.134 到期不續。
+#    新部署流程見 DEPLOY.md（push GitHub → Zeabur Redeploy）。此腳本僅留作歷史參考。
+echo "⛔ deploy.sh 已作廢：官網已在 Zeabur（2026-06-12 遷移）。請看 DEPLOY.md。" >&2
+exit 1
+
 # Credica Landing Page → VM 部署腳本
 # 用法: ./deploy.sh "commit message"
 #       ./deploy.sh                    # 用預設 commit 訊息

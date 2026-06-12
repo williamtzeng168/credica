@@ -37,6 +37,9 @@
 | 設計風格 | Glassmorphism、CSS 3D Transforms |
 | 動畫 | CSS Animations + Intersection Observer |
 | 建構工具 | 無 — 純靜態網頁，直接開啟 index.html |
+| 部署 | **Zeabur Tokyo**（2026-06-12 起，見 [DEPLOY.md](DEPLOY.md)）；`deploy.sh` 舊 VM 流程已作廢 |
+
+> 🚀 **部署/DNS/驗證 SOP 一律看 [DEPLOY.md](DEPLOY.md)**。新增靜態檔要同步加 `Dockerfile` 的 `COPY` 行。
 
 ---
 
