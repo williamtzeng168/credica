@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>數位名片 · Credica</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/tokens.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+      background:var(--bg,#F4F5F7);color:var(--text,#0F1220);
+      min-height:100vh;min-height:100dvh;
+      display:flex;align-items:center;justify-content:center;
+      padding:24px;-webkit-font-smoothing:antialiased;
+    }
+    .card{
+      width:100%;max-width:420px;background:var(--surface,#fff);
+      border-radius:24px;padding:32px 26px 28px;
+      box-shadow:0 18px 48px rgba(15,18,32,0.10),0 0 0 1px rgba(15,18,32,0.05);
+      text-align:center;
+    }
+    .logo{width:56px;height:56px;border-radius:16px;margin:0 auto 18px;display:block;}
+    .eyebrow{font-size:13px;font-weight:700;color:var(--text-sub,#6B7280);letter-spacing:.3px;}
+    .who{font-size:26px;font-weight:800;letter-spacing:-0.4px;margin:8px 0 6px;line-height:1.25;}
+    .sub{font-size:14px;color:var(--text-sub,#6B7280);line-height:1.6;margin:18px 0 22px;}
+    .btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+      padding:16px;border-radius:14px;font-size:16px;font-weight:800;border:0;cursor:pointer;
+      text-decoration:none;transition:transform .06s,opacity .2s;}
+    .btn:active{transform:scale(0.98);}
+    .btn-primary{background:var(--navy,#1E2951);color:#fff;}
+    .btn-store{background:var(--surface,#fff);color:var(--text,#0F1220);
+      border:1.5px solid var(--border,rgba(15,18,32,0.12));}
+    .store-row{display:flex;gap:10px;margin-top:11px;}
+    .store-row .btn-store{margin-top:0;flex:1;font-size:14.5px;padding:14px;}
+    .foot{font-size:12px;color:var(--text-muted,#9CA3AF);line-height:1.6;margin-top:20px;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/credica-mark.svg" alt="Credica" class="logo">
+    <div class="eyebrow">數位名片</div>
+    <div class="who" id="who">有人想和你交換名片</div>
+    <div class="sub">用 Credica App 打開這個連結，對方的聯絡方式就會自動進你的名片夾。</div>
+    <a id="open-app" class="btn btn-primary" href="#">📱 用 Credica App 開啟</a>
+    <div class="store-row">
+      <a class="btn btn-store" href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580">App Store</a>
+      <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.credica.app">Google Play</a>
+    </div>
+    <div class="foot">還沒有 App？先下載 Credica，再回到這個畫面按「用 Credica App 開啟」。</div>
+  </div>
+
+  <script>
+    (function () {
+      // 兩種連結形式：
+      //   /card/<TOKEN>        — server token 短網址
+      //   /card?d=<base64url>  — 自帶簽章 payload（離線 fallback 形式）
+      var parts = location.pathname.split('/').filter(Boolean);
+      var token = (parts[0] === 'card' && parts[1]) ? parts[1] : '';
+      var d = new URLSearchParams(location.search).get('d');
+
+      // 深連結（給已安裝 App 的人手動按；universal link 已安裝者通常直接開 App）
+      var deep = token
+        ? 'credica://card/' + encodeURIComponent(token)
+        : (d ? 'credica://card?d=' + encodeURIComponent(d) : 'credica://');
+      document.getElementById('open-app').setAttribute('href', deep);
+
+      // 自帶 payload 形式可在不需登入的情況下預覽分享者姓名
+      if (d) {
+        try {
+          var b64 = d.replace(/-/g, '+').replace(/_/g, '/');
+          while (b64.length % 4) b64 += '=';
+          var payload = JSON.parse(decodeURIComponent(escape(atob(b64))));
+          if (payload && payload.name) {
+            document.getElementById('who').textContent = payload.name + ' 想和你交換名片';
+          }
+        } catch (e) { /* 預覽失敗不影響開啟 App */ }
+      }
+    })();
+  </script>
+</body>
+</html>

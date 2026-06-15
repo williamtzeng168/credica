@@ -5,11 +5,19 @@
       {
         "appID": "58D4U7PGKB.com.credica.app",
         "appIDs": ["58D4U7PGKB.com.credica.app"],
-        "paths": ["/join-code/*"],
+        "paths": ["/join-code/*", "/card", "/card/*"],
         "components": [
           {
             "/": "/join-code/*",
             "comment": "Org public join code — open the Credica app directly"
+          },
+          {
+            "/": "/card/*",
+            "comment": "Shared business card (short token link) — open in Credica"
+          },
+          {
+            "/": "/card",
+            "comment": "Shared business card (self-contained ?d= link) — open in Credica"
           }
         ]
       }
