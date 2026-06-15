@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.27-alpine
 
 # Remove default nginx config and content.
 # The echo token busts the BuildKit layer cache for all COPY steps below — bump
