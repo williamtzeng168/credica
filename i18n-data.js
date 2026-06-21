@@ -27,7 +27,8 @@ const I18N_DATA = {
       "scenes": "场景",
       "privacy": "隐私",
       "faq": "FAQ",
-      "download": "下载 App"
+      "download": "下载 App",
+      "login": "登录"
     },
     "hero": {
       "chip": "告别纸名片的时代",
@@ -252,7 +253,8 @@ const I18N_DATA = {
       "scenes": "Scenarios",
       "privacy": "Privacy",
       "faq": "FAQ",
-      "download": "Download App"
+      "download": "Download App",
+      "login": "Log in"
     },
     "hero": {
       "chip": "Say Goodbye to Paper Cards",
@@ -477,7 +479,8 @@ const I18N_DATA = {
       "scenes": "シーン",
       "privacy": "プライバシー",
       "faq": "FAQ",
-      "download": "アプリをダウンロード"
+      "download": "アプリをダウンロード",
+      "login": "ログイン"
     },
     "hero": {
       "chip": "紙の名刺にさよなら",
@@ -702,7 +705,8 @@ const I18N_DATA = {
       "scenes": "Tình huống",
       "privacy": "Bảo mật",
       "faq": "FAQ",
-      "download": "Tải App"
+      "download": "Tải App",
+      "login": "Đăng nhập"
     },
     "hero": {
       "chip": "Tạm biệt danh thiếp giấy",
@@ -927,7 +931,8 @@ const I18N_DATA = {
       "group": "แลกกลุ่ม",
       "scenes": "สถานการณ์",
       "privacy": "ความเป็นส่วนตัว",
-      "download": "ดาวน์โหลดแอป"
+      "download": "ดาวน์โหลดแอป",
+      "login": "เข้าสู่ระบบ"
     },
     "hero": {
       "chip": "บอกลานามบัตรกระดาษ",

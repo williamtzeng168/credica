@@ -102,6 +102,9 @@
   .nav-dl { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; text-decoration: none; }
   .nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
   .nav-dl svg { width: 16px; height: 16px; }
+.nav-login { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 0.7rem; padding: 0.6rem 1.3rem; background: transparent; color: #1E2951; border: 1px solid rgba(15,18,32,0.08); border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: inherit; transition: all 0.2s; }
+.nav-login:hover { border-color: #1E2951; background: rgba(30,41,81,0.05); }
+.nav-login svg { width: 16px; height: 16px; }
   .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
   .hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s ease; border-radius: 2px; }
   .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -115,6 +118,7 @@
   @media (max-width: 968px) {
     nav { padding: 1rem 1.5rem; }
     .nav-mid { display: none; }
+    .nav-login { display: none; }
     .hamburger { display: flex; }
     .mobile-menu { display: flex; }
   }
@@ -427,6 +431,10 @@
     <span></span>
     <span></span>
   </button>
+  <a href="https://dashboard.credica.app" class="nav-login" target="_blank" rel="noopener" data-i18n="nav.login">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+    登入
+  </a>
   <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     下載 App
@@ -438,6 +446,7 @@
   <a href="enterprise.html">企業方案</a>
   <a href="tutorial.html">互動教學</a>
   <a href="about.html" class="active">關於</a>
+  <a href="https://dashboard.credica.app" class="nav-dl" style="text-align:center;background:transparent;color:var(--teal);border:1px solid var(--border);box-shadow:none;" target="_blank" rel="noopener" data-i18n="nav.login">登入</a>
   <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener">下載 App</a>
 </div>
 
