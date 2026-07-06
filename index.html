@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>Credica — 把生活裡的人和事，串在一起</title>
 <meta name="description" content="共同創造體驗,合作不再費力。Credica 把人、事件、卡證串在一起,讓和你經歷過的所有人,一起繼續寫下次。">
-<meta name="keywords" content="數位生活, 組織管理, 活動憑證, 群組管理, 統一 QR, 數位錢包">
+<meta name="keywords" content="數位生活, 組織管理, 活動憑證, 現場交換, 統一 QR, 數位錢包">
 <meta property="og:title" content="Credica — 把生活裡的人和事，串在一起">
 <meta property="og:description" content="共同創造體驗,合作不再費力。">
 <meta property="og:type" content="website">
@@ -586,6 +586,64 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 .aps-canvas .a-navbar .bk { font-size: 17px; color: #4F46E5; padding: 8px 10px; font-weight: 500; }
 .aps-canvas .a-navbar .ttl { font-size: 16px; font-weight: 700; flex: 1; text-align: center; margin-right: 52px; }
 
+/* 統一頂欄（TabTopBar：頁名＋搜尋/鈴鐺，對齊 2026-07 IA） */
+.aps-canvas .a-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 18px 0; flex-shrink: 0;
+}
+.aps-canvas .a-topbar .t { font-size: 22px; font-weight: 800; letter-spacing: -0.3px; color: #0F172A; }
+.aps-canvas .a-topbar .tb-ics { display: flex; gap: 8px; }
+.aps-canvas .a-tbic {
+  width: 36px; height: 36px; border-radius: 9999px; background: #F8FAFC; color: #475569;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 16px; position: relative;
+}
+.aps-canvas .a-tbic .dot {
+  position: absolute; top: 6px; right: 7px; width: 8px; height: 8px;
+  border-radius: 9999px; background: #EF4444; border: 1.5px solid #fff;
+}
+
+/* 名片夾：現場交換亮點卡 + 排序膠囊 */
+.aps-canvas .a-promo {
+  margin: 2px 18px 10px; border-radius: 16px; padding: 13px 16px; color: #fff;
+  background: linear-gradient(135deg, #4F46E5, #6D28D9);
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 10px 24px rgba(79,70,229,0.28);
+}
+.aps-canvas .a-promo .ic { font-size: 24px; line-height: 1; }
+.aps-canvas .a-promo .tt { font-size: 14px; font-weight: 800; }
+.aps-canvas .a-promo .ss { font-size: 11.5px; opacity: 0.85; margin-top: 2px; }
+.aps-canvas .a-promo .go {
+  margin-left: auto; flex-shrink: 0; background: #fff; color: #4F46E5;
+  font-size: 12.5px; font-weight: 800; padding: 7px 14px; border-radius: 9999px;
+}
+.aps-canvas .a-sortpill {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;
+  padding: 8px 12px; border-radius: 9999px; background: #F8FAFC;
+  border: 1px solid rgba(15,23,42,0.07); font-size: 12px; font-weight: 700; color: #475569;
+}
+.aps-canvas .a-searchrow { display: flex; gap: 8px; align-items: center; margin: 0 18px 10px; }
+.aps-canvas .a-searchrow .a-search { flex: 1; margin: 0; }
+
+/* 卡夾：主卡 hero（小型漸層卡） */
+.aps-canvas .a-primcard {
+  margin: 6px 18px 12px; border-radius: 18px; padding: 14px 16px; color: #fff;
+  background: linear-gradient(135deg, #14B8A6, #0F766E);
+  box-shadow: 0 12px 26px rgba(15,118,110,0.28);
+  display: flex; align-items: center; gap: 12px;
+}
+.aps-canvas .a-primcard .lg { font-size: 26px; line-height: 1; }
+.aps-canvas .a-primcard .o { font-size: 11px; font-weight: 600; opacity: 0.85; }
+.aps-canvas .a-primcard .n { font-size: 16px; font-weight: 800; margin-top: 1px; }
+.aps-canvas .a-primcard .h { font-size: 11px; opacity: 0.8; margin-top: 3px; }
+.aps-canvas .a-primcard .show {
+  margin-left: auto; flex-shrink: 0; background: #fff; color: #0F766E;
+  font-size: 12.5px; font-weight: 800; padding: 7px 14px; border-radius: 9999px;
+}
+
+/* 收件匣：分段 + 助理列 */
+.aps-canvas .a-unreaddot { width: 9px; height: 9px; border-radius: 9999px; background: #4F46E5; flex-shrink: 0; }
+.aps-canvas .a-summary { padding: 4px 20px 6px; font-size: 12px; color: #94A3B8; font-weight: 600; }
+
 /* hero 名片卡（與 APP 我的名片漸層一致） */
 .aps-canvas .a-hero-card {
   margin: 12px 20px 16px; border-radius: 24px; padding: 22px 22px 18px; color: #fff;
@@ -927,7 +985,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 .aps-canvas .src-sys { background: #F1F5F9; color: #475569; }
 .aps-canvas .a-time { font-size: 11px; color: #94A3B8; flex-shrink: 0; }
 
-/* 底部 4-tab（對齊 APP CredicaBottomNav：名片/我的卡夾/AI 收件夾/我） */
+/* 底部 4-tab（對齊 APP CredicaBottomNav：名片/卡夾/收件匣/我） */
 .aps-canvas .a-tabbar {
   height: 80px; display: grid; grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid rgba(15,23,42,0.07); background: rgba(255,255,255,0.95);
@@ -1417,18 +1475,17 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">名片</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
               <span class="a-subtab on">我的名片</span>
               <span class="a-subtab">名片夾</span>
-              <span class="a-subtab">群組交換</span>
             </div>
             <div class="a-body">
-              <div class="a-head">
-                <span class="h">我的名片</span>
-                <span class="head-ic">✏️</span>
-              </div>
               <div class="a-hero-card">
-                <div class="a-hc-meta">已認證 · 主要名片</div>
+                <div class="a-hc-meta">工作 · 主要名片</div>
                 <div class="a-hc-name">陳品妤</div>
                 <div class="a-hc-line">LINE 暱稱：PinYu.C</div>
                 <div class="a-hc-chips">
@@ -1451,22 +1508,22 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <div class="a-action"><div class="ic">📷</div><div class="lb">掃描對方名片</div></div>
                 <div class="a-action"><div class="ic">✏️</div><div class="lb">編輯個人名片</div></div>
               </div>
-              <div class="a-sect">快速前往</div>
+              <div class="a-sect">快速操作</div>
               <div class="a-row" style="border-top:1px solid rgba(15,23,42,0.06)">
                 <div class="a-av av-i" style="border-radius:11px">👥</div>
-                <div class="bd"><div class="tt">建立群組交換</div><div class="ss">多人聚會時，用 6 字群組碼一次收齊大家的名片</div></div>
+                <div class="bd"><div class="tt">發起現場交換</div><div class="ss">多人聚會時，產生 8 字現場碼給朋友加入</div></div>
                 <span class="a-chev">›</span>
               </div>
               <div class="a-row">
                 <div class="a-av av-t" style="border-radius:11px">📇</div>
-                <div class="bd"><div class="tt">查看名片夾</div><div class="ss">42 張已收藏 · 公司同事 8 · 社團夥伴 12</div></div>
+                <div class="bd"><div class="tt">查看名片夾</div><div class="ss">找回交換過的人脈 · 42 張已收藏</div></div>
                 <span class="a-chev">›</span>
               </div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -1481,23 +1538,33 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">名片</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
               <span class="a-subtab">我的名片</span>
               <span class="a-subtab on">名片夾</span>
-              <span class="a-subtab">群組交換</span>
             </div>
             <div class="a-body">
-              <div class="a-head" style="display:block">
-                <span class="h">名片夾</span>
-                <div class="sub">42 張已收藏 · 最近交換 3 天前</div>
+              <div class="a-chips" style="padding-top:6px">
+                <span class="a-chip on">全部 <span class="n">42</span></span>
+                <span class="a-chip">公司 <span class="n">8</span></span>
+                <span class="a-chip">社團 <span class="n">12</span></span>
+                <span class="a-chip">活動 <span class="n">14</span></span>
+                <span class="a-chip">依分類</span>
               </div>
-              <div class="a-search">🔍 搜尋姓名 / 公司 / 社團</div>
-              <div class="a-chips">
-                <span class="a-chip on">最近交換</span>
-                <span class="a-chip">公司</span>
-                <span class="a-chip">社團</span>
-                <span class="a-chip">活動</span>
-                <span class="a-chip">A–Z</span>
+              <div class="a-promo">
+                <span class="ic">⚡</span>
+                <div>
+                  <div class="tt">現場交換</div>
+                  <div class="ss">聚會現場多人一次互換名片</div>
+                </div>
+                <span class="go">發起</span>
+              </div>
+              <div class="a-searchrow">
+                <div class="a-search">🔍 搜尋姓名 / 公司 / 社團</div>
+                <span class="a-sortpill">最近 ⇅</span>
               </div>
               <div class="a-group-h">📇 公司同事 <span class="cnt">8 張</span></div>
               <div class="a-row">
@@ -1524,24 +1591,20 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
               <div class="a-group-h">🎫 活動認識 <span class="cnt">14 張</span></div>
               <div class="a-row">
                 <div class="a-av av-t">吳</div>
-                <div class="bd"><div class="tt">吳佳穎</div><div class="ss">五月讀書會 · 2026-05-24</div></div>
+                <div class="bd"><div class="tt">吳佳穎</div><div class="ss">六月讀書會 · 2026-06-24</div></div>
                 <div class="tr"><span class="a-msg">💬</span>2 週前</div>
               </div>
-              <div class="a-row">
-                <div class="a-av av-s">許</div>
-                <div class="bd"><div class="tt">許志豪</div><div class="ss">春季會員大會 · 2026-04-26</div></div>
-                <div class="tr"><span class="a-msg">💬</span>1 個月前</div>
-              </div>
+              <div class="a-fab" style="font-size:13px;font-weight:800;width:auto;padding:0 20px;height:48px;border-radius:9999px">⇄ 交換</div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
 
-          <!-- ============ SCREEN 3 — 我的卡夾 tab · 卡夾（依組織分組） ============ -->
+          <!-- ============ SCREEN 3 — 卡夾 tab · 卡片（依組織分組） ============ -->
           <div class="app-screen" data-screen="2">
             <div class="a-status">
               <span>9:41</span>
@@ -1551,13 +1614,25 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">卡夾</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
-              <span class="a-subtab on">卡夾</span>
-              <span class="a-subtab">我的組織</span>
-              <span class="a-subtab">我的活動</span>
+              <span class="a-subtab on">卡片</span>
+              <span class="a-subtab">組織</span>
+              <span class="a-subtab">活動</span>
             </div>
             <div class="a-body">
-              <div class="a-search">🔍 搜尋卡片或組織…</div>
+              <div class="a-primcard">
+                <span class="lg">🏸</span>
+                <div>
+                  <div class="o">城東羽球社 · 主卡</div>
+                  <div class="n">正式會員證</div>
+                  <div class="h">持卡人 陳品妤 · 永久有效</div>
+                </div>
+                <span class="show">出示</span>
+              </div>
               <div class="a-vtoggle">
                 <span class="on">依組織</span>
                 <span>一起出示</span>
@@ -1576,17 +1651,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                   <span><span class="a-ogrp-name"><span class="star">★</span>城東羽球社</span><div class="a-ogrp-sub">3 張卡片</div></span>
                   <span class="a-ogrp-caret">▸</span>
                 </div>
-                <div class="a-wcard"><span class="a-wic g-teal">🪪</span><div style="flex:1"><div class="a-wt">正式會員證</div><div class="a-ws">編號 B-0142 · 2024 加入</div></div><span class="a-chev">›</span></div>
-                <div class="a-wcard"><span class="a-wic g-sky">✅</span><div style="flex:1"><div class="a-wt">球敘報到證明</div><div class="a-ws">例行球敘 · 已報到 9 次</div></div><span class="a-chev">›</span></div>
+                <div class="a-wcard"><span class="a-wic g-teal">🪪</span><div style="flex:1"><div class="a-wt">正式會員證</div><div class="a-ws">會員卡 · 政府認證 · 永久有效</div></div><span class="a-chev">›</span></div>
+                <div class="a-wcard"><span class="a-wic g-sky">✅</span><div style="flex:1"><div class="a-wt">球敘報到證明</div><div class="a-ws">報到證明 · 已報到 9 次</div></div><span class="a-chev">›</span></div>
               </div>
-              <div class="a-ogrp open">
+              <div class="a-ogrp">
                 <div class="a-ogrp-head">
                   <span class="a-ogrp-logo g-amber">⛰️</span>
-                  <span><span class="a-ogrp-name"><span class="star">★</span>山嵐登山協會</span><div class="a-ogrp-sub">2 張卡片</div></span>
+                  <span><span class="a-ogrp-name"><span class="star">★</span>山嵐登山協會</span><div class="a-ogrp-sub">2 張卡片 · 點開查看</div></span>
                   <span class="a-ogrp-caret">▸</span>
                 </div>
-                <div class="a-wcard"><span class="a-wic g-amber">🪪</span><div style="flex:1"><div class="a-wt">隊員證</div><div class="a-ws">A 級路線 · 2027/03 到期</div></div><span class="a-chev">›</span></div>
-                <div class="a-wcard"><span class="a-wic g-sky">✅</span><div style="flex:1"><div class="a-wt">登頂報到證明</div><div class="a-ws">合歡主峰 · 已報到 4 次</div></div><span class="a-chev">›</span></div>
               </div>
               <div class="a-ogrp">
                 <div class="a-ogrp-head">
@@ -1595,18 +1668,11 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                   <span class="a-ogrp-caret">▸</span>
                 </div>
               </div>
-              <div class="a-ogrp">
-                <div class="a-ogrp-head">
-                  <span class="a-ogrp-logo g-indigo">🏢</span>
-                  <span><span class="a-ogrp-name">澄光創意</span><div class="a-ogrp-sub">2 張卡片 · 點開查看</div></span>
-                  <span class="a-ogrp-caret">▸</span>
-                </div>
-              </div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -1624,25 +1690,26 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
               </div>
               <div style="display:flex;align-items:center;padding:4px 16px;">
                 <span style="font-size:17px;">‹</span>
-                <span style="flex:1;text-align:center;font-size:16px;font-weight:700;margin-right:17px;">我的報到碼</span>
+                <span style="flex:1;text-align:center;font-size:16px;font-weight:700;margin-right:17px;">活動報到</span>
               </div>
               <div class="a-ck-org">城東羽球社</div>
-              <div class="a-ck-ev">六月例行球敘</div>
+              <div class="a-ck-ev">七月例行球敘</div>
+              <div class="a-ck-refresh" style="margin-top:12px;opacity:0.9">請向主辦方出示</div>
               <div class="a-ck-qr">
                 <svg viewBox="0 0 60 60"><rect width="60" height="60" fill="#fff"/><g fill="#0F172A"><rect x="4" y="4" width="14" height="14"/><rect x="6" y="6" width="10" height="10" fill="#fff"/><rect x="9" y="9" width="4" height="4"/><rect x="42" y="4" width="14" height="14"/><rect x="44" y="6" width="10" height="10" fill="#fff"/><rect x="47" y="9" width="4" height="4"/><rect x="4" y="42" width="14" height="14"/><rect x="6" y="44" width="10" height="10" fill="#fff"/><rect x="9" y="47" width="4" height="4"/><rect x="22" y="6" width="3" height="3"/><rect x="28" y="6" width="3" height="3"/><rect x="34" y="6" width="3" height="3"/><rect x="22" y="12" width="3" height="3"/><rect x="32" y="12" width="3" height="3"/><rect x="20" y="18" width="3" height="3"/><rect x="26" y="18" width="3" height="3"/><rect x="36" y="18" width="3" height="3"/><rect x="22" y="24" width="3" height="3"/><rect x="30" y="24" width="3" height="3"/><rect x="42" y="24" width="3" height="3"/><rect x="48" y="24" width="3" height="3"/><rect x="24" y="30" width="3" height="3"/><rect x="34" y="30" width="3" height="3"/><rect x="44" y="30" width="3" height="3"/><rect x="50" y="30" width="3" height="3"/><rect x="22" y="36" width="3" height="3"/><rect x="32" y="36" width="3" height="3"/><rect x="40" y="36" width="3" height="3"/><rect x="46" y="36" width="3" height="3"/><rect x="52" y="36" width="3" height="3"/><rect x="24" y="42" width="3" height="3"/><rect x="30" y="42" width="3" height="3"/><rect x="36" y="42" width="3" height="3"/><rect x="42" y="42" width="3" height="3"/><rect x="22" y="48" width="3" height="3"/><rect x="28" y="48" width="3" height="3"/><rect x="38" y="48" width="3" height="3"/><rect x="44" y="48" width="3" height="3"/><rect x="50" y="48" width="3" height="3"/></g></svg>
               </div>
-              <div class="a-ck-refresh">🔄 1:25 後自動刷新</div>
+              <div class="a-ck-refresh">🔄 28 分鐘後到期，可隨時重新產生</div>
               <div class="a-ck-name">陳品妤</div>
-              <div class="a-ck-code">7M2KQ8</div>
-              <div class="a-ck-tip">請現場工作人員掃此 QR 完成報到<br>掃描失敗可念出上方 6 字代碼</div>
+              <div class="a-ck-code">7 3 4 2</div>
+              <div class="a-ck-tip">QR 掃描失敗時，可念上方代碼給工作人員</div>
               <div class="a-ck-ctas">
+                <span class="a-ck-cta">🔄 重新產生</span>
                 <span class="a-ck-cta">📍 活動位置</span>
-                <span class="a-ck-cta">📞 主辦聯絡</span>
               </div>
             </div>
           </div>
 
-          <!-- ============ SCREEN 5 — AI 收件夾 ============ -->
+          <!-- ============ SCREEN 5 — 收件匣（AI 助理） ============ -->
           <div class="app-screen" data-screen="4">
             <div class="a-status">
               <span>9:41</span>
@@ -1652,64 +1719,56 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">收件匣</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span></span>
+            </div>
+            <div class="a-subtabs">
+              <span class="a-subtab on">AI 助理</span>
+              <span class="a-subtab">通知</span>
+              <span class="a-subtab">更新</span>
+            </div>
             <div class="a-body">
-              <div class="a-head">
-                <span class="h">AI 收件夾</span>
-                <span class="a-unreadpill">3 則未讀</span>
-              </div>
-              <div class="a-chips" style="padding-top:8px">
-                <span class="a-chip on">全部 <span class="n">12</span></span>
-                <span class="a-chip">APP 推播 <span class="n">3</span></span>
-                <span class="a-chip">LINE 助理 <span class="n">2</span></span>
-                <span class="a-chip">系統通知 <span class="n">2</span></span>
-              </div>
-              <div class="a-day">今天</div>
-              <div class="a-row unread">
+              <div class="a-summary">3 則未讀 · 每個組織都有自己的助理</div>
+              <div class="a-row unread" style="border-top:1px solid rgba(15,23,42,0.06)">
                 <div class="a-av av-t">羽</div>
                 <div class="bd">
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">城東羽球社</span><span class="a-time">14:32</span></div>
-                  <div class="a-prev">📣 六月例行球敘 明天 19:00 開打，記得帶球拍，已經 18 人報名了</div>
-                  <span class="a-src src-app">APP 推播</span>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">城東羽球社 助理</span><span class="a-time">14:32</span></div>
+                  <div class="a-prev">📣 七月例行球敘 明天 19:00 開打，記得帶球拍，已經 18 人報名了</div>
                 </div>
+                <span class="a-unreaddot"></span>
               </div>
               <div class="a-row unread">
                 <div class="a-av av-a">山</div>
                 <div class="bd">
                   <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">山嵐登山協會 助理</span><span class="a-time">11:08</span></div>
-                  <div class="a-prev">品妤您好，合歡北峰兩日行 報名已完成，活動報到 QR 已放進您的「我的活動」</div>
-                  <span class="a-src src-line">LINE 助理</span>
+                  <div class="a-prev">品妤您好，合歡北峰兩日行 報名已完成，活動當天從「今天 / 待辦」一鍵報到</div>
                 </div>
+                <span class="a-unreaddot"></span>
               </div>
               <div class="a-row unread">
-                <div class="a-av av-k">C</div>
+                <div class="a-av av-i">澄</div>
                 <div class="bd">
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">Credica 系統</span><span class="a-time">09:00</span></div>
-                  <div class="a-prev">新版本已可下載，本次更新了名片群組交換、AI 收件夾與組織助理對話</div>
-                  <span class="a-src src-sys">系統</span>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">澄光創意 助理</span><span class="a-time">09:12</span></div>
+                  <div class="a-prev">📚 七月讀書會主題確定：《打造第二大腦》，會議室 B 見</div>
                 </div>
+                <span class="a-unreaddot"></span>
               </div>
-              <div class="a-day">昨天</div>
               <div class="a-row">
                 <div class="a-av av-p">C</div>
                 <div class="bd">
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">Credica 助理</span><span class="a-time">昨天 21:14</span></div>
-                  <div class="a-prev">您好，我是 Credica 助理。APP 怎麼用、加入組織、客服都可以問我 ›</div>
-                  <span class="a-src src-line">LINE 助理</span>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">Credica 助理</span><span class="a-time">昨天</span></div>
+                  <div class="a-prev">嗨，我是 Credica 助理。可以問我「APP 怎麼用」、「加入組織」、「卡夾說明」</div>
                 </div>
               </div>
-              <div class="a-row">
-                <div class="a-av av-i">澄</div>
-                <div class="bd">
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span class="tt">澄光創意</span><span class="a-time">昨天 16:45</span></div>
-                  <div class="a-prev">📚 六月讀書會主題確定：《打造第二大腦》，會議室 B 見</div>
-                  <span class="a-src src-app">APP 推播</span>
-                </div>
+              <div style="margin:14px 20px 0;background:#F7F7FF;border:1px solid rgba(79,70,229,0.18);border-radius:12px;padding:10px 14px;font-size:12px;color:#4338CA;line-height:1.6">
+                💬 像聊天一樣問：會費繳了沒、下次活動哪天、報名成功了沒 — 助理用你的真實資料回答
               </div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -1752,7 +1811,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       <div class="story-step-num">02</div>
       <div class="story-step-emoji">👥</div>
       <h3>同行</h3>
-      <p>建群組,大家一次加入。<br>誰報名、誰已到,一目了然。</p>
+      <p>發起現場交換,大家一次加入。<br>誰報名、誰已到,一目了然。</p>
     </div>
     <div class="story-step-arrow" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -1785,11 +1844,11 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="scenes-tabs-wrap">
     <!-- 左欄:5 個 tab -->
     <div class="scenes-tabs" role="tablist" aria-label="生活場景">
-      <button class="scene-tab active" data-scene="0" type="button" role="tab" aria-selected="true" aria-label="場景 1 群組收齊一群人">
+      <button class="scene-tab active" data-scene="0" type="button" role="tab" aria-selected="true" aria-label="場景 1 現場交換收齊一群人">
         <span class="st-emoji" aria-hidden="true">👥</span>
         <span class="st-text">
           <span class="st-num">場景 1</span>
-          <span class="st-title">群組,收齊一群人</span>
+          <span class="st-title">現場交換,收齊一群人</span>
         </span>
       </button>
       <button class="scene-tab" data-scene="1" type="button" role="tab" aria-selected="false" aria-label="場景 2 合作關係一目了然">
@@ -1824,7 +1883,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 
     <!-- 中欄:phone mockup 切換 -->
     <div class="scenes-phone">
-      <!-- ===== 場景 1 — 名片 tab · 群組交換（真實畫面 · 假資料） ===== -->
+      <!-- ===== 場景 1 — 現場交換 hub（真實畫面 · 假資料） ===== -->
       <div class="scene-phone active" data-scene="0">
         <div class="sp-frame">
           <div class="aps-canvas">
@@ -1835,22 +1894,21 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="22" height="11" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
-            <div class="a-subtabs">
-              <span class="a-subtab">我的名片</span>
-              <span class="a-subtab">名片夾</span>
-              <span class="a-subtab on">群組交換</span>
+            <div class="a-navbar">
+              <span class="bk">‹</span>
+              <span class="ttl">現場交換</span>
+              <span style="font-size:14px;color:#4F46E5;font-weight:700;padding:8px 10px">加入</span>
             </div>
             <div class="a-body">
-              <div class="a-head" style="display:block">
-                <span class="h">群組交換</span>
-                <div class="sub">多人聚會時，用 6 字群組碼一次把大家的名片收齊</div>
+              <div class="a-head" style="display:block;padding-top:10px">
+                <div class="sub" style="margin-top:0">多人聚會時，用 8 字現場碼一次把大家的名片收齊</div>
               </div>
-              <div class="a-group-h">我建立的群組 <span class="cnt">2 個進行中</span></div>
+              <div class="a-group-h">我發起的 <span class="cnt">2 個進行中</span></div>
               <div class="a-row">
                 <div class="a-av av-t" style="border-radius:13px;width:46px;height:46px;font-size:22px">🏸</div>
                 <div class="bd">
-                  <div class="tt">球敘後聚餐名片群</div>
-                  <div class="ss" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">建立於 6/06 · <span class="a-gcode">R7K2MQ</span> <span class="a-gcount">已換 12 張</span></div>
+                  <div class="tt">球敘後聚餐交換</div>
+                  <div class="ss" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">7/04 發起 · <span class="a-gcode">R7K2MQ4X</span> <span class="a-gcount">已換 12 張</span></div>
                 </div>
                 <span class="a-chev">›</span>
               </div>
@@ -1858,26 +1916,26 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <div class="a-av av-r" style="border-radius:13px;width:46px;height:46px;font-size:22px">🎂</div>
                 <div class="bd">
                   <div class="tt">品妤生日聚</div>
-                  <div class="ss" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">建立於 5/30 · <span class="a-gcode">B3X9TL</span> <span class="a-gcount">已換 24 張</span></div>
+                  <div class="ss" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">6/27 發起 · <span class="a-gcode">B3X9TL2W</span> <span class="a-gcount">已換 24 張</span></div>
                 </div>
                 <span class="a-chev">›</span>
               </div>
-              <div class="a-group-h">我加入的群組 <span class="cnt">1 個進行中</span></div>
+              <div class="a-group-h">我加入的 <span class="cnt">1 個進行中</span></div>
               <div class="a-row">
                 <div class="a-av av-i" style="border-radius:13px;width:46px;height:46px;font-size:22px">📖</div>
                 <div class="bd">
-                  <div class="tt">五月讀書會交流群</div>
-                  <div class="ss" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">加入於 5/24 · <span class="a-gcode">M2H6QD</span> <span class="a-gcount">已換 8 張</span></div>
+                  <div class="tt">六月讀書會交流</div>
+                  <div class="ss" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">6/24 加入 · <span class="a-gcode">M2H6QD7E</span> <span class="a-gcount">已換 8 張</span></div>
                 </div>
                 <span class="a-chev">›</span>
               </div>
-              <div class="a-dashed">👇 點右下角 <b>＋</b> 開新群組<br>把群組碼念給朋友，現場就能一起加入</div>
+              <div class="a-dashed">👇 點右下角 <b>＋</b> 發起現場交換<br>把 8 字現場碼念給朋友，現場就能一起加入</div>
               <div class="a-fab">＋</div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -1885,7 +1943,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
         </div>
       </div>
 
-      <!-- ===== 場景 2 — 我的卡夾 tab · 我的組織 ===== -->
+      <!-- ===== 場景 2 — 卡夾 tab · 組織 ===== -->
       <div class="scene-phone" data-scene="1">
         <div class="sp-frame">
           <div class="aps-canvas">
@@ -1896,24 +1954,22 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="22" height="11" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">卡夾</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
-              <span class="a-subtab">卡夾</span>
-              <span class="a-subtab on">我的組織</span>
-              <span class="a-subtab">我的活動</span>
+              <span class="a-subtab">卡片</span>
+              <span class="a-subtab on">組織</span>
+              <span class="a-subtab">活動</span>
             </div>
             <div class="a-body">
-              <div class="a-head" style="display:block">
-                <span class="h">我的組織</span>
-                <div class="sub">您是 5 個組織的成員 · 點按 📌 置頂常用</div>
-              </div>
-              <div class="a-group-h">📨 待接受邀請 <span class="cnt">1 個</span></div>
-              <div class="a-orgrow">
-                <div class="a-thumb g-sky" style="width:42px;height:42px;font-size:20px">📷</div>
-                <div style="flex:1;min-width:0">
-                  <div class="a-orgname">風城攝影學會</div>
-                  <div class="a-orgmeta"><span class="a-tag brand">社團</span><span class="a-tag warn">邀請你成為「一般會員」</span></div>
-                </div>
-                <span class="a-pill p-warn">待接受</span>
+              <div class="a-summary">您是 5 個組織的成員 · 點按 📌 置頂常用</div>
+              <div class="a-chips" style="padding-top:2px">
+                <span class="a-chip on">置頂優先</span>
+                <span class="a-chip">最近活動</span>
+                <span class="a-chip">會費到期</span>
+                <span class="a-chip">A–Z</span>
               </div>
               <div class="a-group-h">🌟 已置頂 <span class="cnt">2 個</span></div>
               <div class="a-orgrow pinned">
@@ -1928,7 +1984,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <div class="a-thumb g-amber" style="width:42px;height:42px;font-size:20px">⛰️</div>
                 <div style="flex:1;min-width:0">
                   <div class="a-orgname">山嵐登山協會 <span class="a-verify">✓</span></div>
-                  <div class="a-orgmeta"><span class="a-tag brand">社團</span><span class="a-tag">幹部</span><span class="a-tag">下次活動 6/20</span></div>
+                  <div class="a-orgmeta"><span class="a-tag brand">社團</span><span class="a-tag">活動負責</span><span class="a-tag">下次活動 7/18</span></div>
                 </div>
                 <span class="a-pin on">📌</span>
               </div>
@@ -1937,7 +1993,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <div class="a-thumb g-indigo" style="width:42px;height:42px;font-size:20px">🏢</div>
                 <div style="flex:1;min-width:0">
                   <div class="a-orgname">澄光創意 <span class="a-verify">✓</span></div>
-                  <div class="a-orgmeta"><span class="a-tag brand">公司</span><span class="a-tag">員工</span></div>
+                  <div class="a-orgmeta"><span class="a-tag brand">公司</span><span class="a-tag">會員</span></div>
                 </div>
                 <span class="a-pin">📌</span>
               </div>
@@ -1953,15 +2009,19 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <span class="ico">＋</span>
                 <div style="flex:1">
                   <div class="t">加入新組織</div>
-                  <div class="s">輸入邀請碼、掃 QR、或點開朋友寄的邀請連結</div>
+                  <div class="s">輸入加入碼 · 或掃 QR</div>
                 </div>
                 <span class="a-chev">›</span>
+              </div>
+              <div style="text-align:center;padding:2px 0 0">
+                <span style="font-size:13px;color:#94A3B8">想自己開一個組織？</span>
+                <span style="font-size:13px;color:#4F46E5;font-weight:700">申請建立 ›</span>
               </div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -1969,7 +2029,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
         </div>
       </div>
 
-      <!-- ===== 場景 3 — 我的卡夾 tab · 我的活動（今天/待辦） ===== -->
+      <!-- ===== 場景 3 — 卡夾 tab · 活動（今天/待辦） ===== -->
       <div class="scene-phone" data-scene="2">
         <div class="sp-frame">
           <div class="aps-canvas">
@@ -1980,20 +2040,25 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="22" height="11" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">卡夾</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
-              <span class="a-subtab">卡夾</span>
-              <span class="a-subtab">我的組織</span>
-              <span class="a-subtab on">我的活動</span>
+              <span class="a-subtab">卡片</span>
+              <span class="a-subtab">組織</span>
+              <span class="a-subtab on">活動</span>
             </div>
             <div class="a-body">
+              <div class="a-summary">即將 2 · 已結束 7</div>
               <div class="a-todo">
-                <div class="a-todo-head"><span>今天 / 待辦</span><span class="cnt">3</span><span class="sub">跨 3 個組織</span></div>
+                <div class="a-todo-head"><span>今天 / 待辦</span><span class="cnt">2</span><span class="sub">跨 2 個組織</span></div>
                 <div class="a-todo-item">
                   <span class="a-todo-ic g-teal">📍</span>
                   <div style="flex:1;min-width:0">
                     <div class="a-todo-org">城東羽球社</div>
-                    <div class="a-todo-title">六月例行球敘</div>
-                    <div class="a-todo-meta">今天 19:00 · 大安運動中心</div>
+                    <div class="a-todo-title">七月例行球敘</div>
+                    <div class="a-todo-meta">今天 19:00 開始 · 大安運動中心</div>
                   </div>
                   <span class="a-act-btn a-act-checkin">🟢 報到</span>
                 </div>
@@ -2001,19 +2066,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                   <span class="a-todo-ic g-amber">💰</span>
                   <div style="flex:1;min-width:0">
                     <div class="a-todo-org">山嵐登山協會</div>
-                    <div class="a-todo-title">合歡北峰兩日行 行程費</div>
-                    <div class="a-todo-meta">NT$2,400 · 今天截止</div>
+                    <div class="a-todo-title">合歡北峰兩日行</div>
+                    <div class="a-todo-meta">待繳 NT$ 2,400</div>
                   </div>
-                  <span class="a-act-btn a-act-pay">繳費 ›</span>
-                </div>
-                <div class="a-todo-item">
-                  <span class="a-todo-ic g-indigo">📖</span>
-                  <div style="flex:1;min-width:0">
-                    <div class="a-todo-org">澄光創意</div>
-                    <div class="a-todo-title">六月讀書會《打造第二大腦》</div>
-                    <div class="a-todo-meta">今天 19:30 開始</div>
-                  </div>
-                  <span class="a-act-btn a-act-go">查看 ›</span>
+                  <span class="a-act-btn a-act-pay">去繳費 ›</span>
                 </div>
               </div>
               <div class="a-sect">我報名的活動 <span style="font-weight:600">· 全部 9 場</span></div>
@@ -2021,13 +2077,13 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <div class="a-reg-date today"><div class="d">12</div><div class="m">今天</div></div>
                 <div class="bd" style="flex:1;min-width:0">
                   <div class="a-todo-org">城東羽球社</div>
-                  <div class="a-todo-title">六月例行球敘</div>
+                  <div class="a-todo-title">七月例行球敘</div>
                   <div class="a-todo-meta">19:00 · 大安運動中心</div>
                 </div>
                 <span class="a-pill p-brand">已報名</span>
               </div>
               <div class="a-reg-row">
-                <div class="a-reg-date"><div class="d">20</div><div class="m">六月</div></div>
+                <div class="a-reg-date"><div class="d">18</div><div class="m">七月</div></div>
                 <div class="bd" style="flex:1;min-width:0">
                   <div class="a-todo-org">山嵐登山協會</div>
                   <div class="a-todo-title">合歡北峰兩日行</div>
@@ -2036,28 +2092,28 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <span class="a-pill p-warn">待繳費</span>
               </div>
               <div class="a-reg-row">
-                <div class="a-reg-date"><div class="d">24</div><div class="m">五月</div></div>
+                <div class="a-reg-date"><div class="d">24</div><div class="m">六月</div></div>
                 <div class="bd" style="flex:1;min-width:0">
                   <div class="a-todo-org">晨光讀書會</div>
-                  <div class="a-todo-title">五月讀書會《原子習慣》</div>
-                  <div class="a-todo-meta">已出席 · 已收到報到證明</div>
+                  <div class="a-todo-title">六月讀書會《原子習慣》</div>
+                  <div class="a-todo-meta">已報到 · 報到證明已進卡夾</div>
                 </div>
-                <span class="a-pill p-mut">已出席</span>
+                <span class="a-pill p-mut">已報到</span>
               </div>
               <div class="a-reg-row">
-                <div class="a-reg-date"><div class="d">09</div><div class="m">五月</div></div>
+                <div class="a-reg-date"><div class="d">09</div><div class="m">六月</div></div>
                 <div class="bd" style="flex:1;min-width:0">
                   <div class="a-todo-org">城東羽球社</div>
-                  <div class="a-todo-title">五月例行球敘</div>
-                  <div class="a-todo-meta">已出席 · 已收到報到證明</div>
+                  <div class="a-todo-title">六月例行球敘</div>
+                  <div class="a-todo-meta">已報到 · 報到證明已進卡夾</div>
                 </div>
-                <span class="a-pill p-mut">已出席</span>
+                <span class="a-pill p-mut">已報到</span>
               </div>
             </div>
             <div class="a-tabbar">
               <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -2065,7 +2121,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
         </div>
       </div>
 
-      <!-- ===== 場景 4 — 我的卡夾 tab · 卡夾（依組織滿載） ===== -->
+      <!-- ===== 場景 4 — 卡夾 tab · 卡片（依組織滿載） ===== -->
       <div class="scene-phone" data-scene="3">
         <div class="sp-frame">
           <div class="aps-canvas">
@@ -2076,17 +2132,21 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="22" height="11" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">卡夾</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
-              <span class="a-subtab on">卡夾</span>
-              <span class="a-subtab">我的組織</span>
-              <span class="a-subtab">我的活動</span>
+              <span class="a-subtab on">卡片</span>
+              <span class="a-subtab">組織</span>
+              <span class="a-subtab">活動</span>
             </div>
             <div class="a-body">
-              <div class="a-search">🔍 搜尋卡片或組織…</div>
-              <div class="a-vtoggle">
+              <div class="a-vtoggle" style="margin-top:2px">
                 <span class="on">依組織</span>
                 <span>一起出示</span>
               </div>
+              <div class="a-search">🔍 搜尋卡片或組織…</div>
               <div class="a-sect">依組織分組 <span style="font-weight:600">· 5 個組織 · 11 張</span></div>
               <div class="a-ogrp open">
                 <div class="a-ogrp-head">
@@ -2131,8 +2191,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
             </div>
             <div class="a-tabbar">
               <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -2140,7 +2200,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
         </div>
       </div>
 
-      <!-- ===== 場景 5 — 我的卡夾 tab · 一起出示（一個 QR 驗多張） ===== -->
+      <!-- ===== 場景 5 — 卡夾 tab · 一起出示（一個 QR 驗多張） ===== -->
       <div class="scene-phone" data-scene="4">
         <div class="sp-frame">
           <div class="aps-canvas">
@@ -2151,13 +2211,17 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
                 <svg width="22" height="11" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/></svg>
               </span>
             </div>
+            <div class="a-topbar">
+              <span class="t">卡夾</span>
+              <span class="tb-ics"><span class="a-tbic">🔍</span><span class="a-tbic">🔔<span class="dot"></span></span></span>
+            </div>
             <div class="a-subtabs">
-              <span class="a-subtab on">卡夾</span>
-              <span class="a-subtab">我的組織</span>
-              <span class="a-subtab">我的活動</span>
+              <span class="a-subtab on">卡片</span>
+              <span class="a-subtab">組織</span>
+              <span class="a-subtab">活動</span>
             </div>
             <div class="a-body">
-              <div class="a-vtoggle" style="margin-top:4px">
+              <div class="a-vtoggle" style="margin-top:2px">
                 <span>依組織</span>
                 <span class="on">一起出示</span>
               </div>
@@ -2198,8 +2262,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
             </div>
             <div class="a-tabbar">
               <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16.5c.7-1.6 1.7-2.3 3-2.3s2.3.7 3 2.3"/><path d="M14.5 9h4M14.5 13h3"/></svg><span>名片</span></div>
-              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>我的卡夾</span></div>
-              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>AI 收件夾</span><span class="a-badge">3</span></div>
+              <div class="a-tab on"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg><span>卡夾</span></div>
+              <div class="a-tab"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg><span>收件匣</span><span class="a-badge">3</span></div>
               <div class="a-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.3-3.2 4-4.8 7-4.8s5.7 1.6 7 4.8"/></svg><span>我</span></div>
             </div>
           </div>
@@ -2211,8 +2275,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     <!-- 右欄:描述文案切換 -->
     <div class="scenes-desc">
       <div class="scene-desc active" data-scene="0">
-        <h3>群組,收齊一群人</h3>
-        <p>同學會、健行隊、聚會臨時群——你建群組,大家一次加入,聯絡資訊一次收齊。<br>不用再一個個加 LINE,也不用怕誰漏掉。</p>
+        <h3>現場交換,收齊一群人</h3>
+        <p>同學會、健行隊、聚會現場——你發起現場交換,大家用 8 字現場碼一次加入,名片一次收齊。<br>不用再一個個加 LINE,也不用怕誰漏掉。</p>
       </div>
       <div class="scene-desc" data-scene="1">
         <h3>合作關係,一目了然</h3>
@@ -2246,7 +2310,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
       <h3>人 — 一群一群地連</h3>
-      <p>一個 QR 加入整個社團、一個群組收齊所有同學會夥伴——不再一個個加,也不會再有誰漏掉。</p>
+      <p>一個 QR 加入整個社團、一場現場交換收齊所有同學會夥伴——不再一個個加,也不會再有誰漏掉。</p>
     </div>
     <div class="value-card">
       <div class="v-icon">
@@ -2325,7 +2389,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     </details>
     <details class="faq-item">
       <summary>我的人和卡證資料安全嗎?</summary>
-      <p>資料儲存在你手機,不是我們的伺服器。即使我們關門,你的聯絡人、群組、卡證也還在你手機裡。分享給合作對象時,你可以選擇要分享哪些欄位,連名字都可以隱藏。你隨時可以匯出或刪除所有資料。</p>
+      <p>資料儲存在你手機,不是我們的伺服器。即使我們關門,你的聯絡人、名片、卡證也還在你手機裡。分享給合作對象時,你可以選擇要分享哪些欄位,連名字都可以隱藏。你隨時可以匯出或刪除所有資料。</p>
     </details>
     <details class="faq-item">
       <summary>有 Android 版嗎?</summary>
