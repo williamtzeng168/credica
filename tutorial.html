@@ -4724,8 +4724,15 @@ document.getElementById('freeRoamSwitch').addEventListener('click', (e) => {
 });
 
 /* ================= INIT ================= */
-renderSidebar();
-renderStage();
+// Deep link：tutorial.html?f=<課程id> 直接開該課（APP 助理教學連結卡連入）。
+// 無效 id 落回第 1 課，行為與直接開頁相同。
+const deepLinkFeature = Number(new URLSearchParams(location.search).get('f'));
+if (deepLinkFeature && findFeature(deepLinkFeature)) {
+  selectFeature(deepLinkFeature);
+} else {
+  renderSidebar();
+  renderStage();
+}
 </script>
 
 </body>
