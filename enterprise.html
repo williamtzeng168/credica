@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Credica 企業方案 — 員工證照與資格，變成可驗證、不出錯的事</title>
-<meta name="description" content="給人資、工安、法遵與稽核單位——Credica 把員工的證照與訓練資格做成可驗證的數位證照，一掃知真偽、到期自動提醒、稽核報告即時產出。">
-<meta name="keywords" content="員工證照管理, 數位證照, 法遵, 工安, 稽核, 證照到期提醒">
+<title>Credica 企業方案 — 每張名片都帶著公司認證，掃一下信任當場成立</title>
+<meta name="description" content="給在意品牌與商譽的企業——Credica 讓全公司名片由公司統一發行、帶企業認證標記：客戶掃一下當場確認真實身分，商務關係備存到公司，ESG 看得見。">
+<meta name="keywords" content="企業數位名片, 防冒名, 名片詐騙, 企業認證, 離職名片失效, ESG, 數位名片管理">
 <link rel="icon" type="image/svg+xml" href="credica-mark.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="canonical" href="https://credica.app/enterprise.html">
-<meta property="og:title" content="Credica 企業方案 — 員工證照與資格，變成可驗證、不出錯的事">
-<meta property="og:description" content="員工的證照與訓練資格做成可驗證的數位證照，一掃知真偽、到期自動提醒、稽核報告即時產出。">
+<meta property="og:title" content="Credica 企業方案 — 每張名片都帶著公司認證，掃一下信任當場成立">
+<meta property="og:description" content="全公司名片統一發行、帶企業認證標記——客戶掃一下當場確認真實身分，企業識別永遠一致，商務關係留在公司。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://credica.app/enterprise.html">
 <meta property="og:image" content="https://credica.app/og-image.png">
@@ -164,6 +164,8 @@
     font-size: clamp(1.95rem, 7vw, 2.85rem);
     font-weight: 800; letter-spacing: -0.03em; line-height: 1.18;
   }
+  .m-br { display: none; }
+  @media (max-width: 719px) { .m-br { display: inline; } }
   .hero-sub {
     margin: 1.1rem auto 0;
     max-width: 540px;
@@ -200,7 +202,7 @@
   .btn-outline:hover { transform: translateY(-2px); background: var(--navy-tint); }
   .btn-outline svg { width: 16px; height: 16px; }
 
-  /* ====================== HERO STAGE: 兩種星期一 ====================== */
+  /* ====================== HERO STAGE: 同一張名片，兩種下場 ====================== */
   .hero-stage {
     margin: 2.25rem auto 0;
     max-width: 520px;
@@ -275,209 +277,82 @@
   }
   .cap-gain svg { width: 13px; height: 13px; }
 
-  /* ====================== AI 助理 ====================== */
-  .ai { background: linear-gradient(155deg, var(--navy), var(--navy-deep)); color: #fff; }
-  .ai .sec-kicker { background: rgba(255,255,255,0.14); color: #fff; }
-  .ai .sec-title { color: #fff; }
-  .ai .sec-desc { color: rgba(255,255,255,0.80); }
-  .ai-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
-  .line-green { --line-green: #06C755; }
-  /* App 對話示意（Credica App · AI 收件夾） */
-  .line-chat {
-    width: 100%; max-width: 340px; margin: 0 auto;
-    background: #fff;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 0 0 8px #0c0c0c, 0 0 0 10px #2a2a2a, 0 24px 48px rgba(15,18,32,0.45);
+  /* ====================== 企業管理後台（深色區）====================== */
+  .console { background: linear-gradient(155deg, var(--navy), var(--navy-deep)); color: #fff; }
+  .console .sec-kicker { background: rgba(255,255,255,0.14); color: #fff; }
+  .console .sec-title { color: #fff; }
+  .console .sec-desc { color: rgba(255,255,255,0.80); }
+  .console-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+  /* 後台畫面示意（biz.credica.app · 員工與名片） */
+  .dash {
+    width: 100%; max-width: 420px; margin: 0 auto;
+    background: #fff; color: #0F172A;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 24px 48px rgba(15,18,32,0.40);
   }
-  .lc-header {
-    display: flex; align-items: center; gap: 0.6rem;
-    padding: 1rem 1rem 0.7rem;
-    background: #fff;
-    border-bottom: 1px solid rgba(15,23,42,0.07);
-    color: #0F172A;
+  .dash-head { padding: 1.05rem 1.1rem 0.8rem; border-bottom: 1px solid rgba(15,23,42,0.07); }
+  .dash-crumb { font-size: 0.64rem; font-weight: 700; color: #94A3B8; letter-spacing: 0.02em; }
+  .dash-title { font-size: 1rem; font-weight: 800; margin-top: 0.2rem; }
+  .dash-sub { font-size: 0.72rem; color: #64748B; margin-top: 0.15rem; line-height: 1.5; }
+  .dash-rows { padding: 0.65rem 0.75rem 0.35rem; display: flex; flex-direction: column; gap: 0.45rem; }
+  .dash-row {
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid rgba(15,23,42,0.07); border-radius: 12px;
   }
-  .lc-back { color: #4F46E5; font-size: 1.2rem; font-weight: 600; line-height: 1; }
-  .lc-avatar {
-    width: 34px; height: 34px; border-radius: 50%;
-    background: linear-gradient(135deg, #14B8A6, #0F766E); color: #fff;
+  .dr-avatar {
+    width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem; font-weight: 800;
-    flex-shrink: 0;
+    font-size: 0.8rem; font-weight: 800; color: var(--navy);
+    background: var(--pastel-lavender);
   }
-  .lc-avatar svg { width: 19px; height: 19px; }
-  .lc-name { font-size: 0.92rem; font-weight: 800; line-height: 1.2; }
-  .lc-status { font-size: 0.68rem; color: #94A3B8; margin-top: 1px; }
-  .lc-body {
-    padding: 1rem 0.85rem 0.7rem;
-    background: #fff;
-    display: flex; flex-direction: column; gap: 0.6rem;
-    min-height: 320px;
+  .dash-row:nth-child(2) .dr-avatar { background: var(--pastel-peach); color: var(--warn-text); }
+  .dash-row:nth-child(3) .dr-avatar { background: #F1F5F9; color: #94A3B8; }
+  .dr-text { flex: 1; min-width: 0; }
+  .dr-name { font-size: 0.85rem; font-weight: 700; }
+  .dr-meta { font-size: 0.7rem; color: #64748B; margin-top: 1px; }
+  .dr-pill {
+    flex-shrink: 0; font-size: 0.66rem; font-weight: 700;
+    padding: 0.24rem 0.6rem; border-radius: 999px; white-space: nowrap;
   }
-  .lc-time {
-    align-self: center;
-    font-size: 0.66rem; color: #94A3B8;
-    background: #F1F5F9;
-    padding: 0.15rem 0.7rem; border-radius: 999px;
-    margin-bottom: 0.15rem;
+  .dr-pill.use { background: var(--ok-bg); color: var(--ok-text); }
+  .dr-pill.wait { background: var(--warn-bg); color: var(--warn-text); }
+  .dr-pill.off { background: #F1F5F9; color: #64748B; }
+  .dash-acts {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    padding: 0.45rem 0.75rem 0.85rem;
   }
-  .lc-msg {
-    max-width: 82%;
-    font-size: 0.86rem; line-height: 1.55;
-    padding: 0.6rem 0.8rem;
-    border-radius: 16px;
-    opacity: 0; transform: translateY(8px);
-    animation: chatIn 0.4s var(--ease) forwards;
+  .dash-act {
+    font-size: 0.66rem; font-weight: 700; color: #475569;
+    border: 1px solid rgba(15,23,42,0.10); border-radius: 999px;
+    padding: 0.28rem 0.65rem; white-space: nowrap;
   }
-  @keyframes chatIn { to { opacity: 1; transform: translateY(0); } }
-  .lc-msg.user {
-    align-self: flex-end;
-    background: #4F46E5; color: #fff;
-    border-bottom-right-radius: 5px;
-  }
-  .lc-msg.bot {
-    align-self: flex-start;
-    background: #F1F5F9; color: #0F172A;
-    border-bottom-left-radius: 5px;
-  }
-  .lc-msg .who {
-    display: block;
-    font-size: 0.66rem; font-weight: 700; color: #4338CA;
-    margin-bottom: 0.2rem;
-  }
-  .lc-msg.user:nth-of-type(2) { animation-delay: 0.1s; }
-  .lc-composer {
-    display: flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 0.85rem 1.1rem;
-    background: #fff;
+  .dash-foot {
+    display: flex; gap: 0.5rem; align-items: flex-start;
+    padding: 0.7rem 1.1rem 0.95rem;
     border-top: 1px solid rgba(15,23,42,0.06);
+    background: #F8FAFC;
+    font-size: 0.7rem; color: #475569; line-height: 1.55;
   }
-  .lc-composer .plus {
-    width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0;
-    background: #F1F5F9; color: #475569;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-  }
-  .lc-composer .input {
-    flex: 1; padding: 0.5rem 0.85rem; border-radius: 999px;
-    background: #F8FAFC; border: 1px solid rgba(15,23,42,0.08);
-    font-size: 0.8rem; color: #94A3B8;
-  }
-  .lc-composer .send {
-    width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0;
-    background: #4F46E5; color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 0.85rem;
-  }
-  /* Flex 卡片式對話（對齊 APP 實際呈現） */
-  .lc-src {
-    align-self: flex-start;
-    font-size: 0.66rem; font-weight: 700; color: #4338CA;
-    background: #EEF2FF; padding: 0.2rem 0.7rem; border-radius: 999px;
-    opacity: 0; transform: translateY(8px); animation: chatIn 0.4s var(--ease) forwards;
-  }
-  .lc-card {
-    align-self: flex-start; width: 94%;
-    background: #fff; border: 1px solid rgba(15,23,42,0.10);
-    border-radius: 16px; box-shadow: 0 2px 8px rgba(15,23,42,0.06);
-    overflow: hidden; font-size: 0.82rem;
-    opacity: 0; transform: translateY(8px); animation: chatIn 0.4s var(--ease) forwards;
-  }
-  .lc-card-head {
-    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
-    padding: 0.55rem 0.8rem;
-    background: #F7F7FF; border-bottom: 1px solid rgba(79,70,229,0.10);
-    font-weight: 800; color: #4338CA; font-size: 0.76rem;
-  }
-  .lc-card-head .tag {
-    background: #fff; border: 1px solid rgba(79,70,229,0.25); border-radius: 999px;
-    padding: 0.1rem 0.55rem; font-size: 0.64rem; color: #4F46E5; white-space: nowrap;
-  }
-  .lc-card-body { padding: 0.65rem 0.8rem 0.75rem; }
-  .lc-ev { display: flex; gap: 0.7rem; align-items: center; }
-  .lc-ev-date { width: 52px; flex-shrink: 0; text-align: center; border-radius: 12px; overflow: hidden; border: 1px solid rgba(15,23,42,0.10); }
-  .lc-ev-date .m { background: #4F46E5; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.14rem 0; }
-  .lc-ev-date .d { font-size: 1.15rem; font-weight: 800; color: #0F172A; padding-top: 0.08rem; line-height: 1.2; }
-  .lc-ev-date .w { font-size: 0.6rem; color: #94A3B8; padding-bottom: 0.16rem; }
-  .lc-ev-title { font-size: 0.95rem; font-weight: 800; color: #0F172A; }
-  .lc-ev-meta { font-size: 0.73rem; color: #475569; margin-top: 0.2rem; line-height: 1.55; }
-  .lc-banner {
-    margin-top: 0.6rem; background: #ECFDF5; color: #047857;
-    font-weight: 700; font-size: 0.75rem; padding: 0.45rem 0.7rem; border-radius: 10px;
-    display: flex; gap: 0.4rem; align-items: center;
-  }
-  .lc-irow { display: flex; justify-content: space-between; align-items: center; padding: 0.42rem 0; border-bottom: 1px solid rgba(15,23,42,0.05); font-size: 0.77rem; }
-  .lc-irow:last-child { border-bottom: 0; }
-  .lc-irow .k { color: #94A3B8; flex-shrink: 0; }
-  .lc-irow .v { font-weight: 700; color: #0F172A; text-align: right; }
-  .lc-irow .v.warn { color: #B45309; }
-  .lc-copy {
-    font-size: 0.64rem; font-weight: 700; color: #4F46E5;
-    border: 1px solid rgba(79,70,229,0.30); border-radius: 999px;
-    padding: 0.12rem 0.5rem; margin-left: 0.45rem; white-space: nowrap;
-  }
-  .lc-btnrow { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
-  .lc-btn { flex: 1; text-align: center; padding: 0.5rem; border-radius: 10px; font-size: 0.77rem; font-weight: 700; }
-  .lc-btn.pr { background: #4F46E5; color: #fff; }
-  .lc-btn.sec { background: #F1F5F9; color: #0F172A; }
-  .lc-tlrow { display: flex; gap: 0.55rem; padding: 0.2rem 0; align-items: flex-start; }
-  .lc-tldot {
-    width: 16px; height: 16px; border-radius: 999px; flex-shrink: 0; margin-top: 1px;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 0.58rem; font-weight: 800; background: #ECFDF5; color: #047857;
-  }
-  .lc-tldot.now { background: #FFFBEB; color: #B45309; }
-  .lc-tldot.todo { background: #F1F5F9; color: #C1C7CF; }
-  .lc-tlt { font-size: 0.76rem; font-weight: 700; color: #0F172A; }
-  .lc-tls { font-size: 0.66rem; color: #94A3B8; margin-top: 0.05rem; }
-  .lc-acts {
-    align-self: flex-start; display: flex; gap: 0.9rem;
-    font-size: 0.7rem; color: #94A3B8; font-weight: 600; padding: 0 0.2rem;
-    opacity: 0; transform: translateY(8px); animation: chatIn 0.4s var(--ease) forwards;
-  }
-  .lc-quick {
-    display: flex; gap: 0.4rem; align-items: baseline;
-    padding: 0.5rem 0.85rem 0;
-    font-size: 0.68rem; color: #0F172A; font-weight: 800;
-    border-top: 1px solid rgba(15,23,42,0.05); background: #fff;
-  }
-  .lc-quick span { font-weight: 400; color: #94A3B8; }
-  .lc-header .pref {
-    margin-left: auto; flex-shrink: 0;
-    font-size: 0.64rem; font-weight: 700; color: #475569;
-    border: 1px solid rgba(15,23,42,0.12); border-radius: 999px; padding: 0.28rem 0.6rem;
-  }
-  .lc-replay {
-    margin: 0.9rem auto 0;
-    display: flex; align-items: center; gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255,255,255,0.16);
-    border: 1px solid rgba(255,255,255,0.22);
-    border-radius: 999px;
-    color: #fff; font-family: inherit;
-    font-size: 0.8rem; font-weight: 600; cursor: pointer;
-    transition: background 0.2s;
-  }
-  .lc-replay:hover { background: rgba(255,255,255,0.26); }
-  .lc-replay svg { width: 13px; height: 13px; }
-  .ai-points { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
-  .ai-point {
+  .dash-foot b { color: #0F172A; }
+  .console-points { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  .console-point {
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 14px;
     padding: 1rem 1.1rem;
     display: flex; gap: 0.85rem; align-items: flex-start;
   }
-  .ai-point-ic {
+  .console-point-ic {
     width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
     background: rgba(255,255,255,0.14); color: #fff;
     display: flex; align-items: center; justify-content: center;
   }
-  .ai-point-ic svg { width: 19px; height: 19px; }
-  .ai-point h4 { font-size: 1rem; font-weight: 700; }
-  .ai-point p { margin-top: 0.25rem; font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.6; }
+  .console-point-ic svg { width: 19px; height: 19px; }
+  .console-point h4 { font-size: 1rem; font-weight: 700; }
+  .console-point p { margin-top: 0.25rem; font-size: 0.88rem; color: rgba(255,255,255,0.82); line-height: 1.6; }
 
-  /* ====================== VALUE / 省人力 ====================== */
+  /* ====================== VALUE / 兩種星期一 ====================== */
   .value { background: var(--surface-muted); }
   .day-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 820px; margin: 0 auto; }
   .day-col {
@@ -518,7 +393,27 @@
   }
   .stat-num { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
   .stat-label { font-size: 0.76rem; color: var(--text-3); margin-top: 0.2rem; line-height: 1.4; }
-  .stat-foot { text-align: center; font-size: 0.78rem; color: var(--text-3); margin-top: 1rem; }
+
+  /* ====================== ESG ====================== */
+  .esg-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 920px; margin: 0 auto; }
+  .esg-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-card); padding: 1.5rem 1.4rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .esg-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(30,41,81,0.10); }
+  .esg-letter {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 800;
+    margin-bottom: 0.85rem;
+  }
+  .esg-card:nth-child(1) .esg-letter { background: var(--pastel-mint); color: var(--ok-text); }
+  .esg-card:nth-child(2) .esg-letter { background: var(--pastel-sky); color: var(--blue-text); }
+  .esg-card:nth-child(3) .esg-letter { background: var(--pastel-lavender); color: var(--navy); }
+  .esg-card h3 { font-size: 1.05rem; font-weight: 700; }
+  .esg-card p { margin-top: 0.4rem; font-size: 0.9rem; color: var(--text-2); line-height: 1.65; }
 
   /* ====================== VERTICALS ====================== */
   .vert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -559,7 +454,7 @@
   .ph-org-role { font-size: 9.5px; color: var(--text-3); margin-top: 1px; }
   .ph-card {
     margin: 0 14px 13px; border-radius: 15px; padding: 14px 15px;
-    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    background: linear-gradient(135deg, #1E2951, #141B3B);
     color: #fff; position: relative; overflow: hidden;
   }
   .ph-card::after {
@@ -572,10 +467,18 @@
   .ph-card-status {
     margin-top: 9px; display: inline-flex; align-items: center; gap: 4px;
     font-size: 8.5px; font-weight: 700;
-    background: rgba(143,227,184,0.22); color: #8FE3B8;
+    background: rgba(255,255,255,0.14); color: #fff;
     padding: 3px 8px; border-radius: 999px;
+    position: relative;
   }
   .ph-card-status svg { width: 10px; height: 10px; }
+  .ph-card-btn {
+    margin-top: 10px; text-align: center;
+    background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 9px; padding: 6px 0;
+    font-size: 9.5px; font-weight: 700;
+    position: relative;
+  }
   .ph-sect-row {
     display: flex; align-items: baseline; justify-content: space-between;
     padding: 2px 20px 6px;
@@ -678,8 +581,9 @@
     .hero { padding: 3.5rem 0 4rem; }
     .pain-grid { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
     .cap-grid { grid-template-columns: repeat(2, 1fr); }
-    .ai-layout { grid-template-columns: 0.9fr 1.1fr; }
+    .console-layout { grid-template-columns: 0.9fr 1.1fr; }
     .day-grid { grid-template-columns: 1fr 1fr; }
+    .esg-grid { grid-template-columns: repeat(3, 1fr); }
     .vert-grid { grid-template-columns: repeat(3, 1fr); }
     .appint-layout { grid-template-columns: 1fr 300px; gap: 2.75rem; }
     .appint-cards { grid-template-columns: 1fr 1fr; }
@@ -739,13 +643,13 @@
 <section class="hero wrap">
   <span class="hero-chip">
     <span class="chip-dot"></span>
-    給人資、工安、法遵與稽核單位
+    給在意品牌與商譽的企業
   </span>
-  <h1>員工的證照與資格，<br><span class="hl">變成不出錯的事</span></h1>
+  <h1>每張名片<br class="m-br">都帶著公司認證，<br><span class="hl">掃一下，信任當場成立</span></h1>
   <p class="hero-sub">
-    員工的證照、訓練資格，做成一張掃一下就知真偽的數位證照——
-    假的造不出來、到期自動提醒、稽核報告即時產出。
-    讓管證照這件事，不再靠人盯、不再翻紙本。
+    全體員工的數位名片由公司統一發行、帶企業認證標記——
+    企業識別永遠一致，客戶當場就能確認
+    眼前的人真的代表你的公司。
   </p>
   <div class="hero-cta-row">
     <a class="btn-solid" href="#contact">
@@ -756,24 +660,24 @@
       企業授權方案與價格
     </a>
   </div>
-  <p class="hero-note">先聊聊你的需求，再決定怎麼開始 · 員工只要用手機，不用學新軟體</p>
+  <p class="hero-note">年授權一價全含，不另計功能費 · 員工只要用手機領取，不用學新系統</p>
 
-  <!-- hero stage: 兩種星期一早上 -->
+  <!-- hero stage: 同一張名片，兩種下場 -->
   <div class="hero-stage" aria-hidden="true">
-    <div class="hs-title">同一個星期一早上，兩種公司的人資</div>
+    <div class="hs-title">員工離職了，他手上的公司名片呢？</div>
     <div class="hs-rows">
       <div class="hs-row before">
-        <div class="hs-emoji">😮‍💨</div>
+        <div class="hs-emoji">😨</div>
         <div class="hs-text">
-          <div class="hs-tag">沒有 Credica</div>
-          <div class="hs-line">翻 Excel 找誰證照快過期，一個個打電話催，深怕漏掉</div>
+          <div class="hs-tag">紙本名片</div>
+          <div class="hs-line">收不回來——拿著舊職稱在外面接案，公司完全不知道</div>
         </div>
       </div>
       <div class="hs-row after">
         <div class="hs-emoji">😌</div>
         <div class="hs-text">
-          <div class="hs-tag">有 Credica</div>
-          <div class="hs-line">面板上「快到期」紅標清清楚楚，一鍵提醒，過期的人進不了場</div>
+          <div class="hs-tag">Credica 企業名片</div>
+          <div class="hs-line">後台按一下停用，對方再看到這張名片會顯示「已結束」</div>
         </div>
       </div>
     </div>
@@ -785,24 +689,24 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">企業現況</span>
-      <h2 class="sec-title">管員工的證照，<br><span class="hl">這些問題你一定遇過</span></h2>
-      <p class="sec-desc">證照過期沒人發現、驗一個人的資格要等半天、稽核要報告時才開始翻——全部都靠人在硬撐。</p>
+      <h2 class="sec-title">名片是最容易被冒用的<br><span class="hl">企業資產</span></h2>
+      <p class="sec-desc">任何人都能印一盒印著你公司 logo 的名片。冒名的擋不了、離職的收不回、交換回來的留不住——問題都出在紙本名片管不動。</p>
     </div>
     <div class="pain-grid">
       <div class="pain-card">
-        <div class="pain-emoji">⚠️</div>
-        <h3>證照過期，沒人發現</h3>
-        <p>安全訓練過期了人照樣進工地、專業證照到期卻沒人追——往往出事了才發現，已經來不及。</p>
+        <div class="pain-emoji">🎭</div>
+        <h3>有人印了「你們公司」的名片</h3>
+        <p>詐騙集團最愛冒用正派公司的名號——印一盒假名片，冒充你的業務談案、行騙，受害的是你經營多年的商譽。</p>
       </div>
       <div class="pain-card">
-        <div class="pain-emoji">⏳</div>
-        <h3>驗一個人的資格，要等半天</h3>
-        <p>每次都要打電話到發證單位確認、翻紙本資料夾、人工比對影本，光「確認你是合格的」就花掉大半天。</p>
+        <div class="pain-emoji">🚪</div>
+        <h3>離職了，名片收不回來</h3>
+        <p>紙本名片發出去就收不回。離職員工拿著舊職稱在外面走跳、繼續用公司名義行事，公司無從得知、也擋不了。</p>
       </div>
       <div class="pain-card">
-        <div class="pain-emoji">📋</div>
-        <h3>稽核要報告，臨時翻不完</h3>
-        <p>資料散在 Excel、紙本、各個地方，稽核一問才開始整理。公司的合規狀況，永遠只能說「大概」。</p>
+        <div class="pain-emoji">💼</div>
+        <h3>人走了，客戶關係跟著走</h3>
+        <p>員工交換回來的名片全在他個人手上。王牌業務一離職，經營多年的商務關係跟著離開，交接永遠只拿到一半。</p>
       </div>
     </div>
   </div>
@@ -813,145 +717,149 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">Credica 怎麼幫你</span>
-      <h2 class="sec-title">把證照管理，<br><span class="hl">變成省人力、不出錯的事</span></h2>
-      <p class="sec-desc">可驗證的數位證照、到期自動擋、稽核報告即時產出、智慧助理盯到期——每一項都對著一個具體的人力與風險。</p>
+      <h2 class="sec-title">把全公司的名片，<br><span class="hl">變成可驗證的數位名片</span></h2>
+      <p class="sec-desc">企業認證標記、統一發行、離職即失效、商務關係備存——每一項都對著一個具體的風險與損失。</p>
     </div>
     <div class="cap-grid">
       <div class="cap-card">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
         </div>
-        <h3>可驗證的數位證照</h3>
-        <p>員工的證照、訓練資格做成數位證照，對方手機一掃就知道真偽，假的造不出來，不用再打電話到發證單位查。</p>
+        <h3>企業認證標記，掃一下知真偽</h3>
+        <p>名片帶著公司認可標記，對方掃碼當場驗證是不是你們公司發的；綁定政府發行帳號後，升級為「政府＋公司」雙認可。</p>
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          省下逐一查驗的人力
+          冒名詐騙做不成
         </span>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
         </div>
-        <h3>到期自動提醒，過期自動擋下</h3>
-        <p>證照快到期，系統自動提醒員工去換；真的過期了，進場掃證時自動擋下，不會靠門口保全用記憶把關。</p>
+        <h3>統一發行，離職即失效</h3>
+        <p>名片由公司後台以公司名義發行，員工不能自改職稱；離職按一下停用，對方再看到這張名片會顯示「已結束」。</p>
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          降低證照過期的合規風險
+          名片不再流落在外
         </span>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="13" y2="11"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
         </div>
-        <h3>稽核報告，即時產出</h3>
-        <p>誰的證照有效、誰快到期、合規比例多少——打開面板就有，稽核要報告時直接匯出，不用再臨時翻紙本。</p>
+        <h3>資料改了，名片自動重發</h3>
+        <p>職稱調整、公司換識別，後台儲存後全公司名片自動更新——員工手機上的名片跟著換，不用重印、不用重新領取。</p>
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          省下整理稽核資料的時間
+          零重印成本
         </span>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>AI 智慧助理，幫你盯證照</h3>
-        <p>智慧助理替你盯著每個人的證照到期日，主動提醒；員工想問「我的證照還有效嗎」「要怎麼換證」，它直接回答。</p>
+        <h3>商務關係，留在公司</h3>
+        <p>員工用公司名片交換回來的名片，經對方同意備存到公司後台，還能同步到公司自有的 CRM——人員異動，關係不斷線。</p>
         <span class="cap-gain">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          省下回覆員工問題的人力
+          客戶資產不流失
         </span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= AI 智慧助理 ======================= -->
-<section id="ai" class="ai">
+<!-- ======================= 企業管理後台 ======================= -->
+<section id="console" class="console">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-kicker">不用睡覺的小幫手</span>
-      <h2 class="sec-title">員工的證照問題，<br><span style="color:#fff;">智慧助理先替你接著</span></h2>
-      <p class="sec-desc">員工打開手機 App 的「AI 收件夾」，就能問自己的證照與資格——智慧助理即時回答，還會主動提醒快到期的人；習慣 LINE 的員工，在 LINE 也能用同一位助理。</p>
+      <span class="sec-kicker">企業管理後台</span>
+      <h2 class="sec-title">發卡、停卡、盯離職，<br><span style="color:#fff;">一個後台全搞定</span></h2>
+      <p class="sec-desc">管理者登入 biz.credica.app，全公司名片的發行、停用、改版都在同一個畫面完成；連接公司帳號目錄後，離職帳戶一停用，名片自動跟著停。</p>
     </div>
 
-    <div class="ai-layout">
-      <!-- App 對話示意（AI 收件夾） -->
-      <div class="line-chat">
-        <div class="lc-header">
-          <span class="lc-back">‹</span>
-          <div class="lc-avatar" style="background:linear-gradient(135deg,#F59E0B,#C2410C)">大</div>
-          <div>
-            <div class="lc-name">大有營造 助理</div>
-            <div class="lc-status"><span style="color:#10B981">●</span> 已認證組織 · LINE 已連動</div>
-          </div>
-          <span class="pref">⚙ 通知偏好</span>
+    <div class="console-layout">
+      <!-- 後台畫面示意（員工與名片） -->
+      <div class="dash" aria-hidden="true">
+        <div class="dash-head">
+          <div class="dash-crumb">biz.credica.app</div>
+          <div class="dash-title">🪪 員工與名片</div>
+          <div class="dash-sub">派發、停用員工的公司名片。名片以貴公司名義發行，維持一致的企業識別。</div>
         </div>
-        <div class="lc-body" id="chatBody">
-          <span class="lc-time">下午 4:18</span>
-          <span class="lc-src">🏢 來自 大有營造（透過 Credica 代發）</span>
-          <div class="lc-msg bot">提醒您：您的「高架作業安全衛生訓練」即將到期，狀態在這 👇</div>
-          <div class="lc-card">
-            <div class="lc-card-head">🪪 證照狀態 <span class="tag">高架作業安全衛生訓練</span></div>
-            <div class="lc-card-body">
-              <div class="lc-irow"><span class="k">有效至</span><span class="v warn">2026/06/15（28 天後到期）</span></div>
-              <div class="lc-irow"><span class="k">到期影響</span><span class="v">無法進入工地</span></div>
-              <div class="lc-irow"><span class="k">最近複訓</span><span class="v">6/3（三）08:30 · 教育訓練中心</span></div>
-              <div class="lc-btnrow"><span class="lc-btn pr">幫我登記複訓</span></div>
+        <div class="dash-rows">
+          <div class="dash-row">
+            <div class="dr-avatar">林</div>
+            <div class="dr-text">
+              <div class="dr-name">林佳蓉</div>
+              <div class="dr-meta">業務部 · 業務經理</div>
             </div>
+            <span class="dr-pill use">使用中</span>
           </div>
-          <div class="lc-msg user">登記</div>
-          <span class="lc-src">🏢 來自 大有營造（透過 Credica 代發）</span>
-          <div class="lc-msg bot">✅ 已幫您登記 6/3 的複訓。完成後新的數位證照會自動更新到您的 App，進場掃一下就通行。</div>
-          <div class="lc-card">
-            <div class="lc-card-head">📋 複訓登記回執 <span class="tag">6/3（三）08:30</span></div>
-            <div class="lc-card-body">
-              <div class="lc-tlrow"><span class="lc-tldot">✓</span><div><div class="lc-tlt">已登記複訓</div><div class="lc-tls">6/3（三）08:30 · 教育訓練中心</div></div></div>
-              <div class="lc-tlrow"><span class="lc-tldot now">●</span><div><div class="lc-tlt">完成複訓</div><div class="lc-tls">當天簽到後自動回報</div></div></div>
-              <div class="lc-tlrow"><span class="lc-tldot todo">3</span><div><div class="lc-tlt">新證照自動更新</div><div class="lc-tls">更新後進場掃一下就通行</div></div></div>
+          <div class="dash-row">
+            <div class="dr-avatar">張</div>
+            <div class="dr-text">
+              <div class="dr-name">張志豪</div>
+              <div class="dr-meta">行銷部 · 專員</div>
             </div>
+            <span class="dr-pill wait">待領取</span>
           </div>
-          <div class="lc-acts">⧉ 複製　　↳ 追問</div>
+          <div class="dash-row">
+            <div class="dr-avatar">陳</div>
+            <div class="dr-text">
+              <div class="dr-name">陳文欽</div>
+              <div class="dr-meta">已離職 · 名片已停用</div>
+            </div>
+            <span class="dr-pill off">已停用</span>
+          </div>
         </div>
-        <div class="lc-quick">常見問題 <span>· 組織預設</span></div>
-        <div class="lc-composer">
-          <span class="plus">＋</span>
-          <span class="input">輸入訊息給 大有營造…</span>
-          <span class="send" style="width:auto;padding:0 0.7rem;border-radius:999px;font-size:0.72rem;font-weight:700">送出</span>
+        <div class="dash-acts">
+          <span class="dash-act">📧 發名片（寄領取連結）</span>
+          <span class="dash-act">🪪 顯示領取 QR</span>
+          <span class="dash-act">⏹️ 停用名片</span>
         </div>
-        <button class="lc-replay" id="replayChat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
-          重新播放對話
-        </button>
+        <div class="dash-foot">
+          <span>🏛️</span>
+          <span>政府發行帳號：<b>已綁定</b> · 全公司名片為 ✓ 雙色勾（政府＋公司認可）</span>
+        </div>
       </div>
 
-      <!-- AI 好處 -->
+      <!-- 後台重點 -->
       <div>
-        <div class="ai-points">
-          <div class="ai-point">
-            <div class="ai-point-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="console-points">
+          <div class="console-point">
+            <div class="console-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
             </div>
             <div>
-              <h4>主動盯到期，不靠人記</h4>
-              <p>每個人的證照到期日，智慧助理替你盯著。快到期就主動提醒員工，不用人資逐一翻表、逐一打電話。</p>
+              <h4>Email、QR 一鍵派發</h4>
+              <p>寄領取連結、或請員工掃 QR，用 Credica App 確認身分後名片就進手機——人資不用逐一開帳號、教軟體。</p>
             </div>
           </div>
-          <div class="ai-point">
-            <div class="ai-point-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <div class="console-point">
+            <div class="console-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><rect x="9" y="9" width="6" height="6"/></svg>
             </div>
             <div>
-              <h4>員工的問題，半夜也有人回</h4>
-              <p>「我的證照還有效嗎」「複訓在哪報名」——員工不分時間問，智慧助理即時回答，人資不用一直被打擾。</p>
+              <h4>離職當天，名片失效</h4>
+              <p>按下停用立即生效，對方再看到這張名片會顯示灰色「已結束」；已備存的交換紀錄保留，不會被刪除。</p>
             </div>
           </div>
-          <div class="ai-point">
-            <div class="ai-point-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <div class="console-point">
+            <div class="console-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </div>
             <div>
-              <h4>照你公司的規定回答</h4>
-              <p>把公司的證照規定、複訓辦法交給它，它就照你的內容回答，不會亂講，員工拿到的資訊都正確。</p>
+              <h4>接上帳號目錄，離職自動停用</h4>
+              <p>連接公司帳號目錄（如 Google Workspace）或用人資系統 API 介接——離職帳戶一停用，名片自動跟著停，不必再手動處理。</p>
+            </div>
+          </div>
+          <div class="console-point">
+            <div class="console-point-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h1M9 13h1M14 9h1M14 13h1"/></svg>
+            </div>
+            <div>
+              <h4>綁定政府發行帳號，升級雙認可</h4>
+              <p>用工商憑證綁定政府發行帳號後，全公司名片從紅勾（公司認可）升級為雙色勾（政府＋公司認可），可信度再上一層。</p>
             </div>
           </div>
         </div>
@@ -960,148 +868,174 @@
   </div>
 </section>
 
-<!-- ======================= VALUE / 省人力 ======================= -->
+<!-- ======================= VALUE / 兩種星期一 ======================= -->
 <section id="value" class="value">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">省下來的，是這些</span>
       <h2 class="sec-title">同一個星期一早上，<br><span class="hl">兩種公司</span></h2>
-      <p class="sec-desc">不講功能、不講技術——看 Credica 怎麼改變人資、工安、稽核每天的生活。下方數字為合理估算，實際依公司規模而定。</p>
+      <p class="sec-desc">不講功能、不講技術——看 Credica 怎麼改變管理者處理名片、離職與商譽風險的一天。</p>
     </div>
 
     <div class="day-grid">
       <div class="day-col before">
         <span class="day-tag">沒 Credica 的星期一</span>
         <ul class="day-list">
-          <li><span class="day-time">09:00</span><span>人資翻 Excel，找誰證照快過期，抓出 12 人</span></li>
-          <li><span class="day-time">10:30</span><span>一個個打電話催，4 人沒接、3 人說「下週再說」</span></li>
-          <li><span class="day-time">11:00</span><span>寫信通知工地主管「這幾位今天先不要讓他上工」</span></li>
-          <li><span class="day-time">14:00</span><span>工地門口靠紙本名單核對，漏了 2 個沒擋下</span></li>
-          <li><span class="day-time">17:00</span><span>下週要稽核，人資開始翻資料整理報告</span></li>
-          <li><span class="day-time">22:00</span><span>人資還在加班</span></li>
+          <li><span class="day-time">09:00</span><span>客戶來電：「你們業務昨天來談合作？」——公司查無此人</span></li>
+          <li><span class="day-time">10:30</span><span>發現離職半年的業務，還拿著舊名片在外面接案</span></li>
+          <li><span class="day-time">11:00</span><span>法務研究怎麼發函，要求對方停止使用公司名義</span></li>
+          <li><span class="day-time">14:00</span><span>王牌業務離職，客戶名片全在他抽屜，交接只拿到一半</span></li>
+          <li><span class="day-time">16:00</span><span>公司換新識別，總務估算全公司重印名片的費用</span></li>
+          <li><span class="day-time">22:00</span><span>每一件都沒有明確解法</span></li>
         </ul>
       </div>
       <div class="day-col after">
         <span class="day-tag">有 Credica 的星期一</span>
         <ul class="day-list">
-          <li><span class="day-time">09:00</span><span>人資打開面板，看到「12 人 30 天內到期」紅標</span></li>
-          <li><span class="day-time">09:02</span><span>點一次「一鍵提醒」，12 人同時收到換證通知</span></li>
-          <li><span class="day-time">09:05</span><span>過期員工到工地掃證，系統自動擋下，進不來</span></li>
-          <li><span class="day-time">14:00</span><span>稽核要報告，一鍵匯出，合規比例清清楚楚</span></li>
-          <li><span class="day-time">17:30</span><span>人資準時下班</span></li>
-          <li><span class="day-time">19:00</span><span>人資在家陪家人</span></li>
+          <li><span class="day-time">09:00</span><span>客戶掃碼查驗：沒有認證標記，當場識破冒名</span></li>
+          <li><span class="day-time">09:02</span><span>後台按「停用名片」，離職員工的名片立即顯示「已結束」</span></li>
+          <li><span class="day-time">09:05</span><span>新識別儲存套用，全公司名片自動更新，一張都不用重印</span></li>
+          <li><span class="day-time">14:00</span><span>業務交接：客戶名片都備存在公司後台，一筆不漏</span></li>
+          <li><span class="day-time">17:30</span><span>管理者準時下班</span></li>
         </ul>
       </div>
     </div>
 
     <div class="stat-row">
       <div class="stat-card">
-        <div class="stat-num">約少 9 成</div>
-        <div class="stat-label">花在證照管理上的時間（估算）</div>
+        <div class="stat-num">掃一下知真偽</div>
+        <div class="stat-label">企業認證標記，冒名當場現形</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">過期就擋</div>
-        <div class="stat-label">過期證照進場時自動攔下</div>
+        <div class="stat-num">離職即失效</div>
+        <div class="stat-label">停用當下，名片立即顯示「已結束」</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">隨點隨有</div>
-        <div class="stat-label">稽核報告即時產出</div>
+        <div class="stat-num">零重印成本</div>
+        <div class="stat-label">改職稱、換識別，名片自動更新</div>
       </div>
     </div>
-    <p class="stat-foot">以上為一般中大型企業的合理估算，實際成效依公司規模與使用方式而定。</p>
+  </div>
+</section>
+
+<!-- ======================= ESG ======================= -->
+<section id="esg">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">ESG 看得見</span>
+      <h2 class="sec-title">一張名片，<br><span class="hl">E、S、G 都有故事</span></h2>
+      <p class="sec-desc">導入企業數位名片，不只防冒名——永續報告書裡，三個字母都寫得出來。</p>
+    </div>
+    <div class="esg-grid">
+      <div class="esg-card">
+        <div class="esg-letter">E</div>
+        <h3>全面無紙化名片</h3>
+        <p>全公司不再印名片，減紙減廢看得見；改版、換職稱也不會產生一箱箱作廢的舊名片。</p>
+      </div>
+      <div class="esg-card">
+        <div class="esg-letter">S</div>
+        <h3>員工個資留在裝置</h3>
+        <p>員工的個人資料留在自己手機裡，名片交換有紀錄、有同意——保護員工，也保護交換對象。</p>
+      </div>
+      <div class="esg-card">
+        <div class="esg-letter">G</div>
+        <h3>發行停用全程可稽核</h3>
+        <p>誰的名片何時發行、何時停用，全程留有紀錄——公司名義的使用治理有據，稽核要的軌跡都在。</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ======================= 適用產業 ======================= -->
-<section id="verticals">
+<section id="verticals" style="background:var(--surface-muted);">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">適用產業</span>
-      <h2 class="sec-title">哪裡需要「確認資格」，<br><span class="hl">哪裡就用得上</span></h2>
-      <p class="sec-desc">從高風險的工地現場，到日常的法遵稽核——只要要管員工的證照與資格，都適用。</p>
+      <h2 class="sec-title">哪裡怕被冒名，<br><span class="hl">哪裡就用得上</span></h2>
+      <p class="sec-desc">只要公司的名號值得被冒用——就值得用可驗證的名片保護起來。</p>
     </div>
     <div class="vert-grid">
       <div class="vert-tile">
-        <div class="vert-emoji">🏗️</div>
-        <div class="vert-name">營建工程</div>
-        <div class="vert-desc">進場工人證照即時把關，不合格的人進不了工地</div>
+        <div class="vert-emoji">🏦</div>
+        <div class="vert-name">金融保險</div>
+        <div class="vert-desc">業務員最常被冒名，客戶掃一下就知道是不是真的</div>
+      </div>
+      <div class="vert-tile">
+        <div class="vert-emoji">🏢</div>
+        <div class="vert-name">建設與不動產</div>
+        <div class="vert-desc">代銷、仲介名片滿天飛，認證標記讓真假立分</div>
       </div>
       <div class="vert-tile">
         <div class="vert-emoji">🏥</div>
-        <div class="vert-name">醫療機構</div>
-        <div class="vert-desc">醫護的專科資格、訓練時數，跨院查驗一掃就清楚</div>
+        <div class="vert-name">醫療與生技</div>
+        <div class="vert-desc">藥廠、器材業務拜訪頻繁，院所查驗一掃就清楚</div>
       </div>
       <div class="vert-tile">
         <div class="vert-emoji">🏭</div>
-        <div class="vert-name">製造業</div>
-        <div class="vert-desc">操作證、安全訓練全程追蹤，到期前自動提醒</div>
+        <div class="vert-name">科技與製造</div>
+        <div class="vert-desc">供應鏈往來對口多，採購對接的身分不再靠猜</div>
       </div>
       <div class="vert-tile">
-        <div class="vert-emoji">👷</div>
-        <div class="vert-name">人力派遣</div>
-        <div class="vert-desc">派出去的人合不合格，工作證、體檢、訓練一次看清</div>
-      </div>
-      <div class="vert-tile">
-        <div class="vert-emoji">🌱</div>
-        <div class="vert-name">永續與供應鏈</div>
-        <div class="vert-desc">供應鏈合規資料隨時可查，稽核要的軌跡都留著</div>
+        <div class="vert-emoji">🏬</div>
+        <div class="vert-name">連鎖與集團</div>
+        <div class="vert-desc">多據點、多品牌一套識別統一發行，離職即收回</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ======================= 整合 CREDICA APP ======================= -->
-<section id="app-integration" style="background:var(--surface-muted);">
+<section id="app-integration">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">整合 Credica App</span>
-      <h2 class="sec-title">員工的數位證照，<br><span class="hl">直接進他手機裡</span></h2>
-      <p class="sec-desc">Credica 有一支免費的個人 App。你發出去的數位證照，直接出現在員工本來就能用的 App 裡——公司不用自己開發一支 App。</p>
+      <h2 class="sec-title">員工的公司名片，<br><span class="hl">直接進他手機裡</span></h2>
+      <p class="sec-desc">Credica 有一支免費的個人 App。公司發行的名片直接出現在員工手機裡——資料由公司填妥、不可自行修改；員工原本的個人名片不受影響，兩張並存切換。</p>
     </div>
     <div class="appint-layout">
       <div class="appint-cards">
         <div class="cap-card">
           <div class="cap-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-          </div>
-          <h3>證照隨身帶，不會被洗掉</h3>
-          <p>員工的證照收進手機的 Credica App，隨身帶著，不像紙本會弄丟、也不像訊息會被洗掉。</p>
-          <span class="cap-gain">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            省下補發證件的成本
-          </span>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
           </div>
-          <h3>進場掃一下就通行</h3>
-          <p>員工到工地、廠區門口出示 App，現場掃一下就完成查驗，當下就知道資格有沒有效。</p>
+          <h3>掃 QR 或點連結就領取</h3>
+          <p>員工用手機掃 QR、或點 Email 裡的領取連結，確認身分後名片就放進手機——資料公司已填妥，不用自己輸入。</p>
           <span class="cap-gain">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            門口不再靠人工核對
+            導入不用教育訓練
           </span>
         </div>
         <div class="cap-card">
           <div class="cap-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6 2.3L3 8"/><path d="M3 3v5h5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
-          <h3>換證後自動更新</h3>
-          <p>員工複訓、換新證後，新的數位證照自動更新到他的 App，不用重新發卡、也不用再通知一遍。</p>
+          <h3>資料公司管理，不能自己改</h3>
+          <p>名片由公司填妥發行，員工不能自改職稱、頭銜；公司更新資料後，員工手機上的名片自動跟著更新。</p>
           <span class="cap-gain">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            少一道重發證件的工序
+            企業識別永遠一致
           </span>
         </div>
         <div class="cap-card">
           <div class="cap-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <h3>只給驗證者看「合不合格」</h3>
-          <p>門口查驗的人，只會看到「這個人的證照有效」，看不到員工的身分證、健檢報告等私人資料。</p>
+          <h3>出示即驗證</h3>
+          <p>對方掃碼看到公司認可標記，當場知道這張名片是公司發的、這個人還在職——不用回頭打電話求證。</p>
           <span class="cap-gain">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            合規與隱私同時顧到
+            商務往來更快建立信任
+          </span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="13" height="14" rx="2"/><path d="M18 8h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-1"/></svg>
+          </div>
+          <h3>個人名片不受影響</h3>
+          <p>公司名片與個人名片並存、可切換出示；離職後公司名片顯示「已結束」，員工自己的人脈與名片都留著。</p>
+          <span class="cap-gain">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            員工也樂意使用
           </span>
         </div>
       </div>
@@ -1117,47 +1051,40 @@
           </div>
           <div class="ph-screen">
             <div class="ph-orghead">
-              <div class="ph-orglogo">🏗️</div>
+              <div class="ph-orglogo">🏢</div>
               <div>
-                <div class="ph-org-name">大有營造</div>
-                <div class="ph-org-role">工地人員 · 陳建民</div>
+                <div class="ph-org-name">詠豐科技</div>
+                <div class="ph-org-role">業務部 · 林佳蓉</div>
               </div>
             </div>
             <div class="ph-card">
-              <div class="ph-card-label">數位證照</div>
-              <div class="ph-card-name">高架作業安全衛生訓練</div>
-              <div class="ph-card-meta">大有營造 · 有效期至 2026/06/15</div>
+              <div class="ph-card-label">公司名片</div>
+              <div class="ph-card-name">林佳蓉</div>
+              <div class="ph-card-meta">業務部 · 業務經理 · 由 詠豐科技 發行</div>
               <span class="ph-card-status">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                目前有效
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="dualcheck" x1="0" y1="0" x2="1" y2="0"><stop offset="0.5" stop-color="#FF9A8B"/><stop offset="0.5" stop-color="#8AB8FF"/></linearGradient></defs><path d="M20 6 9 17l-5-5" stroke="url(#dualcheck)"/></svg>
+                公司與政府認可
               </span>
+              <div class="ph-card-btn">出示公司名片</div>
             </div>
-            <div class="ph-sect-row"><span class="t">我的其他證照</span></div>
+            <div class="ph-sect-row"><span class="t">我的名片</span></div>
             <div class="ph-list">
               <div class="ph-row">
-                <div class="ph-row-icon" style="background:var(--pastel-mint)">⛑️</div>
+                <div class="ph-row-icon" style="background:var(--pastel-lavender)">👤</div>
                 <div class="ph-row-text">
-                  <div class="ph-row-title">職業安全衛生教育訓練</div>
-                  <div class="ph-row-sub">有效期至 2027/03/20</div>
+                  <div class="ph-row-title">個人名片</div>
+                  <div class="ph-row-sub">自己建立、自己管理，不受公司影響</div>
                 </div>
-                <span class="ph-pill ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>有效</span>
-              </div>
-              <div class="ph-row">
-                <div class="ph-row-icon" style="background:var(--pastel-peach)">🔧</div>
-                <div class="ph-row-text">
-                  <div class="ph-row-title">固定式起重機操作證</div>
-                  <div class="ph-row-sub">有效期至 2026/07/30</div>
-                </div>
-                <span class="ph-pill warn">60 天內到期</span>
+                <span class="ph-pill ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>並存</span>
               </div>
             </div>
-            <div class="ph-sect-row"><span class="t">公司提醒</span></div>
+            <div class="ph-sect-row"><span class="t">公司通知</span></div>
             <div class="ph-list">
               <div class="ph-row">
-                <div class="ph-row-icon" style="background:var(--pastel-sky)">🔔</div>
+                <div class="ph-row-icon" style="background:var(--pastel-mint)">🔁</div>
                 <div class="ph-row-text">
-                  <div class="ph-row-title">高架作業訓練即將到期</div>
-                  <div class="ph-row-sub">建議於 6/3 完成複訓</div>
+                  <div class="ph-row-title">職稱已更新，名片自動重發</div>
+                  <div class="ph-row-sub">手機上的名片已同步更新，不必重新領取</div>
                 </div>
               </div>
             </div>
@@ -1188,7 +1115,7 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="f-title">職稱</label>
-          <input id="f-title" type="text" class="form-input" placeholder="例：人資經理">
+          <input id="f-title" type="text" class="form-input" placeholder="例：品牌經理">
         </div>
         <div class="form-group">
           <label class="form-label" for="f-company">公司名稱（必填）</label>
@@ -1206,12 +1133,12 @@
           <label class="form-label" for="f-industry">你所在的產業</label>
           <select id="f-industry" class="form-select">
             <option value="" disabled selected>請選擇產業</option>
-            <option>營建工程</option>
-            <option>醫療機構</option>
-            <option>製造業</option>
-            <option>人力派遣</option>
-            <option>永續與供應鏈</option>
             <option>金融保險</option>
+            <option>建設與不動產</option>
+            <option>醫療與生技</option>
+            <option>科技與製造</option>
+            <option>連鎖與集團</option>
+            <option>人力派遣</option>
             <option>教育與培訓</option>
             <option>政府與公部門</option>
             <option>其他</option>
@@ -1233,9 +1160,9 @@
       </form>
 
       <div class="contact-alt">
-        <p>還不確定要不要諮詢？也可以先看看方案與費用。</p>
-        <a class="btn-outline" href="pricing.html">
-          比較方案與費用
+        <p>還不確定要不要諮詢？也可以先看看企業授權的方案與計價方式。</p>
+        <a class="btn-outline" href="enterprise-pricing.html">
+          企業授權方案與價格
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
@@ -1272,24 +1199,6 @@
       mobileMenu.classList.remove('active');
     });
   });
-
-  // ============ LINE 對話重播 ============
-  var chatBody = document.getElementById('chatBody');
-  var replayBtn = document.getElementById('replayChat');
-  var chatHTML = chatBody.innerHTML;
-  function replayChat() {
-    chatBody.innerHTML = '';
-    chatBody.offsetHeight; // 強制重排
-    chatBody.innerHTML = chatHTML;
-    var msgs = chatBody.querySelectorAll('.lc-msg, .lc-src, .lc-card, .lc-acts');
-    msgs.forEach(function (m, i) {
-      m.style.animation = 'none';
-      m.offsetHeight;
-      m.style.animation = 'chatIn 0.4s var(--ease) forwards';
-      m.style.animationDelay = (0.25 + i * 0.5) + 's';
-    });
-  }
-  replayBtn.addEventListener('click', replayChat);
 
   // ============ 諮詢表單送出 ============
   // 收件方式：設定 CONTACT_ENDPOINT（Formspree 等表單服務的 endpoint）後，
