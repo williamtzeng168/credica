@@ -23,17 +23,18 @@
   gtag('js', new Date());
   gtag('config', 'G-VEPFXCYNHN');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --green:#16443A; --green-deep:#0D2B24;
-  --beige:#F6F1E6; --paper:#FBF8F1;
-  --amber:#F2A93B;
-  --ink:#22312C; --muted:#6B7A73; --line:#E3DCCB; --white:#FFFFFF;
+  /* 對齊首頁(index.html):淺底 #F8FAFC + 海軍藍 #1E2951 + 琥珀 #D97706 */
+  --green:#1E2951; --green-deep:#141B3B;
+  --beige:#E7ECF8; --paper:#F8FAFC;
+  --amber:#D97706; --gold:#FBBF24;
+  --ink:#1E293B; --muted:#64748B; --line:rgba(0,0,0,.09); --white:#FFFFFF;
   --radius:18px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Noto Sans TC",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
+body{font-family:'Outfit','Noto Sans TC',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
 /* ---------- 導覽列(全站一致) ---------- */
@@ -47,25 +48,25 @@ body{font-family:"Noto Sans TC",system-ui,sans-serif;background:var(--paper);col
 @media(max-width:760px){.site-nav{padding:.8rem 1rem}.site-nav .nav-mid{display:none}}
 
 /* ---------- Hero ---------- */
-header{background:var(--green);color:var(--beige);padding:130px 0 64px;position:relative;overflow:hidden}
-header::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border:46px solid rgba(246,241,230,.07);border-radius:50%}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:700}
-.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber)}
-h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(30px,4.6vw,50px);margin:14px 0 10px;letter-spacing:.01em}
-.sub{font-size:17px;color:rgba(246,241,230,.85);max-width:680px}
+header{background:var(--green);color:#EDF1FB;padding:130px 0 64px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border:46px solid rgba(255,255,255,.06);border-radius:50%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold)}
+h1{font-weight:900;font-size:clamp(30px,4.6vw,50px);margin:14px 0 10px;letter-spacing:.01em}
+.sub{font-size:17px;color:rgba(237,241,251,.85);max-width:680px}
 .promise{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
-.promise span{font-size:13.5px;background:rgba(246,241,230,.1);border:1px solid rgba(246,241,230,.22);padding:7px 14px;border-radius:999px}
-.promise b{color:var(--amber)}
+.promise span{font-size:13.5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:7px 14px;border-radius:999px}
+.promise b{color:var(--gold)}
 
 /* ---------- 三張授權卡 ---------- */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:-46px 0 0;position:relative;z-index:2}
 .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;display:flex;flex-direction:column;transition:.18s;position:relative}
 .card.active{border-color:var(--green);box-shadow:0 16px 40px rgba(13,43,36,.16);transform:translateY(-6px)}
-.card .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--green-deep);font-size:12.5px;font-weight:700;padding:4px 14px;border-radius:99px;white-space:nowrap}
+.card .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);color:#fff;font-size:12.5px;font-weight:700;padding:4px 14px;border-radius:99px;white-space:nowrap}
 .card h3{font-size:21px;font-weight:900;color:var(--green)}
 .card .who{font-size:13px;color:var(--muted);margin:2px 0 16px;min-height:20px}
 .cap{font-size:13px;font-weight:700;color:var(--amber);letter-spacing:.04em}
-.price{font-family:"Noto Serif TC",serif;font-weight:900;font-size:34px;color:var(--ink);margin:4px 0 2px}
+.price{font-weight:900;font-size:34px;color:var(--ink);margin:4px 0 2px}
 .price small{font-size:14px;font-weight:500;color:var(--muted);font-family:"Noto Sans TC"}
 .pp-line{font-size:12.5px;color:var(--muted);margin-bottom:18px}
 .card ul{list-style:none;font-size:14px;display:grid;gap:9px;margin-bottom:22px}
@@ -74,14 +75,14 @@ h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(30px,4.6vw,
 .card li small{color:var(--muted)}
 .btn{margin-top:auto;text-align:center;text-decoration:none;font-weight:700;font-size:15px;padding:12px;border-radius:12px;border:1.5px solid var(--green);color:var(--green);transition:.15s}
 .btn:hover{background:var(--beige)}
-.btn.solid{background:var(--green);color:var(--beige)}
+.btn.solid{background:var(--green);color:#fff}
 .btn.solid:hover{background:var(--green-deep)}
 .over1000{margin:16px 0 0;text-align:center;font-size:13.5px;color:var(--muted)}
 .over1000 a{color:var(--green);font-weight:700}
 
 /* ---------- 價值三柱 ---------- */
 section.value{margin:64px 0 10px}
-section.value h2,section.flow h2,section.faq h2{font-family:"Noto Serif TC",serif;font-size:26px;font-weight:900;color:var(--green);margin-bottom:6px}
+section.value h2,section.flow h2,section.faq h2{font-size:26px;font-weight:900;color:var(--green);margin-bottom:6px}
 section .lead{color:var(--muted);font-size:14.5px;margin-bottom:22px}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pillar{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
@@ -93,20 +94,20 @@ section .lead{color:var(--muted);font-size:14.5px;margin-bottom:22px}
 .pillar li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}
 
 /* ---------- 全包含 ---------- */
-.allin{margin:46px 0;background:var(--green);border-radius:var(--radius);color:var(--beige);padding:32px 38px;position:relative;overflow:hidden}
-.allin::before{content:"";position:absolute;left:-60px;bottom:-90px;width:240px;height:240px;border:30px solid rgba(242,169,59,.18);border-radius:50%}
-.allin h3{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:900;margin-bottom:6px}
-.allin h3 span{color:var(--amber)}
-.allin p{font-size:14px;color:rgba(246,241,230,.85);margin-bottom:16px}
+.allin{margin:46px 0;background:var(--green);border-radius:var(--radius);color:#EDF1FB;padding:32px 38px;position:relative;overflow:hidden}
+.allin::before{content:"";position:absolute;left:-60px;bottom:-90px;width:240px;height:240px;border:30px solid rgba(251,191,36,.16);border-radius:50%}
+.allin h3{font-size:22px;font-weight:900;margin-bottom:6px}
+.allin h3 span{color:var(--gold)}
+.allin p{font-size:14px;color:rgba(237,241,251,.82);margin-bottom:16px}
 .allin .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 22px;font-size:14px;position:relative}
 .allin .grid span{padding-left:22px;position:relative}
-.allin .grid span::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:900}
+.allin .grid span::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:900}
 
 /* ---------- 開通流程 ---------- */
 section.flow{margin:56px 0}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
 .step{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;counter-increment:step}
-.step::before{content:counter(step);position:absolute;top:-14px;left:20px;width:28px;height:28px;border-radius:50%;background:var(--amber);color:var(--green-deep);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
+.step::before{content:counter(step);position:absolute;top:-14px;left:20px;width:28px;height:28px;border-radius:50%;background:var(--amber);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
 .step b{display:block;color:var(--green);font-size:15px;margin:6px 0 6px}
 .step p{font-size:13px;color:var(--muted)}
 
@@ -257,8 +258,8 @@ footer{text-align:center;font-size:12.5px;color:var(--muted);padding:26px 0 40px
       <span>政府發行帳號綁定(升級雙認可)</span>
       <span>身份門禁驗證 QR(憑證不可竄改、無法仿冒)</span>
     </div>
-    <p style="font-size:13px;color:rgba(246,241,230,.75);margin:14px 0 0;position:relative">
-      <span style="background:rgba(242,169,59,.18);border:1px solid rgba(242,169,59,.45);color:var(--amber);font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;margin-right:8px">規劃中</span>
+    <p style="font-size:13px;color:rgba(237,241,251,.75);margin:14px 0 0;position:relative">
+      <span style="background:rgba(251,191,36,.16);border:1px solid rgba(251,191,36,.45);color:var(--gold);font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;margin-right:8px">規劃中</span>
       企業線上打卡 — 居家上班以同一張不可仿冒的身份憑證打卡,授權客戶將率先開放。
     </p>
   </div>
