@@ -383,7 +383,7 @@
   }
   .day-col.after .day-time { color: var(--navy); }
   .stat-row {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem;
+    display: grid; grid-template-columns: 1fr; gap: 0.7rem;
     max-width: 820px; margin: 1.75rem auto 0;
   }
   .stat-card {
@@ -393,6 +393,39 @@
   }
   .stat-num { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
   .stat-label { font-size: 0.76rem; color: var(--text-3); margin-top: 0.2rem; line-height: 1.4; }
+
+  /* ====================== 成本圖表（500 人企業估算） ====================== */
+  .cost-card {
+    max-width: 820px; margin: 1.75rem auto 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-card); padding: 1.6rem 1.4rem 1.4rem;
+    box-shadow: var(--card-shadow);
+  }
+  .cost-title { font-size: 1.05rem; font-weight: 800; text-align: center; }
+  .cost-sub { font-size: 0.8rem; color: var(--text-3); text-align: center; margin-top: 0.25rem; }
+  .cost-bars { margin-top: 1.3rem; display: flex; flex-direction: column; gap: 1.05rem; }
+  .cost-row-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem;
+    font-size: 0.88rem; font-weight: 700;
+  }
+  .cost-row-head .amt { font-weight: 800; white-space: nowrap; }
+  .cost-row.small .amt { color: var(--text-2); }
+  .cost-row.big .amt { color: var(--rose-text); }
+  .cost-track {
+    margin-top: 0.4rem; height: 14px;
+    background: var(--bg); border: 1px solid var(--divider); border-radius: 999px;
+    overflow: hidden;
+  }
+  .cost-fill { height: 100%; border-radius: 999px; }
+  .cost-row.small .cost-fill { width: 2%; min-width: 12px; background: var(--navy); }
+  .cost-row.big .cost-fill { width: 98%; background: linear-gradient(90deg, var(--rose-text), #E06A93); }
+  .cost-take {
+    margin-top: 1.15rem; text-align: center;
+    font-size: 0.95rem; font-weight: 700; line-height: 1.6;
+  }
+  .cost-take b { color: var(--rose-text); }
+  .cost-card .stat-row { margin: 1.15rem auto 0; }
+  .cost-foot { text-align: center; font-size: 0.74rem; color: var(--text-3); margin-top: 0.9rem; line-height: 1.5; }
 
   /* ====================== ESG ====================== */
   .esg-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 920px; margin: 0 auto; }
@@ -583,6 +616,7 @@
     .cap-grid { grid-template-columns: repeat(2, 1fr); }
     .console-layout { grid-template-columns: 0.9fr 1.1fr; }
     .day-grid { grid-template-columns: 1fr 1fr; }
+    .stat-row { grid-template-columns: repeat(3, 1fr); }
     .esg-grid { grid-template-columns: repeat(3, 1fr); }
     .vert-grid { grid-template-columns: repeat(3, 1fr); }
     .appint-layout { grid-template-columns: 1fr 300px; gap: 2.75rem; }
@@ -874,7 +908,7 @@
     <div class="sec-head">
       <span class="sec-kicker">省下來的，是這些</span>
       <h2 class="sec-title">同一個星期一早上，<br><span class="hl">兩種公司</span></h2>
-      <p class="sec-desc">不講功能、不講技術——看 Credica 怎麼改變管理者處理名片、離職與商譽風險的一天。</p>
+      <p class="sec-desc">先看故事，再看帳——名片這件事真正的成本，往往不在你以為的地方。</p>
     </div>
 
     <div class="day-grid">
@@ -901,19 +935,42 @@
       </div>
     </div>
 
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-num">掃一下知真偽</div>
-        <div class="stat-label">企業認證標記，冒名當場現形</div>
+    <!-- 成本圖表：名片這件事的真實成本 -->
+    <div class="cost-card">
+      <div class="cost-title">名片這件事，一年花掉多少？</div>
+      <div class="cost-sub">以 500 人企業、150 位業務的合理估算</div>
+      <div class="cost-bars">
+        <div class="cost-row small">
+          <div class="cost-row-head">
+            <span>印名片（含申請、行政）</span>
+            <span class="amt">約 NT$30 萬／年</span>
+          </div>
+          <div class="cost-track" aria-hidden="true"><div class="cost-fill"></div></div>
+        </div>
+        <div class="cost-row big">
+          <div class="cost-row-head">
+            <span>業務整理客戶資料的工時</span>
+            <span class="amt">約 NT$1,200 萬／年</span>
+          </div>
+          <div class="cost-track" aria-hidden="true"><div class="cost-fill"></div></div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">離職即失效</div>
-        <div class="stat-label">停用當下，名片立即顯示「已結束」</div>
+      <p class="cost-take">印名片只占約 <b>2%</b>——真正的成本，是業務把時間花在建檔、搜尋、交接。</p>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-num">10 分鐘</div>
+          <div class="stat-label">每收到一張紙本名片，建檔平均要花的時間</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">9–13 人年</div>
+          <div class="stat-label">全公司每年花在整理客戶資料的工時</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">NT$180–600 萬</div>
+          <div class="stat-label">整理工時省 15–50%，每年可省回的價值</div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">零重印成本</div>
-        <div class="stat-label">改職稱、換識別，名片自動更新</div>
-      </div>
+      <p class="cost-foot">※ 依台灣印刷市場行情與主計總處薪資統計的估算模型（資料整理成本採年約 NT$1,200 萬中性估值），實際依產業與規模而定。</p>
     </div>
   </div>
 </section>
