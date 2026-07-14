@@ -285,8 +285,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 
 @media (max-width: 900px) {
   html { font-size: 16px; }
-  .hero { flex-direction: column; padding: 2rem 1.5rem 3rem; gap: 2.5rem; }
-  .hero-right { order: -1; }
+  .hero { flex-direction: column; padding: 1.5rem 1.5rem 3rem; gap: 2.5rem; }
+  /* 手機:文案/CTA 在上、App 畫面在下(首屏先看到「產品是什麼」),不再讓 mockup 蓋掉主標 */
+  .hero-right { order: 2; }
   .value-grid { grid-template-columns: 1fr; }
   .scenes-strip { grid-template-columns: 1fr 1fr; }
   .highlight-section, .highlight-section.reverse { grid-template-columns: 1fr; direction: ltr; }
@@ -1200,8 +1201,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 /* === Tablet (≤1024) === */
 @media (max-width: 1024px) {
   html { font-size: 16px; }
-  .hero { flex-direction: column; align-items: stretch; gap: 2rem; padding: 5rem 1.5rem 3rem; }
-  .hero-right { justify-content: center; }
+  .hero { flex-direction: column; align-items: stretch; gap: 2rem; padding: 1.5rem 1.5rem 3rem; }
+  .hero-right { justify-content: center; order: 2; }
   .phone-frame {
     --phone-scale: 0.78;
     transform-origin: center center;
@@ -1230,7 +1231,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 /* === Mobile (≤768) — Section 2 上下 + tab 橫向 emoji === */
 @media (max-width: 768px) {
   .phone-frame { --phone-scale: 0.65; margin: -2rem 0 -4rem; }
-  .hero { padding: 5rem 1.25rem 2.5rem; gap: 1.5rem; }
+  .hero { padding: 1.5rem 1.25rem 2.5rem; gap: 1.5rem; }
   .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
   .hero-sub { font-size: 1rem; }
   .hero-chip { font-size: 0.78rem; }
@@ -1291,7 +1292,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 @media (max-width: 480px) {
   html { font-size: 15px; }
   .phone-frame { --phone-scale: 0.55; margin: -3rem 0 -6rem; }
-  .hero { padding: 4.5rem 1rem 2rem; }
+  .hero { padding: 1.5rem 1rem 2rem; }
   .hero h1 { font-size: clamp(1.8rem, 9vw, 2.4rem); }
   .hero-downloads { gap: 0.6rem; }
   .store-btn { padding: 0.7rem 1.2rem; }
