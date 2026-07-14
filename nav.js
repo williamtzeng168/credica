@@ -23,11 +23,11 @@
   var APP_STORE = 'https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580';
   var LOGIN = 'https://dashboard.credica.app';
 
-  // 分眾主 CTA 設定
+  // 分眾主 CTA 設定（i18n 僅 download 有對應鍵，供 index.html 的 i18n.js 翻譯用）
   var CTA = {
-    download: { label: '下載 App', href: APP_STORE, target: '_blank', icon: 'download' },
-    create:   { label: '免費建立組織', href: 'https://apply.credica.app/?plan=free', target: '_blank', icon: 'arrow' },
-    consult:  { label: '預約諮詢', href: 'enterprise.html#contact', target: '_self', icon: 'arrow' }
+    download: { label: '下載 App', href: APP_STORE, target: '_blank', icon: 'download', i18n: 'nav.download' },
+    create:   { label: '免費建立組織', href: 'https://apply.credica.app/?plan=free', target: '_blank', icon: 'arrow', i18n: null },
+    consult:  { label: '預約諮詢', href: 'enterprise.html#contact', target: '_self', icon: 'arrow', i18n: null }
   };
 
   // 全站導覽連結(順序固定)
@@ -76,9 +76,12 @@
   function midLinks(active) {
     return LINKS.map(function (l) {
       var cls = l.key === active ? ' class="active"' : '';
-      return '<a href="' + l.href + '"' + cls + '>' + esc(l.label) + '</a>';
+      // data-i18n 讓 index.html 的 i18n.js 可翻譯（其他頁未載 i18n 時為惰性屬性）
+      return '<a href="' + l.href + '"' + cls + ' data-i18n="nav.' + l.key + '">' + esc(l.label) + '</a>';
     }).join('');
   }
+
+  function i18nAttr(key) { return key ? ' data-i18n="' + key + '"' : ''; }
 
   function render(mount) {
     var active = mount.getAttribute('data-active') || '';
@@ -92,17 +95,17 @@
         '<div class="nav-mid">' + midLinks(active) + '</div>' +
         '<button class="hamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="credica-mobile-menu">' +
           '<span></span><span></span><span></span></button>' +
-        '<a href="' + LOGIN + '" class="nav-login" target="_blank" rel="noopener">' + ICONS.login + '登入</a>' +
+        '<a href="' + LOGIN + '" class="nav-login" target="_blank" rel="noopener" data-i18n="nav.login">' + ICONS.login + '登入</a>' +
         '<a href="' + cta.href + '" class="nav-dl" target="' + cta.target + '"' +
-          (cta.target === '_blank' ? ' rel="noopener"' : '') + '>' + ICONS[cta.icon] + esc(cta.label) + '</a>' +
+          (cta.target === '_blank' ? ' rel="noopener"' : '') + i18nAttr(cta.i18n) + '>' + ICONS[cta.icon] + esc(cta.label) + '</a>' +
       '</nav>';
 
     var menu =
       '<div class="credica-mobile-menu" id="credica-mobile-menu">' +
         midLinks(active) +
-        '<a href="' + LOGIN + '" class="nav-dl" style="text-align:center;background:transparent;color:#1E2951;border:1px solid rgba(15,18,32,0.08);box-shadow:none;" target="_blank" rel="noopener">登入</a>' +
+        '<a href="' + LOGIN + '" class="nav-dl" style="text-align:center;background:transparent;color:#1E2951;border:1px solid rgba(15,18,32,0.08);box-shadow:none;" target="_blank" rel="noopener" data-i18n="nav.login">登入</a>' +
         '<a href="' + cta.href + '" class="nav-dl" style="text-align:center;" target="' + cta.target + '"' +
-          (cta.target === '_blank' ? ' rel="noopener"' : '') + '>' + esc(cta.label) + '</a>' +
+          (cta.target === '_blank' ? ' rel="noopener"' : '') + i18nAttr(cta.i18n) + '>' + esc(cta.label) + '</a>' +
       '</div>';
 
     mount.innerHTML = nav + menu;
