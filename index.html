@@ -285,9 +285,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 
 @media (max-width: 900px) {
   html { font-size: 16px; }
-  .hero { flex-direction: column; padding: 1.5rem 1.5rem 3rem; gap: 2.5rem; }
-  /* 手機:文案/CTA 在上、App 畫面在下(首屏先看到「產品是什麼」),不再讓 mockup 蓋掉主標 */
-  .hero-right { order: 2; }
+  /* hero 直式/並排切換統一在 ≤768 處理,此處不動 hero */
   .value-grid { grid-template-columns: 1fr; }
   .scenes-strip { grid-template-columns: 1fr 1fr; }
   .highlight-section, .highlight-section.reverse { grid-template-columns: 1fr; direction: ltr; }
@@ -1204,8 +1202,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 /* === Tablet (≤1024) === */
 @media (max-width: 1024px) {
   html { font-size: 16px; }
-  .hero { flex-direction: column; align-items: stretch; gap: 2rem; padding: 1.5rem 1.5rem 3rem; }
-  .hero-right { justify-content: center; order: 2; }
+  /* 平板/小視窗維持並排(文左圖右),只縮小 gap 與 App 畫面比例 */
+  .hero { gap: 2rem; padding: 2rem 1.5rem 3rem; }
   .phone-frame { --phone-scale: 0.72; transform-origin: top center; }
   .trust-row { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .tbadge { padding: 1.75rem 1rem 1.5rem; }
@@ -1230,7 +1228,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 /* === Mobile (≤768) — Section 2 上下 + tab 橫向 emoji === */
 @media (max-width: 768px) {
   .phone-frame { --phone-scale: 0.6; }
-  .hero { padding: 1.5rem 1.25rem 2.5rem; gap: 1.5rem; }
+  /* 手機才改直式:文案/CTA 在上、App 畫面在下 */
+  .hero { flex-direction: column; gap: 1.5rem; padding: 1.5rem 1.25rem 2.5rem; }
+  .hero-right { order: 2; }
   .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
   .hero-sub { font-size: 1rem; }
   .hero-chip { font-size: 0.78rem; }
