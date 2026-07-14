@@ -447,6 +447,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 .phone-frame {
   --phone-scale: 1;
   width: 360px; height: 784px;
+  /* transform: scale() 不縮小佔位框；用負 margin 把「縮小後空出的高度」收回，
+     讓版面只保留視覺高度(scale=1 時為 0，桌機不受影響) */
+  margin-bottom: calc((var(--phone-scale) - 1) * 784px);
   background: var(--bg); color: var(--text);
   font-family: var(--font-stack);
   position: relative; overflow: hidden;
@@ -1203,11 +1206,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   html { font-size: 16px; }
   .hero { flex-direction: column; align-items: stretch; gap: 2rem; padding: 1.5rem 1.5rem 3rem; }
   .hero-right { justify-content: center; order: 2; }
-  .phone-frame {
-    --phone-scale: 0.78;
-    transform-origin: center center;
-    margin: -1rem 0 -2rem;
-  }
+  .phone-frame { --phone-scale: 0.72; transform-origin: top center; }
   .trust-row { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .tbadge { padding: 1.75rem 1rem 1.5rem; }
   .tbadge-icon { width: 42px; height: 42px; }
@@ -1230,7 +1229,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 
 /* === Mobile (≤768) — Section 2 上下 + tab 橫向 emoji === */
 @media (max-width: 768px) {
-  .phone-frame { --phone-scale: 0.65; margin: -2rem 0 -4rem; }
+  .phone-frame { --phone-scale: 0.6; }
   .hero { padding: 1.5rem 1.25rem 2.5rem; gap: 1.5rem; }
   .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
   .hero-sub { font-size: 1rem; }
@@ -1291,7 +1290,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
 /* === Small mobile (≤480) === */
 @media (max-width: 480px) {
   html { font-size: 15px; }
-  .phone-frame { --phone-scale: 0.55; margin: -3rem 0 -6rem; }
+  .phone-frame { --phone-scale: 0.5; }
   .hero { padding: 1.5rem 1rem 2rem; }
   .hero h1 { font-size: clamp(1.8rem, 9vw, 2.4rem); }
   .hero-downloads { gap: 0.6rem; }
