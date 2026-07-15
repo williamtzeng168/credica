@@ -133,14 +133,7 @@ footer{text-align:center;font-size:12.5px;color:var(--muted);padding:26px 0 40px
 
 
 /* ---------- 全站導覽列（與 index 一致） ---------- */
-.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(255,255,255,.85);border-bottom:1px solid rgba(0,0,0,.07);box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.site-nav .logo{display:flex;align-items:center;text-decoration:none}
-.site-nav .nav-mid{display:flex;gap:2rem;flex:1;justify-content:center}
-.site-nav .nav-mid a{color:#475569;text-decoration:none;font-size:.95rem;font-weight:400;transition:color .2s}
-.site-nav .nav-mid a:hover{color:#16443A}
-.site-nav .nav-dl{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.4rem;border-radius:10px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:.95rem}
-.site-nav .nav-dl:hover{background:var(--green-deep)}
-@media(max-width:760px){.site-nav{padding:.8rem 1rem}.site-nav .nav-mid{display:none}}
+/* NAV 樣式由 nav.js 元件自帶（全站單一來源），此頁不再定義 */
 header{padding-top:130px!important}
 .site-foot{border-top:1px solid var(--line);padding:1.6rem 1.5rem 2.4rem;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .site-foot .l{font-size:.85rem;color:var(--muted)}
@@ -154,17 +147,8 @@ header{padding-top:130px!important}
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="index.html" class="logo"><img src="credica-wordmark.png" alt="Credica" style="height:40px;width:auto;display:block"></a>
-  <div class="nav-mid">
-    <a href="index.html">個人版</a>
-    <a href="business.html">中小組織</a>
-    <a href="enterprise.html">企業方案</a>
-    <a href="tutorial.html">互動教學</a>
-    <a href="about.html">關於</a>
-  </div>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">下載 App</a>
-</nav>
+<!-- 導覽列由 nav.js 注入（全站單一來源）；data-cta="create" → 分眾主 CTA「免費建立組織」 -->
+<div id="site-nav" data-active="business" data-cta="create" style="min-height:72px"></div>
 
 <header>
   <div class="wrap">
@@ -372,5 +356,6 @@ sw.addEventListener('click',()=>{
  });
 });
 </script>
+<script src="nav.js" defer></script>
 </body>
 </html>

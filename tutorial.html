@@ -55,47 +55,12 @@ body {
   overflow-x: hidden;
 }
 
-/* ============ NAV (aligned with index.html) ============ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1rem 2.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.85);
-  border-bottom: 1px solid var(--hair);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.logo {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em;
-  color: var(--ink); text-decoration: none;
-}
-.logo img { width: 34px; height: 34px; object-fit: contain; flex-shrink: 0; }
-.nav-mid { display: flex; gap: 2rem; flex: 1; justify-content: center; }
-.nav-mid a {
-  color: var(--ink-2); text-decoration: none;
-  font-size: 0.95rem; font-weight: 400;
-  transition: color 0.2s;
-}
-.nav-mid a:hover, .nav-mid a.active { color: #1E2951; }
-.nav-dl {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.6rem 1.4rem; border-radius: 10px;
-  background: #1E2951; color: white; text-decoration: none;
-  font-weight: 600; font-size: 0.95rem;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-.nav-dl:hover { background: #141B3B; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
-.nav-dl svg { width: 16px; height: 16px; }
-.nav-login { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 0.7rem; padding: 0.6rem 1.3rem; background: transparent; color: #1E2951; border: 1px solid rgba(15,18,32,0.08); border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: inherit; transition: all 0.2s; }
-.nav-login:hover { border-color: #1E2951; background: rgba(30,41,81,0.05); }
-.nav-login svg { width: 16px; height: 16px; }
+/* NAV 樣式由 nav.js 元件自帶（全站單一來源），此頁不再定義 */
 
 /* ============ HERO ============ */
 .hero {
   text-align: center;
-  padding: 104px 24px 16px;
+  padding: 24px 24px 16px;
   max-width: 820px;
   margin: 0 auto;
 }
@@ -1259,25 +1224,8 @@ footer { border-top: 1px solid var(--hair); padding: 2.5rem 2.5rem; max-width: 1
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo">
-    <img src="credica-wordmark.png" alt="Credica" style="height:40px;width:auto;display:block"></a>
-  <div class="nav-mid">
-    <a href="index.html">個人版</a>
-    <a href="business.html">中小組織</a>
-    <a href="enterprise.html">企業方案</a>
-    <a href="tutorial.html" class="active">互動教學</a>
-    <a href="about.html">關於</a>
-  </div>
-  <a href="https://dashboard.credica.app" class="nav-login" target="_blank" rel="noopener" data-i18n="nav.login">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-    登入
-  </a>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    下載 App
-  </a>
-</nav>
+<!-- 導覽列由 nav.js 注入（全站單一來源）；data-cta="download" → 分眾主 CTA「下載 App」；順帶補上原本缺的手機漢堡選單 -->
+<div id="site-nav" data-active="tutorial" data-cta="download" style="min-height:72px"></div>
 
 <section class="hero">
   <div class="hero-chip">APP 操作教學手冊</div>
@@ -4735,5 +4683,6 @@ if (deepLinkFeature && findFeature(deepLinkFeature)) {
 }
 </script>
 
+<script src="nav.js" defer></script>
 </body>
 </html>

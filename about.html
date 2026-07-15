@@ -91,37 +91,7 @@
   a { color: inherit; }
   img { max-width: 100%; display: block; }
 
-  /* ====================== NAV（全站共用外殼，與 business.html / index.html 一致）====================== */
-  nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
-  .logo-img { width: 34px; height: 34px; object-fit: contain; }
-  .nav-mid { display: flex; gap: 2rem; flex: 1; justify-content: center; }
-  .nav-mid a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.2s; }
-  .nav-mid a:hover { color: var(--teal-b); }
-  .nav-mid a.active { color: var(--teal-b); font-weight: 600; }
-  .nav-dl { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; background: var(--teal); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; text-decoration: none; }
-  .nav-dl:hover { background: var(--teal-g); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
-  .nav-dl svg { width: 16px; height: 16px; }
-.nav-login { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 0.7rem; padding: 0.6rem 1.3rem; background: transparent; color: #1E2951; border: 1px solid rgba(15,18,32,0.08); border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: inherit; transition: all 0.2s; }
-.nav-login:hover { border-color: #1E2951; background: rgba(30,41,81,0.05); }
-.nav-login svg { width: 16px; height: 16px; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
-  .hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s ease; border-radius: 2px; }
-  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-  .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-  .mobile-menu.active { opacity: 1; pointer-events: all; }
-  .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.3s ease; }
-  .mobile-menu a:hover { color: var(--teal-b); }
-  .mobile-menu a.active { color: var(--teal-b); }
-  @media (max-width: 968px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-mid { display: none; }
-    .nav-login { display: none; }
-    .hamburger { display: flex; }
-    .mobile-menu { display: flex; }
-  }
+  /* NAV 樣式由 nav.js 元件自帶（全站單一來源），此頁不再定義 */
 
   /* ====================== LAYOUT（共用）====================== */
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
@@ -416,39 +386,8 @@
 <body>
 
 <!-- ======================= NAV（共用外殼）======================= -->
-<nav>
-  <a href="index.html" class="logo">
-    <img src="credica-wordmark.png" alt="Credica" style="height:40px;width:auto;display:block"></a>
-  <div class="nav-mid">
-    <a href="index.html">個人版</a>
-    <a href="business.html">中小組織</a>
-    <a href="enterprise.html">企業方案</a>
-    <a href="tutorial.html">互動教學</a>
-    <a href="about.html" class="active">關於</a>
-  </div>
-  <button class="hamburger" aria-label="開啟選單">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <a href="https://dashboard.credica.app" class="nav-login" target="_blank" rel="noopener" data-i18n="nav.login">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-    登入
-  </a>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" target="_blank" rel="noopener">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    下載 App
-  </a>
-</nav>
-<div class="mobile-menu">
-  <a href="index.html">個人版</a>
-  <a href="business.html">中小組織</a>
-  <a href="enterprise.html">企業方案</a>
-  <a href="tutorial.html">互動教學</a>
-  <a href="about.html" class="active">關於</a>
-  <a href="https://dashboard.credica.app" class="nav-dl" style="text-align:center;background:transparent;color:var(--teal);border:1px solid var(--border);box-shadow:none;" target="_blank" rel="noopener" data-i18n="nav.login">登入</a>
-  <a href="https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580" class="nav-dl" style="text-align:center;" target="_blank" rel="noopener">下載 App</a>
-</div>
+<!-- 導覽列由 nav.js 注入（全站單一來源）；data-cta="download" → 分眾主 CTA「下載 App」 -->
+<div id="site-nav" data-active="about" data-cta="download" style="min-height:72px"></div>
 
 <span id="top"></span>
 
@@ -696,20 +635,6 @@
   </div>
 </footer>
 
-<script>
-  // ============ Mobile menu（與 business.html 一致）============
-  var hamburger = document.querySelector('.hamburger');
-  var mobileMenu = document.querySelector('.mobile-menu');
-  hamburger.addEventListener('click', function () {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-  });
-  mobileMenu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-    });
-  });
-</script>
+<script src="nav.js" defer></script>
 </body>
 </html>
