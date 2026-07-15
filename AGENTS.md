@@ -1,4 +1,4 @@
-# Credica Landing Page — Claude Code 開發指南
+# Credica Landing Page — Codex 開發指南
 
 > **版本**: v1.0.0
 > **更新**: 2026-03-10
