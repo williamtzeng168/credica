@@ -456,14 +456,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     0 0 0 10px #0a0a0a,
     0 0 0 12px #2a2a2a,
     0 24px 48px rgba(0,0,0,0.18);
-  transform: scale(var(--phone-scale)) rotateY(-12deg) rotateX(5deg);
+  /* 正面朝前（移除 rotateY/rotateX 3D 傾斜）——避免左緣被裁切/看起來被切掉，
+     且輪播每一屏都正面、好讀；保留 scale 與上下漂浮增添生命力 */
+  transform: scale(var(--phone-scale));
   transform-origin: top center;
-  transform-style: preserve-3d;
   animation: phoneFloat 6s ease-in-out infinite;
 }
 @keyframes phoneFloat {
-  0%, 100% { transform: scale(var(--phone-scale)) rotateY(-12deg) rotateX(5deg) translateY(0); }
-  50%      { transform: scale(var(--phone-scale)) rotateY(-12deg) rotateX(5deg) translateY(-20px); }
+  0%, 100% { transform: scale(var(--phone-scale)) translateY(0); }
+  50%      { transform: scale(var(--phone-scale)) translateY(-14px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .phone-frame { animation: none; }
