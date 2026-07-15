@@ -457,14 +457,14 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     0 0 0 12px #2a2a2a,
     0 24px 48px rgba(0,0,0,0.18);
   /* 輕微 3D 立體＋上下漂浮（漂浮感）；傾斜比原本(-12deg)緩，左緣不會後退到被裁切 */
-  transform: scale(var(--phone-scale)) rotateY(-7deg) rotateX(3deg);
+  transform: scale(var(--phone-scale)) rotateY(-12deg) rotateX(5deg);
   transform-origin: top center;
   transform-style: preserve-3d;
   animation: phoneFloat 6s ease-in-out infinite;
 }
 @keyframes phoneFloat {
-  0%, 100% { transform: scale(var(--phone-scale)) rotateY(-7deg) rotateX(3deg) translateY(0); }
-  50%      { transform: scale(var(--phone-scale)) rotateY(-7deg) rotateX(3deg) translateY(-14px); }
+  0%, 100% { transform: scale(var(--phone-scale)) rotateY(-12deg) rotateX(5deg) translateY(0); }
+  50%      { transform: scale(var(--phone-scale)) rotateY(-12deg) rotateX(5deg) translateY(-14px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .phone-frame { animation: none; }
