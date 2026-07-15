@@ -456,15 +456,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
     0 0 0 10px #0a0a0a,
     0 0 0 12px #2a2a2a,
     0 24px 48px rgba(0,0,0,0.18);
-  /* 正面朝前（移除 rotateY/rotateX 3D 傾斜）——避免左緣被裁切/看起來被切掉，
-     且輪播每一屏都正面、好讀；保留 scale 與上下漂浮增添生命力 */
-  transform: scale(var(--phone-scale));
+  /* 輕微 3D 立體＋上下漂浮（漂浮感）；傾斜比原本(-12deg)緩，左緣不會後退到被裁切 */
+  transform: scale(var(--phone-scale)) rotateY(-7deg) rotateX(3deg);
   transform-origin: top center;
+  transform-style: preserve-3d;
   animation: phoneFloat 6s ease-in-out infinite;
 }
 @keyframes phoneFloat {
-  0%, 100% { transform: scale(var(--phone-scale)) translateY(0); }
-  50%      { transform: scale(var(--phone-scale)) translateY(-14px); }
+  0%, 100% { transform: scale(var(--phone-scale)) rotateY(-7deg) rotateX(3deg) translateY(0); }
+  50%      { transform: scale(var(--phone-scale)) rotateY(-7deg) rotateX(3deg) translateY(-14px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .phone-frame { animation: none; }
@@ -1475,153 +1475,224 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   </div>
 
   <div class="hero-right" aria-hidden="true">
-    <style id="pm-carousel-css">
+    <style id="pm-app-css">
+      /* ===== 手機輪播（依 credica-v2 真實 App 畫面重建）===== */
       .pm-slide { opacity:0; pointer-events:none; transition:opacity .7s ease; }
       .pm-slide.on { opacity:1; pointer-events:auto; }
       .pm-dots { display:flex; gap:7px; justify-content:center; margin-top:20px; }
       .pm-dot { width:7px; height:7px; border-radius:999px; background:#CBD5E1; border:0; padding:0; cursor:pointer; transition:all .3s ease; }
-      .pm-dot.on { background:#1E2951; width:20px; }
-      .pm-toptitle { flex:1; text-align:center; font-size:15px; font-weight:700; color:#0F1220; }
-      .pm-qrwrap { display:flex; flex-direction:column; align-items:center; padding-top:10px; }
-      .pm-qrcard { background:#fff; border:1px solid #EDEFF3; border-radius:20px; padding:18px 18px 20px; box-shadow:0 12px 30px -18px rgba(15,18,32,.30); display:flex; flex-direction:column; align-items:center; width:100%; }
-      .pm-qr { width:148px; height:148px; }
-      .pm-qrname { font-size:16px; font-weight:800; color:#0F1220; margin-top:14px; }
-      .pm-qrsub { font-size:11.5px; color:#64748B; margin-top:3px; }
-      .pm-qrpill { margin-top:11px; }
-      .pm-hint { text-align:center; font-size:11.5px; color:#94A3B8; margin-top:16px; line-height:1.5; }
-      .pm-topbar { display:flex; justify-content:space-between; align-items:center; padding:2px 2px 12px; }
-      .pm-topbar .h { font-size:21px; font-weight:800; color:#0F1220; letter-spacing:-.01em; }
-      .pm-topbar .tbic { width:34px; height:34px; border-radius:50%; background:#fff; border:1px solid #EDEFF3; display:flex; align-items:center; justify-content:center; }
-      .pm-topbar .tbic svg { width:16px; height:16px; color:#0F1220; }
-      .pm-credlist { display:flex; flex-direction:column; gap:10px; }
-      .pm-cred.sky { background:#EAF1FB; border-color:rgba(43,91,215,.18); }
-      .pm-cred.sky .cn { color:#20509E; } .pm-cred.sky .meta { color:#3C6099; } .pm-cred.sky .vpill { background:#2B5BD7; } .pm-cred.sky .shield { color:#2B5BD7; }
-      .pm-cred.peach { background:#FBF0E5; border-color:rgba(180,97,15,.18); }
-      .pm-cred.peach .cn { color:#8A5313; } .pm-cred.peach .meta { color:#9A6A29; } .pm-cred.peach .vpill { background:#B4610F; } .pm-cred.peach .shield { color:#B4610F; }
+      .pm-dot.on { background:#4F46E5; width:20px; }
+      .pm .pm-body { padding:8px 16px 0; }
+      .pm-tab.on { color:#4F46E5 !important; }
+      /* top bar */
+      .pmt-bar { display:flex; justify-content:space-between; align-items:center; padding:4px 2px 12px; }
+      .pmt-bar .h { font-size:21px; font-weight:800; color:#1A1F36; letter-spacing:-.01em; }
+      .pmt-bar .ics { display:flex; gap:8px; }
+      .pmt-bar .ic { width:34px; height:34px; border-radius:50%; background:#fff; border:1px solid #E5E7EB; display:flex; align-items:center; justify-content:center; position:relative; }
+      .pmt-bar .ic svg { width:16px; height:16px; color:#1A1F36; }
+      .pmt-bar .ic .rd { position:absolute; top:8px; right:9px; width:7px; height:7px; border-radius:50%; background:#EF4444; border:1.5px solid #fff; }
+      /* sub-tabs */
+      .pm-subtab { display:flex; background:#FAFBFC; border:1px solid #E5E7EB; border-radius:12px; padding:4px; gap:4px; margin-bottom:14px; }
+      .pm-subtab .s { flex:1; text-align:center; font-size:12.5px; font-weight:600; color:#4A5568; padding:7px; border-radius:9px; }
+      .pm-subtab .s.on { background:#fff; color:#1A1F36; font-weight:700; box-shadow:0 2px 6px rgba(15,20,25,.06); }
+      /* personal gradient card */
+      .pcard { border-radius:24px; padding:18px 17px; color:#fff; position:relative; overflow:hidden; background:linear-gradient(135deg,#6366F1,#8B5CF6,#EC4899); box-shadow:0 18px 36px -16px rgba(79,70,229,.45); }
+      .pcard-chips { display:flex; justify-content:space-between; position:relative; }
+      .pcard-chip { background:rgba(255,255,255,.20); color:#fff; font-size:11px; font-weight:600; padding:4px 11px; border-radius:999px; }
+      .pcard-id { display:flex; gap:13px; align-items:center; margin-top:12px; position:relative; }
+      .pcard-av { width:56px; height:56px; border-radius:50%; flex:none; border:2px solid rgba(255,255,255,.75); background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; }
+      .pcard-av svg { width:34px; height:34px; color:#8B5CF6; }
+      .pcard-name { font-size:23px; font-weight:800; line-height:1.05; }
+      .pcard-title { font-size:13px; color:rgba(255,255,255,.85); margin-top:3px; }
+      .pcard-co { display:flex; align-items:center; gap:9px; margin-top:13px; position:relative; }
+      .pcard-colog { width:30px; height:30px; border-radius:8px; background:rgba(255,255,255,.92); color:#6D28D9; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex:none; }
+      .pcard-coname { font-size:14px; font-weight:600; }
+      .pcard-contacts { margin-top:13px; display:flex; flex-direction:column; gap:7px; position:relative; }
+      .pcard-c { display:flex; align-items:center; gap:9px; font-size:12.5px; color:rgba(255,255,255,.92); }
+      .pcard-c svg { width:14px; height:14px; flex:none; }
+      .pcard-pills { display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; position:relative; }
+      .pcard-pill { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.28); color:#fff; font-size:11.5px; font-weight:600; padding:5px 11px; border-radius:999px; }
+      /* action row */
+      .pm-acts3 { display:flex; gap:10px; margin:14px 0 4px; }
+      .pm-a { flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; padding:12px 4px; border-radius:16px; font-size:11.5px; font-weight:700; text-align:center; }
+      .pm-a.primary { background:#4F46E5; color:#fff; box-shadow:0 12px 22px -10px rgba(79,70,229,.5); }
+      .pm-a.ghost { background:#fff; color:#1A1F36; border:1px solid #E5E7EB; }
+      .pm-a svg { width:21px; height:21px; }
+      /* quick links */
+      .pm-qlabel { font-size:12px; font-weight:700; letter-spacing:.06em; color:#8895A8; margin:16px 2px 9px; }
+      .pm-qcard { background:#FAFBFC; border:1px solid #E5E7EB; border-radius:14px; overflow:hidden; }
+      .pm-qrow { display:flex; align-items:center; gap:12px; padding:12px 13px; }
+      .pm-qic { width:36px; height:36px; border-radius:10px; background:#EEF2FF; display:flex; align-items:center; justify-content:center; flex:none; }
+      .pm-qic svg { width:18px; height:18px; color:#4F46E5; }
+      .pm-qt { font-size:14px; font-weight:700; color:#1A1F36; }
+      .pm-qs { font-size:11.5px; color:#4A5568; margin-top:2px; }
+      .pm-qchev { margin-left:auto; color:#8895A8; flex:none; }
+      .pm-qdiv { height:1px; background:#E5E7EB; margin-left:61px; }
+      /* QR screen */
+      .pm-appbar { display:flex; align-items:center; padding:2px 2px 12px; }
+      .pm-appbar .x { width:32px; height:32px; border-radius:50%; background:#FAFBFC; display:flex; align-items:center; justify-content:center; }
+      .pm-appbar .x svg { width:16px; height:16px; color:#1A1F36; }
+      .pm-appbar .t { flex:1; text-align:center; font-size:16px; font-weight:700; color:#1A1F36; margin-right:32px; }
+      .pm-qrcard { background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:22px; display:flex; flex-direction:column; align-items:center; box-shadow:0 14px 32px -18px rgba(15,20,25,.28); }
+      .pm-qrimg { width:152px; height:152px; }
+      .pm-qrname { font-size:18px; font-weight:800; color:#1A1F36; margin-top:14px; }
+      .pm-qrsub { font-size:12.5px; color:#4A5568; margin-top:3px; }
+      .pm-qrverify { display:inline-flex; align-items:center; gap:5px; color:#1A7A3E; font-size:12px; font-weight:600; margin-top:11px; }
+      .pm-qrverify svg { width:15px; height:15px; }
+      .pm-wait { display:flex; align-items:center; gap:9px; background:#FAFBFC; border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin-top:16px; }
+      .pm-spin { width:16px; height:16px; border-radius:50%; border:2.5px solid #4F46E5; border-top-color:transparent; flex:none; animation:pmspin .9s linear infinite; }
+      @keyframes pmspin { to { transform:rotate(360deg); } }
+      .pm-wait span { font-size:12px; color:#4A5568; }
+      .pm-obtn { display:flex; align-items:center; justify-content:center; gap:8px; border:1px solid #D1D5DB; border-radius:12px; padding:11px; font-size:13.5px; font-weight:600; color:#1A1F36; margin-top:10px; }
+      .pm-obtn svg { width:17px; height:17px; color:#4F46E5; }
+      /* wallet */
+      .pm-whero { background:#1E2951; border-radius:20px; padding:16px 16px 14px; color:#fff; position:relative; overflow:hidden; box-shadow:0 16px 30px -16px rgba(30,41,81,.5); }
+      .pm-whero .halo { position:absolute; right:-40px; top:-46px; width:150px; height:150px; border-radius:50%; border:26px solid rgba(255,255,255,.06); }
+      .pm-whero .iss { font-size:11.5px; font-weight:600; color:rgba(255,255,255,.72); letter-spacing:.05em; position:relative; }
+      .pm-whero .wt { font-size:20px; font-weight:800; margin-top:3px; position:relative; }
+      .pm-whero .hold { font-size:10.5px; color:rgba(255,255,255,.55); margin-top:14px; }
+      .pm-whero .hn { font-size:15px; font-weight:700; margin-top:1px; }
+      .pm-whero .wbot { display:flex; justify-content:space-between; align-items:center; margin-top:13px; position:relative; }
+      .pm-whero .exp { font-size:11.5px; color:rgba(255,255,255,.72); }
+      .pm-whero .show { background:#fff; color:#1E2951; font-size:12px; font-weight:800; padding:6px 15px; border-radius:999px; }
+      .pm-vtoggle { display:flex; align-items:center; gap:8px; margin:14px 0; }
+      .pm-vseg { display:flex; background:#FAFBFC; border:1px solid #E5E7EB; border-radius:10px; padding:3px; gap:3px; flex:1; }
+      .pm-vseg .s { flex:1; text-align:center; font-size:12px; font-weight:600; color:#4A5568; padding:6px; border-radius:8px; }
+      .pm-vseg .s.on { background:#fff; color:#1A1F36; font-weight:700; box-shadow:0 1px 3px rgba(15,20,25,.08); }
+      .pm-vadd { width:32px; height:32px; border-radius:9px; background:#EEF2FF; color:#4F46E5; display:flex; align-items:center; justify-content:center; flex:none; font-size:19px; font-weight:600; }
+      .pm-orgh { display:flex; align-items:center; gap:10px; padding:9px 2px 8px; }
+      .pm-orgav { width:38px; height:38px; border-radius:11px; flex:none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; }
+      .pm-orgn { font-size:14.5px; font-weight:800; color:#1A1F36; }
+      .pm-orgc { font-size:11.5px; font-weight:600; color:#4A5568; margin-top:1px; }
+      .pm-orgchev { margin-left:auto; color:#8895A8; flex:none; }
+      .pm-catlabel { display:flex; align-items:center; gap:5px; font-size:11.5px; font-weight:800; color:#4A5568; margin:6px 2px 7px; }
+      .pm-catlabel svg { width:13px; height:13px; }
+      .pm-vc { display:flex; align-items:center; gap:11px; background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:11px 12px; box-shadow:0 1px 2px rgba(15,20,25,.05); margin-bottom:8px; }
+      .pm-vctile { width:46px; height:46px; border-radius:13px; flex:none; display:flex; align-items:center; justify-content:center; }
+      .pm-vctile svg { width:22px; height:22px; }
+      .pm-vct { font-size:14px; font-weight:700; color:#1A1F36; }
+      .pm-vcmeta { display:flex; align-items:center; gap:8px; margin-top:4px; }
+      .pm-vcdate { font-size:11px; color:#8895A8; }
+      .pm-statpill { font-size:10px; font-weight:600; padding:3px 9px; border-radius:999px; }
+      .pm-statpill.ok { background:#E6F7EF; color:#1A7A3E; }
+      .pm-vcchev { margin-left:auto; color:#CBD5E1; flex:none; }
     </style>
     <div class="phone-stage">
       <div class="phone-frame">
 
-        <!-- SCREEN 1 · 個人名片 -->
+        <!-- ① 個人名片（名片 tab · 我的名片）-->
         <div class="pm pm-slide on" data-slide="0">
           <div class="pm-island"></div>
           <div class="pm-status"><span>9:41</span><span class="r">
-            <svg width="16" height="11" viewBox="0 0 18 12" fill="#0F1220"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
-            <svg width="23" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#0F1220" stroke-opacity=".4"/><rect x="3" y="3" width="15" height="7" rx="1.5" fill="#0F1220"/></svg>
+            <svg width="16" height="11" viewBox="0 0 18 12" fill="#1A1F36"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <svg width="23" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#1A1F36" stroke-opacity=".4"/><rect x="3" y="3" width="15" height="7" rx="1.5" fill="#1A1F36"/></svg>
           </span></div>
-          <div class="pm-nav">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0F1220" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
-            <svg viewBox="0 0 24 24" fill="#0F1220"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
-          </div>
           <div class="pm-body">
-            <div class="pm-avatar"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8.5" r="4"/><path d="M4 21a8 8 0 0 1 16 0z"/></svg></div>
-            <div class="pm-name">林宇翔</div>
-            <div class="pm-title">產品經理</div>
-            <div class="pm-co">雲曜科技股份有限公司</div>
-            <div class="pm-acts">
-              <div class="pm-act"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>傳訊息</div>
-              <div class="pm-act"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 9 6 15 15 15v-3l-4-2-2 2c-3-1.5-5-3.5-6-6l2-2-2-4H4z"/></svg></span>撥號</div>
-              <div class="pm-act"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>儲存聯絡人</div>
-              <div class="pm-act"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></span>分享名片</div>
+            <div class="pmt-bar"><span class="h">名片</span><span class="ics">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg></span>
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.5 21a1.7 1.7 0 0 1-3 0"/></svg><span class="rd"></span></span>
+            </span></div>
+            <div class="pm-subtab"><span class="s on">我的名片</span><span class="s">名片夾</span></div>
+            <div class="pcard">
+              <div class="pcard-chips"><span class="pcard-chip">工作</span><span class="pcard-chip">主要</span></div>
+              <div class="pcard-id">
+                <span class="pcard-av"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8.5" r="4"/><path d="M4 21a8 8 0 0 1 16 0z"/></svg></span>
+                <div><div class="pcard-name">林宇翔</div><div class="pcard-title">產品經理</div></div>
+              </div>
+              <div class="pcard-co"><span class="pcard-colog">雲</span><span class="pcard-coname">雲曜科技股份有限公司</span></div>
+              <div class="pcard-contacts">
+                <div class="pcard-c"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>linyx@example.com</div>
+                <div class="pcard-c"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 9 6 15 15 15v-3l-4-2-2 2c-3-1.5-5-3.5-6-6l2-2-2-4H4z"/></svg>0912 ・・・ 678</div>
+                <div class="pcard-c"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 3v-3H4Z"/></svg>LINE 已連動</div>
+              </div>
+              <div class="pcard-pills"><span class="pcard-pill">城東羽球社</span><span class="pcard-pill">政大 EMBA 2024</span></div>
             </div>
-            <div class="pm-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>最近活動</div>
-            <div class="pm-card pm-evt">
-              <div class="d"><div class="m">2026/07</div><div class="day">10</div></div>
-              <div class="mid"><div class="t">產品體驗交流會</div><div class="loc">台北市信義區</div><div class="sub">交換名片並交流產品方向</div></div>
-              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            <div class="pm-acts3">
+              <div class="pm-a primary"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>分享我的名片</div>
+              <div class="pm-a ghost"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1F36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M17 21h4M21 17v4"/></svg>掃描對方名片</div>
+              <div class="pm-a ghost"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1F36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>編輯個人名片</div>
             </div>
-            <div class="pm-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><circle cx="8" cy="11" r="2"/><path d="M13 9.5h6M13 13.5h4"/></svg>已驗證卡證 <span class="n">(1)</span></div>
-            <div class="pm-card pm-cred">
-              <div class="top"><span class="cn">雲曜科技會員卡</span><span class="vpill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已驗證</span></div>
-              <div class="meta">會員等級｜一般會員<br>效期｜2027/07/31</div>
-              <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.5-4-1-7-4.1-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            <div class="pm-qlabel">快速操作</div>
+            <div class="pm-qcard">
+              <div class="pm-qrow"><span class="pm-qic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M17 8h5M19.5 5.5v5"/></svg></span><div><div class="pm-qt">發起現場交換</div><div class="pm-qs">多人聚會時，產生 8 字現場碼給朋友加入</div></div><svg class="pm-qchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></div>
+              <div class="pm-qdiv"></div>
+              <div class="pm-qrow"><span class="pm-qic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20a4 4 0 0 0-8 0"/><circle cx="12" cy="9" r="3.5"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></span><div><div class="pm-qt">查看名片夾</div><div class="pm-qs">找回交換過的人脈</div></div><svg class="pm-qchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></div>
             </div>
           </div>
           <div class="pm-tabs">
             <div class="pm-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><circle cx="8" cy="11" r="2"/><path d="M13 9.5h6M13 13.5h4"/></svg>名片</div>
             <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>卡夾</div>
-            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>活動</div>
-            <div class="pm-tab"><span class="badge">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.5 21a1.7 1.7 0 0 1-3 0"/></svg>通知</div>
+            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>收件匣</div>
             <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>我</div>
           </div>
         </div>
 
-        <!-- SCREEN 2 · 出示 QR -->
+        <!-- ② 我的 QR Code -->
         <div class="pm pm-slide" data-slide="1">
           <div class="pm-island"></div>
           <div class="pm-status"><span>9:41</span><span class="r">
-            <svg width="16" height="11" viewBox="0 0 18 12" fill="#0F1220"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
-            <svg width="23" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#0F1220" stroke-opacity=".4"/><rect x="3" y="3" width="15" height="7" rx="1.5" fill="#0F1220"/></svg>
+            <svg width="16" height="11" viewBox="0 0 18 12" fill="#1A1F36"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <svg width="23" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#1A1F36" stroke-opacity=".4"/><rect x="3" y="3" width="15" height="7" rx="1.5" fill="#1A1F36"/></svg>
           </span></div>
-          <div class="pm-nav">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0F1220" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
-            <span class="pm-toptitle">出示我的名片</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M0 0h24"/></svg>
-          </div>
           <div class="pm-body">
-            <div class="pm-qrwrap">
-              <div class="pm-qrcard">
-                <svg class="pm-qr" viewBox="0 0 100 100" shape-rendering="crispEdges"><rect width="100" height="100" fill="#fff"/><g fill="#0F1220"><rect x="6" y="6" width="22" height="22"/><rect x="10" y="10" width="14" height="14" fill="#fff"/><rect x="13" y="13" width="8" height="8"/><rect x="72" y="6" width="22" height="22"/><rect x="76" y="10" width="14" height="14" fill="#fff"/><rect x="79" y="13" width="8" height="8"/><rect x="6" y="72" width="22" height="22"/><rect x="10" y="76" width="14" height="14" fill="#fff"/><rect x="13" y="79" width="8" height="8"/><rect x="36" y="8" width="4" height="4"/><rect x="44" y="8" width="4" height="4"/><rect x="52" y="8" width="4" height="4"/><rect x="60" y="12" width="4" height="4"/><rect x="36" y="16" width="4" height="4"/><rect x="48" y="16" width="4" height="4"/><rect x="56" y="16" width="4" height="4"/><rect x="40" y="24" width="4" height="4"/><rect x="52" y="24" width="4" height="4"/><rect x="60" y="24" width="4" height="4"/><rect x="8" y="36" width="4" height="4"/><rect x="16" y="36" width="4" height="4"/><rect x="24" y="40" width="4" height="4"/><rect x="8" y="44" width="4" height="4"/><rect x="16" y="48" width="4" height="4"/><rect x="36" y="36" width="4" height="4"/><rect x="44" y="40" width="4" height="4"/><rect x="52" y="36" width="4" height="4"/><rect x="60" y="40" width="4" height="4"/><rect x="68" y="36" width="4" height="4"/><rect x="40" y="44" width="4" height="4"/><rect x="48" y="48" width="4" height="4"/><rect x="56" y="44" width="4" height="4"/><rect x="64" y="48" width="4" height="4"/><rect x="36" y="52" width="4" height="4"/><rect x="44" y="56" width="4" height="4"/><rect x="52" y="52" width="4" height="4"/><rect x="60" y="56" width="4" height="4"/><rect x="72" y="52" width="4" height="4"/><rect x="80" y="36" width="4" height="4"/><rect x="88" y="40" width="4" height="4"/><rect x="80" y="48" width="4" height="4"/><rect x="36" y="64" width="4" height="4"/><rect x="44" y="68" width="4" height="4"/><rect x="52" y="64" width="4" height="4"/><rect x="60" y="68" width="4" height="4"/><rect x="68" y="64" width="4" height="4"/><rect x="76" y="68" width="4" height="4"/><rect x="84" y="64" width="4" height="4"/><rect x="88" y="72" width="4" height="4"/><rect x="36" y="76" width="4" height="4"/><rect x="48" y="80" width="4" height="4"/><rect x="56" y="76" width="4" height="4"/><rect x="64" y="80" width="4" height="4"/><rect x="72" y="84" width="4" height="4"/><rect x="84" y="84" width="4" height="4"/><rect x="40" y="88" width="4" height="4"/><rect x="52" y="88" width="4" height="4"/><rect x="60" y="88" width="4" height="4"/><rect x="76" y="88" width="4" height="4"/></g></svg>
-                <div class="pm-qrname">林宇翔</div>
-                <div class="pm-qrsub">產品經理 · 雲曜科技股份有限公司</div>
-                <div class="pm-qrpill"><span class="vpill" style="display:inline-flex;align-items:center;gap:4px;background:#0E8050;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:999px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已簽章</span></div>
-              </div>
-              <div class="pm-hint">面對面時，把手機亮給對方掃<br>交換完成會自動回到名片</div>
+            <div class="pm-appbar"><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg></span><span class="t">我的 QR Code</span></div>
+            <div class="pm-qrcard">
+              <svg class="pm-qrimg" viewBox="0 0 100 100" shape-rendering="crispEdges"><rect width="100" height="100" fill="#fff"/><g fill="#1A1F36"><rect x="6" y="6" width="22" height="22"/><rect x="10" y="10" width="14" height="14" fill="#fff"/><rect x="13" y="13" width="8" height="8"/><rect x="72" y="6" width="22" height="22"/><rect x="76" y="10" width="14" height="14" fill="#fff"/><rect x="79" y="13" width="8" height="8"/><rect x="6" y="72" width="22" height="22"/><rect x="10" y="76" width="14" height="14" fill="#fff"/><rect x="13" y="79" width="8" height="8"/><rect x="36" y="8" width="4" height="4"/><rect x="44" y="8" width="4" height="4"/><rect x="52" y="8" width="4" height="4"/><rect x="60" y="12" width="4" height="4"/><rect x="36" y="16" width="4" height="4"/><rect x="48" y="16" width="4" height="4"/><rect x="56" y="16" width="4" height="4"/><rect x="40" y="24" width="4" height="4"/><rect x="52" y="24" width="4" height="4"/><rect x="60" y="24" width="4" height="4"/><rect x="8" y="36" width="4" height="4"/><rect x="16" y="36" width="4" height="4"/><rect x="24" y="40" width="4" height="4"/><rect x="8" y="44" width="4" height="4"/><rect x="16" y="48" width="4" height="4"/><rect x="36" y="36" width="4" height="4"/><rect x="44" y="40" width="4" height="4"/><rect x="52" y="36" width="4" height="4"/><rect x="60" y="40" width="4" height="4"/><rect x="68" y="36" width="4" height="4"/><rect x="40" y="44" width="4" height="4"/><rect x="48" y="48" width="4" height="4"/><rect x="56" y="44" width="4" height="4"/><rect x="64" y="48" width="4" height="4"/><rect x="36" y="52" width="4" height="4"/><rect x="44" y="56" width="4" height="4"/><rect x="52" y="52" width="4" height="4"/><rect x="60" y="56" width="4" height="4"/><rect x="72" y="52" width="4" height="4"/><rect x="80" y="36" width="4" height="4"/><rect x="88" y="40" width="4" height="4"/><rect x="80" y="48" width="4" height="4"/><rect x="36" y="64" width="4" height="4"/><rect x="44" y="68" width="4" height="4"/><rect x="52" y="64" width="4" height="4"/><rect x="60" y="68" width="4" height="4"/><rect x="68" y="64" width="4" height="4"/><rect x="76" y="68" width="4" height="4"/><rect x="84" y="64" width="4" height="4"/><rect x="88" y="72" width="4" height="4"/><rect x="36" y="76" width="4" height="4"/><rect x="48" y="80" width="4" height="4"/><rect x="56" y="76" width="4" height="4"/><rect x="64" y="80" width="4" height="4"/><rect x="72" y="84" width="4" height="4"/><rect x="84" y="84" width="4" height="4"/><rect x="40" y="88" width="4" height="4"/><rect x="52" y="88" width="4" height="4"/><rect x="60" y="88" width="4" height="4"/><rect x="76" y="88" width="4" height="4"/></g></svg>
+              <div class="pm-qrname">林宇翔</div>
+              <div class="pm-qrsub">產品經理 / 雲曜科技股份有限公司</div>
+              <div class="pm-qrverify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.5-4-1-7-4.1-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>已簽章</div>
             </div>
-          </div>
-          <div class="pm-tabs">
-            <div class="pm-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><circle cx="8" cy="11" r="2"/><path d="M13 9.5h6M13 13.5h4"/></svg>名片</div>
-            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>卡夾</div>
-            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>活動</div>
-            <div class="pm-tab"><span class="badge">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.5 21a1.7 1.7 0 0 1-3 0"/></svg>通知</div>
-            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>我</div>
+            <div class="pm-wait"><span class="pm-spin"></span><span>等待對方掃描…交換完成會自動跳轉</span></div>
+            <div class="pm-obtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/><path d="M14 4h6v6M20 4 10 14"/></svg>選擇揭露欄位</div>
           </div>
         </div>
 
-        <!-- SCREEN 3 · 卡夾（已驗證卡證）-->
+        <!-- ③ 卡夾（wallet · 卡片）-->
         <div class="pm pm-slide" data-slide="2">
           <div class="pm-island"></div>
           <div class="pm-status"><span>9:41</span><span class="r">
-            <svg width="16" height="11" viewBox="0 0 18 12" fill="#0F1220"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
-            <svg width="23" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#0F1220" stroke-opacity=".4"/><rect x="3" y="3" width="15" height="7" rx="1.5" fill="#0F1220"/></svg>
+            <svg width="16" height="11" viewBox="0 0 18 12" fill="#1A1F36"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <svg width="23" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#1A1F36" stroke-opacity=".4"/><rect x="3" y="3" width="15" height="7" rx="1.5" fill="#1A1F36"/></svg>
           </span></div>
-          <div class="pm-body" style="padding-top:14px;">
-            <div class="pm-topbar">
-              <span class="h">卡夾</span>
-              <span class="tbic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg></span>
+          <div class="pm-body">
+            <div class="pmt-bar"><span class="h">卡夾</span><span class="ics"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg></span></span></div>
+            <div class="pm-subtab"><span class="s on">卡片</span><span class="s">組織</span><span class="s">活動</span></div>
+            <div class="pm-whero">
+              <div class="halo"></div>
+              <div class="iss">雲曜科技股份有限公司</div>
+              <div class="wt">雲曜科技會員卡</div>
+              <div class="hold">持卡人</div>
+              <div class="hn">林宇翔</div>
+              <div class="wbot"><span class="exp">有效至 2027/07/31</span><span class="show">出示</span></div>
             </div>
-            <div class="pm-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.5-4-1-7-4.1-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>已驗證卡證 <span class="n">(3)</span></div>
-            <div class="pm-credlist">
-              <div class="pm-card pm-cred">
-                <div class="top"><span class="cn">雲曜科技會員卡</span><span class="vpill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已驗證</span></div>
-                <div class="meta">會員等級｜一般會員 · 效期｜2027/07/31</div>
-                <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.5-4-1-7-4.1-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
-              </div>
-              <div class="pm-card pm-cred sky">
-                <div class="top"><span class="cn">城東羽球社 社員證</span><span class="vpill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已驗證</span></div>
-                <div class="meta">2026 年度社員 · 效期｜2026/12/31</div>
-                <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.5-4-1-7-4.1-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
-              </div>
-              <div class="pm-card pm-cred peach">
-                <div class="top"><span class="cn">2026 產品設計年會 報到證</span><span class="vpill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>已驗證</span></div>
-                <div class="meta">一般票 · 已報到 2026/06/28</div>
-                <svg class="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.5-4-1-7-4.1-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
-              </div>
+            <div class="pm-vtoggle"><div class="pm-vseg"><span class="s on">依組織</span><span class="s">一起出示</span></div><span class="pm-vadd">+</span></div>
+            <div class="pm-orgh"><span class="pm-orgav" style="background:linear-gradient(135deg,#6366F1,#8B5CF6)">雲</span><div><div class="pm-orgn">雲曜科技</div><div class="pm-orgc">共 1 張卡片</div></div><svg class="pm-orgchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+            <div class="pm-catlabel"><svg viewBox="0 0 24 24" fill="none" stroke="#1A7A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20a4 4 0 0 0-8 0"/><circle cx="12" cy="9" r="3.5"/><path d="M21 20a3.5 3.5 0 0 0-5-3.2M3 20a3.5 3.5 0 0 1 5-3.2"/></svg>會員卡 · 1</div>
+            <div class="pm-vc">
+              <span class="pm-vctile" style="background:#E6F7EF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1A7A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20a4 4 0 0 0-8 0"/><circle cx="12" cy="9" r="3.5"/><path d="M21 20a3.5 3.5 0 0 0-5-3.2M3 20a3.5 3.5 0 0 1 5-3.2"/></svg></span>
+              <div style="flex:1;min-width:0;"><div class="pm-vct">雲曜科技會員卡</div><div class="pm-vcmeta"><span class="pm-statpill ok">有效</span><span class="pm-vcdate">有效至 2027/07/31</span></div></div>
+              <svg class="pm-vcchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+            <div class="pm-orgh"><span class="pm-orgav" style="background:linear-gradient(135deg,#0EA5E9,#2B5BD7)">羽</span><div><div class="pm-orgn">城東羽球社</div><div class="pm-orgc">共 2 張卡片</div></div><svg class="pm-orgchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+            <div class="pm-catlabel"><svg viewBox="0 0 24 24" fill="none" stroke="#B1326D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4Z"/></svg>報到證明 · 1</div>
+            <div class="pm-vc">
+              <span class="pm-vctile" style="background:#FBEAF0;"><svg viewBox="0 0 24 24" fill="none" stroke="#B1326D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4Z"/></svg></span>
+              <div style="flex:1;min-width:0;"><div class="pm-vct">七月例行球敘 報到證</div><div class="pm-vcmeta"><span class="pm-statpill ok">有效</span><span class="pm-vcdate">2026/07/10</span></div></div>
+              <svg class="pm-vcchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
             </div>
           </div>
           <div class="pm-tabs">
             <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><circle cx="8" cy="11" r="2"/><path d="M13 9.5h6M13 13.5h4"/></svg>名片</div>
             <div class="pm-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>卡夾</div>
-            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>活動</div>
-            <div class="pm-tab"><span class="badge">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.5 21a1.7 1.7 0 0 1-3 0"/></svg>通知</div>
+            <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>收件匣</div>
             <div class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>我</div>
           </div>
         </div>
 
       </div>
-      <div class="pm-dots" role="tablist" aria-hidden="true">
+      <div class="pm-dots" aria-hidden="true">
         <button class="pm-dot on" data-slide="0" aria-label="個人名片"></button>
-        <button class="pm-dot" data-slide="1" aria-label="出示 QR"></button>
+        <button class="pm-dot" data-slide="1" aria-label="我的 QR Code"></button>
         <button class="pm-dot" data-slide="2" aria-label="卡夾"></button>
       </div>
     </div>
