@@ -1482,8 +1482,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
   <div class="hero-right" aria-hidden="true">
     <style id="pm-app-css">
       /* ===== 手機輪播（依 credica-v2 真實 App 畫面重建）===== */
-      .pm-slide { opacity:0; pointer-events:none; transition:opacity .7s ease; }
-      .pm-slide.on { opacity:1; pointer-events:auto; }
+      /* 切換時：離場的畫面立即隱藏（無 transition），只有進場畫面淡入，避免兩張半透明疊影 */
+      .pm-slide { opacity:0; pointer-events:none; z-index:1; }
+      .pm-slide.on { opacity:1; pointer-events:auto; z-index:2; transition:opacity .35s ease; }
       .pm-dots { display:flex; gap:7px; justify-content:center; margin-top:20px; }
       .pm-dot { width:7px; height:7px; border-radius:999px; background:#CBD5E1; border:0; padding:0; cursor:pointer; transition:all .3s ease; }
       .pm-dot.on { background:#4F46E5; width:20px; }
@@ -1712,7 +1713,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2.5rem; max-width:
       var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function show(n){ i=n; slides.forEach(function(s,k){ s.classList.toggle('on',k===n); }); dots.forEach(function(d,k){ d.classList.toggle('on',k===n); }); }
       function next(){ show((i+1)%slides.length); }
-      function start(){ if(!reduce && !timer){ timer=setInterval(next,3600); } }
+      function start(){ if(!reduce && !timer){ timer=setInterval(next,4500); } }
       function stop(){ if(timer){ clearInterval(timer); timer=null; } }
       dots.forEach(function(d,k){ d.addEventListener('click',function(){ stop(); show(k); start(); }); });
       start();
