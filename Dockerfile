@@ -2,9 +2,9 @@ FROM nginx:1.27-alpine
 
 # Remove default nginx config and content.
 # The echo token busts the BuildKit layer cache for all COPY steps below — bump
-# it whenever a newly-added static file isn't showing up (Zeabur was replaying
-# cached COPY layers and dropping card.html). 20260615-2
-RUN rm /etc/nginx/conf.d/default.conf && rm -rf /usr/share/nginx/html/* && echo "cachebust 20260615-2"
+# it whenever an updated static file isn't showing up (Zeabur may replay stale
+# COPY layers). 20260718-ui-refresh-2
+RUN rm /etc/nginx/conf.d/default.conf && rm -rf /usr/share/nginx/html/* && echo "cachebust 20260718-ui-refresh-2"
 
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/credica.conf
