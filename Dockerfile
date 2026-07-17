@@ -20,6 +20,7 @@ COPY favicon-16.png favicon-32.png apple-touch-icon.png /usr/share/nginx/html/
 COPY robots.txt sitemap.xml /usr/share/nginx/html/
 COPY auth/ /usr/share/nginx/html/auth/
 COPY .well-known/ /usr/share/nginx/html/.well-known/
+COPY tutorial-thumbs/ /usr/share/nginx/html/tutorial-thumbs/
 
 EXPOSE 80
 

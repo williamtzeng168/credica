@@ -7,8 +7,8 @@
 html { scroll-behavior: smooth; font-size: 18px; }
 body {
     font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-    background: #F8FAFC;
-    color: #1E293B;
+    background: #F6F7F9;
+    color: #18233F;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -19,10 +19,9 @@ nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1rem 2.5rem;
     display: flex; align-items: center; justify-content: space-between;
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.85);
-    border-bottom: 1px solid rgba(0,0,0,0.07);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    background: #F6F7F9;
+    border-bottom: 1px solid #D9DEE7;
+    box-shadow: none;
 }
 .logo {
     display: flex; align-items: center; gap: 0.6rem;
@@ -39,13 +38,13 @@ nav {
 .nav-mid a.active { font-weight: 600; }
 .nav-dl {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 1.4rem; border-radius: 10px;
+    padding: 0.6rem 1.4rem; border-radius: 6px;
     background: #1E2951; color: #fff; text-decoration: none;
     font-size: 0.95rem; font-weight: 600; transition: all 0.2s;
 }
-.nav-dl:hover { background: #141B3B; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(30,41,81,0.3); }
+.nav-dl:hover { background: #141B3B; transform: translateY(-1px); box-shadow: 0 10px 24px rgba(24,35,63,0.18); }
 .nav-dl svg { width: 16px; height: 16px; }
-.nav-login { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 0.7rem; padding: 0.6rem 1.3rem; background: transparent; color: #1E2951; border: 1px solid rgba(15,18,32,0.08); border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: inherit; transition: all 0.2s; }
+.nav-login { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 0.7rem; padding: 0.6rem 1.3rem; background: transparent; color: #1E2951; border: 1px solid #D9DEE7; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: inherit; transition: all 0.2s; }
 .nav-login:hover { border-color: #1E2951; background: rgba(30,41,81,0.05); }
 .nav-login svg { width: 16px; height: 16px; }
 @media (max-width: 968px) {
@@ -55,18 +54,18 @@ nav {
 }
 
 /* ===== 法務頁內文 ===== */
-.page-content { max-width: 800px; margin: 0 auto; padding: 120px 5% 80px; }
+.page-content { max-width: 900px; margin: 0 auto; padding: 156px max(32px, 7vw) 120px; background: #FFFFFF; border-left: 1px solid #D9DEE7; border-right: 1px solid #D9DEE7; }
 .page-content h1 {
-    font-size: 2.8rem; font-weight: 800; margin-bottom: 12px;
-    line-height: 1.2; letter-spacing: -0.03em; color: #0F1220;
+    max-width: 720px; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; margin-bottom: 18px;
+    line-height: 1; letter-spacing: -0.06em; color: #18233F;
 }
 .page-meta {
     color: #64748B; font-size: 0.9rem; margin-bottom: 48px;
     padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.07);
 }
 .page-subtitle { color: #64748B; font-size: 1.15rem; margin-bottom: 48px; }
-.page-content section { margin-bottom: 40px; }
-.page-content h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; color: #1E293B; }
+.page-content section { margin-bottom: 52px; padding-top: 8px; }
+.page-content h2 { font-size: 1.45rem; font-weight: 700; margin-bottom: 16px; color: #18233F; }
 .page-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; margin-top: 20px; color: #1E293B; }
 .page-content p { color: #475569; font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px; }
 .page-content ul { list-style: none; padding: 0; margin-bottom: 16px; }
@@ -76,9 +75,9 @@ nav {
 }
 .page-content ul li::before {
     content: ''; position: absolute; left: 0; top: 11px;
-    width: 6px; height: 6px; border-radius: 50%; background: #2B5BD7;
+    width: 6px; height: 2px; background: #2D6A4F;
 }
-.page-content a { color: #2B5BD7; text-decoration: none; transition: color 0.2s; }
+.page-content a { color: #2D6A4F; text-decoration: none; transition: color 0.2s; }
 .page-content a:hover { color: #1E2951; }
 .page-content strong { color: #1E293B; font-weight: 700; }
 
@@ -96,6 +95,5 @@ footer {
 
 /* Responsive */
 @media (max-width: 600px) {
-    .page-content { padding-top: 100px; }
-    .page-content h1 { font-size: 2rem; }
+    .page-content { padding: 120px 24px 80px; border: 0; }
 }
