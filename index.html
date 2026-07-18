@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Credica — 每次相遇，都能繼續</title>
   <meta name="description" content="交換名片只是開始。Credica 把後續的聯絡、活動與卡證整理在同一段關係裡，而且資料由你掌握。">
-  <meta name="keywords" content="數位名片,人脈管理,活動,數位卡證,現場交換,隱私">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://credica.app/">
   <link rel="alternate" hreflang="zh-TW" href="https://credica.app/">
   <link rel="alternate" hreflang="x-default" href="https://credica.app/">
@@ -16,6 +16,7 @@
   <meta property="og:title" content="Credica — 每次相遇，都能繼續">
   <meta property="og:description" content="把後續的聯絡、活動與卡證，整理在同一段關係裡。">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Credica">
   <meta property="og:url" content="https://credica.app/">
   <meta property="og:image" content="https://credica.app/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,15 +29,37 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Credica",
-    "operatingSystem": "iOS",
-    "applicationCategory": "BusinessApplication",
-    "description": "交換名片只是開始。Credica 把後續的聯絡、活動與卡證整理在同一段關係裡。",
-    "url": "https://credica.app",
-    "downloadUrl": "https://apps.apple.com/tw/app/credica-%E5%8F%AF%E9%A9%97%E8%AD%89%E7%9A%84%E6%95%B8%E4%BD%8D%E5%90%8D%E7%89%87/id6760047580",
-    "author": {"@type": "Organization", "name": "元域智能有限公司"},
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://credica.app/#organization",
+        "name": "元域智能有限公司",
+        "alternateName": "Credica",
+        "url": "https://credica.app/",
+        "logo": "https://credica.app/credica-mark.svg",
+        "email": "william.tzeng@gmail.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://credica.app/#website",
+        "url": "https://credica.app/",
+        "name": "Credica",
+        "description": "把名片、人脈、活動與卡證整理在同一段關係裡。",
+        "inLanguage": "zh-TW",
+        "publisher": {"@id": "https://credica.app/#organization"}
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://credica.app/#app",
+        "name": "Credica",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "BusinessApplication",
+        "description": "交換名片只是開始。Credica 把後續的聯絡、活動與卡證整理在同一段關係裡。",
+        "url": "https://credica.app/",
+        "author": {"@id": "https://credica.app/#organization"},
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}
+      }
+    ]
   }
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN"></script>

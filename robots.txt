@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+# ChatGPT Search crawler. GPTBot (model training) remains governed separately
+# by the wildcard policy above.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 Sitemap: https://credica.app/sitemap.xml
