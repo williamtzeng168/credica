@@ -51,6 +51,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="home-sample.css?v=20260718-4">
+  <link rel="stylesheet" href="app-sim.css?v=20260718-1">
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
@@ -100,14 +101,25 @@
           </dl>
         </div>
 
-        <figure class="hero-product">
+        <div class="hero-product" aria-label="Credica App 現場交換介面">
           <div class="product-stage">
-            <div class="stage-label"><span>互動教學實際畫面</span><strong>現場交換</strong></div>
-            <img src="tutorial-thumbs/f10.png?v=20260718-2" alt="Credica App 現場交換功能，顯示兩個進行中的交換群組與現場碼">
+            <div class="stage-label"><span>Credica App</span><strong>現場交換</strong></div>
+            <div class="app-sim app-sim-exchange">
+              <div class="app-status"><span>9:41</span><span>● ● ▰</span></div>
+              <div class="app-toolbar"><strong>現場交換</strong><div><span aria-hidden="true">⌕</span><span aria-hidden="true">↕</span><b>加入</b></div></div>
+              <div class="app-scroll">
+                <header class="app-page-head"><h3>現場交換</h3><p>多人聚會時，用 8 字現場碼一次把大家的名片收齊</p></header>
+                <div class="app-section-label"><strong>我建立的群組</strong><span>1 個進行中</span></div>
+                <article class="exchange-row"><div class="exchange-icon">週</div><div><strong>週五產品小聚</strong><p>林若晴、陳柏安等 6 人</p></div><em>進行中</em><span>›</span></article>
+                <div class="app-section-label"><strong>我加入的群組</strong><span>1 個進行中</span></div>
+                <article class="exchange-row"><div class="exchange-icon exchange-icon-alt">城</div><div><strong>城市攝影散步</strong><p>許庭維等 12 人</p></div><em>進行中</em><span>›</span></article>
+              </div>
+              <div class="app-fab"><span>＋</span>發起現場交換</div>
+              <nav class="app-tabs" aria-label="App 底部分頁"><span>名片</span><span class="is-active">人脈</span><span>收件匣</span><span>卡夾</span><span>設定</span></nav>
+            </div>
             <p class="stage-note">用 8 字現場碼，一次收齊同一場活動認識的人。</p>
           </div>
-          <figcaption>取自互動教學；畫面中的步驟標記不會遮住操作文字。</figcaption>
-        </figure>
+        </div>
       </div>
     </section>
 
@@ -147,10 +159,24 @@
           </li>
         </ol>
 
-        <figure class="ledger-screen">
-          <img src="tutorial-thumbs/f21.png?v=20260718-2" alt="Credica App 卡夾的組織畫面，顯示已置頂與全部加入的組織">
-          <figcaption>關係依組織整理，需要時一眼找到。</figcaption>
-        </figure>
+        <div class="ledger-screen" aria-label="Credica App 組織卡夾介面">
+          <div class="app-sim app-sim-orgs app-sim-compact">
+            <div class="app-status"><span>9:41</span><span>● ● ▰</span></div>
+            <div class="app-toolbar"><strong>卡夾</strong><div><span aria-hidden="true">⌕</span><span aria-hidden="true">＋</span></div></div>
+            <div class="app-segments"><span>名片</span><span>卡證</span><span class="is-active">組織</span></div>
+            <div class="app-scroll">
+              <p class="org-summary">您是 3 個組織的成員 · 長按可置頂</p>
+              <div class="app-search">⌕　搜尋組織名稱</div>
+              <div class="app-filter"><span class="is-active">已置頂</span><span>最近加入</span><span>A–Z</span></div>
+              <div class="app-section-label"><strong>🌟 已置頂</strong><span>1 個</span></div>
+              <article class="org-row"><div class="org-avatar">晨</div><div><strong>晨光攝影社</strong><p>一般成員</p></div><span>›</span></article>
+              <div class="app-section-label"><strong>全部組織</strong><span>3 個</span></div>
+              <article class="org-row"><div class="org-avatar org-avatar-alt">島</div><div><strong>島嶼設計交流會</strong><p>活動成員</p></div><span>›</span></article>
+            </div>
+            <nav class="app-tabs" aria-label="App 底部分頁"><span>名片</span><span>人脈</span><span>收件匣</span><span class="is-active">卡夾</span><span>設定</span></nav>
+          </div>
+          <p class="sim-caption">關係依組織整理，需要時一眼找到。</p>
+        </div>
       </div>
     </section>
 

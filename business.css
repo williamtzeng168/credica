@@ -155,8 +155,8 @@
 .member-list li { padding: 16px 0; border-bottom: 1px solid var(--brand-line); font-weight: 700; }
 .member-list span { display: block; margin-top: 4px; color: var(--brand-muted); font-size: 0.84rem; font-weight: 400; }
 .member-visual { grid-column: 8 / -1; margin: 0; padding-left: 44px; border-left: 6px solid var(--brand-green); }
-.member-visual img { width: min(100%, 330px); margin-left: auto; border: 1px solid #cbd2de; box-shadow: var(--brand-shadow); }
-.member-visual figcaption { max-width: 330px; margin: 13px 0 0 auto; color: var(--brand-muted); font-size: 0.78rem; }
+.member-visual .app-sim { margin-left: auto; }
+.member-visual .sim-caption { max-width: 390px; margin-left: auto; }
 
 .comparison-section { color: var(--brand-white); background: var(--brand-green); }
 .comparison-heading { grid-column: 1 / span 5; }

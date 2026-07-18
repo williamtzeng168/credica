@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="brand.css">
   <link rel="stylesheet" href="business.css">
+  <link rel="stylesheet" href="app-sim.css?v=20260718-1">
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
@@ -125,7 +126,7 @@
             </div>
           </div>
           <div class="replay-row">
-            <p>所有資料皆為示意，不含真實個資。</p>
+            <p>畫面內容使用虛構資料，不含真實個資。</p>
             <button class="replay-button" id="replay-flex" type="button">重新播放對話</button>
           </div>
         </div>
@@ -168,10 +169,25 @@
             <li>資料由成員自己維持最新<span>聯絡方式更新後，組織不必每年重問。</span></li>
           </ul>
         </div>
-        <figure class="member-visual">
-          <img src="tutorial-thumbs/f21.png?v=20260718-2" alt="Credica App 卡夾的組織頁，顯示已加入與置頂的組織">
-          <figcaption>取自互動教學；步驟標記位於操作區右側，不遮住文字。</figcaption>
-        </figure>
+        <div class="member-visual" aria-label="Credica App 組織卡夾介面">
+          <div class="app-sim app-sim-orgs">
+            <div class="app-status"><span>9:41</span><span>● ● ▰</span></div>
+            <div class="app-toolbar"><strong>卡夾</strong><div><span aria-hidden="true">⌕</span><span aria-hidden="true">＋</span></div></div>
+            <div class="app-segments"><span>名片</span><span>卡證</span><span class="is-active">組織</span></div>
+            <div class="app-scroll">
+              <p class="org-summary">您是 3 個組織的成員 · 長按可置頂</p>
+              <div class="app-search">⌕　搜尋組織名稱</div>
+              <div class="app-filter"><span class="is-active">已置頂</span><span>最近加入</span><span>A–Z</span></div>
+              <div class="app-section-label"><strong>🌟 已置頂</strong><span>1 個</span></div>
+              <article class="org-row"><div class="org-avatar">晨</div><div><strong>晨光攝影社</strong><p>林若晴 · 一般成員</p></div><span>›</span></article>
+              <div class="app-section-label"><strong>全部組織</strong><span>3 個</span></div>
+              <article class="org-row"><div class="org-avatar org-avatar-alt">島</div><div><strong>島嶼設計交流會</strong><p>陳柏安 · 活動成員</p></div><span>›</span></article>
+              <article class="org-row"><div class="org-avatar org-avatar-warm">青</div><div><strong>青禾讀書會</strong><p>許庭維 · 一般成員</p></div><span>›</span></article>
+            </div>
+            <nav class="app-tabs" aria-label="App 底部分頁"><span>名片</span><span>人脈</span><span>收件匣</span><span class="is-active">卡夾</span><span>設定</span></nav>
+          </div>
+          <p class="sim-caption">成員在自己的卡夾找到組織、活動與卡證。</p>
+        </div>
       </div>
     </section>
 

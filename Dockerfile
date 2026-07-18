@@ -21,10 +21,6 @@ COPY robots.txt sitemap.xml /usr/share/nginx/html/
 COPY auth/ /usr/share/nginx/html/auth/
 COPY .well-known/ /usr/share/nginx/html/.well-known/
 COPY tutorial-thumbs/ /usr/share/nginx/html/tutorial-thumbs/
-# Explicit production hero assets. Zeabur has previously replayed a stale
-# directory COPY layer, so keep the two public screenshots as named files too.
-COPY tutorial-thumbs/f10.png /usr/share/nginx/html/credica-exchange-20260718.png
-COPY tutorial-thumbs/f21.png /usr/share/nginx/html/credica-organizations-20260718.png
 
 EXPOSE 80
 
