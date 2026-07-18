@@ -52,7 +52,7 @@
         "@type": "SoftwareApplication",
         "@id": "https://credica.app/#app",
         "name": "Credica",
-        "operatingSystem": "iOS, Android",
+        "operatingSystem": "iOS",
         "applicationCategory": "BusinessApplication",
         "description": "交換名片只是開始。Credica 把後續的聯絡、活動與卡證整理在同一段關係裡。",
         "url": "https://credica.app/",
@@ -62,16 +62,18 @@
     ]
   }
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-VEPFXCYNHN');
+    window.addEventListener('load', function () {
+      var analytics = document.createElement('script');
+      analytics.async = true;
+      analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-VEPFXCYNHN';
+      document.head.appendChild(analytics);
+    }, { once: true });
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="home-sample.css?v=20260718-4">
   <link rel="stylesheet" href="app-sim.css?v=20260718-2">
@@ -82,7 +84,7 @@
   <header class="site-header">
     <div class="grid-shell nav-grid">
       <a class="brand" href="index.html" aria-label="Credica 首頁">
-        <img src="credica-wordmark.png" alt="Credica">
+        <img src="credica-wordmark.png" alt="Credica" width="264" height="104">
       </a>
       <nav class="desktop-nav" aria-label="主要導覽">
         <a aria-current="page" href="index.html">個人版</a>
@@ -139,7 +141,7 @@
                 </div>
               </div>
               <div class="app-scroll">
-                <header class="app-page-head"><h3>現場交換</h3><p>多人聚會時，用 8 字現場碼一次把大家的名片收齊</p></header>
+                <header class="app-page-head"><p class="app-screen-title">現場交換</p><p>多人聚會時，用 8 字現場碼一次把大家的名片收齊</p></header>
                 <div class="app-section-label"><strong>我發起的</strong><span>1 個進行中</span></div>
                 <article class="exchange-row"><div class="exchange-icon">🧩</div><div class="exchange-copy"><div><strong>週五產品小聚</strong><span class="long-badge">長期</span></div><p><span>建立於 7/18</span><b>Q7M2K8RN</b><b>已換 6 張</b></p></div><svg class="row-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></article>
                 <div class="app-section-label"><strong>我加入的</strong><span>1 個進行中</span></div>
@@ -272,7 +274,7 @@
 
   <footer class="site-footer">
     <div class="grid-shell footer-grid">
-      <div class="footer-brand"><img src="credica-wordmark.png" alt="Credica"><p>把人、事、證，好好串起來。</p></div>
+      <div class="footer-brand"><img src="credica-wordmark.png" alt="Credica" width="264" height="104"><p>把人、事、證，好好串起來。</p></div>
       <nav aria-label="頁尾產品連結"><strong>產品</strong><a href="index.html">個人版</a><a href="business.html">中小組織</a><a href="enterprise.html">企業方案</a><a href="pricing.html">價格</a></nav>
       <nav aria-label="頁尾資源連結"><strong>資源</strong><a href="tutorial.html">互動教學</a><a href="about.html">關於</a><a href="privacy.html">隱私權政策</a><a href="terms.html">服務條款</a></nav>
       <div class="footer-contact"><strong>聯繫</strong><a href="mailto:william.tzeng@gmail.com">william.tzeng@gmail.com</a></div>

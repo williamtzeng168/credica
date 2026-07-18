@@ -8,7 +8,7 @@
   --app-line: #e5e7eb;
   --app-text: #1a1f36;
   --app-text-2: #4a5568;
-  --app-text-3: #8895a8;
+  --app-text-3: #667085;
   position: relative;
   width: min(100%, 390px);
   height: 650px;
@@ -94,7 +94,7 @@
 .app-sim-orgs .app-scroll { height: calc(100% - 206px); }
 
 .app-page-head { padding: 14px 20px 3px; }
-.app-page-head h3 { margin: 0 0 3px; font-size: 20px; font-weight: 700; }
+.app-page-head .app-screen-title { margin: 0 0 3px; color: var(--app-text); font-size: 20px; font-weight: 700; line-height: 1.35; }
 .app-page-head p,
 .org-summary { margin: 0; color: var(--app-text-2); font-size: 10.5px; line-height: 1.5; }
 
