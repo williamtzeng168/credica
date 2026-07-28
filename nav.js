@@ -32,7 +32,7 @@
 
   // 全站導覽連結(順序固定)
   var LINKS = [
-    { key: 'personal',   label: '個人版',   href: 'index.html' },
+    { key: 'personal',   label: '個人版',   href: '/' },
     { key: 'business',   label: '中小組織', href: 'business.html' },
     { key: 'enterprise', label: '企業方案', href: 'enterprise.html' },
     { key: 'tutorial',   label: '互動教學', href: 'tutorial.html' },
@@ -90,7 +90,7 @@
 
     var nav =
       '<nav class="credica-nav">' +
-        '<a href="index.html" class="logo">' +
+        '<a href="/" class="logo">' +
           '<img src="credica-wordmark.png" alt="Credica" style="height:40px;width:auto;display:block"></a>' +
         '<div class="nav-mid">' + midLinks(active) + '</div>' +
         '<button class="hamburger" aria-label="開啟選單" aria-expanded="false" aria-controls="credica-mobile-menu">' +

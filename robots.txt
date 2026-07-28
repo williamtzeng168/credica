@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
+# Cloudflare Email Address Obfuscation rewrites every mailto: into
+# /cdn-cgi/l/email-protection#<hash>. Googlebot follows those links and gets a
+# 404 (GSC「找不到網頁 (404)」). The path is Cloudflare-internal, never a real
+# page — keep crawlers out of it entirely.
+Disallow: /cdn-cgi/
 
 # ChatGPT Search crawler. GPTBot (model training) remains governed separately
 # by the wildcard policy above.
