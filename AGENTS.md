@@ -134,7 +134,7 @@ credica/
 - 支援服務：`https://zymai.com.tw/support`
 - 隱私政策：`https://zymai.com.tw/privacy`
 - 使用條款：`https://zymai.com.tw/terms`
-- 合作聯繫：`mailto:william.tzeng@gmail.com`
+- 合作聯繫：`mailto:william@oridom.com.tw`
 
 ---
 
